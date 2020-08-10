@@ -1,6 +1,6 @@
 # htmlgo
 
-htmlgo のサイトです!
+htmlgo のサイトです。
 
 ## Build Setup
 
