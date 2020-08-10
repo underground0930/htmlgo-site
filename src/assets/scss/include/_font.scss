@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+@mixin font0() {
+  font-family: "Droid Sans", "游ゴシック体", "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+}
+
+@mixin font1() {
+  font-family: "noto_midium";
+}
+
+@mixin font2() {
+  font-family: "noto_bold";
+}
+
+@mixin mincho() {
+  font-family: "ヒラギノ明朝 ProN W3", "游明朝体", "Yu Mincho", "HiraMinProN-W3", "HG明朝E", "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝";
+}
+
+@mixin mincho2() {
+  font-family: "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "HG明朝E", "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif;
+}

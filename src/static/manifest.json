@@ -1,0 +1,25 @@
+{
+  "name": "HTMLGO",
+  "short_name": "HTMLGO",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "WEB技術を書き連ねるサイト",
+  "icons": [
+    {
+      "src": "img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "img/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
