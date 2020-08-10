@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+//////////////////////////
+// 変数
+//////////////////////////
+
+:root {
+  --mainColor: #24292e;
+  --baseColor: #fff;
+  --fontColor: #000;
+  --linkColor: #000;
+  --iconTextColor: #fff;
+  --btnColor: #000;
+  --btnIconColor: #fff;
+  --footerTextColor: #fff;
+  --loaderColor: #333333;
+  --borderColor: #dddddd;
+  --color1: var(--mainColor);
+
+  $spaceUnit: 4px;
+
+  @for $i from 1 through 25 {
+    --s#{$i}: #{$spaceUnit * $i};
+  }
+
+}
