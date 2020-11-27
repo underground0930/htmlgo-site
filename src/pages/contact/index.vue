@@ -26,7 +26,8 @@
             </li>
           </ul>
 
-          <div class="contact__bot" v-if="isBot">ボットの可能性が検出されたため送信を中止します。</div>
+          <div class="contact__bot" v-if="token === '' ">ボットの可能性が検出されたため送信を中止します。</div>
+          <input type="hidden" name="g-recaptcha-response" :token="token">
 
           <!-- ボット投稿をブロックするためのタグ -->
           <div class="_formrun_gotcha">
@@ -52,7 +53,7 @@ export default {
   },
   data() {
     return {
-      isBot: false,
+      token: null,
     }
   },
   async mounted() {
@@ -69,10 +70,10 @@ export default {
     async onSubmit() {
       try {
         const token = await this.$recaptcha.execute('login')
-        this.isBot = false
+        this.token = token
         console.log('recapcha token:', token)
       } catch (error) {
-        this.isBot = true
+        this.token = ''
         console.log('Login error:', error)
       }
     },
