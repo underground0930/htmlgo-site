@@ -40,9 +40,7 @@
               <div data-formrun-show-if-error="スパム対策">総理大臣ではありません</div>
             </li>
           </ul>
-
           <div class="contact__bot" v-if="token === '' ">ボットの可能性が検出されたため送信を中止します。</div>
-          <input type="hidden" name="g-recaptcha-response" :token="token">
           <button type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
         </form>
       div(class="contact__back")
@@ -70,11 +68,11 @@ export default {
     if (process.client) {
       this.loadFormrunScript()
     }
-    try {
-      const init = await this.$recaptcha.init()
-    } catch (e) {
-      console.log(e)
-    }
+    // try {
+    //   const init = await this.$recaptcha.init()
+    // } catch (e) {
+    //   console.log(e)
+    // }
   },
   methods: {
     // async onSubmit(e) {
