@@ -6,7 +6,7 @@
         span お仕事のお問い合わせはこちらからどうぞ
       div(class="contact__body").
         <!-- class, action, methodを変更しないでください -->
-        <form class="formrun" action="https://form.run/api/v1/r/slpviahq150x5q8lxsyw5x8z" method="post">
+        <form class="formrun" action="https://form.run/api/v1/r/slpviahq150x5q8lxsyw5x8z" method="post" @submit.prevent="onSubmit">
           <!-- ↓自由に要素を追加・編集することができます -->
           <ul class="contact__list">
             <li class="contact__listChild">
@@ -25,6 +25,9 @@
               <div data-formrun-show-if-error="お問い合わせ">お問い合わせ入力してください</div>
             </li>
           </ul>
+
+          <div class="contact__bot" v-if="isBot">ボットの可能性が検出されたため送信を中止します。</div>
+
           <!-- ボット投稿をブロックするためのタグ -->
           <div class="_formrun_gotcha">
             <label for="_formrun_gotcha">If you are a human, ignore this field</label>
@@ -47,12 +50,32 @@ export default {
     CommonIconBtn,
     SnsBox,
   },
-  mounted() {
+  data() {
+    return {
+      isBot: false,
+    }
+  },
+  async mounted() {
     if (process.client) {
       this.loadFormrunScript()
     }
+    try {
+      const init = await this.$recaptcha.init()
+    } catch (e) {
+      console.log(e)
+    }
   },
   methods: {
+    async onSubmit() {
+      try {
+        const token = await this.$recaptcha.execute('login')
+        this.isBot = false
+        console.log('recapcha token:', token)
+      } catch (error) {
+        this.isBot = true
+        console.log('Login error:', error)
+      }
+    },
     initFormrun() {
       window.Formrun._reset()
       window.Formrun.init('.formrun')
@@ -71,7 +94,7 @@ export default {
         document.head.appendChild(script)
       })
         .then(() => {
-          console.log('init!')
+          console.log('init')
           this.initFormrun()
         })
         .catch(() => {
@@ -120,7 +143,7 @@ $about_bp: 800px;
 }
 
 .contact__list {
-  margin-bottom: var(--s12);
+  margin-bottom: var(--s10);
 }
 
 .contact__listChild {
@@ -152,10 +175,10 @@ $about_bp: 800px;
     border: 1px solid #aaa;
     resize: none;
   }
-  div[data-formrun-show-if-error] {
+  [data-formrun-show-if-error] {
     display: none;
   }
-  div.formrun-system-show {
+  .formrun-system-show {
     display: block;
     padding-top: var(--s1);
     color: #f00;
@@ -179,5 +202,16 @@ button[type='submit'] {
 
 .contact__back {
   text-align: center;
+}
+
+.contact__bot {
+  text-align: center;
+  padding-bottom: var(--s5);
+  color: #f00;
+  font-size: 1.4rem;
+  font-weight: bold;
+  @include max-screen($about_bp) {
+    text-align: left;
+  }
 }
 </style>
