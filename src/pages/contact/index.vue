@@ -70,7 +70,7 @@ export default {
       token: null,
     }
   },
-  async mounted() {
+  mounted() {
     if (process.client) {
       this.loadFormrunScript()
     }

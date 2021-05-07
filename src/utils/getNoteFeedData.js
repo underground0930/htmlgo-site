@@ -17,7 +17,7 @@ export async function getNoteFeedData() {
         return {
           title: name,
           category: 'note',
-          published: publishAt.split(' ')[0].replace(/\//g, '-'),
+          published: publishAt.split('T')[0],
           link: `https://note.com/resistance_gowy/n/${key}`,
           img: eyecatch,
           tags: hashtag,
