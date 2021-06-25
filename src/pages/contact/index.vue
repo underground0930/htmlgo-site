@@ -26,14 +26,6 @@
             </li>
           </ul>
           <div class="contact__recaptcha">
-            <script>
-              function successCallback(){
-                document.getElementById('contact__submit').removeAttribute('disabled');
-              }
-              function expiredCallback(){
-                document.getElementById('contact__submit').setAttribute('disabled',true);
-              }
-            </script>
             <div id="recaptchaMain" class="g-recaptcha" :data-sitekey="sitekey" data-callback="successCallback" data-expired-callback="expiredCallback"></div>
           </div>
           <button id="contact__submit" disabled type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>

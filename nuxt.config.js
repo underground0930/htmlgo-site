@@ -30,6 +30,7 @@ module.exports = {
     '@/plugins/computed.js',
     '@/plugins/filters.js',
     { src: '@/plugins/ga.js', ssr: false },
+    { src: '@/plugins/checkEnableSubmit.js', ssr: false },
   ],
 
   /*
