@@ -24,19 +24,30 @@
               <textarea class="contact__textarea" name="お問い合わせ" data-formrun-required rows="14"></textarea>
               <div data-formrun-show-if-error="お問い合わせ">お問い合わせ入力してください</div>
             </li>
+            <li class="contact__listChild">
+              <label>スパム対策 [必須]</label>
+              <select class="contact__inputSelect" name="スパム対策" v-model="selected" data-formrun-required>
+                <option value="">令和2年11月現在の総理大臣をえらんでください</option>
+                <option value="">小泉進次郎</option>
+                <option value="">小池百合子</option>
+                <option value="">安倍晋三</option>
+                <option value="">小泉純一郎</option>
+                <option value="true">菅義偉</option>
+                <option value="">安倍昭恵</option>
+                <option value="">森田健作</option>
+                <option value="">麻生太郎</option>
+              </select>
+              <div data-formrun-show-if-error="スパム対策">総理大臣ではありません</div>
+            </li>
           </ul>
-          <div class="contact__recaptcha">
-            <script>
-              function successCallback(){
-                document.getElementById('contact__submit').removeAttribute('disabled');
-              }
-              function expiredCallback(){
-                document.getElementById('contact__submit').setAttribute('disabled',true);
-              }
-            </script>
-            <div id="recaptchaMain" class="g-recaptcha" :data-sitekey="sitekey" data-callback="successCallback" data-expired-callback="expiredCallback"></div>
+          <div class="contact__bot" v-if="token === '' ">ボットの可能性が検出されたため送信を中止します。</div>
+          <!-- ボット投稿をブロックするためのタグ -->
+          <div class="_formrun_gotcha">
+            <style media="screen">._formrun_gotcha {position:absolute!important;height:1px;width:1px;overflow:hidden;}</style>
+            <label for="_formrun_gotcha">If you are a human, ignore this field</label>
+            <input type="text" name="_formrun_gotcha" id="_formrun_gotcha" tabindex="-1">
           </div>
-          <button id="contact__submit" disabled type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
+          <button type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
         </form>
       div(class="contact__back")
         common-icon-btn(:title="'BACK TO TOP'" link="/" :blank="false" :icon="['fas', 'home']" color="'#4267B2'")
@@ -56,50 +67,33 @@ export default {
   data() {
     return {
       selected: '',
-      sitekey: '6Ldu_1UbAAAAABKzqC0VRtFsRoCmdI1ruAB_Pkb4',
+      token: null,
     }
   },
   mounted() {
     if (process.client) {
-      this.loadRecapchaScript()
       this.loadFormrunScript()
     }
+    // try {
+    //   const init = await this.$recaptcha.init()
+    // } catch (e) {
+    //   console.log(e)
+    // }
   },
   methods: {
-    ok() {
-      alert('ok')
-    },
+    // async onSubmit(e) {
+    //   try {
+    //     const token = await this.$recaptcha.execute('login')
+    //     this.token = token
+    //     console.log(window.Formrun)
+    //   } catch (error) {
+    //     this.token = ''
+    //     console.log('Login error:', error)
+    //   }
+    // },
     initFormrun() {
-      console.log('init formrun')
       window.Formrun._reset()
       window.Formrun.init('.formrun')
-    },
-    resetRecapcha() {
-      console.log('init Recapcha')
-      console.log(window.grecaptcha.render('recaptchaMain'))
-    },
-    loadScript(src, callback, errCallback) {
-      const script = document.createElement('script')
-      script.addEventListener('load', () => {
-        if (typeof callback === 'function') {
-          callback()
-        }
-      })
-      script.addEventListener('error', () => {
-        if (typeof errCallback === 'function') {
-          errCallback()
-        }
-      })
-      script.src = src
-      document.head.appendChild(script)
-    },
-    loadRecapchaScript() {
-      if (window.grecaptcha) {
-        console.log('repeat reset')
-        this.resetRecapcha()
-        return
-      }
-      this.loadScript('https://www.google.com/recaptcha/api.js')
     },
     loadFormrunScript() {
       if (window.Formrun) {
@@ -107,10 +101,20 @@ export default {
         this.initFormrun()
         return
       }
-      this.loadScript(
-        'https://sdk.form.run/js/v2/formrun.js',
-        this.initFormrun.bind(this)
-      )
+      new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.addEventListener('load', resolve)
+        script.addEventListener('error', reject)
+        script.src = 'https://sdk.form.run/js/v2/formrun.js'
+        document.head.appendChild(script)
+      })
+        .then(() => {
+          console.log('init')
+          this.initFormrun()
+        })
+        .catch(() => {
+          console.log('err')
+        })
     },
   },
   head() {
@@ -218,20 +222,10 @@ button[type='submit'] {
   outline: none;
   font-weight: bold;
   cursor: pointer;
-  &:disabled {
-    opacity: 0.3;
-  }
 }
 
 .contact__back {
   text-align: center;
-}
-
-.contact__recaptcha {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0 var(--s10);
 }
 
 .contact__bot {
