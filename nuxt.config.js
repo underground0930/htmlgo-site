@@ -1,5 +1,5 @@
-const config = require('./config')
 const axios = require('axios')
+const config = require('./config')
 require('dotenv').config()
 const { MICROCMS_API_KEY } = process.env
 const isDev = process.env.NODE_ENV === 'development'
@@ -42,14 +42,6 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@/modules/getFeeds',
-    [
-      '@nuxtjs/recaptcha',
-      {
-        siteKey: '6LeqIO8ZAAAAALT3TZ4UMnm4Z_gg2nPK_7QbbSxl',
-        version: 3,
-        hideBadge: true,
-      },
-    ],
   ],
   styleResources: {
     scss: ['@/assets/scss/include/*.scss'],
