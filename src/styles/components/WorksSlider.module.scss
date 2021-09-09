@@ -1,0 +1,62 @@
+@import "mq";
+@import "font";
+
+
+.container{
+  width: 100%;
+  border: 1px solid var(--borderColor);
+}
+
+%sliderBtn {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  svg{
+    width: 100% !important;
+    height: 100% !important;
+  }
+  @include max-screen(930px) {
+    display: none;
+  }
+}
+
+.sliderPrev{
+  @extend %sliderBtn;
+  left: -55px;
+  z-index: 1;
+}
+
+.sliderNext{
+  @extend %sliderBtn;
+  right: -55px;
+  z-index: 1;
+}
+
+.indicator {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: var(--s5);
+  font-size: 16px;
+  font-weight: bold;
+  span{
+    border-radius: 100%;
+    background: #000;
+    width: 10px !important;
+    height: 10px !important;
+    background: #000 !important;
+    opacity: 0.4;
+    padding: 0 var(--s1) !important;
+    &:only-child {
+      display: none !important;
+    }
+    &.swiper-pagination-bullet-active{
+      opacity: 1 !important;
+    }
+  }
+}

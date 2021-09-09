@@ -1,0 +1,52 @@
+@import "mq";
+@import "font";
+
+$about_bp: 800px;
+
+.list {
+  font-size: 1.5rem;
+  padding: 0 var(--s2);
+  li:not(:last-of-type) {
+    margin-bottom: var(--s2);
+  }
+  dl {
+    display: flex;
+  }
+  dt {
+    position: relative;
+    width: 180px;
+    margin: 0 var(--s7) 0 0;
+    font-weight: bold;
+    &:after {
+      content: '.....';
+      display: block;
+      position: absolute;
+      transform: translateY(-5px);
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+  dd {
+    flex: 1;
+  }
+  @include max-screen($about_bp) {
+    font-size: 1.4rem;
+    padding: 0;
+    li:not(:last-of-type) {
+      margin-bottom: var(--s4);
+    }
+    dl {
+      display: block;
+    }
+    dt {
+      width: auto;
+      margin: 0 0 var(--s1);
+      font-weight: bold;
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

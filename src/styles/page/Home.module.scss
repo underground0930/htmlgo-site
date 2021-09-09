@@ -1,0 +1,29 @@
+@import "mq";
+@import "font";
+
+$top_bp: 800px;
+.main {
+  max-width: 900px;
+  margin: 0 auto 0;
+  min-height: 300px;
+  padding: 0 var(--s7) 0;
+}
+.section {
+  border-bottom: 1px solid var(--borderColor);
+  padding: 0 0 var(--s10);
+  margin: 0 0 var(--s20);
+  @media screen and (max-width: $top_bp) {
+    padding: 0 0 var(--s5);
+    margin: 0 0 var(--s10);
+  }
+}
+.section__btn {
+  text-align: center;
+}
+
+.articles__btn {
+  margin-top: var(--s10);
+  @media screen and (max-width: $top_bp) {
+    margin-top: var(--s5);
+  }
+}

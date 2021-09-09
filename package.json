@@ -1,0 +1,41 @@
+{
+  "name": "htmlgo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "predev": "node ./scripts/generateFeedJson.js",
+    "dev": "next dev",
+    "prebuild": "node ./scripts/generateFeedJson.js",
+    "build": "next build && next export",
+    "start": "next start",
+    "export": "next export",
+    "open": "open -a 'Google Chrome' http://localhost:3000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "dotenv": "^10.0.0",
+    "microcms-js-sdk": "^1.2.0",
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "swiper": "^7.0.4"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@styled-jsx/plugin-sass": "^3.0.0",
+    "@types/react": "17.0.11",
+    "@types/xml2js": "^0.4.9",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "7.29.0",
+    "eslint-config-next": "11.0.1",
+    "sass": "^1.35.1",
+    "typescript": "4.4.2",
+    "xml2js": "^0.4.23"
+  }
+}

@@ -1,0 +1,139 @@
+@import "mq";
+@import "font";
+
+////////////////////////////
+// タイル
+////////////////////////////
+.panelsTile {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  &:after {
+    content: '';
+    display: block;
+    width: 23.5%;
+    height: 0;
+  }
+  &:before {
+    content: '';
+    display: block;
+    width: 23.5%;
+    height: 0;
+    order: 1;
+  }
+  @include max-screen(920px) {
+    &:before,
+    &:after {
+      width: 31%;
+    }
+  }
+  @include max-screen(720px) {
+    &:before,
+    &:after {
+      width: 48%;
+    }
+  }
+  @include max-screen(450px) {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+  article{
+    width: 23.5%;
+    box-shadow: 0px 0px 7px 0px #a3a3a3;
+    margin: 0 0 var(--s10);
+    @include max-screen(920px) {
+      width: 31%;
+    }
+    @include max-screen(720px) {
+      width: 48%;
+    }
+    @include max-screen(450px) {
+      width: 100%;
+      margin: 0 0 var(--s5);
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  a{
+    color: #000;
+    text-decoration: none;
+  }
+  dl {
+    background: #fff;
+  }
+  dt {
+    height: 140px;
+    background-color: var(--color1);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 140px;
+      border: 2px solid #222;
+      transition: border-width 0.1s;
+      left: 0;
+      top: 0;
+      box-sizing: border-box;
+    }
+    &--hatena {
+      background-image: url('/img/hatena.png');
+    }
+    &--qiita {
+      background-image: url('/img/qiita.png');
+    }
+  }
+  dd {
+    padding: var(--s3);
+  }
+  h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #fff;
+    line-height: 1.7;
+    position: relative;
+    letter-spacing: 0.2em;
+    word-break: break-all;
+    margin-bottom: var(--s1);
+    &:after {
+      content: '';
+      position: relative;
+      right: -1em;
+      float: right;
+      width: 1em;
+      height: 100%;
+      background-color: inherit;
+      margin-left: -1em;
+    }
+  }
+  p {
+    font-size: 1rem;
+    display: block;
+    &:empty {
+      display: none;
+    }
+    span {
+      display: inline-block;
+      padding: var(--s1) var(--s2);
+      background: #222;
+      border-radius: 3px;
+      color: var(--iconTextColor);
+      margin-top: var(--s1);
+      &:not(:last-of-type) {
+        margin-right: var(--s1);
+      }
+    }
+  }
+  time {
+    font-size: 1.2rem;
+    margin-bottom: var(--s1);
+    display: block;
+  }
+}

@@ -1,0 +1,16 @@
+@import "mq";
+@import "font";
+
+.textBtn {
+  display: inline-block;
+  text-align: center;
+  background: var(--btnColor);
+  color: var(--btnIconColor);
+  padding: 15px 10px;
+  min-width: 120px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  &:visited {
+    color: var(--btnIconColor);
+  }
+}

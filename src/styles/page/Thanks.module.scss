@@ -1,0 +1,31 @@
+@import "mq";
+@import "font";
+
+$thank_bp: 800px;
+
+.main {
+  width: 720px;
+  margin: 0 auto var(--s20);
+
+  @include max-screen($thank_bp) {
+    width: auto;
+    margin: 0 var(--s5) var(--s10);
+  }
+}
+
+.body {
+  max-width: 600px;
+  padding: 0 var(--s5) var(--s10);
+  border-bottom: 1px solid var(--borderColor);
+  margin: 0 auto var(--s10);
+}
+
+.thanks {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.back {
+  text-align: center;
+}

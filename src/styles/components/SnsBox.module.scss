@@ -1,0 +1,80 @@
+@import "mq";
+@import "font";
+
+$snsBox_bp: 800px;
+.snsBox {
+  max-width: 290px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  @include max-screen($snsBox_bp) {
+    max-width: 240px;
+  }
+}
+.snsBoxChild {
+  margin: 0 0 var(--s2);
+  width: 20%;
+  text-align: center;
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.qiita{
+  width: 50px;
+  height: 50px;
+  @include max-screen($snsBox_bp) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.github {
+  width: 50px !important;
+  height: 50px !important;
+  @include max-screen($snsBox_bp) {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+.twitter {
+  width: 50px !important;
+  height: 50px !important;
+  @include max-screen($snsBox_bp) {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+.qiita{
+  width: 50px;
+  height: 50px;
+  @include max-screen($snsBox_bp) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.zenn {
+  border-radius: 4px;
+  width: 44px !important;
+  height: 44px !important;
+  @include max-screen($snsBox_bp) {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+.note {
+  border-radius: 4px;
+  width: 44px !important;
+  height: 44px !important;
+  @include max-screen($snsBox_bp) {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
