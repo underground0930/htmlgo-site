@@ -1,5 +1,6 @@
 require('dotenv').config()
 const axios = require('axios')
+const dayjs = require('dayjs')
 
 const getQiitaFeed = async function () {
   return axios
@@ -13,7 +14,7 @@ const getQiitaFeed = async function () {
         return {
           category: 'qiita',
           title: post.title,
-          published: post.created_at.split('T')[0],
+          published: dayjs(post.created_at).format(),
           link: post.url,
           img: '/img/qiita.png',
           tags: post.tags.map((tag) => tag.name),

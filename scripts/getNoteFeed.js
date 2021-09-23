@@ -1,4 +1,5 @@
 const axios = require('axios')
+const dayjs = require('dayjs')
 
 const getNoteFeed = async function () {
   return axios
@@ -13,9 +14,9 @@ const getNoteFeed = async function () {
         return {
           title: name,
           category: 'note',
-          published: publishAt.split('T')[0],
+          published: dayjs(publishAt).format(),
           link: `https://note.com/resistance_gowy/n/${key}`,
-          img: eyecatch,
+          img: eyecatch ?? '/img/note.png',
           tags: hashtag,
         }
       })

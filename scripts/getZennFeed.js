@@ -1,5 +1,6 @@
 const axios = require('axios')
 const xml2js = require('xml2js')
+const dayjs = require('dayjs')
 
 const getZennFeed = async function () {
   const parser = new xml2js.Parser({ trim: true })
@@ -11,10 +12,8 @@ const getZennFeed = async function () {
     .then((json) => {
       const posts = json.rss.channel[0].item
       return posts.map((post) => {
-        const date = new Date(post.pubDate[0])
-        const published = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(
-          date.getDate()
-        ).padStart(2, '0')}`
+        const published = dayjs(post.pubDate[0]).format()
+
         return {
           title: post.title[0],
           category: 'zenn',
