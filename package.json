@@ -1,6 +1,6 @@
 {
   "name": "htmlgo",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "predev": "node ./scripts/generateFeedJson.js",

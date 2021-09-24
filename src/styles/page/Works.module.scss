@@ -55,6 +55,7 @@ $works_bp: 700px;
   font-size: 1.6rem;
   padding: 0 35px 0 10px;
   cursor: pointer;
+  border: 1px solid #000;
   @include max-screen($works_bp) {
     width: 100%;
   }
