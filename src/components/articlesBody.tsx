@@ -6,6 +6,9 @@ import { FeedObj, PanelType } from 'types/index'
 // style
 import styles from 'styles/page/Articles.module.scss'
 
+// libs
+import { event } from 'libs/gtag'
+
 // components
 import ViewSwitch from 'components/viewSwitch'
 import Pagenation from 'components/pagenation'
@@ -23,6 +26,10 @@ type Props = {
 
 export default function ArticlesBody({ articles = [], page, pages }: Props) {
   const [type, setType] = useState<PanelType>('')
+
+  const clickHandler = (label: string, value: string) => {
+    event({ action: 'click', category: 'articles', label, value })
+  }
 
   useEffect(() => {
     const ft = localStorage.getItem('panelType')
@@ -50,14 +57,16 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
           <span>技術系やそれ以外の記事</span>
         </Title>
         <ViewSwitch type={type} setType={setType} />
-        <Panels articles={articles} type={type} />
+        <Panels articles={articles} type={type} clickHandler={clickHandler} />
         <Pagenation pages={pages} page={page} />
         <div className={styles.back}>
           <IconBtn
             icon="faHome"
-            //title="back to top"
             link="/"
             color="#ffffff"
+            onClick={() => {
+              clickHandler('top', '/')
+            }}
           />
         </div>
       </main>

@@ -12,6 +12,7 @@ type Props = {
   blank?: boolean
   color: string
   icon: 'faHome' | 'faAlignJustify'
+  onClick?: () => void
 }
 
 const icons = {
@@ -19,11 +20,11 @@ const icons = {
   faAlignJustify: faAlignJustify,
 }
 
-const IconBtn = ({ title, link, blank = false, color, icon }: Props) => {
+const IconBtn = ({ title, link, blank = false, color, icon, onClick }: Props) => {
   return (
     <>
       {blank && (
-        <a className={styles.iconBtn} href={link} target="_blank" rel="noreferrer">
+        <a className={styles.iconBtn} href={link} target="_blank" rel="noreferrer" onClick={onClick}>
           <FontAwesomeIcon
             className={styles.icon}
             icon={icons[icon]}
@@ -34,7 +35,7 @@ const IconBtn = ({ title, link, blank = false, color, icon }: Props) => {
       )}
       {!blank && (
         <Link href={link}>
-          <a className={styles.iconBtn}>
+          <a className={styles.iconBtn} onClick={onClick}>
             <FontAwesomeIcon
               className={styles.icon}
               icon={icons[icon]}

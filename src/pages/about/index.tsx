@@ -1,6 +1,9 @@
 // style
 import styles from 'styles/page/About.module.scss'
 
+// libs
+import { event } from 'libs/gtag'
+
 // components
 import HeadWrap from 'components/headWrap'
 import Layout from 'components/layout'
@@ -10,6 +13,10 @@ import IconBtn from 'components/IconBtn'
 import HistoryList from 'components/historyList'
 
 export default function About() {
+  const clickHandler = (label: string, value: string) => {
+    event({ action: 'click', category: 'about', label, value })
+  }
+
   return (
     <Layout>
       <HeadWrap
@@ -27,13 +34,20 @@ export default function About() {
             <img src="/img/profile.jpg" width="210" height="210" alt="" />
           </div>
           <div className={styles.sns}>
-            <SnsBox />
+            <SnsBox category={'about'} />
           </div>
           <h3 className={styles.title}>このサイトについて</h3>
           <p className={styles.text}>このサイト主の「実績紹介」「WEB技術の記事」などをまとめたサイトです。</p>
           <h3 className={styles.title}>プロフィール</h3>
           <p className={styles.text}>
-            <a href="https://twitter.com/resistance_gowy" target="_blank" rel="noreferrer">
+            <a
+              href="https://twitter.com/resistance_gowy"
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => {
+                clickHandler('profile_text_twitter', e.currentTarget.href)
+              }}
+            >
               @resistance_gowy
             </a>
             <span>(フロントエンドエンジニア)</span>
@@ -94,7 +108,14 @@ export default function About() {
           />
         </div>
         <div className={styles.back}>
-          <IconBtn icon="faHome" link="/" color="#ffffff" />
+          <IconBtn
+            icon="faHome"
+            link="/"
+            color="#ffffff"
+            onClick={() => {
+              clickHandler('top', '/')
+            }}
+          />
         </div>
       </main>
     </Layout>

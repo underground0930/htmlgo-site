@@ -17,6 +17,7 @@
     "paths": {
       "types/*": ["src/types/*"],
       "components/*": ["src/components/*"],
+      "hooks/*": ["src/hooks/*"],
       "utils/*": ["src/utils/*"],
       "libs/*": ["src/libs/*"],
       "json/*": ["src/json/*"],

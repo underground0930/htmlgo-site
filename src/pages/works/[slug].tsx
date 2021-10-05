@@ -17,6 +17,7 @@ import { cutText } from 'utils/cutText'
 import styles from 'styles/page/WorksDetail.module.scss'
 
 // libs
+import { event } from 'libs/gtag'
 import { client } from 'libs/client'
 
 // components
@@ -48,6 +49,9 @@ export default function WorksDetail({ post, prev, next }: Props) {
   const shareFacebookUrl = (slug: string) => {
     return `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
   }
+  const clickHandler = (label: string, value: string) => {
+    event({ action: 'click', category: 'works-detail', label, value })
+  }
 
   if (post === null) {
     return <div>sorry! page error!</div>
@@ -59,7 +63,7 @@ export default function WorksDetail({ post, prev, next }: Props) {
         title={`${post.title} | WORKS | HTMLGO`}
         description={post.body ? cutText(removeHtml(post.body), 120) : post.title + 'の実績紹介です。'}
         image={`https://htmlgo.site/img/ogp_new.png`}
-        url={`https://htmlgo.site/works/`}
+        url={`https://htmlgo.site/works/${post.slug}/`}
       />
       <main className={styles.main}>
         <Title>
@@ -168,12 +172,11 @@ export default function WorksDetail({ post, prev, next }: Props) {
                 href={shareFacebookUrl(post.slug)}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  clickHandler('facebook', `/works/${post.slug}`)
+                }}
               >
-                <FontAwesomeIcon
-                  icon={faFacebookF}
-                  color="#ffffff"
-                  //title="facebook"
-                />
+                <FontAwesomeIcon icon={faFacebookF} color="#ffffff" />
               </a>
             </li>
             <li className={styles.snsChild}>
@@ -182,12 +185,11 @@ export default function WorksDetail({ post, prev, next }: Props) {
                 href={shareTwitterUrl(post.slug)}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  clickHandler('twitter', `/works/${post.slug}`)
+                }}
               >
-                <FontAwesomeIcon
-                  icon={faTwitter}
-                  color="#ffffff"
-                  // title="twitter"
-                />
+                <FontAwesomeIcon icon={faTwitter} color="#ffffff" />
               </a>
             </li>
           </ul>
@@ -196,27 +198,31 @@ export default function WorksDetail({ post, prev, next }: Props) {
               icon="faAlignJustify"
               link="/works/"
               color="#ffffff"
-              // title="back to top"
+              onClick={() => {
+                clickHandler('works', `/works/`)
+              }}
             />
             {next && (
               <Link href={`/works/${next.slug}/`}>
-                <a className={styles.next}>
-                  <FontAwesomeIcon
-                    icon={faChevronLeft}
-                    color="#ffffff"
-                    // title="next"
-                  />
+                <a
+                  className={styles.next}
+                  onClick={() => {
+                    clickHandler('next', `/works/${next.slug}`)
+                  }}
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} color="#ffffff" />
                 </a>
               </Link>
             )}
             {prev && (
               <Link href={`/works/${prev.slug}`}>
-                <a className={styles.prev}>
-                  <FontAwesomeIcon
-                    icon={faChevronRight}
-                    color="#ffffff"
-                    // title="prev"
-                  />
+                <a
+                  className={styles.prev}
+                  onClick={() => {
+                    clickHandler('prev', `/works/${prev.slug}`)
+                  }}
+                >
+                  <FontAwesomeIcon icon={faChevronRight} color="#ffffff" />
                 </a>
               </Link>
             )}

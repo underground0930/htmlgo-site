@@ -12,16 +12,21 @@ import { conversionDate } from 'utils/conversionDate'
 
 type Props = {
   works: WorksPosts
+  clickHandler: (label: string, value: string) => void
 }
 
-const WorksList = ({ works = [] }: Props) => {
+const WorksList = ({ works = [], clickHandler }: Props) => {
   return (
     <>
       <ul className={styles.worksList}>
         {works.map((work) => (
           <li key={work.id}>
             <Link href={`/works/${work.slug}`}>
-              <a>
+              <a
+                onClick={() => {
+                  clickHandler(work.title, `/works/${work.slug}`)
+                }}
+              >
                 <dl>
                   <dt>
                     <img src={work.slider[0].img.url + '?w=800'} width="320" height="180" alt="" />

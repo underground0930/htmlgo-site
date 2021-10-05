@@ -5,6 +5,7 @@ import { FeedObj } from 'types/index'
 import ArticlesBody from 'components/articlesBody'
 
 // libs
+import { event } from 'libs/gtag'
 import { articlesGetStaticProps } from 'libs/articlesGetStaticProps'
 
 // const

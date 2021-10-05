@@ -10,6 +10,7 @@ import { WORKS_PER_PAGE } from 'const/index'
 import styles from 'styles/page/Works.module.scss'
 
 // libs
+import { event } from 'libs/gtag'
 import { client } from 'libs/client'
 
 // components
@@ -35,6 +36,10 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
 
   const technologyHandler = (e: any): void => {
     setTechnology(e.currentTarget.value)
+  }
+
+  const clickHandler = (label: string, value: string) => {
+    event({ action: 'click', category: 'works', label, value })
   }
 
   const filterPost = (): WorksPosts => {
@@ -80,14 +85,16 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
             </select>
           </div>
         </div>
-        <WorksList works={filterPost()} />
+        <WorksList works={filterPost()} clickHandler={clickHandler} />
         <footer className={styles.footer}>
           <div className={styles.back}>
             <IconBtn
               icon="faHome"
               link="/"
               color="#ffffff"
-              //title="back to top"
+              onClick={() => {
+                clickHandler('top', '/')
+              }}
             />
           </div>
         </footer>

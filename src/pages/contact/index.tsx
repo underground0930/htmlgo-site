@@ -5,6 +5,9 @@ import { useEffect } from 'react'
 // styles
 import styles from 'styles/page/Contact.module.scss'
 
+// libs
+import { event } from 'libs/gtag'
+
 // components
 import HeadWrap from 'components/headWrap'
 import Layout from 'components/layout'
@@ -24,6 +27,10 @@ export default function Contact() {
   const resetRecapcha = () => {
     console.log('init Recapcha')
     window.grecaptcha.render('recaptchaMain')
+  }
+
+  const clickHandler = (label: string, value: string) => {
+    event({ action: 'click', category: 'contact', label, value })
   }
 
   useEffect(() => {
@@ -106,6 +113,9 @@ export default function Contact() {
               type="submit"
               data-formrun-error-text="未入力の項目があります"
               data-formrun-submitting-text="送信中..."
+              onClick={() => {
+                clickHandler('form_submit', '')
+              }}
             >
               送信
             </button>
@@ -114,9 +124,11 @@ export default function Contact() {
         <div className={styles.back}>
           <IconBtn
             icon="faHome"
-            ///title="back to top"
             link="/"
             color="#ffffff"
+            onClick={() => {
+              clickHandler('top', '/')
+            }}
           />
         </div>
       </main>

@@ -8,6 +8,7 @@ import styles from 'styles/page/Home.module.scss'
 
 // libs
 import { client } from 'libs/client'
+import { event } from 'libs/gtag'
 
 // components
 import ViewSwitch from 'components/viewSwitch'
@@ -25,6 +26,10 @@ type Props = {
 
 export default function Home({ works = [], articles = [] }: Props) {
   const [type, setType] = useState<PanelType>('')
+
+  const clickHandler = (label: string, value: string) => {
+    event({ action: 'click', category: 'top', label, value })
+  }
 
   useEffect(() => {
     const ft = localStorage.getItem('panelType')
@@ -55,9 +60,15 @@ export default function Home({ works = [], articles = [] }: Props) {
             <span>最新の記事</span>
           </Title>
           <ViewSwitch type={type} setType={setType} />
-          <Panels articles={articles} type={type} />
+          <Panels articles={articles} type={type} clickHandler={clickHandler} />
           <div className={`${styles.section__btn} ${styles.articles__btn}`}>
-            <TextBtn title="MORE" link="/articles/" />
+            <TextBtn
+              title="MORE"
+              link="/articles/"
+              onClick={() => {
+                clickHandler('article-index', '/articles/')
+              }}
+            />
           </div>
         </section>
         {/* works */}
@@ -66,9 +77,15 @@ export default function Home({ works = [], articles = [] }: Props) {
             <span>WORKS</span>
             <span>最新のお仕事の実績や、自主制作</span>
           </Title>
-          <WorksList works={works} />
+          <WorksList works={works} clickHandler={clickHandler} />
           <div className={styles.section__btn}>
-            <TextBtn title="MORE" link="/works/" />
+            <TextBtn
+              title="MORE"
+              link="/works/"
+              onClick={() => {
+                clickHandler('works-index', '/works/')
+              }}
+            />
           </div>
         </section>
       </main>

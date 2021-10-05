@@ -6,15 +6,23 @@ import styles from 'styles/components/PanelsList.module.scss'
 
 type Props = {
   articles: FeedObj[]
+  clickHandler: (label: string, value: string) => void
 }
 
-const PanelsList = ({ articles }: Props) => {
+const PanelsList = ({ articles, clickHandler }: Props) => {
   return (
     <div className={styles.panelsList}>
       {articles.map((article) => {
         return (
           <article key={article.link}>
-            <a href={article.link} target="_blank" rel="noopener noreferrer">
+            <a
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                clickHandler(article.title, article.link)
+              }}
+            >
               <dl>
                 <dt
                   style={{
