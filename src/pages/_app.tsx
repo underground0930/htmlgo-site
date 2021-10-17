@@ -14,6 +14,8 @@ export async function getServerSideProps() {
   return { props: { data } }
 }
 
+// NOTE:  https://tyotto-good.com/blog/next-document-app
+
 function MyApp({ Component, pageProps }: AppProps) {
   usePageView()
   return (
