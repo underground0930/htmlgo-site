@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,19 +19,48 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "types/*": ["src/types/*"],
-      "components/*": ["src/components/*"],
-      "hooks/*": ["src/hooks/*"],
-      "utils/*": ["src/utils/*"],
-      "libs/*": ["src/libs/*"],
-      "json/*": ["src/json/*"],
-      "styles/*": ["src/styles/*"],
-      "const/*": ["src/const/*"],
-      "var": ["src/styles/import/_var.scss"],
-      "mq": ["src/styles/import/_mq.scss"],
-      "font": ["src/styles/import/_font.scss"],
-    }
+      "types/*": [
+        "src/types/*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "hooks/*": [
+        "src/hooks/*"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ],
+      "libs/*": [
+        "src/libs/*"
+      ],
+      "json/*": [
+        "src/json/*"
+      ],
+      "styles/*": [
+        "src/styles/*"
+      ],
+      "const/*": [
+        "src/const/*"
+      ],
+      "var": [
+        "src/styles/import/_var.scss"
+      ],
+      "mq": [
+        "src/styles/import/_mq.scss"
+      ],
+      "font": [
+        "src/styles/import/_font.scss"
+      ]
+    },
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

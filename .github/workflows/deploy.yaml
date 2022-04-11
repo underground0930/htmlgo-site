@@ -21,7 +21,7 @@ jobs:
       - name: build task
         uses: actions/setup-node@v1
         with:
-          node-version: '14.17.6'
+          node-version: '16.14.0'
       - name: npm ci
         run: npm ci
       - name: npm run build
