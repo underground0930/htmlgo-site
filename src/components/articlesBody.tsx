@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
+// store
+import { RootState } from '../store'
 
 // type
-import { FeedObj, PanelType } from 'types/index'
+import { FeedObj } from 'types/index'
 
 // style
 import styles from 'styles/page/Articles.module.scss'
@@ -25,24 +29,10 @@ type Props = {
 }
 
 export default function ArticlesBody({ articles = [], page, pages }: Props) {
-  const [type, setType] = useState<PanelType>('')
-
+  const type = useSelector((state: RootState) => state.panelType.value)
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: 'articles', label, value })
   }
-
-  useEffect(() => {
-    const ft = localStorage.getItem('panelType')
-    if (ft && ['tile', 'list', 'text'].includes(ft)) {
-      setType(ft as PanelType)
-      return
-    }
-    setType('tile')
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('panelType', type)
-  }, [type])
 
   return (
     <Layout>
@@ -56,7 +46,7 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
           <span>ARTICLES</span>
           <span>技術系やそれ以外の記事</span>
         </Title>
-        <ViewSwitch type={type} setType={setType} />
+        <ViewSwitch type={type} />
         <Panels articles={articles} type={type} clickHandler={clickHandler} />
         <Pagenation pages={pages} page={page} />
         <div className={styles.back}>

@@ -39,4 +39,4 @@ export type Post = {
   slider: any[]
 }
 
-export type PanelType = 'tile' | 'list' | 'text' | ''
+export type PanelType = 'tile' | 'list' | 'text'
