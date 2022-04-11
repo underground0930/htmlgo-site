@@ -6,16 +6,13 @@ import PanelsText from 'components/panelsText'
 // types
 import { FeedObj, PanelType } from 'types/index'
 
-// libs
-import { event } from 'libs/gtag'
-
 type Props = {
   articles: FeedObj[]
-  type: PanelType | ''
+  type: PanelType
   clickHandler: (label: string, value: string) => void
 }
 
-const Panels = ({ articles = [], type = '', clickHandler }: Props) => {
+const Panels = ({ articles = [], type, clickHandler }: Props) => {
   return (
     <>
       {type === 'tile' && <PanelsTile articles={articles} clickHandler={clickHandler} />}

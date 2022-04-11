@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+// store
+import { RootState } from '../store'
 
 // type
-import { WorksPosts, FeedObj, PanelType } from 'types/index'
+import { WorksPosts, FeedObj } from 'types/index'
 
 // style
 import styles from 'styles/page/Home.module.scss'
@@ -25,24 +29,11 @@ type Props = {
 }
 
 export default function Home({ works = [], articles = [] }: Props) {
-  const [type, setType] = useState<PanelType>('')
+  const type = useSelector((state: RootState) => state.panelType.value)
 
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: 'top', label, value })
   }
-
-  useEffect(() => {
-    const ft = localStorage.getItem('panelType')
-    if (ft && ['tile', 'list', 'text'].includes(ft)) {
-      setType(ft as PanelType)
-      return
-    }
-    setType('tile')
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('panelType', type)
-  }, [type])
 
   return (
     <Layout>
@@ -59,7 +50,7 @@ export default function Home({ works = [], articles = [] }: Props) {
             <span>ARTICLES</span>
             <span>最新の記事</span>
           </Title>
-          <ViewSwitch type={type} setType={setType} />
+          <ViewSwitch type={type} />
           <Panels articles={articles} type={type} clickHandler={clickHandler} />
           <div className={`${styles.section__btn} ${styles.articles__btn}`}>
             <TextBtn

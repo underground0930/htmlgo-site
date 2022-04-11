@@ -1,5 +1,9 @@
+import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTh, faList, faBars } from '@fortawesome/free-solid-svg-icons'
+
+// slice
+import { setType } from '../slice/panel'
 
 // type
 import { PanelType } from 'types/index'
@@ -9,16 +13,16 @@ import styles from 'styles/components/ViewSwitch.module.scss'
 
 type Props = {
   type: PanelType
-  setType: React.Dispatch<React.SetStateAction<PanelType>>
 }
 
-const ViewSwitch = ({ type, setType }: Props) => {
+const ViewSwitch = ({ type }: Props) => {
+  const dispatch = useDispatch()
   return (
     <div className={styles.viewSwitch}>
       <button
         className={type === 'tile' ? 'is-current' : ''}
         onClick={() => {
-          setType('tile')
+          dispatch(setType('tile'))
         }}
       >
         <FontAwesomeIcon
@@ -29,7 +33,7 @@ const ViewSwitch = ({ type, setType }: Props) => {
       <button
         className={type === 'list' ? 'is-current' : ''}
         onClick={() => {
-          setType('list')
+          dispatch(setType('list'))
         }}
       >
         <FontAwesomeIcon
@@ -40,7 +44,7 @@ const ViewSwitch = ({ type, setType }: Props) => {
       <button
         className={type === 'text' ? 'is-current' : ''}
         onClick={() => {
-          setType('text')
+          dispatch(setType('text'))
         }}
       >
         <FontAwesomeIcon

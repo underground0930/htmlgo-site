@@ -1,8 +1,10 @@
 import '../styles/globals.scss'
+import { Provider } from 'react-redux'
 import type { AppProps } from 'next/app'
 import Script from 'next/script'
 import * as gtag from 'libs/gtag'
 import usePageView from 'hooks/usePageView'
+import store from '../store'
 
 export async function getServerSideProps() {
   const data = await new Promise((resolve) => {
@@ -19,7 +21,7 @@ export async function getServerSideProps() {
 function MyApp({ Component, pageProps }: AppProps) {
   usePageView()
   return (
-    <>
+    <Provider store={store}>
       {gtag.GA_TRACKING_ID && (
         <>
           <Script
@@ -45,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </>
       )}
       <Component {...pageProps} />
-    </>
+    </Provider>
   )
 }
 export default MyApp
