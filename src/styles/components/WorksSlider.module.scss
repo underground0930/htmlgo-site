@@ -2,9 +2,63 @@
 @import "font";
 
 
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  left:0;
+  right: 0;
+  top:0;
+  bottom: 0;
+  margin: auto;
+  font-size: 10px;
+  position: absolute;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(0, 0, 0, 0.1);
+  border-right: 1.1em solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1.1em solid rgba(0, 0, 0, 0.1);
+  border-left: 1.1em solid rgba(0, 0, 0, 0.3);
+  transform: translateZ(0);
+  animation: load8 1.1s infinite linear;
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
 .container{
   width: 100%;
   border: 1px solid var(--borderColor);
+}
+
+.slider{
+  position: relative;
+  object-fit: cover;
+  &:before{
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+  }
+  img{
+    position: absolute;
+    left:0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 %sliderBtn {

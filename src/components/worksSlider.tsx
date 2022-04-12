@@ -4,11 +4,12 @@ import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-s
 
 import styles from 'styles/components/WorksSlider.module.scss'
 
-import { Pagination, Navigation, Virtual } from 'swiper'
+import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Import Swiper styles
 import 'swiper/css'
+import 'swiper/css/virtual'
 
 type Props = {
   slider: any[]
@@ -21,11 +22,11 @@ const WorksSlider = ({ slider = [] }: Props) => {
   const [sw, setSw] = useState<any | null>(null)
 
   const goNext = () => {
-    sw?.slideNext()
+    sw.slideNext()
   }
 
   const goPrev = () => {
-    sw?.slidePrev()
+    sw.slidePrev()
   }
 
   const sliderChangeHandle = (): void => {
@@ -45,22 +46,30 @@ const WorksSlider = ({ slider = [] }: Props) => {
   return (
     <>
       <Swiper
-        modules={[Pagination, Navigation, Virtual]}
-        navigation={{ nextEl: '.nextBtn', prevEl: '.prevBtn' }}
+        modules={[Pagination, Navigation, Virtual, Lazy]}
         className={`${styles.container}`}
         virtual
+        lazy={{ loadPrevNext: true }}
         onSwiper={(swiper) => {
           setSw(swiper)
         }}
-        onSlideChange={() => {
+        onSlideChange={(swiper) => {
           sliderChangeHandle()
         }}
       >
         <div className={`swiper-wrapper`}>
           {slider.map((v, i) => {
+            let isLoading = true
             return (
-              <SwiperSlide virtualIndex={i} key={i}>
-                <img src={v.img.url} alt="" />
+              <SwiperSlide className={styles.slider} virtualIndex={i} key={v.img.url}>
+                {isLoading && <div className={styles.loader}>Loading...</div>}
+                <img
+                  src={v.img.url}
+                  alt=""
+                  onLoad={(e) => {
+                    isLoading = false
+                  }}
+                />
               </SwiperSlide>
             )
           })}
