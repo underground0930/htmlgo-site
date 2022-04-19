@@ -7,15 +7,25 @@ import styles from 'styles/components/WorksSlider.module.scss'
 import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+// type
+// import { Post } from 'types/index'
+
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/virtual'
 
 type Props = {
-  slider: any[]
+  slider: {
+    fieldId: string
+    img: {
+      url: string
+      height: number
+      width: number
+    }
+  }[]
 }
 
-const WorksSlider = ({ slider = [] }: Props) => {
+const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
   const [index, setIndex] = useState(1)
   const [isFirst, setIsFirst] = useState(true)
   const [isLast, setIsLast] = useState(false)
