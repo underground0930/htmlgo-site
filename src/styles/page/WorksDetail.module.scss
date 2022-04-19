@@ -34,9 +34,6 @@ $works_bp: 800px;
     &:not(:last-of-type) {
       margin: 0 0 var(--s4);
     }
-    &:not(:last-of-type) {
-      margin: 0 0 var(--s4);
-    }
   }
   dl {
     display: block;
@@ -49,7 +46,7 @@ $works_bp: 800px;
     background: #e5e5e5;
   }
   dd {
-    padding: var(--s3);
+    padding: var(--s6) var(--s5);
     flex: 1;
     font-size: 1.6rem;
     span:not(:last-of-type) {
@@ -80,7 +77,7 @@ $works_bp: 800px;
     word-break: break-word;
     display: block;
     &:not(:last-of-type) {
-      margin-bottom: var(--s1);
+      margin-bottom: var(--s6);
     }
     svg {
       width: 10px;
@@ -113,6 +110,9 @@ $works_bp: 800px;
   border-top: 1px solid var(--borderColor);
   border-bottom: 1px solid var(--borderColor);
   word-wrap: break-word;
+  strong{
+    font-weight: bold;
+  }
   @include max-screen($works_bp) {
     font-size: 1.4rem;
     padding: var(--s7) var(--s5);

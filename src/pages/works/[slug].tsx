@@ -135,7 +135,6 @@ export default function WorksDetail({ post, prev, next }: Props) {
                           <span>{post.url2}</span>
                         </a>
                       )}
-                      <a href=""></a>
                     </dd>
                   </dl>
                 </li>
