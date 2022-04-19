@@ -62,7 +62,7 @@ export default function WorksDetail({ post, prev, next }: Props) {
       <HeadWrap
         title={`${post.title} | WORKS | HTMLGO`}
         description={post.body ? cutText(removeHtml(post.body), 120) : post.title + 'の実績紹介です。'}
-        image={`https://htmlgo.site/img/ogp_new.png`}
+        image={post.slider?.[0]?.img?.url ?? `https://htmlgo.site/img/ogp_new.png`}
         url={`https://htmlgo.site/works/${post.slug}/`}
       />
       <main className={styles.main}>
@@ -73,7 +73,7 @@ export default function WorksDetail({ post, prev, next }: Props) {
         <article className={styles.article}>
           <div className={styles.kv}>
             <div className={styles.kvInner}>
-              <WorksSlider slider={post.slider}></WorksSlider>
+              {post?.slider && <WorksSlider slider={post.slider}></WorksSlider>}
             </div>
           </div>
           {post.body && (

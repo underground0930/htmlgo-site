@@ -36,7 +36,14 @@ export type Post = {
     technology_label: string
     technology_slug: string
   }[]
-  slider: any[]
+  slider?: {
+    fieldId: string
+    img: {
+      url: string
+      height: number
+      width: number
+    }
+  }[]
 }
 
 export type PanelType = 'tile' | 'list' | 'text'
