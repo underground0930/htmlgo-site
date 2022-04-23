@@ -86,15 +86,15 @@ export default function About() {
           />
           <h3 className={styles.title}>経験した技術・ツール</h3>
           <p className={styles.text}>
-            html5 / css3 / Javascript(ES2015) / Vue.js / Nuxt.js / Next.js / React / Wordpress / Docker /
-            Webpack / github / Backlog
+            html / css / Typescript / Vue.js / React / Next.js / Wordpress / Docker / Webpack / github /
+            Backlog
           </p>
           <h3 className={styles.title}>仕事道具</h3>
           <HistoryList
             data={[
               {
                 heading: 'PC',
-                text: 'MacBook Pro (13-inch, 2020, Four Thunderbolt 3 ports)・(1TB)・(Core i7)・(メモリ32 GB)',
+                text: 'MacBook Pro（14インチ、2021）',
               },
               {
                 heading: 'PCモニター',
