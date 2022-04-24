@@ -37,7 +37,7 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
   return (
     <Layout>
       <HeadWrap
-        title={page === 1 ? '' : `(${page}) | ` + `ARTICLES | HTMLGO`}
+        title={(page === 1 ? '' : `${page}ページ目 | `) + `ARTICLES | HTMLGO`}
         description={'色々なブログの記事のフィードをまとめたものです'}
         url={`https://htmlgo.site/articles/`}
       />

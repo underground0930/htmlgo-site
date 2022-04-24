@@ -9,7 +9,7 @@ type Props = {
 }
 
 const HeadWrap = ({ title, description, image, url, isTop = false }: Props): JSX.Element => {
-  const img = image ? image : 'https://htmlgo.site/img/ogp_new.png'
+  const img = image ?? 'https://htmlgo.site/img/ogp_new.png'
   return (
     <Head>
       <title>{title}</title>

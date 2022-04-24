@@ -62,7 +62,7 @@ export default function WorksDetail({ post, prev, next }: Props) {
       <HeadWrap
         title={`${post.title} | WORKS | HTMLGO`}
         description={post.body ? cutText(removeHtml(post.body), 120) : post.title + 'の実績紹介です。'}
-        image={post.slider?.[0]?.img?.url ?? `https://htmlgo.site/img/ogp_new.png`}
+        image={post.slider?.[0]?.img?.url}
         url={`https://htmlgo.site/works/${post.slug}/`}
       />
       <main className={styles.main}>
@@ -243,9 +243,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: StaticProps) {
   const slug = params.slug
-  let post: any, prev: any, next: any
+  let pager: any[] = []
 
-  post = await client
+  const post = await client
     .get({
       endpoint: 'works',
       queries: {
@@ -253,50 +253,60 @@ export async function getStaticProps({ params }: StaticProps) {
         fields: 'title,slug,url,url2,date,body,production_period,credit,category,technology,slider',
       },
     })
+    .then((v) => {
+      return v.contents.length ? v.contents[0] : null
+    })
     .catch((err) => {
-      return []
+      return null
     })
 
-  post = post.contents.length ? post.contents[0] : null
   if (post !== null) {
-    // prev
-    prev = await client
-      .get({
-        endpoint: 'works',
-        queries: {
-          limit: 1,
-          orders: '-date',
-          filters: `date[less_than]${post.date}`,
-          fields: 'slug',
-        },
+    pager = await Promise.allSettled([
+      client
+        .get({
+          endpoint: 'works',
+          queries: {
+            limit: 1,
+            orders: '-date',
+            filters: `date[less_than]${post.date}`,
+            fields: 'slug',
+          },
+        })
+        .then((v) => {
+          return v?.contents?.length ? v.contents[0] : null
+        })
+        .catch((err) => {
+          return null
+        }),
+      client
+        .get({
+          endpoint: 'works',
+          queries: {
+            limit: 1,
+            orders: 'date',
+            filters: `date[greater_than]${post.date}`,
+            fields: 'slug',
+          },
+        })
+        .then((v) => {
+          return v?.contents?.length ? v.contents[0] : null
+        })
+        .catch((err) => {
+          return null
+        }),
+    ]).then((results) =>
+      results.map((r) => {
+        if (r.status === 'fulfilled') {
+          return r.value
+        }
       })
-      .catch((err) => {
-        return { contents: [] }
-      })
-    prev = prev.contents.length > 0 ? prev.contents[0] : null
-
-    // next
-    next = await client
-      .get({
-        endpoint: 'works',
-        queries: {
-          limit: 1,
-          orders: 'date',
-          filters: `date[greater_than]${post.date}`,
-          fields: 'slug',
-        },
-      })
-      .catch((err) => {
-        console.log('works detail err :' + err)
-        return { contents: [] }
-      })
-    next = next.contents.length > 0 ? next.contents[0] : null
+    )
   }
   return {
     props: {
       post,
-      prev,
-      next,
+      prev: pager[0] ?? null,
+      next: pager[1] ?? null,
     },
   }
 }
