@@ -86,7 +86,7 @@ export default function About() {
           />
           <h3 className={styles.title}>経験した技術・ツール</h3>
           <p className={styles.text}>
-            html / css / Typescript / Vue.js / React / Next.js / Wordpress / Docker / Webpack / github /
+            html / css / TypeScript / Vue.js / React / Next.js / Wordpress / Docker / Webpack / github /
             Backlog
           </p>
           <h3 className={styles.title}>仕事道具</h3>
