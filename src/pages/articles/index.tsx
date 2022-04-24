@@ -5,7 +5,7 @@ import { FeedObj } from 'types/index'
 import ArticlesBody from 'components/articlesBody'
 
 // libs
-import { articlesGetStaticProps } from 'libs/articlesGetStaticProps'
+import { articlesGetStaticProps } from 'libs/getStaticProps'
 
 // type
 type Props = {
@@ -18,12 +18,4 @@ export default function Articles({ articles = [], page, pages }: Props) {
   return <ArticlesBody articles={articles} page={page} pages={pages} />
 }
 
-export async function getStaticProps({
-  params,
-}: {
-  params: {
-    page: string
-  }
-}) {
-  return articlesGetStaticProps(params)
-}
+export const getStaticProps = articlesGetStaticProps
