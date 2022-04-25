@@ -31,7 +31,7 @@ const HeadWrap = ({
       <meta property="twitter:image" content={img} key="twitter:image" />
       <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
       <link rel="canonical" href={url} key="canonical" />
-      (isPreview && <meta name="robots" content="noindex" />)
+      {isPreview && <meta name="robots" content="noindex" />}
     </Head>
   )
 }
