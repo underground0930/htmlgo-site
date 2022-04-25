@@ -17,47 +17,25 @@ type FetchData = {
 
 export default function WorksPreview() {
   const [loading, isLoading] = useState(true)
-  const [isError, setIsError] = useState(false)
   const [postData, setPostData] = useState({} as FetchData)
 
   useEffect(() => {
     ;(async () => {
-      const result = await previewWorksDetailGetStaticProps()
+      const result = await previewWorksDetailProps()
       if (result?.post) {
         setPostData(result)
-      } else {
-        setIsError(true)
+        isLoading(false)
+        return
       }
-      isLoading(false)
+      location.href = '/works/'
     })()
   }, [])
 
   if (loading) return <Loader />
-
-  if (isError)
-    return (
-      <div
-        style={{
-          fontSize: 40,
-          height: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <span>Error</span>
-      </div>
-    )
-
   return postData ? WorksDetailBody({ ...postData, isPreview: true }) : <></>
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// works detail preview
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const previewWorksDetailGetStaticProps = async (): Promise<FetchData | null> => {
-  const redirectUrl = '/works/'
+const previewWorksDetailProps = async (): Promise<FetchData | null> => {
   const url = new URL(location.href)
   const searchParams = url.searchParams
   const targetParams = ['contentId', 'draftKey', 'microcmsApiKey']
@@ -67,7 +45,6 @@ const previewWorksDetailGetStaticProps = async (): Promise<FetchData | null> => 
 
   if (!isExistParams) {
     console.log('Invalid param')
-    location.href = redirectUrl
     return null
   }
 
@@ -96,7 +73,6 @@ const previewWorksDetailGetStaticProps = async (): Promise<FetchData | null> => 
 
   if (post === null) {
     console.log("Couldn't get the data")
-    location.href = redirectUrl
     return null
   }
 
