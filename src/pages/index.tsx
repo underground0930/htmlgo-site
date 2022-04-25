@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 // store
 import { RootState } from '../store'
@@ -22,6 +22,7 @@ import Title from 'components/title'
 import TextBtn from 'components/textBtn'
 import WorksList from 'components/worksList'
 import Panels from 'components/panels'
+import { topGetStaticProps } from 'libs/getStaticProps'
 
 type Props = {
   works: WorksPosts
@@ -84,32 +85,4 @@ export default function Home({ works = [], articles = [] }: Props) {
   )
 }
 
-export async function getStaticProps() {
-  const articles = (
-    await import('public/feed.json')
-      .then((response) => {
-        return response.default
-      })
-      .catch((err) => {
-        console.log(err)
-        return []
-      })
-  ).slice(0, 4)
-
-  const works: any = await client
-    .get({
-      endpoint: 'works',
-      queries: { limit: 3, orders: '-publishedAt', fields: 'id,title,slug,date,category,technology,slider' },
-    })
-    .catch((err) => {
-      console.log('top err :' + err)
-      return { contents: [] }
-    })
-
-  return {
-    props: {
-      works: works.contents,
-      articles,
-    },
-  }
-}
+export const getStaticProps = topGetStaticProps

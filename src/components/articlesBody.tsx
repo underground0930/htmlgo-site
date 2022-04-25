@@ -33,7 +33,6 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: 'articles', label, value })
   }
-
   return (
     <Layout>
       <HeadWrap

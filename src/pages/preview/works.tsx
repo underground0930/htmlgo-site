@@ -73,12 +73,10 @@ const previewWorksDetailGetStaticProps = async (): Promise<FetchData | null> => 
 
   const client = createClient({
     serviceDomain: 'htmlgo',
-    apiKey: searchParams.get('microcmsApiKey') as string,
+    apiKey: searchParams.get('microcmsApiKey') ?? '',
   })
-
-  const contentId = searchParams.get('contentId') as string
-  const draftKey = searchParams.get('draftKey') as string
-  let pager: any[] = []
+  const contentId = searchParams.get('contentId') ?? ''
+  const draftKey = searchParams.get('draftKey') ?? ''
 
   const post = await client
     .get({
@@ -102,7 +100,7 @@ const previewWorksDetailGetStaticProps = async (): Promise<FetchData | null> => 
     return null
   }
 
-  pager = await Promise.allSettled([
+  const pager: any[] = await Promise.allSettled([
     client
       .get({
         endpoint: 'works',
@@ -142,6 +140,7 @@ const previewWorksDetailGetStaticProps = async (): Promise<FetchData | null> => 
       if (r.status === 'fulfilled') {
         return r.value
       }
+      return null
     })
   )
 

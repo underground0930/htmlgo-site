@@ -5,10 +5,44 @@ import { ARTICLE_PER_PAGE } from 'const/index'
 import { client } from 'libs/client'
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+// top
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export async function topGetStaticProps() {
+  const articles = (
+    await import('public/feed.json')
+      .then((response) => {
+        return response.default
+      })
+      .catch((err) => {
+        console.log(err)
+        return []
+      })
+  ).slice(0, 4)
+
+  const works: any = await client
+    .get({
+      endpoint: 'works',
+      queries: { limit: 3, orders: '-publishedAt', fields: 'id,title,slug,date,category,technology,slider' },
+    })
+    .catch((err) => {
+      console.log('top err :' + err)
+      return { contents: [] }
+    })
+
+  return {
+    props: {
+      works: works.contents,
+      articles,
+    },
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // articles
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export async function articlesGetStaticProps(params: { page: string }) {
+export async function articlesGetStaticProps({ params }: { params: { page: string } }) {
   const page = params?.page ? Number(params.page) : 1
 
   let articles = await import('public/feed.json')

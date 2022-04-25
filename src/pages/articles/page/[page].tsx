@@ -4,9 +4,6 @@ import { FeedObj } from 'types/index'
 // components
 import ArticlesBody from 'components/articlesBody'
 
-// const
-import { ARTICLE_PER_PAGE } from 'const/index'
-
 // libs
 import { articlesGetStaticProps } from 'libs/getStaticProps'
 import { articlesGetStaticPaths } from 'libs/getStaticPaths'
