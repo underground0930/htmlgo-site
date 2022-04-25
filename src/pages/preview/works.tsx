@@ -9,6 +9,9 @@ import { Post } from 'types/index'
 import WorksDetailBody from 'components/worksDetailBody'
 import Loader from 'components/loader'
 
+// プレビューに必要なパラメータ
+const targetParams = ['contentId', 'draftKey', 'microcmsApiKey']
+
 type FetchData = {
   post: Post | null
   prev: { slug: string } | null
@@ -16,7 +19,7 @@ type FetchData = {
 }
 
 export default function WorksPreview() {
-  const [loading, isLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
   const [postData, setPostData] = useState({} as FetchData)
 
   useEffect(() => {
@@ -24,21 +27,21 @@ export default function WorksPreview() {
       const result = await previewWorksDetailProps()
       if (result?.post) {
         setPostData(result)
-        isLoading(false)
+        setIsLoading(false)
         return
       }
       location.href = '/works/'
     })()
   }, [])
 
-  if (loading) return <Loader />
+  if (isLoading) return <Loader />
   return postData ? WorksDetailBody({ ...postData, isPreview: true }) : <></>
 }
 
 const previewWorksDetailProps = async (): Promise<FetchData | null> => {
   const url = new URL(location.href)
   const searchParams = url.searchParams
-  const targetParams = ['contentId', 'draftKey', 'microcmsApiKey']
+
   const isExistParams = targetParams.every((p) => {
     return searchParams.has(p)
   })
