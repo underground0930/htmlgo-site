@@ -6,9 +6,17 @@ type Props = {
   image?: string
   url: string
   isTop?: boolean
+  isPreview?: boolean
 }
 
-const HeadWrap = ({ title, description, image, url, isTop = false }: Props): JSX.Element => {
+const HeadWrap = ({
+  title,
+  description,
+  image,
+  url,
+  isTop = false,
+  isPreview = false,
+}: Props): JSX.Element => {
   const img = image ?? 'https://htmlgo.site/img/ogp_new.png'
   return (
     <Head>
@@ -23,6 +31,7 @@ const HeadWrap = ({ title, description, image, url, isTop = false }: Props): JSX
       <meta property="twitter:image" content={img} key="twitter:image" />
       <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
       <link rel="canonical" href={url} key="canonical" />
+      (isPreview && <meta name="robots" content="noindex" />)
     </Head>
   )
 }

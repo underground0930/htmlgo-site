@@ -29,19 +29,14 @@ const WorksSlider = dynamic(() => import('components/worksSlider'), {
   ssr: false,
 })
 
-type StaticProps = {
-  params: {
-    slug: string
-  }
-}
-
 type Props = {
   post: Post | null
   prev: { slug: string } | null
   next: { slug: string } | null
+  isPreview?: boolean
 }
 
-export default function WorksDetailBody({ post, prev, next }: Props) {
+export default function WorksDetailBody({ post, prev, next, isPreview }: Props) {
   const shareTwitterUrl = (slug: string) => {
     return `https://twitter.com/share?url=https://htmlgo.site/works/${slug}/`
   }
@@ -63,6 +58,7 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
         description={post.body ? cutText(removeHtml(post.body), 120) : post.title + 'の実績紹介です。'}
         image={post.slider?.[0]?.img?.url}
         url={`https://htmlgo.site/works/${post.slug}/`}
+        isPreview={isPreview}
       />
       <main className={styles.main}>
         <Title>
@@ -86,80 +82,92 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
           <div className={styles.info}>
             <div className={styles.infoBody}>
               <ul className={styles.infoList}>
-                <li>
-                  <dl>
-                    <dt>公開日</dt>
-                    <dd>
-                      <time dateTime={conversionDate(post.date)}>{conversionDate(post.date)}</time>
-                    </dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <dt>カテゴリー</dt>
-                    <dd>
-                      {post.category.map((v) => (
-                        <span key={v.category_label}>{v.category_label}</span>
-                      ))}
-                    </dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <dt>テクノロジー</dt>
-                    <dd>
-                      {post.technology.map((v) => (
-                        <span key={v.technology_label}>{v.technology_label}</span>
-                      ))}
-                    </dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <dt>制作期間</dt>
-                    <dd>{post.production_period}</dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <dt>URL</dt>
-                    <dd>
-                      {post.url && (
-                        <a href={post.url} target="_blank" rel="noreferrer">
-                          <span>{post.url}</span>
-                        </a>
-                      )}
-                      {post.url2 && (
-                        <a href={post.url2} target="_blank" rel="noreferrer">
-                          <span>{post.url2}</span>
-                        </a>
-                      )}
-                    </dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <dt>クレジット</dt>
-                    <dd>
-                      <ul>
-                        {post.credit.map((v) => (
-                          <li key={v.value}>
-                            <p>{v.label}</p>
-                            <p>
-                              {v.link ? (
-                                <a href={v.link} target="_blank" rel="noreferrer">
-                                  {v.value}
-                                </a>
-                              ) : (
-                                <a>{v.value}</a>
-                              )}
-                            </p>
-                          </li>
+                {post?.date && (
+                  <li>
+                    <dl>
+                      <dt>公開日</dt>
+                      <dd>
+                        <time dateTime={conversionDate(post.date)}>{conversionDate(post.date)}</time>
+                      </dd>
+                    </dl>
+                  </li>
+                )}
+                {post?.category?.length > 0 && (
+                  <li>
+                    <dl>
+                      <dt>カテゴリー</dt>
+                      <dd>
+                        {post.category.map((v) => (
+                          <span key={v.category_label}>{v.category_label}</span>
                         ))}
-                      </ul>
-                    </dd>
-                  </dl>
-                </li>
+                      </dd>
+                    </dl>
+                  </li>
+                )}
+                {post?.technology?.length > 0 && (
+                  <li>
+                    <dl>
+                      <dt>テクノロジー</dt>
+                      <dd>
+                        {post.technology.map((v) => (
+                          <span key={v.technology_label}>{v.technology_label}</span>
+                        ))}
+                      </dd>
+                    </dl>
+                  </li>
+                )}
+                {post?.production_period && (
+                  <li>
+                    <dl>
+                      <dt>制作期間</dt>
+                      <dd>{post.production_period}</dd>
+                    </dl>
+                  </li>
+                )}
+                {(post?.url || post?.url2) && (
+                  <li>
+                    <dl>
+                      <dt>URL</dt>
+                      <dd>
+                        {post?.url && (
+                          <a href={post.url} target="_blank" rel="noreferrer">
+                            <span>{post.url}</span>
+                          </a>
+                        )}
+                        {post?.url2 && (
+                          <a href={post.url2} target="_blank" rel="noreferrer">
+                            <span>{post.url2}</span>
+                          </a>
+                        )}
+                      </dd>
+                    </dl>
+                  </li>
+                )}
+                {post?.credit?.length > 0 && (
+                  <li>
+                    <dl>
+                      <dt>クレジット</dt>
+                      <dd>
+                        <ul>
+                          {post.credit.map((v) => (
+                            <li key={v.value}>
+                              <p>{v.label}</p>
+                              <p>
+                                {v.link ? (
+                                  <a href={v.link} target="_blank" rel="noreferrer">
+                                    {v.value}
+                                  </a>
+                                ) : (
+                                  <a>{v.value}</a>
+                                )}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </dl>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
