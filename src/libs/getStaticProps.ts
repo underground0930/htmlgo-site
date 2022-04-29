@@ -1,5 +1,5 @@
 // const
-import { ARTICLE_PER_PAGE } from 'const/index'
+import { ARTICLE_PER_PAGE, WORKS_PER_PAGE } from 'const/index'
 
 // libs
 import { client } from 'libs/client'
@@ -23,7 +23,7 @@ export async function topGetStaticProps() {
   const works: any = await client
     .get({
       endpoint: 'works',
-      queries: { limit: 3, orders: '-publishedAt', fields: 'id,title,slug,date,category,technology,slider' },
+      queries: { limit: 3, fields: 'id,title,slug,date,category,technology,slider' },
     })
     .catch((err) => {
       console.log('top err :' + err)
@@ -63,6 +63,41 @@ export async function articlesGetStaticProps({ params }: { params: { page: strin
       page,
       pages: Math.ceil(total / ARTICLE_PER_PAGE),
     },
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// works
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export async function worksGetStaticProps() {
+  const promises: any[] = [
+    {
+      endpoint: 'works',
+      limit: WORKS_PER_PAGE,
+      fields: 'id,title,slug,date,category,technology,slider',
+    },
+    { endpoint: 'works_category', limit: 20 },
+    { endpoint: 'works_technology', limit: 20 },
+  ].map((child) => {
+    return client
+      .get<ResponseType>({ endpoint: child.endpoint, queries: { limit: child.limit } })
+      .catch((err) => {
+        console.log('works err :' + err)
+        return { contents: [] }
+      })
+  })
+
+  const result = await Promise.allSettled(promises).then((results: any[]) => {
+    return {
+      works: results[0].value.contents,
+      categories: results[1].value.contents,
+      technologies: results[2].value.contents,
+    }
+  })
+
+  return {
+    props: result,
   }
 }
 
