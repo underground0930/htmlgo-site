@@ -3,15 +3,12 @@ import { useState } from 'react'
 // type
 import { WorksPosts } from 'types/index'
 
-// const
-import { WORKS_PER_PAGE } from 'const/index'
-
 // style
 import styles from 'styles/page/Works.module.scss'
 
 // libs
 import { event } from 'libs/gtag'
-import { client } from 'libs/client'
+import { worksGetStaticProps } from 'libs/getStaticProps'
 
 // components
 import HeadWrap from 'components/headWrap'
@@ -103,34 +100,4 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
   )
 }
 
-export async function getStaticProps() {
-  const promises: any[] = [
-    {
-      endpoint: 'works',
-      limit: WORKS_PER_PAGE,
-      orders: '-publishedAt',
-      fields: 'id,title,slug,date,category,technology,slider',
-    },
-    { endpoint: 'works_category', limit: 20 },
-    { endpoint: 'works_technology', limit: 20 },
-  ].map((child) => {
-    return client
-      .get<ResponseType>({ endpoint: child.endpoint, queries: { limit: child.limit } })
-      .catch((err) => {
-        console.log('works err :' + err)
-        return { contents: [] }
-      })
-  })
-
-  const result = await Promise.allSettled(promises).then((results: any[]) => {
-    return {
-      works: results[0].value.contents,
-      categories: results[1].value.contents,
-      technologies: results[2].value.contents,
-    }
-  })
-
-  return {
-    props: result,
-  }
-}
+export const getStaticProps = worksGetStaticProps
