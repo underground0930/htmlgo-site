@@ -30,6 +30,7 @@ const HeadWrap = ({
       <meta property="twitter:title" content={title} key="twitter:title" />
       <meta property="twitter:image" content={img} key="twitter:image" />
       <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
+      <meta name="twitter:site" content="@resistance_gowy" />
       <link rel="canonical" href={url} key="canonical" />
       {isPreview && <meta name="robots" content="noindex" />}
     </Head>
