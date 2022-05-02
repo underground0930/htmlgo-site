@@ -78,8 +78,6 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
     // パラメータを取ってくる
     if (router.isReady) {
       const { category, technology } = router.query
-      console.log('category : ' + category)
-      console.log('technology : ' + technology)
       setFilters({
         category: changeToString(category),
         technology: changeToString(technology),
