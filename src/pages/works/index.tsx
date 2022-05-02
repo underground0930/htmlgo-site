@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 // type
 import { WorksPosts } from 'types/index'
@@ -24,15 +25,29 @@ type Props = {
 }
 
 export default function Works({ works, categories = [], technologies = [] }: Props) {
-  const [category, setCategory] = useState('')
-  const [technology, setTechnology] = useState('')
+  const router = useRouter()
+  const [filters, setFilters] = useState({
+    category: '',
+    technology: '',
+  })
 
-  const categoryHandler = (e: any): void => {
-    setCategory(e.currentTarget.value)
+  const categoryHandler = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    const { value } = e.currentTarget
+    const { technology } = router.query
+    router.push({
+      query: {
+        ...(value ? { category: value } : {}),
+        ...(technology ? { technology } : {}),
+      },
+    })
   }
 
-  const technologyHandler = (e: any): void => {
-    setTechnology(e.currentTarget.value)
+  const technologyHandler = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    const { value } = e.currentTarget
+    const { category } = router.query
+    router.push({
+      query: { ...(category ? { category } : {}), ...(value ? { technology: value } : {}) },
+    })
   }
 
   const clickHandler = (label: string, value: string) => {
@@ -40,6 +55,7 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
   }
 
   const filterPost = (): WorksPosts => {
+    const { category, technology } = filters
     return works.filter((work) => {
       const categoryMatch = category === '' || work.category.map((c) => c.category_slug).includes(category)
       const technologyMatch =
@@ -48,6 +64,29 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
       return categoryMatch && technologyMatch
     })
   }
+
+  const changeToString = (param: string | string[] | undefined): string => {
+    if (Array.isArray(param)) {
+      return param[0]
+    } else if (param === undefined) {
+      return ''
+    }
+    return param
+  }
+
+  useEffect(() => {
+    // パラメータを取ってくる
+    if (router.isReady) {
+      const { category, technology } = router.query
+      console.log('category : ' + category)
+      console.log('technology : ' + technology)
+      setFilters({
+        category: changeToString(category),
+        technology: changeToString(technology),
+      })
+    }
+  }, [router])
+
   return (
     <Layout>
       <HeadWrap
@@ -62,8 +101,10 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
         </Title>
         <div className={styles.filter}>
           <div className={styles.filterChild}>
-            <select className={styles.filterSelect} onChange={categoryHandler} value={category}>
-              <option value="">Category</option>
+            <select className={styles.filterSelect} onChange={categoryHandler} value={filters.category}>
+              <option value="" key={''}>
+                Category
+              </option>
               {categories.map((c) => (
                 <option value={c.category_slug} key={c.category_slug}>
                   {c.category_label}
@@ -72,8 +113,10 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
             </select>
           </div>
           <div className={styles.filterChild}>
-            <select className={styles.filterSelect} onChange={technologyHandler} value={technology}>
-              <option value="">Technology</option>
+            <select className={styles.filterSelect} onChange={technologyHandler} value={filters.technology}>
+              <option value="" key={''}>
+                Technology
+              </option>
               {technologies.map((c) => (
                 <option value={c.technology_slug} key={c.technology_slug}>
                   {c.technology_label}
