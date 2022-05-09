@@ -69,12 +69,12 @@ export default function About() {
                 text: '東京理科大学 卒業',
               },
               {
-                heading: '2009年 - 2011年',
+                heading: '2009年 - 2010年',
                 text: 'あとらす二十一',
                 link: 'https://at21.jp/',
               },
               {
-                heading: '2011年 - 2016年',
+                heading: '2010年 - 2016年',
                 text: 'SONICJAM Inc.',
                 link: 'https://www.sonicjam.co.jp/',
               },
