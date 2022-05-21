@@ -56,18 +56,10 @@ export default function About() {
             プロモーションサイト、コーポレートサイト、キャンペーンサイト等の様々なサイトを実装してきました。様々なデバイスに対応させること、更新性の高いサイトを作ることが得意です。ギークというよりかは、周りと協調してプロジェクトを円滑に進めることが得意なタイプ。お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
           </p>
           <h3 className={styles.title}>趣味</h3>
-          <p className={styles.text}>漫画、youtubeひたすら見る、筋トレ、プール、散歩。</p>
+          <p className={styles.text}>漫画、youtube、筋トレ、プール、散歩</p>
           <h3 className={styles.title}>経歴</h3>
           <HistoryList
             data={[
-              {
-                heading: '1985年',
-                text: '生誕',
-              },
-              {
-                heading: '2009年',
-                text: '東京理科大学 卒業',
-              },
               {
                 heading: '2009年 - 2010年',
                 text: 'あとらす二十一',
