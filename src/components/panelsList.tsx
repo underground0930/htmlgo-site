@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 // types
 import { FeedObj } from 'types/index'
 
@@ -24,11 +26,9 @@ const PanelsList = ({ articles, clickHandler }: Props) => {
               }}
             >
               <dl>
-                <dt
-                  style={{
-                    backgroundImage: `url(${article.img})`,
-                  }}
-                ></dt>
+                <dt>
+                  <Image src={article.img} alt={''} layout={'fill'} objectFit={'cover'} />
+                </dt>
                 <dd>
                   <time>{article.published}</time>
                   <h3>{article.title}</h3>

@@ -6,6 +6,6 @@ module.exports = {
   reactStrictMode: true,
   trailingSlash: true,
   images: {
-    domains: ['images.microcms-assets.io'],
+    domains: ['images.microcms-assets.io', 'assets.st-note.com', 'res.cloudinary.com'],
   },
 }
