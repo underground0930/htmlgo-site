@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -6,9 +7,6 @@ import styles from 'styles/components/WorksSlider.module.scss'
 
 import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-// type
-// import { Post } from 'types/index'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -73,10 +71,12 @@ const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
             return (
               <SwiperSlide className={styles.slider} virtualIndex={i} key={v.img.url}>
                 {isLoading && <div className={styles.loader}>Loading...</div>}
-                <img
+                <Image
                   src={v.img.url}
                   alt=""
-                  onLoad={(e) => {
+                  layout="fill"
+                  onLoadingComplete={(e) => {
+                    console.log(e)
                     isLoading = false
                   }}
                 />

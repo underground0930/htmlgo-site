@@ -13,9 +13,6 @@ $works_bp: 700px;
     width: 31%;
     height: 0;
   }
-  img{
-    width: 100%;
-  }
   @include max-screen($works_bp) {
     &:after {
       display: none;
@@ -41,6 +38,7 @@ $works_bp: 700px;
   dd {
     font-size: 1.5rem;
     padding: 0 15px 10px;
+
   }
   time {
     display: block;

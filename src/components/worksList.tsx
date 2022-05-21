@@ -29,7 +29,13 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
               >
                 <dl>
                   <dt>
-                    <img src={work.slider[0].img.url + '?w=800'} width="320" height="180" alt="" />
+                    <Image
+                      src={work.slider[0].img.url + '?w=800'}
+                      alt=""
+                      width="320"
+                      height="180"
+                      layout="fill"
+                    />
                   </dt>
                   <dd>
                     <time>{conversionDate(work.date)}</time>
