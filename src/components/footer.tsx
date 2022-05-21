@@ -1,6 +1,7 @@
 import styles from 'styles/components/Footer.module.scss'
 
 import IconNextjs from 'svgs/IconNextjs.svg'
+import IconVercel from 'svgs/IconVercel.svg'
 import IconMicrocms from 'svgs/IconMicrocms.svg'
 import IconGithub from 'svgs/IconGithub.svg'
 import IconFormrun from 'svgs/IconFormrun.svg'
@@ -29,10 +30,22 @@ const Footer = ({}: Props) => {
                   target="_blank"
                   rel="noreferrer"
                   onClick={(e) => {
-                    clickHandler('nextjs', e.currentTarget.href)
+                    clickHandler('Nextjs', e.currentTarget.href)
                   }}
                 >
                   <IconNextjs />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://vercel.com/home"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(e) => {
+                    clickHandler('Vercel', e.currentTarget.href)
+                  }}
+                >
+                  <IconVercel />
                 </a>
               </li>
               <li>
