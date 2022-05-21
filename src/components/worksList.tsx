@@ -32,9 +32,8 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
                     <Image
                       src={work.slider[0].img.url + '?w=800'}
                       alt=""
-                      width="320"
-                      height="180"
-                      layout="fill"
+                      layout={'fill'}
+                      objectFit={'cover'}
                     />
                   </dt>
                   <dd>

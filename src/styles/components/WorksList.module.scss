@@ -34,6 +34,12 @@ $works_bp: 700px;
   dt {
     position: relative;
     margin: 0 0 10px;
+    &:before{
+      content: "";
+      display: block;
+      width: 100%;
+      padding-top: 56.25%;
+    }
   }
   dd {
     font-size: 1.5rem;
