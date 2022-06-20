@@ -67,12 +67,7 @@ const previewWorksDetailProps = async (): Promise<FetchData | null> => {
         fields: 'title,slug,url,url2,date,body,production_period,credit,category,technology,slider',
       },
     })
-    .then((v) => {
-      return v
-    })
-    .catch((err) => {
-      return null
-    })
+    .catch((err) => null)
 
   if (post === null) {
     console.log("Couldn't get the data")
