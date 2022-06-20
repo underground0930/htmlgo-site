@@ -118,6 +118,7 @@ export const worksDetailGetStaticProps = async ({
 }) => {
   const { slug } = params
   const draftKey = previewData?.draftKey
+  //  console.log(draftKey)
   let pager: any[] = []
 
   const post = await client

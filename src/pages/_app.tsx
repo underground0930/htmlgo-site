@@ -6,16 +6,6 @@ import * as gtag from 'libs/gtag'
 import usePageView from 'hooks/usePageView'
 import store from '../store'
 
-export async function getServerSideProps() {
-  const data = await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ x: 1 })
-    }, 1000)
-  })
-
-  return { props: { data } }
-}
-
 // NOTE:  https://tyotto-good.com/blog/next-document-app
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -51,3 +41,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 export default MyApp
+
+// example
+export async function getServerSideProps() {
+  const data = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ x: 1 })
+    }, 1000)
+  })
+
+  return { props: { data } }
+}
