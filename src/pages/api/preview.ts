@@ -4,7 +4,7 @@ import { client } from '../../libs/client'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!req.query?.dir || !req.query?.contentId) {
-    return res.status(404).end()
+    return res.status(404).end('not found')
   }
 
   const content = await client
