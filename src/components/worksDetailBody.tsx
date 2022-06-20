@@ -30,7 +30,7 @@ const WorksSlider = dynamic(() => import('components/worksSlider'), {
 })
 
 type Props = {
-  post: Post | null
+  post: Post
   prev: { slug: string } | null
   next: { slug: string } | null
   isPreview?: boolean
@@ -45,12 +45,6 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
   }
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: 'works-detail', label, value })
-  }
-
-  if (post === null) {
-    return {
-      notFound: true,
-    }
   }
 
   return (

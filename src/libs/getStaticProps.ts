@@ -118,7 +118,6 @@ export const worksDetailGetStaticProps = async ({
 }) => {
   const { slug } = params
   const draftKey = previewData?.draftKey
-  //  console.log(draftKey)
   let pager: any[] = []
 
   const post = await client
@@ -174,6 +173,7 @@ export const worksDetailGetStaticProps = async ({
     )
   }
   return {
+    revalidate: 1,
     props: {
       post,
       prev: pager[0] ?? null,
