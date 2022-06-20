@@ -48,7 +48,9 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
   }
 
   if (post === null) {
-    return <div>sorry! page error!</div>
+    return {
+      notFound: true,
+    }
   }
 
   return (

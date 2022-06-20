@@ -76,7 +76,6 @@ const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
                   alt=""
                   layout="fill"
                   onLoadingComplete={(e) => {
-                    console.log(e)
                     isLoading = false
                   }}
                 />

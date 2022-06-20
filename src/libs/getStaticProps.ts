@@ -107,18 +107,25 @@ export async function worksGetStaticProps() {
 
 export const worksDetailGetStaticProps = async ({
   params,
+  previewData,
 }: {
   params: {
     slug: string
   }
+  previewData?: {
+    draftKey: string
+  }
 }) => {
-  const slug = params.slug
+  const { slug } = params
+  const draftKey = previewData?.draftKey
+  //  console.log(draftKey)
   let pager: any[] = []
 
   const post = await client
     .get({
       endpoint: 'works',
       queries: {
+        ...(draftKey ? { draftKey } : {}),
         filters: `slug[equals]${slug}`,
         fields: 'title,slug,url,url2,date,body,production_period,credit,category,technology,slider',
       },
@@ -126,9 +133,7 @@ export const worksDetailGetStaticProps = async ({
     .then((v) => {
       return v.contents.length ? v.contents[0] : null
     })
-    .catch((err) => {
-      return null
-    })
+    .catch((err) => null)
 
   if (post !== null) {
     pager = await Promise.allSettled([
@@ -145,9 +150,7 @@ export const worksDetailGetStaticProps = async ({
         .then((v) => {
           return v?.contents?.length ? v.contents[0] : null
         })
-        .catch((err) => {
-          return null
-        }),
+        .catch((err) => null),
       client
         .get({
           endpoint: 'works',
@@ -161,9 +164,7 @@ export const worksDetailGetStaticProps = async ({
         .then((v) => {
           return v?.contents?.length ? v.contents[0] : null
         })
-        .catch((err) => {
-          return null
-        }),
+        .catch((err) => null),
     ]).then((results) =>
       results.map((r) => {
         if (r.status === 'fulfilled') {
