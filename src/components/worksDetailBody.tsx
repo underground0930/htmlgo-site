@@ -24,6 +24,7 @@ import HeadWrap from 'components/headWrap'
 import Layout from 'components/layout'
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
+import PreviewBtn from './previewBtn'
 
 const WorksSlider = dynamic(() => import('components/worksSlider'), {
   ssr: false,
@@ -33,7 +34,7 @@ type Props = {
   post: Post
   prev: { slug: string } | null
   next: { slug: string } | null
-  isPreview?: boolean
+  isPreview: boolean
 }
 
 export default function WorksDetailBody({ post, prev, next, isPreview }: Props) {
@@ -56,6 +57,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
         url={`https://htmlgo.site/works/${post.slug}/`}
         isPreview={isPreview}
       />
+      {isPreview && <PreviewBtn />}
       <main className={styles.main}>
         <Title>
           <span>{post.title}</span>
