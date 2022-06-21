@@ -4,9 +4,7 @@
       "next/babel",
       {
         "styled-jsx": {
-          "plugins": [
-            "@styled-jsx/plugin-sass"
-          ]
+          "plugins": ["@styled-jsx/plugin-sass"]
         }
       }
     ]
@@ -15,9 +13,7 @@
     [
       "module-resolver",
       {
-        "root": [
-          "."
-        ],
+        "root": ["."],
         "alias": {
           "svgs": "./src/svgs",
           "json": "./src/json"
@@ -37,6 +33,5 @@
         }
       }
     ]
-
   ]
 }
