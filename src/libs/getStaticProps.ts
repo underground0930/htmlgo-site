@@ -173,7 +173,6 @@ export const worksDetailGetStaticProps = async ({
     )
   }
   return {
-    revalidate: 1,
     props: {
       post,
       prev: pager[0] ?? null,
