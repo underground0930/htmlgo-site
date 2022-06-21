@@ -25,10 +25,7 @@ export default function About() {
         url={`https://htmlgo.site/about/`}
       />
       <main className={styles.main}>
-        <Title>
-          <span>ABOUT</span>
-          <span>このサイトや主について説明しています</span>
-        </Title>
+        <Title title="ABOUT" text="このサイトや主について説明しています" />
         <div className={styles.body}>
           <div className={styles.img}>
             <img src="/img/profile.jpg" width="210" height="210" alt="" />

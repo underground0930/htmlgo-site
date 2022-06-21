@@ -41,10 +41,7 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
         url={`https://htmlgo.site/articles/`}
       />
       <main className={styles.main}>
-        <Title>
-          <span>ARTICLES</span>
-          <span>技術系やそれ以外の記事</span>
-        </Title>
+        <Title title="ARTICLES" text="技術系やそれ以外の記事" />
         <ViewSwitch type={type} />
         <Panels articles={articles} type={type} clickHandler={clickHandler} />
         <Pagenation pages={pages} page={page} />

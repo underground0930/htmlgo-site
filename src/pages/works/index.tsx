@@ -93,10 +93,7 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
         url={`https://htmlgo.site/works/`}
       />
       <main className={styles.main}>
-        <Title>
-          <span>WORKS</span>
-          <span>お仕事の実績や、自主制作のまとめページです</span>
-        </Title>
+        <Title title="WORKS" text="最新のお仕事の実績や、自主制作" />
         <div className={styles.filter}>
           <div className={styles.filterChild}>
             <select className={styles.filterSelect} onChange={categoryHandler} value={filters.category}>

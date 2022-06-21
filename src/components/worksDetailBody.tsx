@@ -59,10 +59,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
       />
       {isPreview && <PreviewBtn />}
       <main className={styles.main}>
-        <Title>
-          <span>{post.title}</span>
-          <span>WORKS NAME</span>
-        </Title>
+        <Title title={post.title} text="WORKS NAME" />
         <article className={styles.article}>
           <div className={styles.kv}>
             <div className={styles.kvInner}>

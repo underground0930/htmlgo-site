@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import styles from 'styles/components/Header.module.scss'
 
 // libs
 import { event } from 'libs/gtag'
@@ -15,11 +13,12 @@ const Header = ({}: Props) => {
   }
   return (
     <>
-      <header className={styles.header}>
-        <div className={styles.inner}>
-          <h1 className={styles.title}>
+      <header className="relative z-[1] mb-10 mx-5 border-b">
+        <div className="flex items-center justify-between mx-auto md:max-w-5xl">
+          <h1 className="font-bold md:w-52 md:text-2xl md:py-5">
             <Link href="/">
               <a
+                className="no-underline"
                 onClick={() => {
                   clickHandler('top_logo', '/')
                 }}
@@ -28,12 +27,12 @@ const Header = ({}: Props) => {
               </a>
             </Link>
           </h1>
-          <nav className={styles.nav}>
-            <ul>
+          <nav className="">
+            <ul className="flex">
               <li>
                 <Link href="/">
                   <a
-                    className={asPath === '/' ? 'active' : undefined}
+                    className={(asPath === '/' ? 'text-linkColor' : '') + ' hover:text-linkColor font-bold'}
                     onClick={() => {
                       clickHandler('top', '/')
                     }}
@@ -42,54 +41,25 @@ const Header = ({}: Props) => {
                   </a>
                 </Link>
               </li>
-              <li>
-                <Link href="/about/">
-                  <a
-                    className={asPath.startsWith('/about') ? 'active' : undefined}
-                    onClick={() => {
-                      clickHandler('about', '/about/')
-                    }}
-                  >
-                    ABOUT
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/works/">
-                  <a
-                    className={asPath.startsWith('/works') ? 'active' : undefined}
-                    onClick={() => {
-                      clickHandler('works', '/works/')
-                    }}
-                  >
-                    WORKS
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/articles/">
-                  <a
-                    className={asPath.startsWith('/articles') ? 'active' : undefined}
-                    onClick={() => {
-                      clickHandler('articles', '/articles/')
-                    }}
-                  >
-                    ARTICLES
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact/">
-                  <a
-                    className={asPath.startsWith('/contact') ? 'active' : undefined}
-                    onClick={() => {
-                      clickHandler('contact', '/contact/')
-                    }}
-                  >
-                    CONTACT
-                  </a>
-                </Link>
-              </li>
+              {['about', 'works', 'articles', 'contact'].map((v, index) => {
+                return (
+                  <li className="ml-5" key={index}>
+                    <Link href={`/${v}/`}>
+                      <a
+                        className={
+                          (asPath.startsWith(`/${v}`) ? 'text-linkColor' : '') +
+                          ' hover:text-linkColor font-bold'
+                        }
+                        onClick={() => {
+                          clickHandler(v, `/${v}/`)
+                        }}
+                      >
+                        {v.toLocaleUpperCase()}
+                      </a>
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </nav>
         </div>

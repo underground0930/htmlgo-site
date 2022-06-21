@@ -50,10 +50,7 @@ export default function Contact() {
         url={`https://htmlgo.site/contact/`}
       />
       <main className={styles.main}>
-        <Title>
-          <span>CONTACT</span>
-          <span>お仕事のお問い合わせはこちらからどうぞ</span>
-        </Title>
+        <Title title="CONTACT" text="お仕事のお問い合わせはこちらからどうぞ" />
         <div className={styles.body}>
           <form className="formrun" action="https://form.run/api/v1/r/slpviahq150x5q8lxsyw5x8z" method="post">
             <ul className={styles.list}>

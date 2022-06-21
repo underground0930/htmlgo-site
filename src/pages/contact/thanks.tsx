@@ -22,10 +22,7 @@ export default function Thanks() {
         url={`https://htmlgo.site/contact/thanks/`}
       />
       <main className={styles.main}>
-        <Title>
-          <span>THANKS</span>
-          <span>お仕事のお問い合わせはこちらからどうぞ</span>
-        </Title>
+        <Title title="THANKS" text="お問合せありがとうございました" />
         <div className={styles.body}>
           <div className={styles.thanks}>
             お問い合わせありがとうございました。
