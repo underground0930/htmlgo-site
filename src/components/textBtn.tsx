@@ -10,17 +10,19 @@ type Props = {
   onClick?: () => void
 }
 
+const className = 'inline-block bgColor'
+
 const TextBtn = ({ title, link, blank = false, onClick }: Props) => {
   return (
     <>
       {blank && (
-        <a className={styles.textBtn} href={link} onClick={onClick}>
+        <a className={className} href={link} onClick={onClick}>
           {title}
         </a>
       )}
       {!blank && (
         <Link href={link}>
-          <a className={styles.textBtn} onClick={onClick}>
+          <a className={className} onClick={onClick}>
             {title}
           </a>
         </Link>
