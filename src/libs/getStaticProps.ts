@@ -177,6 +177,7 @@ export const worksDetailGetStaticProps = async ({
       post,
       prev: pager[0] ?? null,
       next: pager[1] ?? null,
+      isPreview: !!draftKey,
     },
   }
 }

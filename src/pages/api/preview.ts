@@ -23,6 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   res.setPreviewData({
+    maxAge: 60 * 60,
     slug: content.slug,
     draftKey: req.query.draftKey,
   })
