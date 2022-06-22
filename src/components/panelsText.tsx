@@ -1,3 +1,6 @@
+// components
+import CategoryIcon from './categoryIcon'
+
 // types
 import { FeedObj } from 'types/index'
 
@@ -30,9 +33,9 @@ const PanelsText = ({ articles, clickHandler }: Props) => {
                 <dd>
                   <h3>{article.title}</h3>
                   <p>
-                    <span>{article.category}</span>
+                    <CategoryIcon text={article.category} />
                     {article.tags.map((tag, index) => (
-                      <span key={index}>{tag}</span>
+                      <CategoryIcon text={tag} key={index} />
                     ))}
                   </p>
                 </dd>

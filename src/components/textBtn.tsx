@@ -7,7 +7,8 @@ type Props = {
   onClick?: () => void
 }
 
-const className = 'inline-block bgColor text-14px text-center text-decoration-none px-5 py-4'
+const className =
+  'min-w-[120px] inline-block bg-btn text-btnIcon text-14px text-center text-decoration-none px-15px py-10px :visited:text-btnIcon'
 
 const TextBtn = ({ title, link, blank = false, onClick }: Props) => {
   return (

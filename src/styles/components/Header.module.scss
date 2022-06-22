@@ -11,7 +11,6 @@ $header_bp: 650px;
   position: relative;
   z-index: 1;
   @media screen and (max-width: $header_bp) {
-    display: block;
     margin: 0 0 var(--s8);
   }
 }

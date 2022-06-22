@@ -15,9 +15,9 @@ const Header = ({}: Props) => {
   }
   return (
     <>
-      <header className="relative z-[1] mb-10 mx-5 border-b">
-        <div className="items-center justify-between mx-auto md:flex md:max-w-5xl">
-          <h1 className="text-center leading-none font-bold text-25px pt-6 pb-4 md:text-left md:w-52 md:py-5">
+      <header className="relative z-[1] mb-32px mx-15px border-b border-border">
+        <div className="items-center justify-between mx-auto md:flex">
+          <h1 className="text-center leading-none font-bold text-25px pt-24px pb-16px md:text-left md:w-[210px] md:py-20px">
             <Link href="/">
               <a
                 className="no-underline"
@@ -30,7 +30,7 @@ const Header = ({}: Props) => {
             </Link>
           </h1>
           <nav className="overflow-x-scroll md:overflow-x-auto scrolling-touch">
-            <ul className="flex pb-2 md:pb-0">
+            <ul className="flex pb-8px md:pb-0px">
               <li>
                 <Link href="/">
                   <a
@@ -45,7 +45,7 @@ const Header = ({}: Props) => {
               </li>
               {['about', 'works', 'articles', 'contact'].map((v, index) => {
                 return (
-                  <li className="ml-5" key={index}>
+                  <li className="ml-20px" key={index}>
                     <Link href={`/${v}/`}>
                       <a
                         className={(asPath.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle}

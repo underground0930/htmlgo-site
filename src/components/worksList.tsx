@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+// components
+import CategoryIcon from './categoryIcon'
+
 // type
 import { WorksPosts } from 'types/index'
 
@@ -41,10 +44,10 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
                     <h3>{work.title}</h3>
                     <p>
                       {work.category.map((c) => (
-                        <span key={c.id}>{c.category_label}</span>
+                        <CategoryIcon key={c.id} text={c.category_label} />
                       ))}
                       {work.technology.map((t) => (
-                        <span key={t.id}>{t.technology_label}</span>
+                        <CategoryIcon key={t.id} text={t.technology_label} />
                       ))}
                     </p>
                   </dd>

@@ -1,4 +1,4 @@
-const MIN_SIZE = 1
+const MIN_SIZE = 0
 const MAX_SIZE = 100
 const INCREMENTS_NUM = 1
 
