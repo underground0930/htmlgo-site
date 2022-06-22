@@ -1,12 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 
 const fontSize = require('./tailwind.fontSize')
+const spacing = require('./tailwind.spacing')
 
 module.exports = {
   mode: 'jit',
   content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontSize,
+    margin: spacing,
+    padding: spacing,
     container: {
       center: true,
     },

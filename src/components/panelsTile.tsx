@@ -13,10 +13,13 @@ type Props = {
 
 const PanelsTile = ({ articles, clickHandler }: Props) => {
   return (
-    <div className={styles.panelsTile}>
+    <div className="md:flex md:flex-wrap:md md:justify-between">
       {articles.map((article) => {
         return (
-          <article key={article.link}>
+          <article
+            key={article.link}
+            className="shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] w-[100%] md:w-[23.5%]"
+          >
             <a
               href={article.link}
               target="_blank"
@@ -26,7 +29,7 @@ const PanelsTile = ({ articles, clickHandler }: Props) => {
               }}
             >
               <dl>
-                <dt>
+                <dt className="relative h-[140px]">
                   <Image src={article.img} alt={''} layout={'fill'} objectFit={'cover'} />
                 </dt>
                 <dd>

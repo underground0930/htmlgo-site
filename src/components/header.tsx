@@ -30,7 +30,7 @@ const Header = ({}: Props) => {
             </Link>
           </h1>
           <nav className="overflow-x-scroll md:overflow-x-auto scrolling-touch">
-            <ul className="flex pb-2">
+            <ul className="flex pb-2 md:pb-0">
               <li>
                 <Link href="/">
                   <a
