@@ -15,7 +15,7 @@ const Header = ({}: Props) => {
   }
   return (
     <>
-      <header className="relative z-[1] mb-32px mx-15px border-b border-border">
+      <header className="relative z-[1] mb-32px mx-20px border-b border-border">
         <div className="items-center justify-between mx-auto md:flex">
           <h1 className="text-center leading-none font-bold text-25px pt-24px pb-16px md:text-left md:w-[210px] md:py-20px">
             <Link href="/">

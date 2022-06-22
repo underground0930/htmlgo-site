@@ -1,9 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 
-// styles
-import styles from 'styles/components/SnsBox.module.scss'
-
 // libs
 import { event } from 'libs/gtag'
 
@@ -16,6 +13,16 @@ type Props = {
   category: string
 }
 
+const className = {
+  snsBox: `mx-auto max-w-[240px] md:max-w-[260px] flex items-center justify-center flex-wrap`,
+  snsBoxChild: `mb-10px w-[20%] text-center last-of-type:mr-0px`,
+  github: `w-[40px] h-[40px]`,
+  twitter: `w-[40px] h-[40px]`,
+  qiita: `w-[40px] h-[40px]`,
+  zenn: `w-[40px] h-[40px] rounded-[4px]`,
+  note: `w-[40px] h-[40px] rounded-[4px]`,
+}
+
 const SnsBox = ({ category }: Props) => {
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category, label, value })
@@ -23,8 +30,8 @@ const SnsBox = ({ category }: Props) => {
 
   return (
     <>
-      <ul className={styles.snsBox}>
-        <li className={styles.snsBoxChild}>
+      <ul className={className.snsBox}>
+        <li className={className.snsBoxChild}>
           <a
             href="https://github.com/underground0930"
             target="_blank"
@@ -33,10 +40,10 @@ const SnsBox = ({ category }: Props) => {
               clickHandler('github', e.currentTarget.href)
             }}
           >
-            <FontAwesomeIcon className={styles.github} icon={faGithubSquare} color="#24292e" />
+            <FontAwesomeIcon className={className.github} icon={faGithubSquare} color="#24292e" />
           </a>
         </li>
-        <li className={styles.snsBoxChild}>
+        <li className={className.snsBoxChild}>
           <a
             href="https://twitter.com/resistance_gowy"
             target="_blank"
@@ -45,10 +52,10 @@ const SnsBox = ({ category }: Props) => {
               clickHandler('twitter', e.currentTarget.href)
             }}
           >
-            <FontAwesomeIcon className={styles.twitter} icon={faTwitterSquare} color="#1DA1F2" />
+            <FontAwesomeIcon className={className.twitter} icon={faTwitterSquare} color="#1DA1F2" />
           </a>
         </li>
-        <li className={styles.snsBoxChild}>
+        <li className={className.snsBoxChild}>
           <a
             href="http://qiita.com/resistance_gowy"
             target="_blank"
@@ -57,10 +64,10 @@ const SnsBox = ({ category }: Props) => {
               clickHandler('qiita', e.currentTarget.href)
             }}
           >
-            <IconQiita className={styles.qiita} />
+            <IconQiita className={className.qiita} />
           </a>
         </li>
-        <li className={styles.snsBoxChild}>
+        <li className={className.snsBoxChild}>
           <a
             href="https://zenn.dev/resistance_gowy"
             target="_blank"
@@ -69,10 +76,10 @@ const SnsBox = ({ category }: Props) => {
               clickHandler('zenn', e.currentTarget.href)
             }}
           >
-            <IconZenn className={styles.zenn} />
+            <IconZenn className={className.zenn} />
           </a>
         </li>
-        <li className={styles.snsBoxChild}>
+        <li className={className.snsBoxChild}>
           <a
             href="https://note.com/resistance_gowy"
             target="_blank"
@@ -81,7 +88,7 @@ const SnsBox = ({ category }: Props) => {
               clickHandler('note', e.currentTarget.href)
             }}
           >
-            <IconNote className={styles.note} />
+            <IconNote className={className.note} />
           </a>
         </li>
       </ul>

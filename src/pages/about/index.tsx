@@ -1,6 +1,3 @@
-// style
-import styles from 'styles/page/About.module.scss'
-
 // libs
 import { event } from 'libs/gtag'
 
@@ -11,6 +8,16 @@ import Title from 'components/title'
 import SnsBox from 'components/snsBox'
 import IconBtn from 'components/IconBtn'
 import HistoryList from 'components/historyList'
+
+const className = {
+  main: 'mx-20px',
+  body: `mb-40px pb-30px`,
+  img: `rounded-full w-[210px] h-[210px] mx-auto mb-40px overflow-hidden`,
+  sns: `mb-45px`,
+  title: `text-18px font-bold mt-25px mb-20px border-l-[3px] border-l-solid border-b-[1px] pl-5px pb-5px`,
+  text: `text-15px`,
+  btnWrap: `text-center mb-40px md:mb-80`,
+}
 
 export default function About() {
   const clickHandler = (label: string, value: string) => {
@@ -24,19 +31,21 @@ export default function About() {
         description={'このサイトについて'}
         url={`https://htmlgo.site/about/`}
       />
-      <main className={styles.main}>
+      <main className={className.main}>
         <Title title="ABOUT" text="このサイトや主について説明しています" />
-        <div className={styles.body}>
-          <div className={styles.img}>
+        <div className={className.body}>
+          <div className={className.img}>
             <img src="/img/profile.jpg" width="210" height="210" alt="" />
           </div>
-          <div className={styles.sns}>
+          <div className={className.sns}>
             <SnsBox category={'about'} />
           </div>
-          <h3 className={styles.title}>このサイトについて</h3>
-          <p className={styles.text}>このサイト主の「実績紹介」「WEB技術の記事」などをまとめたサイトです。</p>
-          <h3 className={styles.title}>プロフィール</h3>
-          <p className={styles.text}>
+          <h3 className={className.title}>このサイトについて</h3>
+          <p className={className.text}>
+            このサイト主の「実績紹介」「WEB技術の記事」などをまとめたサイトです。
+          </p>
+          <h3 className={className.title}>プロフィール</h3>
+          <p className={className.text}>
             <a
               href="https://twitter.com/resistance_gowy"
               target="_blank"
@@ -49,12 +58,12 @@ export default function About() {
             </a>
             <span>(フロントエンドエンジニア)</span>
           </p>
-          <p className={styles.text}>
+          <p className={className.text}>
             プロモーションサイト、コーポレートサイト、キャンペーンサイト等の様々なサイトを実装してきました。様々なデバイスに対応させること、更新性の高いサイトを作ることが得意です。ギークというよりかは、周りと協調してプロジェクトを円滑に進めることが得意なタイプ。お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
           </p>
-          <h3 className={styles.title}>趣味</h3>
-          <p className={styles.text}>漫画、youtube、筋トレ、プール、散歩</p>
-          <h3 className={styles.title}>経歴</h3>
+          <h3 className={className.title}>趣味</h3>
+          <p className={className.text}>漫画、youtube、筋トレ、プール、散歩</p>
+          <h3 className={className.title}>経歴</h3>
           <HistoryList
             data={[
               {
@@ -68,17 +77,21 @@ export default function About() {
                 link: 'https://www.sonicjam.co.jp/',
               },
               {
-                heading: '2016年 -',
+                heading: '2016年 - 2022年6月',
                 text: 'フリーランス',
+              },
+              {
+                heading: '2022年7月 -',
+                text: 'ちょっと株式会社',
+                link: 'https://chot-inc.com/',
               },
             ]}
           />
-          <h3 className={styles.title}>経験した技術・ツール</h3>
-          <p className={styles.text}>
-            html / css / TypeScript / Vue.js / React / Next.js / Wordpress / Docker / Webpack / github /
-            Backlog
+          <h3 className={className.title}>経験した技術・ツール</h3>
+          <p className={className.text}>
+            html / css / TypeScript / React / Next.js / Wordpress / Docker / Webpack / github / Backlog
           </p>
-          <h3 className={styles.title}>仕事道具</h3>
+          <h3 className={className.title}>仕事道具</h3>
           <HistoryList
             data={[
               {
@@ -96,7 +109,7 @@ export default function About() {
             ]}
           />
         </div>
-        <div className={styles.back}>
+        <div className={className.btnWrap + ` mt-40px`}>
           <IconBtn
             icon="faHome"
             link="/"

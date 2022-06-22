@@ -3,11 +3,11 @@ const MAX_SIZE = 100
 const INCREMENTS_NUM = 1
 
 const fontSize = () => {
-  const fontSizes = {}
+  const f = {}
   for (let i = MIN_SIZE; i <= MAX_SIZE; i += INCREMENTS_NUM) {
-    fontSizes[`${i}px`] = `${i}px`
+    f[`${i}px`] = `${i}px`
   }
-  return fontSizes
+  return f
 }
 
 module.exports = fontSize()

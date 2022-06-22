@@ -11,17 +11,14 @@ type Props = {
   clickHandler: (label: string, value: string) => void
 }
 
-const span =
-  'inline-block bg-[#000] rounded-[3px] text-btnIcon text-10px mt-4px px-6px py-3px :not(:last-of-type) mr-5px'
-
 const PanelsTile = ({ articles, clickHandler }: Props) => {
   return (
-    <div className="md:flex md:flex-wrap:md md:justify-between">
+    <div className="mb-20px md:flex md:flex-wrap md:justify-between md:mb-40px md:after:block md:after:content-[''] md:after:w-[23.5%]">
       {articles.map((article) => {
         return (
           <article
             key={article.link}
-            className="shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] w-[100%] md:w-[23.5%]"
+            className="mb-20px shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] w-[100%] md:w-[23.5%] "
           >
             <a
               href={article.link}
@@ -37,7 +34,7 @@ const PanelsTile = ({ articles, clickHandler }: Props) => {
                 </dt>
                 <dd className="p-12px">
                   <time className="block text-12px mb-5px">{article.published}</time>
-                  <h3 className="relative text-13px font-bold leading-5">{article.title}</h3>
+                  <h3 className="relative text-13px font-bold leading-5 break-all">{article.title}</h3>
                   <p className="block empty:hidden">
                     <CategoryIcon text={article.category} />
                     {article.tags.map((tag, index) => (

@@ -3,9 +3,6 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faAlignJustify } from '@fortawesome/free-solid-svg-icons'
 
-// styles
-import styles from 'styles/components/IconBtn.module.scss'
-
 type Props = {
   title?: string
   link: string
@@ -20,13 +17,18 @@ const icons = {
   faAlignJustify: faAlignJustify,
 }
 
+const className = {
+  btn: 'min-w-[120px] inline-block bg-btn text-btnIcon text-14px text-center text-decoration-none px-15px py-10px :visited:text-btnIcon',
+  icon: 'w-[20px] h-[20px] inline-block',
+}
+
 const IconBtn = ({ title, link, blank = false, color, icon, onClick }: Props) => {
   return (
     <>
       {blank && (
-        <a className={styles.iconBtn} href={link} target="_blank" rel="noreferrer" onClick={onClick}>
+        <a className={className.btn} href={link} target="_blank" rel="noreferrer" onClick={onClick}>
           <FontAwesomeIcon
-            className={styles.icon}
+            className={className.icon}
             icon={icons[icon]}
             title={title ? title : ''}
             style={{ color: color }}
@@ -35,9 +37,9 @@ const IconBtn = ({ title, link, blank = false, color, icon, onClick }: Props) =>
       )}
       {!blank && (
         <Link href={link}>
-          <a className={styles.iconBtn} onClick={onClick}>
+          <a className={className.btn} onClick={onClick}>
             <FontAwesomeIcon
-              className={styles.icon}
+              className={className.icon}
               icon={icons[icon]}
               title={title ? title : ''}
               style={{ color: color }}

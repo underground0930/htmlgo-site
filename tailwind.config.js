@@ -8,7 +8,10 @@ module.exports = {
   content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontSize,
-    margin: spacing,
+    margin: ({ theme }) => ({
+      auto: 'auto',
+      ...spacing,
+    }),
     padding: spacing,
     colors: {
       linkActive: '#339fef',

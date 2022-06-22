@@ -25,6 +25,12 @@ type Props = {
   articles: FeedObj[]
 }
 
+const className = {
+  main: 'mx-20px',
+  btnWrap: 'text-center',
+  section: 'mb-40px pb-20px md:mb-80px md:pb-40px border-b border-border',
+}
+
 export default function Home({ works = [], articles = [] }: Props) {
   const type = useSelector((state: RootState) => state.panelType.value)
 
@@ -40,13 +46,13 @@ export default function Home({ works = [], articles = [] }: Props) {
         url={`https://htmlgo.site/`}
         isTop={true}
       />
-      <main className="">
+      <main className={className.main}>
         {/* articles */}
-        <section className="">
+        <section className={className.section}>
           <Title title="ARTICLES" text="最新の記事" />
           <ViewSwitch type={type} />
           <Panels articles={articles} type={type} clickHandler={clickHandler} />
-          <div className="">
+          <div className={className.btnWrap}>
             <TextBtn
               title="MORE"
               link="/articles/"
@@ -57,10 +63,10 @@ export default function Home({ works = [], articles = [] }: Props) {
           </div>
         </section>
         {/* works */}
-        <section className="">
+        <section className={className.section}>
           <Title title="WORKS" text="最新のお仕事の実績や、自主制作" />
           <WorksList works={works} clickHandler={clickHandler} />
-          <div className="">
+          <div className={className.btnWrap}>
             <TextBtn
               title="MORE"
               link="/works/"

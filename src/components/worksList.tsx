@@ -21,17 +21,18 @@ type Props = {
 const WorksList = ({ works = [], clickHandler }: Props) => {
   return (
     <>
-      <ul className={styles.worksList}>
+      <ul className="md:flex md:flex-wrap md:justify-between">
         {works.map((work) => (
-          <li key={work.id}>
+          <li key={work.id} className="mb-20px border border-border md:mb-30px md:w-[31%]">
             <Link href={`/works/${work.slug}`}>
               <a
+                className="block"
                 onClick={() => {
                   clickHandler(work.title, `/works/${work.slug}`)
                 }}
               >
                 <dl>
-                  <dt>
+                  <dt className="relative aspect-[16/9] mb-10px">
                     <Image
                       src={work.slider[0].img.url + '?w=800'}
                       alt=""
@@ -39,9 +40,9 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
                       objectFit={'cover'}
                     />
                   </dt>
-                  <dd>
-                    <time>{conversionDate(work.date)}</time>
-                    <h3>{work.title}</h3>
+                  <dd className="px-15px pb-10px">
+                    <time className="block mb-5px">{conversionDate(work.date)}</time>
+                    <h3 className="text-16px mb-10px font-bold break-all leading-5">{work.title}</h3>
                     <p>
                       {work.category.map((c) => (
                         <CategoryIcon key={c.id} text={c.category_label} />

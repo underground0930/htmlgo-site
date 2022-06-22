@@ -14,10 +14,10 @@ type Props = {
 
 const PanelsText = ({ articles, clickHandler }: Props) => {
   return (
-    <div className={styles.panelsText}>
+    <div className="mb-20px md:mb-40px">
       {articles.map((article) => {
         return (
-          <article key={article.link}>
+          <article key={article.link} className="border-b border-border py-20px first-of-type:border-t">
             <a
               href={article.link}
               target="_blank"
@@ -26,12 +26,12 @@ const PanelsText = ({ articles, clickHandler }: Props) => {
                 clickHandler(article.title, article.link)
               }}
             >
-              <dl>
-                <dt>
-                  <time>{article.published}</time>
+              <dl className="flex items-center">
+                <dt className="w-100px pr-15px">
+                  <time className="block text-14px mb-4px">{article.published}</time>
                 </dt>
-                <dd>
-                  <h3>{article.title}</h3>
+                <dd className="flex-1">
+                  <h3 className="text-15px font-bold mb-4px">{article.title}</h3>
                   <p>
                     <CategoryIcon text={article.category} />
                     {article.tags.map((tag, index) => (

@@ -24,6 +24,10 @@ type Props = {
   technologies: { technology_label: string; technology_slug: string }[]
 }
 
+const className = {
+  main: 'mx-20px',
+}
+
 export default function Works({ works, categories = [], technologies = [] }: Props) {
   const router = useRouter()
   const [filters, setFilters] = useState({
@@ -92,7 +96,7 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
         description={'実績を紹介しています'}
         url={`https://htmlgo.site/works/`}
       />
-      <main className={styles.main}>
+      <main className={className.main}>
         <Title title="WORKS" text="最新のお仕事の実績や、自主制作" />
         <div className={styles.filter}>
           <div className={styles.filterChild}>
