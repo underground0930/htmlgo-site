@@ -6,6 +6,8 @@ import { event } from 'libs/gtag'
 
 type Props = {}
 
+const linkStyle = ' hover:text-linkActive font-bold text-14px md:text-16px'
+
 const Header = ({}: Props) => {
   const { asPath } = useRouter()
   const clickHandler = (label: string, value: string) => {
@@ -14,8 +16,8 @@ const Header = ({}: Props) => {
   return (
     <>
       <header className="relative z-[1] mb-10 mx-5 border-b">
-        <div className="flex items-center justify-between mx-auto md:max-w-5xl">
-          <h1 className="font-bold text-20px md:w-52 md:text-25px md:py-5">
+        <div className="items-center justify-between mx-auto md:flex md:max-w-5xl">
+          <h1 className="text-center leading-none font-bold text-25px pt-6 pb-4 md:text-left md:w-52 md:py-5">
             <Link href="/">
               <a
                 className="no-underline"
@@ -27,12 +29,12 @@ const Header = ({}: Props) => {
               </a>
             </Link>
           </h1>
-          <nav className="">
-            <ul className="flex">
+          <nav className="overflow-x-scroll md:overflow-x-auto scrolling-touch">
+            <ul className="flex pb-2">
               <li>
                 <Link href="/">
                   <a
-                    className={(asPath === '/' ? 'text-linkActive' : '') + ' hover:text-linkActive font-bold'}
+                    className={(asPath === '/' ? 'text-linkActive' : '') + linkStyle}
                     onClick={() => {
                       clickHandler('top', '/')
                     }}
@@ -46,10 +48,7 @@ const Header = ({}: Props) => {
                   <li className="ml-5" key={index}>
                     <Link href={`/${v}/`}>
                       <a
-                        className={
-                          (asPath.startsWith(`/${v}`) ? 'text-linkActive' : '') +
-                          ' hover:text-linkActive font-bold'
-                        }
+                        className={(asPath.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle}
                         onClick={() => {
                           clickHandler(v, `/${v}/`)
                         }}

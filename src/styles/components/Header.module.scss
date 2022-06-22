@@ -1,5 +1,5 @@
-@import "mq";
-@import "font";
+@import 'mq';
+@import 'font';
 
 // variable
 $header_bp: 650px;
@@ -15,7 +15,6 @@ $header_bp: 650px;
     margin: 0 0 var(--s8);
   }
 }
-
 
 .inner {
   max-width: 950px;
@@ -62,7 +61,7 @@ $header_bp: 650px;
     padding: 0 var(--s7) var(--s1);
     box-sizing: border-box;
   }
-  ul{
+  ul {
     display: flex;
   }
 
@@ -94,11 +93,7 @@ $header_bp: 650px;
       font-size: 1.4rem;
     }
   }
-  [class="active"]{
+  [class='active'] {
     color: #339fef;
   }
-  a.comingsoon {
-    text-decoration: line-through;
-  }
 }
-
