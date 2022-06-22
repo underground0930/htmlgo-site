@@ -1,5 +1,5 @@
-@import "mq";
-@import "font";
+@import 'mq';
+@import 'font';
 
 $articles_bp: 700px;
 
@@ -9,21 +9,21 @@ $articles_bp: 700px;
   border-bottom: 2px solid var(--borderColor);
   margin: 0 0 var(--s10);
   padding: 0 0 15px;
-  button{
+  button {
     opacity: 0.5;
     background: none;
     padding: 0;
     border: none;
     outline: none;
     margin-left: 15px;
-    &[class="is-current"]{
+    &[class='is-current'] {
       opacity: 1;
     }
     cursor: pointer;
     svg {
       width: 30px;
       height: 30px;
-      color: var(--color1);
+      color: var(--mainColor);
     }
   }
 }

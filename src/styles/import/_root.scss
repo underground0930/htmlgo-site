@@ -15,12 +15,8 @@
   --footerTextColor: #fff;
   --loaderColor: #333333;
   --borderColor: #dddddd;
-  --color1: var(--mainColor);
-
   $spaceUnit: 4px;
-
   @for $i from 1 through 25 {
     --s#{$i}: #{$spaceUnit * $i};
   }
-
 }

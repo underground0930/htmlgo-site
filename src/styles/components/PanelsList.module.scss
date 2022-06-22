@@ -1,15 +1,15 @@
-@import "mq";
-@import "font";
+@import 'mq';
+@import 'font';
 
 ////////////////////////////
 // リスト
 ////////////////////////////
 .panelsList {
   margin: 0 auto 0;
-  article{
+  article {
     border-bottom: 1px solid var(--borderColor);
     padding: var(--s5) 0;
-    &:first-of-type{
+    &:first-of-type {
       border-top: 1px solid var(--borderColor);
     }
   }
@@ -32,7 +32,7 @@
     width: 100px;
     height: 100px;
     position: relative;
-    background-color: var(--color1);
+    background-color: var(--mainColor);
     border: 1px solid var(--borderColor);
     @include max-screen(600px) {
       width: 70px;
@@ -87,5 +87,4 @@
       }
     }
   }
-
 }

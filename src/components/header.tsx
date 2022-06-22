@@ -15,7 +15,7 @@ const Header = ({}: Props) => {
     <>
       <header className="relative z-[1] mb-10 mx-5 border-b">
         <div className="flex items-center justify-between mx-auto md:max-w-5xl">
-          <h1 className="font-bold md:w-52 md:text-2xl md:py-5">
+          <h1 className="font-bold text-20px md:w-52 md:text-25px md:py-5">
             <Link href="/">
               <a
                 className="no-underline"
@@ -32,7 +32,7 @@ const Header = ({}: Props) => {
               <li>
                 <Link href="/">
                   <a
-                    className={(asPath === '/' ? 'text-linkColor' : '') + ' hover:text-linkColor font-bold'}
+                    className={(asPath === '/' ? 'text-linkActive' : '') + ' hover:text-linkActive font-bold'}
                     onClick={() => {
                       clickHandler('top', '/')
                     }}
@@ -47,8 +47,8 @@ const Header = ({}: Props) => {
                     <Link href={`/${v}/`}>
                       <a
                         className={
-                          (asPath.startsWith(`/${v}`) ? 'text-linkColor' : '') +
-                          ' hover:text-linkColor font-bold'
+                          (asPath.startsWith(`/${v}`) ? 'text-linkActive' : '') +
+                          ' hover:text-linkActive font-bold'
                         }
                         onClick={() => {
                           clickHandler(v, `/${v}/`)

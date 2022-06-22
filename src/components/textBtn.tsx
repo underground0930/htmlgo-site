@@ -1,8 +1,5 @@
 import Link from 'next/link'
 
-// style
-import styles from 'styles/components/TextBtn.module.scss'
-
 type Props = {
   title: string
   link: string
@@ -10,7 +7,7 @@ type Props = {
   onClick?: () => void
 }
 
-const className = 'inline-block bgColor'
+const className = 'inline-block bgColor text-14px text-center text-decoration-none px-5 py-4'
 
 const TextBtn = ({ title, link, blank = false, onClick }: Props) => {
   return (

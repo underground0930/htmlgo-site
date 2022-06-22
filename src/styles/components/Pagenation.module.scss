@@ -1,5 +1,5 @@
-@import "mq";
-@import "font";
+@import 'mq';
+@import 'font';
 
 .pagination {
   text-align: center;
@@ -14,7 +14,7 @@
   }
   a {
     display: block;
-    background: var(--color1);
+    background: var(--mainColor);
     color: #fff;
     width: 30px;
     height: 30px;
@@ -24,8 +24,8 @@
   }
 }
 
-.active a{
+.active a {
   background: #ddd;
-  color: var(--color1);
+  color: var(--mainColor);
   font-weight: bold;
 }
