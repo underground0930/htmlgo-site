@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import PagenationChild from './pagenationChild'
 
 type Props = {

@@ -2,9 +2,6 @@ import { useState } from 'react'
 import Script from 'next/script'
 import { useEffect } from 'react'
 
-// styles
-import styles from 'styles/page/Contact.module.scss'
-
 // libs
 import { event } from 'libs/gtag'
 
@@ -13,6 +10,20 @@ import HeadWrap from 'components/headWrap'
 import Layout from 'components/layout'
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
+
+const className = {
+  main: 'mx-20px',
+  body: `max-w-[600px] mx-auto mb-40px`,
+  list: `mb-40px`,
+  listChild: `mb-25px`,
+  label: `font-bold text-16px block border-l-[5px] pl-10px mb-10px`,
+  'formrun-system-show': `text-14px text-[#f00] font-bold pt-5px`,
+  input: `w-full block text-16px border-border border p-8px`,
+  textarea: `w-full block text-16px border-border border p-8px resize-none`,
+  submit: `block bg-[#000] w-[200px] mx-auto p-8px text-[#fff] font-bold disabled:opacity-30`,
+  recaptcha: `flex items-center justify-center pb-40px`,
+  back: `border-border border-t-[1px] text-center pt-40px pb-40px mt-40px md:pb-80px`,
+}
 
 export default function Contact() {
   const [isInitFormRun, setIsInitFormRun] = useState(false)
@@ -49,52 +60,55 @@ export default function Contact() {
         description={'お問い合わせ'}
         url={`https://htmlgo.site/contact/`}
       />
-      <main className={styles.main}>
+      <main className={className.main}>
         <Title title="CONTACT" text="お仕事のお問い合わせはこちらからどうぞ" />
-        <div className={styles.body}>
+        <div className={className.body}>
           <form className="formrun" action="https://form.run/api/v1/r/slpviahq150x5q8lxsyw5x8z" method="post">
-            <ul className={styles.list}>
-              <li className={styles.listChild}>
-                <label className={styles.label}>お名前 [必須]</label>
-                <input className={styles.input} name="お名前" type="text" data-formrun-required />
+            <ul className={className.list}>
+              <li className={className.listChild}>
+                <label className={className.label}>お名前 [必須]</label>
+                <input className={className.input} name="お名前" type="text" data-formrun-required />
                 {isInitFormRun && (
-                  <div className={styles['formrun-system-show']} data-formrun-show-if-error="お名前">
+                  <div className={className['formrun-system-show']} data-formrun-show-if-error="お名前">
                     お名前を入力してください
                   </div>
                 )}
               </li>
-              <li className={styles.listChild}>
-                <label className={styles.label}>メールアドレス [必須]</label>
+              <li className={className.listChild}>
+                <label className={className.label}>メールアドレス [必須]</label>
                 <input
-                  className={styles.input}
+                  className={className.input}
                   name="メールアドレス"
                   type="text"
                   data-formrun-type="email"
                   data-formrun-required
                 />
                 {isInitFormRun && (
-                  <div className={styles['formrun-system-show']} data-formrun-show-if-error="メールアドレス">
+                  <div
+                    className={className['formrun-system-show']}
+                    data-formrun-show-if-error="メールアドレス"
+                  >
                     メールアドレスを正しく入力してください
                   </div>
                 )}
               </li>
-              <li className={styles.listChild}>
-                <label className={styles.label}>お問い合わせ [必須]</label>
+              <li className={className.listChild}>
+                <label className={className.label}>お問い合わせ [必須]</label>
                 <textarea
-                  className={styles.textarea}
+                  className={className.textarea}
                   name="お問い合わせ"
                   data-formrun-required
                   rows={14}
                 ></textarea>
 
                 {isInitFormRun && (
-                  <div className={styles['formrun-system-show']} data-formrun-show-if-error="お問い合わせ">
+                  <div className={className['formrun-system-show']} data-formrun-show-if-error="お問い合わせ">
                     お問い合わせ入力してください
                   </div>
                 )}
               </li>
             </ul>
-            <div className={styles.recaptcha}>
+            <div className={className.recaptcha}>
               <div
                 id="recaptchaMain"
                 className="g-recaptcha"
@@ -104,7 +118,7 @@ export default function Contact() {
               ></div>
             </div>
             <button
-              className={styles.submit}
+              className={className.submit}
               id="contact__submit"
               disabled
               type="submit"
@@ -118,7 +132,7 @@ export default function Contact() {
             </button>
           </form>
         </div>
-        <div className={styles.back}>
+        <div className={className.back}>
           <IconBtn
             icon="faHome"
             link="/"
