@@ -13,9 +13,6 @@ import { conversionDate } from 'utils/conversionDate'
 import { removeHtml } from 'utils/removeHtml'
 import { cutText } from 'utils/cutText'
 
-// style
-import styles from 'styles/page/WorksDetail.module.scss'
-
 // libs
 import { event } from 'libs/gtag'
 
@@ -35,6 +32,24 @@ type Props = {
   prev: { slug: string } | null
   next: { slug: string } | null
   isPreview: boolean
+}
+
+const className = {
+  main: ``,
+  kv: `relative mb-40px`,
+  kvInner: `relative`,
+  article: ``,
+  info: ``,
+  infoBody: ``,
+  infoList: ``,
+  body: ``,
+  facebook: ``,
+  twitter: ``,
+  sns: ``,
+  snsChild: ``,
+  prev: ``,
+  next: ``,
+  back: ``,
 }
 
 export default function WorksDetailBody({ post, prev, next, isPreview }: Props) {
@@ -58,25 +73,25 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
         isPreview={isPreview}
       />
       {isPreview && <PreviewBtn />}
-      <main className={styles.main}>
+      <main className={className.main}>
         <Title title={post.title} text="WORKS NAME" />
-        <article className={styles.article}>
-          <div className={styles.kv}>
-            <div className={styles.kvInner}>
+        <article className={className.article}>
+          <div className={className.kv}>
+            <div className={className.kvInner}>
               {post?.slider && <WorksSlider slider={post.slider}></WorksSlider>}
             </div>
           </div>
           {post.body && (
             <div
-              className={styles.body}
+              className={className.body}
               dangerouslySetInnerHTML={{
                 __html: `${post.body}`,
               }}
             ></div>
           )}
-          <div className={styles.info}>
-            <div className={styles.infoBody}>
-              <ul className={styles.infoList}>
+          <div className={className.info}>
+            <div className={className.infoBody}>
+              <ul className={className.infoList}>
                 {post?.date && (
                   <li>
                     <dl>
@@ -166,10 +181,10 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
               </ul>
             </div>
           </div>
-          <ul className={styles.sns}>
-            <li className={styles.snsChild}>
+          <ul className={className.sns}>
+            <li className={className.snsChild}>
               <a
-                className={styles.facebook}
+                className={className.facebook}
                 href={shareFacebookUrl(post.slug)}
                 target="_blank"
                 rel="noreferrer"
@@ -180,9 +195,9 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                 <FontAwesomeIcon icon={faFacebookF} color="#ffffff" />
               </a>
             </li>
-            <li className={styles.snsChild}>
+            <li className={className.snsChild}>
               <a
-                className={styles.twitter}
+                className={className.twitter}
                 href={shareTwitterUrl(post.slug)}
                 target="_blank"
                 rel="noreferrer"
@@ -194,7 +209,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
               </a>
             </li>
           </ul>
-          <div className={styles.back}>
+          <div className={className.back}>
             <IconBtn
               icon="faAlignJustify"
               link="/works/"
@@ -206,7 +221,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
             {next && (
               <Link href={`/works/${next.slug}/`}>
                 <a
-                  className={styles.next}
+                  className={className.next}
                   onClick={() => {
                     clickHandler('next', `/works/${next.slug}`)
                   }}
@@ -218,7 +233,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
             {prev && (
               <Link href={`/works/${prev.slug}`}>
                 <a
-                  className={styles.prev}
+                  className={className.prev}
                   onClick={() => {
                     clickHandler('prev', `/works/${prev.slug}`)
                   }}

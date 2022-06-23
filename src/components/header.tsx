@@ -6,6 +6,14 @@ import { event } from 'libs/gtag'
 
 type Props = {}
 
+const className = {
+  header: 'relative z-[1] mb-32px mx-20px border-b border-border',
+  inner: 'items-center justify-between mx-auto md:flex',
+  h1: 'text-center leading-none font-bold text-25px pt-24px pb-16px md:text-left md:w-[210px] md:py-20px',
+  nav: 'overflow-x-scroll md:overflow-x-auto scrolling-touch',
+  ul: 'flex flex-col md:flex-row',
+}
+
 const linkStyle = ' hover:text-linkActive font-bold text-14px md:text-16px'
 
 const Header = ({}: Props) => {
@@ -15,9 +23,9 @@ const Header = ({}: Props) => {
   }
   return (
     <>
-      <header className="relative z-[1] mb-32px mx-20px border-b border-border">
-        <div className="items-center justify-between mx-auto md:flex">
-          <h1 className="text-center leading-none font-bold text-25px pt-24px pb-16px md:text-left md:w-[210px] md:py-20px">
+      <header className={className.header}>
+        <div className={className.inner}>
+          <h1 className={className.h1}>
             <Link href="/">
               <a
                 className="no-underline"
@@ -29,8 +37,8 @@ const Header = ({}: Props) => {
               </a>
             </Link>
           </h1>
-          <nav className="overflow-x-scroll md:overflow-x-auto scrolling-touch">
-            <ul className="flex pb-8px md:pb-0px">
+          <nav className={className.nav}>
+            <ul className={className.ul}>
               <li>
                 <Link href="/">
                   <a

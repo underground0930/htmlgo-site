@@ -43,6 +43,16 @@ const links = [
   },
 ]
 
+const className = {
+  footer: `bg-main text-footerText p-20px`,
+  dl: `text-center text-14px mb-20px`,
+  dt: `mb-15px`,
+  dd: ``,
+  ul: `flex justify-center items-center`,
+  li: `mx-7px`,
+  small: `block text-10 text-center`,
+}
+
 const Footer = ({}: Props) => {
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: `footer`, label, value })
@@ -50,14 +60,14 @@ const Footer = ({}: Props) => {
 
   return (
     <>
-      <footer className="bg-main text-footerText p-20px">
-        <dl className="text-center text-14px mb-20px">
-          <dt className="mb-15px">This website powered by</dt>
+      <footer className={className.footer}>
+        <dl className={className.dl}>
+          <dt className={className.dt}>This website powered by</dt>
           <dd>
-            <ul className="flex justify-center items-center">
+            <ul className={className.ul}>
               {links.map((v, index) => {
                 return (
-                  <li className="mx-7px" key={v.key}>
+                  <li className={className.li} key={v.key}>
                     <a
                       href={v.href}
                       target="_blank"
@@ -74,7 +84,7 @@ const Footer = ({}: Props) => {
             </ul>
           </dd>
         </dl>
-        <small className="block text-10 text-center">Copyright © 2016 htmlgo.site All rights reserved.</small>
+        <small className={className.small}>Copyright © 2016 htmlgo.site All rights reserved.</small>
       </footer>
     </>
   )
