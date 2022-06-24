@@ -1,8 +1,5 @@
 import Link from 'next/link'
 
-// style
-import styles from 'styles/components/TextBtn.module.scss'
-
 type Props = {
   title: string
   link: string
@@ -10,17 +7,20 @@ type Props = {
   onClick?: () => void
 }
 
+const className =
+  'min-w-[120px] inline-block bg-btn text-btnIcon text-14px text-center text-decoration-none px-15px py-10px :visited:text-btnIcon'
+
 const TextBtn = ({ title, link, blank = false, onClick }: Props) => {
   return (
     <>
       {blank && (
-        <a className={styles.textBtn} href={link} onClick={onClick}>
+        <a className={className} href={link} onClick={onClick}>
           {title}
         </a>
       )}
       {!blank && (
         <Link href={link}>
-          <a className={styles.textBtn} onClick={onClick}>
+          <a className={className} onClick={onClick}>
             {title}
           </a>
         </Link>

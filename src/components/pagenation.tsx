@@ -1,48 +1,32 @@
-import Link from 'next/link'
-
-// styles
-import styles from 'styles/components/Pagenation.module.scss'
+import PagenationChild from './pagenationChild'
 
 type Props = {
   pages: number
   page: number
 }
+const className = {
+  ul: `
+    text-center
+    py-20px
+    align-top
+    border-y-1
+    border-border
+  `,
+}
 
 const Pagenation = ({ pages, page }: Props) => {
-  const setLink = (index: number) => {
-    if (index === 1) {
-      return `/articles/`
-    }
-    return `/articles/page/${index}/`
-  }
-
   return (
     <>
-      <ul className={styles.pagination}>
-        <li className={styles.prev}>
-          {page > 1 && (
-            <Link href={setLink(page - 1)}>
-              <a>&lt;</a>
-            </Link>
-          )}
-        </li>
+      <ul className={className.ul}>
+        {page > 1 && <PagenationChild page={page - 1}>&lt;</PagenationChild>}
         {[...Array(pages)].map((_, i) => {
           return (
-            <li key={i + 1} className={i + 1 === page ? styles.active : ''}>
-              <Link href={setLink(i + 1)}>
-                <a>{i + 1}</a>
-              </Link>
-            </li>
+            <PagenationChild page={page} key={i + 1} loopIndex={i}>
+              {i + 1}
+            </PagenationChild>
           )
         })}
-
-        <li className={styles.next}>
-          {page < pages && (
-            <Link href={setLink(page + 1)}>
-              <a>&gt;</a>
-            </Link>
-          )}
-        </li>
+        {page < pages && <PagenationChild page={page + 1}>&gt;</PagenationChild>}
       </ul>
     </>
   )

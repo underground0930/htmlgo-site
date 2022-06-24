@@ -4,9 +4,6 @@ import { useRouter } from 'next/router'
 // type
 import { WorksPosts } from 'types/index'
 
-// style
-import styles from 'styles/page/Works.module.scss'
-
 // libs
 import { event } from 'libs/gtag'
 import { worksGetStaticProps } from 'libs/getStaticProps'
@@ -22,6 +19,51 @@ type Props = {
   works: WorksPosts
   categories: { category_label: string; category_slug: string }[]
   technologies: { technology_label: string; technology_slug: string }[]
+}
+
+const className = {
+  main: 'mx-20px max-w-[800px] md:mx-auto',
+  filter: `mb-20px md:flex`,
+  filterChild: `
+    mb-10px
+    mr-0px
+    md:mr-20px
+    md:mb-0px
+    relative
+    block
+    before:absolute
+    before:before:content-[""]
+    before:my-auto
+    before:top-[0px]
+    before:bottom-[0px]
+    before:right-[10px]
+    before:w-[5px]
+    before:h-[5px]
+    before:border-r-[2px]
+    before:border-b-[2px]
+    before:block
+    before:rotate:45deg
+    before:x-[-1px]
+    before:y-[-1px]
+    before:rotate-45
+    before:z-[1]
+  `,
+  filterSelect: `
+    w-[100%]
+    md:w-[auto]
+    relative
+    outline-none
+    text-overflow-['']
+    appearance-none
+    rounded-none
+    h-[30px]
+    border-1
+    border-[#000]
+    pr-[35px]
+    pl-[10px]
+  `,
+  footer: `border-border border-t-[1px] pt-40px pb-40px mt-40px`,
+  back: `text-center`,
 }
 
 export default function Works({ works, categories = [], technologies = [] }: Props) {
@@ -92,14 +134,11 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
         description={'実績を紹介しています'}
         url={`https://htmlgo.site/works/`}
       />
-      <main className={styles.main}>
-        <Title>
-          <span>WORKS</span>
-          <span>お仕事の実績や、自主制作のまとめページです</span>
-        </Title>
-        <div className={styles.filter}>
-          <div className={styles.filterChild}>
-            <select className={styles.filterSelect} onChange={categoryHandler} value={filters.category}>
+      <main className={className.main}>
+        <Title title="WORKS" text="最新のお仕事の実績や、自主制作" />
+        <div className={className.filter}>
+          <div className={className.filterChild}>
+            <select className={className.filterSelect} onChange={categoryHandler} value={filters.category}>
               <option value="" key={''}>
                 Category
               </option>
@@ -110,8 +149,12 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
               ))}
             </select>
           </div>
-          <div className={styles.filterChild}>
-            <select className={styles.filterSelect} onChange={technologyHandler} value={filters.technology}>
+          <div className={className.filterChild}>
+            <select
+              className={className.filterSelect}
+              onChange={technologyHandler}
+              value={filters.technology}
+            >
               <option value="" key={''}>
                 Technology
               </option>
@@ -124,8 +167,8 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
           </div>
         </div>
         <WorksList works={filterPost()} clickHandler={clickHandler} />
-        <footer className={styles.footer}>
-          <div className={styles.back}>
+        <footer className={className.footer}>
+          <div className={className.back}>
             <IconBtn
               icon="faHome"
               link="/"

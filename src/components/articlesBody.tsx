@@ -7,9 +7,6 @@ import { RootState } from '../store'
 // type
 import { FeedObj } from 'types/index'
 
-// style
-import styles from 'styles/page/Articles.module.scss'
-
 // libs
 import { event } from 'libs/gtag'
 
@@ -28,6 +25,11 @@ type Props = {
   pages: number
 }
 
+const className = {
+  main: 'mx-20px max-w-[800px] md:mx-auto',
+  btnWrap: 'text-center mb-40px md:mb-80',
+}
+
 export default function ArticlesBody({ articles = [], page, pages }: Props) {
   const type = useSelector((state: RootState) => state.panelType.value)
   const clickHandler = (label: string, value: string) => {
@@ -40,15 +42,12 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
         description={'色々なブログの記事のフィードをまとめたものです'}
         url={`https://htmlgo.site/articles/`}
       />
-      <main className={styles.main}>
-        <Title>
-          <span>ARTICLES</span>
-          <span>技術系やそれ以外の記事</span>
-        </Title>
+      <main className={className.main}>
+        <Title title="ARTICLES" text="技術系やそれ以外の記事" />
         <ViewSwitch type={type} />
         <Panels articles={articles} type={type} clickHandler={clickHandler} />
         <Pagenation pages={pages} page={page} />
-        <div className={styles.back}>
+        <div className={className.btnWrap + ` mt-40px`}>
           <IconBtn
             icon="faHome"
             link="/"

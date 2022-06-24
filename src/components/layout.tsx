@@ -1,6 +1,3 @@
-// style
-import styles from 'styles/components/Layout.module.scss'
-
 // components
 import Header from 'components/header'
 import Footer from 'components/footer'
@@ -10,12 +7,17 @@ type Props = {
   children: React.ReactNode
 }
 
-const layout = ({ preview, children }: Props) => {
+const className = {
+  wrapper: ``,
+  container: ``,
+}
+
+const layout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
+      <div className={className.wrapper}>
+        <div className={className.container}>
           <div>{children}</div>
         </div>
       </div>

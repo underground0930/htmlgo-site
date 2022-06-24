@@ -1,25 +1,43 @@
 import React from 'react'
 
-// styles
-import styles from 'styles/components/HistoryList.module.scss'
-
 type Props = {
   data: { heading: string; text: string; link?: string }[]
+}
+
+const className = {
+  list: `text-14px md:text-15px md:px-10px`,
+  li: `mb-15px`,
+  dl: `md:flex`,
+  dt: `
+    relative
+    w-[180px]
+    mr-25px
+    font-bold
+    md:after:content-['.....']
+    md:after:block
+    md:after:absolute
+    md:after:top-0
+    md:after:bottom-0
+    md:after:right-0
+    md:after:m-auto
+    md:after:translate-y-[-5px]`,
+  dd: `flex-1`,
+  a: `underline decoration-1`,
 }
 
 const HistoryList = ({ data }: Props) => {
   return (
     <>
-      <ul className={styles.list}>
+      <ul className={className.list}>
         {data.map((child, index) => {
           const { heading, text, link } = child
           return (
-            <li key={index}>
-              <dl>
-                <dt>{heading}</dt>
-                <dd>
+            <li className={className.li} key={index}>
+              <dl className={className.dl}>
+                <dt className={className.dt}>{heading}</dt>
+                <dd className={className.dd}>
                   {link ? (
-                    <a href={link} target="_blank" rel="noreferrer">
+                    <a className={className.a} href={link} target="_blank" rel="noreferrer">
                       {text}
                     </a>
                   ) : (

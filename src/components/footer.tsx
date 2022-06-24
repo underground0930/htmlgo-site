@@ -1,5 +1,3 @@
-import styles from 'styles/components/Footer.module.scss'
-
 import IconNextjs from 'svgs/IconNextjs.svg'
 import IconVercel from 'svgs/IconVercel.svg'
 import IconMicrocms from 'svgs/IconMicrocms.svg'
@@ -12,6 +10,49 @@ import { event } from 'libs/gtag'
 
 type Props = {}
 
+const links = [
+  {
+    href: 'https://nextjs.org/',
+    key: 'Nextjs',
+    icon: <IconNextjs />,
+  },
+  {
+    href: 'https://vercel.com/home',
+    key: 'Vercel',
+    icon: <IconVercel />,
+  },
+  {
+    href: 'https://github.com/',
+    key: 'github',
+    icon: <IconGithub />,
+  },
+  {
+    href: 'https://microcms.io/',
+    key: 'microcms',
+    icon: <IconMicrocms />,
+  },
+  {
+    href: 'https://form.run/ja',
+    key: 'form.run',
+    icon: <IconFormrun />,
+  },
+  {
+    href: 'https://www.google.com/recaptcha/about/',
+    key: 'recaptcha',
+    icon: <IconRecaptcha />,
+  },
+]
+
+const className = {
+  footer: `bg-main text-footerText p-20px`,
+  dl: `text-center text-14px mb-20px`,
+  dt: `mb-15px`,
+  dd: ``,
+  ul: `flex justify-center items-center`,
+  li: `mx-7px`,
+  small: `block text-10 text-center`,
+}
+
 const Footer = ({}: Props) => {
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: `footer`, label, value })
@@ -19,87 +60,31 @@ const Footer = ({}: Props) => {
 
   return (
     <>
-      <footer className={styles.footer}>
-        <dl>
-          <dt>This website powered by</dt>
+      <footer className={className.footer}>
+        <dl className={className.dl}>
+          <dt className={className.dt}>This website powered by</dt>
           <dd>
-            <ul>
-              <li>
-                <a
-                  href="https://nextjs.org/"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => {
-                    clickHandler('Nextjs', e.currentTarget.href)
-                  }}
-                >
-                  <IconNextjs />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://vercel.com/home"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => {
-                    clickHandler('Vercel', e.currentTarget.href)
-                  }}
-                >
-                  <IconVercel />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => {
-                    clickHandler('github', e.currentTarget.href)
-                  }}
-                >
-                  <IconGithub />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://microcms.io/"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => {
-                    clickHandler('microcms', e.currentTarget.href)
-                  }}
-                >
-                  <IconMicrocms />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://form.run/ja"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => {
-                    clickHandler('form.run', e.currentTarget.href)
-                  }}
-                >
-                  <IconFormrun />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.google.com/recaptcha/about/"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => {
-                    clickHandler('recaptcha', e.currentTarget.href)
-                  }}
-                >
-                  <IconRecaptcha />
-                </a>
-              </li>
+            <ul className={className.ul}>
+              {links.map((v, index) => {
+                return (
+                  <li className={className.li} key={v.key}>
+                    <a
+                      href={v.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => {
+                        clickHandler(v.key, e.currentTarget.href)
+                      }}
+                    >
+                      {v.icon}
+                    </a>
+                  </li>
+                )
+              })}
             </ul>
           </dd>
         </dl>
-        <small>Copyright © 2016 htmlgo.site All rights reserved.</small>
+        <small className={className.small}>Copyright © 2016 htmlgo.site All rights reserved.</small>
       </footer>
     </>
   )
