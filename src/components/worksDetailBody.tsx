@@ -43,7 +43,7 @@ const className = {
   info: `py-40px border-b border-border`,
   infoBody: ``,
   infoList: ``,
-  link: `break-all block mb-15px last-of-type:mb-0px underline`,
+  link: `break-all block mb-15px last-of-type:mb-0px`,
   span: `relative inline-block pr-16px after:absolute after:content-["/"] after:block last-of-type:after:hidden after:font-bold after:right-[5px] after:top-0`,
   body: `mx-auto text-16px leading-[1.8] px-10px py-20px border-y-1 border-border break-words md:mx-25px md:py-40px`,
   facebook: `bg-[#4267b2]`,
@@ -133,7 +133,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <span className={className.span}>{post.url}</span>
+                        {post.url}
                       </a>
                     )}
                     {post?.url2 && (
@@ -143,7 +143,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <span className={className.span}>{post.url2}</span>
+                        {post.url2}
                       </a>
                     )}
                   </WorksDetailInfo>
