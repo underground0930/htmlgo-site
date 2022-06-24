@@ -9,7 +9,7 @@ const className = {
     text-center
     py-20px
     align-top
-    border-y
+    border-y-1
     border-border
   `,
 }

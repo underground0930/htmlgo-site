@@ -14,7 +14,7 @@ const className = {
   main: 'mx-20px',
   body: `max-w-[600px] mx-auto mb-40px`,
   thanks: `text-16px text-center md:text-20px`,
-  back: `border-border border-t-[1px] text-center pt-40px pb-40px mt-40px md:pb-80px`,
+  back: `border-border border-t-[1px] text-center pt-40px pb-40px mt-40px`,
 }
 
 export default function Thanks() {

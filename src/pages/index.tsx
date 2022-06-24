@@ -26,9 +26,9 @@ type Props = {
 }
 
 const className = {
-  main: 'mx-20px',
+  main: 'mx-20px max-w-[800px] md:mx-auto',
   btnWrap: 'text-center',
-  section: 'mb-40px pb-20px md:mb-80px md:pb-40px border-b border-border',
+  section: 'mb-40px pb-20px md:mb-80px md:pb-40px border-b-1 border-border',
 }
 
 export default function Home({ works = [], articles = [] }: Props) {

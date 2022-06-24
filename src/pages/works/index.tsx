@@ -4,9 +4,6 @@ import { useRouter } from 'next/router'
 // type
 import { WorksPosts } from 'types/index'
 
-// style
-import styles from 'styles/page/Works.module.scss'
-
 // libs
 import { event } from 'libs/gtag'
 import { worksGetStaticProps } from 'libs/getStaticProps'
@@ -25,7 +22,7 @@ type Props = {
 }
 
 const className = {
-  main: 'mx-20px',
+  main: 'mx-20px max-w-[800px] md:mx-auto',
   filter: `mb-20px md:flex`,
   filterChild: `
     mb-10px
@@ -60,12 +57,12 @@ const className = {
     appearance-none
     rounded-none
     h-[30px]
-    border
+    border-1
     border-[#000]
     pr-[35px]
     pl-[10px]
   `,
-  footer: `border-border border-t-[1px] pt-40px pb-40px mt-40px md:pb-80px`,
+  footer: `border-border border-t-[1px] pt-40px pb-40px mt-40px`,
   back: `text-center`,
 }
 

@@ -18,7 +18,7 @@ const PanelsTile = ({ articles, clickHandler }: Props) => {
         return (
           <article
             key={article.link}
-            className="mb-20px shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] w-[100%] md:w-[23.5%] "
+            className="mb-30px shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] w-[100%] md:w-[23.5%] "
           >
             <a
               href={article.link}
@@ -29,12 +29,12 @@ const PanelsTile = ({ articles, clickHandler }: Props) => {
               }}
             >
               <dl>
-                <dt className="relative h-[140px] border border-border bg-main">
+                <dt className="relative h-[140px] border-b-1 border-border bg-main">
                   <Image src={article.img} alt={''} layout={'fill'} objectFit={'cover'} />
                 </dt>
                 <dd className="p-12px">
                   <time className="block text-12px mb-5px">{article.published}</time>
-                  <h3 className="relative text-13px font-bold leading-5 break-all">{article.title}</h3>
+                  <h3 className="relative mb-5px text-13px font-bold leading-5 break-all">{article.title}</h3>
                   <p className="block empty:hidden">
                     <CategoryIcon text={article.category} />
                     {article.tags.map((tag, index) => (

@@ -12,17 +12,17 @@ import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
 
 const className = {
-  main: 'mx-20px',
-  body: `max-w-[600px] mx-auto mb-40px`,
+  main: 'mx-20px max-w-[800px] md:mx-auto',
+  body: `mb-40px`,
   list: `mb-40px`,
   listChild: `mb-25px`,
-  label: `font-bold text-16px block border-l-[5px] pl-10px mb-10px`,
+  label: `font-bold text-16px block border-l-5 pl-10px mb-10px`,
   'formrun-system-show': `text-14px text-[#f00] font-bold pt-5px`,
-  input: `w-full block text-16px border-border border p-8px`,
-  textarea: `w-full block text-16px border-border border p-8px resize-none`,
+  input: `w-full block text-16px border-1 border-border p-8px`,
+  textarea: `w-full block text-16px border-1 border-border p-8px resize-none`,
   submit: `block bg-[#000] w-[200px] mx-auto p-8px text-[#fff] font-bold disabled:opacity-30`,
   recaptcha: `flex items-center justify-center pb-40px`,
-  back: `border-border border-t-[1px] text-center pt-40px pb-40px mt-40px md:pb-80px`,
+  back: `border-t-1 border-border text-center pt-40px pb-40px mt-40px`,
 }
 
 export default function Contact() {

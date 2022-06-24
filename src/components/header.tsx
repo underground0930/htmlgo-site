@@ -7,11 +7,11 @@ import { event } from 'libs/gtag'
 type Props = {}
 
 const className = {
-  header: 'relative z-[1] mb-32px mx-20px border-b border-border',
-  inner: 'items-center justify-between mx-auto md:flex',
+  header: 'relative z-[1] mb-32px mx-20px border-b-1 border-border',
+  inner: 'items-center justify-between max-w-[800px] mx-auto md:flex',
   h1: 'text-center leading-none font-bold text-25px pt-24px pb-16px md:text-left md:w-[210px] md:py-20px',
   nav: 'overflow-x-scroll md:overflow-x-auto scrolling-touch',
-  ul: 'flex flex-col md:flex-row',
+  ul: 'flex pb-10px md:pb-0px',
 }
 
 const linkStyle = ' hover:text-linkActive font-bold text-14px md:text-16px'

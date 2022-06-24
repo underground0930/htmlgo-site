@@ -7,9 +7,6 @@ import CategoryIcon from './categoryIcon'
 // type
 import { WorksPosts } from 'types/index'
 
-// styles
-import styles from 'styles/components/WorksList.module.scss'
-
 // modules
 import { conversionDate } from 'utils/conversionDate'
 
@@ -23,7 +20,7 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
     <>
       <ul className="md:flex md:flex-wrap md:justify-between">
         {works.map((work) => (
-          <li key={work.id} className="mb-20px border border-border md:mb-30px md:w-[31%]">
+          <li key={work.id} className="mb-30px border-1 border-border md:w-[32%]">
             <Link href={`/works/${work.slug}`}>
               <a
                 className="block"
@@ -32,7 +29,7 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
                 }}
               >
                 <dl>
-                  <dt className="relative aspect-[16/9] mb-10px">
+                  <dt className="relative aspect-[16/9] mb-10px border-b-1 border-border">
                     <Image
                       src={work.slider[0].img.url + '?w=800'}
                       alt=""

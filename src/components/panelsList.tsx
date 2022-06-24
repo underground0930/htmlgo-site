@@ -6,9 +6,6 @@ import CategoryIcon from './categoryIcon'
 // types
 import { FeedObj } from 'types/index'
 
-// styles
-import styles from 'styles/components/PanelsList.module.scss'
-
 type Props = {
   articles: FeedObj[]
   clickHandler: (label: string, value: string) => void
@@ -19,7 +16,7 @@ const PanelsList = ({ articles, clickHandler }: Props) => {
     <div className="mb-20px md:mb-40px">
       {articles.map((article) => {
         return (
-          <article key={article.link} className="border-b border-border py-20px first-of-type:border-t">
+          <article key={article.link} className="border-b-1 border-border py-20px first-of-type:border-t-1">
             <a
               href={article.link}
               target="_blank"
@@ -29,7 +26,7 @@ const PanelsList = ({ articles, clickHandler }: Props) => {
               }}
             >
               <dl className="bg-base flex items-center">
-                <dt className="relative w-[70px] h-[70px] border border-border md:w-[100px] md:h-[100px]">
+                <dt className="relative w-[70px] h-[70px] border-1 border-border md:w-[100px] md:h-[100px]">
                   <Image src={article.img} alt={''} layout={'fill'} objectFit={'cover'} />
                 </dt>
                 <dd className="pl-20px flex-1">

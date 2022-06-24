@@ -22,6 +22,7 @@ import Layout from 'components/layout'
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
 import PreviewBtn from './previewBtn'
+import WorksDetailInfo from './worksDetailInfo'
 
 const WorksSlider = dynamic(() => import('components/worksSlider'), {
   ssr: false,
@@ -35,21 +36,26 @@ type Props = {
 }
 
 const className = {
-  main: ``,
+  main: 'mx-20px max-w-[800px] md:mx-auto',
   kv: `relative mb-40px`,
   kvInner: `relative`,
   article: ``,
-  info: ``,
+  info: `py-40px border-b border-border`,
   infoBody: ``,
   infoList: ``,
-  body: ``,
-  facebook: ``,
-  twitter: ``,
-  sns: ``,
-  snsChild: ``,
-  prev: ``,
-  next: ``,
-  back: ``,
+  link: `break-all block mb-15px last-of-type:mb-0px underline`,
+  span: `relative inline-block pr-16px after:absolute after:content-["/"] after:block last-of-type:after:hidden after:font-bold after:right-[5px] after:top-0`,
+  body: `mx-auto text-16px leading-[1.8] px-10px py-20px border-y-1 border-border break-words md:mx-25px md:py-40px`,
+  facebook: `bg-[#4267b2]`,
+  twitter: `bg-[#1da1f2]`,
+  sns: `py-25px flex items-center justify-center border-b-[1px] border-border`,
+  snsChild: `mx-6px`,
+  snsLink: `flex items-center justify-center w-[80px] h-[35px] cursor-pointer`,
+  icon: `w-[25px] h-[25px]`,
+  pager: `absolute top-0 bottom-0 m-auto w-[40px] h-[40px] bg-[#000] flex items-center justify-center`,
+  prev: `right-0`,
+  next: `left-0`,
+  back: `relative text-center mt-40px mb-40px`,
 }
 
 export default function WorksDetailBody({ post, prev, next, isPreview }: Props) {
@@ -83,7 +89,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
           </div>
           {post.body && (
             <div
-              className={className.body}
+              className={`${className.body} workDetailBody`}
               dangerouslySetInnerHTML={{
                 __html: `${post.body}`,
               }}
@@ -93,90 +99,79 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
             <div className={className.infoBody}>
               <ul className={className.infoList}>
                 {post?.date && (
-                  <li>
-                    <dl>
-                      <dt>公開日</dt>
-                      <dd>
-                        <time dateTime={conversionDate(post.date)}>{conversionDate(post.date)}</time>
-                      </dd>
-                    </dl>
-                  </li>
+                  <WorksDetailInfo title="公開日">
+                    <time dateTime={conversionDate(post.date)}>{conversionDate(post.date)}</time>
+                  </WorksDetailInfo>
                 )}
                 {post?.category?.length > 0 && (
-                  <li>
-                    <dl>
-                      <dt>カテゴリー</dt>
-                      <dd>
-                        {post.category.map((v) => (
-                          <span key={v.category_label}>{v.category_label}</span>
-                        ))}
-                      </dd>
-                    </dl>
-                  </li>
+                  <WorksDetailInfo title="カテゴリー">
+                    {post.category.map((v) => (
+                      <span className={className.span} key={v.category_label}>
+                        {v.category_label}
+                      </span>
+                    ))}
+                  </WorksDetailInfo>
                 )}
                 {post?.technology?.length > 0 && (
-                  <li>
-                    <dl>
-                      <dt>テクノロジー</dt>
-                      <dd>
-                        {post.technology.map((v) => (
-                          <span key={v.technology_label}>{v.technology_label}</span>
-                        ))}
-                      </dd>
-                    </dl>
-                  </li>
+                  <WorksDetailInfo title="テクノロジー">
+                    {post.technology.map((v) => (
+                      <span className={className.span} key={v.technology_label}>
+                        {v.technology_label}
+                      </span>
+                    ))}
+                  </WorksDetailInfo>
                 )}
                 {post?.production_period && (
-                  <li>
-                    <dl>
-                      <dt>制作期間</dt>
-                      <dd>{post.production_period}</dd>
-                    </dl>
-                  </li>
+                  <WorksDetailInfo title="制作期間">{post.production_period}</WorksDetailInfo>
                 )}
                 {(post?.url || post?.url2) && (
-                  <li>
-                    <dl>
-                      <dt>URL</dt>
-                      <dd>
-                        {post?.url && (
-                          <a href={post.url} target="_blank" rel="noreferrer">
-                            <span>{post.url}</span>
-                          </a>
-                        )}
-                        {post?.url2 && (
-                          <a href={post.url2} target="_blank" rel="noreferrer">
-                            <span>{post.url2}</span>
-                          </a>
-                        )}
-                      </dd>
-                    </dl>
-                  </li>
+                  <WorksDetailInfo title="URL">
+                    {post?.url && (
+                      <a
+                        className={`${className.link} underline`}
+                        href={post.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span className={className.span}>{post.url}</span>
+                      </a>
+                    )}
+                    {post?.url2 && (
+                      <a
+                        className={`${className.link} underline`}
+                        href={post.url2}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span className={className.span}>{post.url2}</span>
+                      </a>
+                    )}
+                  </WorksDetailInfo>
                 )}
                 {post?.credit?.length > 0 && (
-                  <li>
-                    <dl>
-                      <dt>クレジット</dt>
-                      <dd>
-                        <ul>
-                          {post.credit.map((v) => (
-                            <li key={v.value}>
-                              <p>{v.label}</p>
-                              <p>
-                                {v.link ? (
-                                  <a href={v.link} target="_blank" rel="noreferrer">
-                                    {v.value}
-                                  </a>
-                                ) : (
-                                  <a>{v.value}</a>
-                                )}
-                              </p>
-                            </li>
-                          ))}
-                        </ul>
-                      </dd>
-                    </dl>
-                  </li>
+                  <WorksDetailInfo title="クレジット">
+                    <ul>
+                      {post.credit.map((v) => (
+                        <li key={v.value} className={'mb-20px last-of-type:mb-0px'}>
+                          <p className="text-14px font-bold mb-2px">{v.label}</p>
+                          <p className="text-14px">
+                            {v.link ? (
+                              <a
+                                className={`${className.link} underline`}
+                                href={v.link}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {v.value}
+                              </a>
+                            ) : (
+                              <a className={className.link}>{v.value}</a>
+                            )}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </WorksDetailInfo>
                 )}
               </ul>
             </div>
@@ -184,7 +179,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
           <ul className={className.sns}>
             <li className={className.snsChild}>
               <a
-                className={className.facebook}
+                className={`${className.snsLink} ${className.facebook}`}
                 href={shareFacebookUrl(post.slug)}
                 target="_blank"
                 rel="noreferrer"
@@ -192,12 +187,12 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   clickHandler('facebook', `/works/${post.slug}`)
                 }}
               >
-                <FontAwesomeIcon icon={faFacebookF} color="#ffffff" />
+                <FontAwesomeIcon className={className.icon} icon={faFacebookF} color="#ffffff" />
               </a>
             </li>
             <li className={className.snsChild}>
               <a
-                className={className.twitter}
+                className={`${className.snsLink} ${className.twitter}`}
                 href={shareTwitterUrl(post.slug)}
                 target="_blank"
                 rel="noreferrer"
@@ -205,7 +200,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   clickHandler('twitter', `/works/${post.slug}`)
                 }}
               >
-                <FontAwesomeIcon icon={faTwitter} color="#ffffff" />
+                <FontAwesomeIcon className={className.icon} icon={faTwitter} color="#ffffff" />
               </a>
             </li>
           </ul>
@@ -221,24 +216,24 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
             {next && (
               <Link href={`/works/${next.slug}/`}>
                 <a
-                  className={className.next}
+                  className={`${className.pager} ${className.next}`}
                   onClick={() => {
                     clickHandler('next', `/works/${next.slug}`)
                   }}
                 >
-                  <FontAwesomeIcon icon={faChevronLeft} color="#ffffff" />
+                  <FontAwesomeIcon className={className.icon} icon={faChevronLeft} color="#ffffff" />
                 </a>
               </Link>
             )}
             {prev && (
               <Link href={`/works/${prev.slug}`}>
                 <a
-                  className={className.prev}
+                  className={`${className.pager} ${className.prev}`}
                   onClick={() => {
                     clickHandler('prev', `/works/${prev.slug}`)
                   }}
                 >
-                  <FontAwesomeIcon icon={faChevronRight} color="#ffffff" />
+                  <FontAwesomeIcon className={className.icon} icon={faChevronRight} color="#ffffff" />
                 </a>
               </Link>
             )}

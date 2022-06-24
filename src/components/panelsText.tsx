@@ -4,9 +4,6 @@ import CategoryIcon from './categoryIcon'
 // types
 import { FeedObj } from 'types/index'
 
-// styles
-import styles from 'styles/components/PanelsText.module.scss'
-
 type Props = {
   articles: FeedObj[]
   clickHandler: (label: string, value: string) => void
@@ -17,7 +14,7 @@ const PanelsText = ({ articles, clickHandler }: Props) => {
     <div className="mb-20px md:mb-40px">
       {articles.map((article) => {
         return (
-          <article key={article.link} className="border-b border-border py-20px first-of-type:border-t">
+          <article key={article.link} className="border-b-1 border-border py-20px first-of-type:border-t-1">
             <a
               href={article.link}
               target="_blank"

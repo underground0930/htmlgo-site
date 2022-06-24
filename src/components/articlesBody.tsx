@@ -26,7 +26,7 @@ type Props = {
 }
 
 const className = {
-  main: 'mx-20px',
+  main: 'mx-20px max-w-[800px] md:mx-auto',
   btnWrap: 'text-center mb-40px md:mb-80',
 }
 

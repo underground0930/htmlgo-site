@@ -10,13 +10,13 @@ import IconBtn from 'components/IconBtn'
 import HistoryList from 'components/historyList'
 
 const className = {
-  main: 'mx-20px',
+  main: 'mx-20px max-w-[800px] md:mx-auto',
   body: `mb-40px pb-30px`,
   img: `rounded-full w-[210px] h-[210px] mx-auto mb-40px overflow-hidden`,
   sns: `mb-45px`,
-  title: `text-18px font-bold mt-25px mb-20px border-l-[3px] border-l-solid border-b-[1px] pl-5px pb-5px`,
+  title: `text-18px font-bold mt-40px mb-30px border-l-5 border-l-[#000] border-b-1 border-b-[#000]/30 pl-5px pb-5px`,
   text: `text-15px`,
-  btnWrap: `text-center mb-40px md:mb-80`,
+  btnWrap: `border-t-1 border-border text-center pt-40px mb-40px`,
 }
 
 export default function About() {
@@ -109,7 +109,7 @@ export default function About() {
             ]}
           />
         </div>
-        <div className={className.btnWrap + ` mt-40px`}>
+        <div className={className.btnWrap}>
           <IconBtn
             icon="faHome"
             link="/"
