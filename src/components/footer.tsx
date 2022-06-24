@@ -1,6 +1,7 @@
 import IconNextjs from 'svgs/IconNextjs.svg'
 import IconVercel from 'svgs/IconVercel.svg'
 import IconMicrocms from 'svgs/IconMicrocms.svg'
+import IconTailwindcss from 'svgs/IconTailwindcss.svg'
 import IconGithub from 'svgs/IconGithub.svg'
 import IconFormrun from 'svgs/IconFormrun.svg'
 import IconRecaptcha from 'svgs/IconRecaptcha.svg'
@@ -20,6 +21,11 @@ const links = [
     href: 'https://vercel.com/home',
     key: 'Vercel',
     icon: <IconVercel />,
+  },
+  {
+    href: 'https://tailwindcss.com/',
+    key: 'Tailwind CSS',
+    icon: <IconTailwindcss />,
   },
   {
     href: 'https://github.com/',
