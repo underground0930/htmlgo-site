@@ -53,6 +53,7 @@ const className = {
     md:w-[auto]
     relative
     outline-none
+    bg-transparent
     text-overflow-['']
     appearance-none
     rounded-none
