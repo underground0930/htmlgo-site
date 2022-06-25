@@ -35,11 +35,6 @@ export default function Contact() {
     setIsInitFormRun(true)
   }
 
-  const resetRecapcha = () => {
-    console.log('init Recapcha')
-    window.grecaptcha.render('recaptchaMain')
-  }
-
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: 'contact', label, value })
   }
@@ -49,7 +44,13 @@ export default function Contact() {
       initFormrun()
     }
     if (window.grecaptcha) {
-      resetRecapcha()
+      window.contact_timer = window.setTimeout(window.onloadCallback, 200)
+    }
+    return () => {
+      clearInterval(window.contact_timer)
+      if (window.grecaptcha) {
+        window.grecaptcha.reset(window.contact_grecaptcha_id)
+      }
     }
   }, [])
 
@@ -109,13 +110,7 @@ export default function Contact() {
               </li>
             </ul>
             <div className={className.recaptcha}>
-              <div
-                id="recaptchaMain"
-                className="g-recaptcha"
-                data-sitekey="6Ldu_1UbAAAAABKzqC0VRtFsRoCmdI1ruAB_Pkb4"
-                data-callback="successCallback"
-                data-expired-callback="expiredCallback"
-              ></div>
+              <div id="recaptchaMain"></div>
             </div>
             <button
               className={className.submit}
@@ -145,30 +140,27 @@ export default function Contact() {
       </main>
       <Script id="inline-js">
         {`
-          window.successCallback = () => {
-            document.getElementById('contact__submit').removeAttribute('disabled')
-          }
-
-          window.expiredCallback = () => {
-            document.getElementById('contact__submit').setAttribute('disabled', true)
+          window.onloadCallback = ()=>{
+            console.log('onloadCallback')
+            window.contact_grecaptcha_id = window.grecaptcha.render('recaptchaMain', {
+              sitekey: "6Ldu_1UbAAAAABKzqC0VRtFsRoCmdI1ruAB_Pkb4",
+              callback: () => {
+                document.getElementById('contact__submit')?.removeAttribute('disabled')
+              },
+              'expired-callback': () => {
+                document.getElementById('contact__submit')?.setAttribute('disabled', 'true')
+              },
+            })
           }
         `}
       </Script>
       <Script
         id="recaptcha-js"
-        src="https://www.google.com/recaptcha/api.js"
-        onLoad={() => {
-          console.log('recaptcha-js is load')
-        }}
+        src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async
+        defer
       />
-      <Script
-        id="formrun-js"
-        src="https://sdk.form.run/js/v2/formrun.js"
-        onLoad={() => {
-          console.log('formrun-js is load')
-          initFormrun()
-        }}
-      />
+      <Script id="formrun-js" src="https://sdk.form.run/js/v2/formrun.js" onLoad={initFormrun} />
     </Layout>
   )
 }
