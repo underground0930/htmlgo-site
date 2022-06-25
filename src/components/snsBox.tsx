@@ -5,9 +5,9 @@ import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-ic
 import { event } from 'libs/gtag'
 
 // components
-import IconQiita from 'svgs/IconQiita.svg'
-import IconZenn from 'svgs/IconZenn.svg'
-import IconNote from 'svgs/IconNote.svg'
+import IconQiita from '../svgs/IconQiita.svg'
+import IconZenn from '../svgs/IconZenn.svg'
+import IconNote from '../svgs/IconNote.svg'
 
 type Props = {
   category: string

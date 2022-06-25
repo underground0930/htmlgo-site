@@ -41,14 +41,3 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 export default MyApp
-
-// example
-export async function getServerSideProps() {
-  const data = await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ x: 1 })
-    }, 1000)
-  })
-
-  return { props: { data } }
-}

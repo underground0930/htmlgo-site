@@ -1,10 +1,10 @@
-import IconNextjs from 'svgs/IconNextjs.svg'
-import IconVercel from 'svgs/IconVercel.svg'
-import IconMicrocms from 'svgs/IconMicrocms.svg'
-import IconTailwindcss from 'svgs/IconTailwindcss.svg'
-import IconGithub from 'svgs/IconGithub.svg'
-import IconFormrun from 'svgs/IconFormrun.svg'
-import IconRecaptcha from 'svgs/IconRecaptcha.svg'
+import IconNextjs from '../svgs/IconNextjs.svg'
+import IconVercel from '../svgs/IconVercel.svg'
+import IconMicrocms from '../svgs/IconMicrocms.svg'
+import IconTailwindcss from '../svgs/IconTailwindcss.svg'
+import IconGithub from '../svgs/IconGithub.svg'
+import IconFormrun from '../svgs/IconFormrun.svg'
+import IconRecaptcha from '../svgs/IconRecaptcha.svg'
 
 // libs
 import { event } from 'libs/gtag'
