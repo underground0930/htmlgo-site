@@ -10,7 +10,7 @@ NEXT_PUBLIC_GA_ID=xxxxxxxxxxx
 
 ```
 
-## Getting Started
+## Getting Started!
 
 First, run the development server:
 
