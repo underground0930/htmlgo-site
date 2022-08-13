@@ -153,7 +153,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                     <ul>
                       {post.credit.map((v) => (
                         <li key={v.value} className={'mb-20px last-of-type:mb-0px'}>
-                          <p className="text-14px font-bold mb-2px">{v.label}</p>
+                          <p className="mb-2px text-14px font-bold">{v.label}</p>
                           <p className="text-14px">
                             {v.link ? (
                               <a
