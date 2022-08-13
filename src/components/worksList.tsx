@@ -29,17 +29,19 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
                 }}
               >
                 <dl>
-                  <dt className="relative aspect-[16/9] mb-10px border-b-1 border-border">
-                    <Image
-                      src={work.slider[0].img.url + '?w=800'}
-                      alt=""
-                      layout={'fill'}
-                      objectFit={'cover'}
-                    />
+                  <dt className="relative mb-10px aspect-[16/9] border-b-1 border-border">
+                    {work.slider[0]?.img?.url && (
+                      <Image
+                        src={work.slider[0].img.url + '?w=800'}
+                        alt=""
+                        layout={'fill'}
+                        objectFit={'cover'}
+                      />
+                    )}
                   </dt>
                   <dd className="px-15px pb-10px">
-                    <time className="block mb-5px">{conversionDate(work.date)}</time>
-                    <h3 className="text-16px mb-10px font-bold break-all leading-5">{work.title}</h3>
+                    <time className="mb-5px block">{conversionDate(work.date)}</time>
+                    <h3 className="mb-10px break-all text-16px font-bold leading-5">{work.title}</h3>
                     <p>
                       {work.category.map((c) => (
                         <CategoryIcon key={c.id} text={c.category_label} />
