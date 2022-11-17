@@ -36,15 +36,13 @@ const IconBtn = ({ title, link, blank = false, color, icon, onClick }: Props) =>
         </a>
       )}
       {!blank && (
-        <Link href={link}>
-          <a className={className.btn} onClick={onClick}>
-            <FontAwesomeIcon
-              className={className.icon}
-              icon={icons[icon]}
-              title={title ? title : ''}
-              style={{ color: color }}
-            />
-          </a>
+        <Link href={link} className={className.btn} onClick={onClick}>
+          <FontAwesomeIcon
+            className={className.icon}
+            icon={icons[icon]}
+            title={title ? title : ''}
+            style={{ color: color }}
+          />
         </Link>
       )}
     </>

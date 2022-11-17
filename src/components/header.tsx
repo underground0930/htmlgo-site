@@ -26,43 +26,40 @@ const Header = ({}: Props) => {
       <header className={className.header}>
         <div className={className.inner}>
           <h1 className={className.h1}>
-            <Link href="/">
-              <a
-                className="no-underline"
-                onClick={() => {
-                  clickHandler('top_logo', '/')
-                }}
-              >
-                HTMLGO
-              </a>
+            <Link
+              href="/"
+              className="no-underline"
+              onClick={() => {
+                clickHandler('top_logo', '/')
+              }}
+            >
+              HTMLGO
             </Link>
           </h1>
           <nav className={className.nav}>
             <ul className={className.ul}>
               <li>
-                <Link href="/">
-                  <a
-                    className={(asPath === '/' ? 'text-linkActive' : '') + linkStyle}
-                    onClick={() => {
-                      clickHandler('top', '/')
-                    }}
-                  >
-                    TOP
-                  </a>
+                <Link
+                  href="/"
+                  className={(asPath === '/' ? 'text-linkActive' : '') + linkStyle}
+                  onClick={() => {
+                    clickHandler('top', '/')
+                  }}
+                >
+                  TOP
                 </Link>
               </li>
               {['about', 'works', 'articles', 'contact'].map((v, index) => {
                 return (
                   <li className="ml-20px" key={index}>
-                    <Link href={`/${v}/`}>
-                      <a
-                        className={(asPath.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle}
-                        onClick={() => {
-                          clickHandler(v, `/${v}/`)
-                        }}
-                      >
-                        {v.toLocaleUpperCase()}
-                      </a>
+                    <Link
+                      href={`/${v}/`}
+                      className={(asPath.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle}
+                      onClick={() => {
+                        clickHandler(v, `/${v}/`)
+                      }}
+                    >
+                      {v.toLocaleUpperCase()}
                     </Link>
                   </li>
                 )

@@ -19,10 +19,8 @@ const TextBtn = ({ title, link, blank = false, onClick }: Props) => {
         </a>
       )}
       {!blank && (
-        <Link href={link}>
-          <a className={className} onClick={onClick}>
-            {title}
-          </a>
+        <Link href={link} className={className} onClick={onClick}>
+          {title}
         </Link>
       )}
     </>

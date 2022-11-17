@@ -14,7 +14,7 @@ type Props = {
 const PanelsList = ({ articles, clickHandler }: Props) => {
   return (
     <div className="mb-20px md:mb-40px">
-      {articles.map((article) => {
+      {articles.map((article, i) => {
         return (
           <article key={article.link} className="border-b-1 border-border py-20px first-of-type:border-t-1">
             <a
@@ -25,13 +25,20 @@ const PanelsList = ({ articles, clickHandler }: Props) => {
                 clickHandler(article.title, article.link)
               }}
             >
-              <dl className="bg-base flex items-center">
-                <dt className="relative w-[70px] h-[70px] border-1 border-border md:w-[100px] md:h-[100px]">
-                  <Image src={article.img} alt={''} layout={'fill'} objectFit={'cover'} />
+              <dl className="flex items-center bg-base">
+                <dt className="relative h-[70px] w-[70px] border-1 border-border md:h-[100px] md:w-[100px]">
+                  <Image
+                    src={article.img}
+                    alt={''}
+                    fill={true}
+                    className="object-cover"
+                    priority={i < 4 ? true : false}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </dt>
-                <dd className="pl-20px flex-1">
-                  <time className="block text-14px mb-4px">{article.published}</time>
-                  <h3 className="text-15px font-bold mb-4px">{article.title}</h3>
+                <dd className="flex-1 pl-20px">
+                  <time className="mb-4px block text-14px">{article.published}</time>
+                  <h3 className="mb-4px text-15px font-bold">{article.title}</h3>
                   <p>
                     <CategoryIcon text={article.category} />
                     {article.tags.map((tag, index) => (
