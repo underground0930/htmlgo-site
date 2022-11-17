@@ -19,7 +19,7 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
   return (
     <>
       <ul className="md:flex md:flex-wrap md:justify-between">
-        {works.map((work) => (
+        {works.map((work, i) => (
           <li key={work.id} className="mb-30px border-1 border-border md:w-[32%]">
             <Link
               className="block"
@@ -34,8 +34,9 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
                     <Image
                       src={work.slider[0].img.url + '?w=800'}
                       alt=""
-                      layout={'fill'}
-                      objectFit={'cover'}
+                      fill={true}
+                      priority={i < 6 ? true : false}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   )}
                 </dt>

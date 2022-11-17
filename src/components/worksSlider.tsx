@@ -128,7 +128,13 @@ const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
             return (
               <SwiperSlide className={className.slider} virtualIndex={i} key={v.img.url}>
                 {isLoading && <div className={className.loader}>Loading...</div>}
-                <Image src={v.img.url} alt="" layout="fill" onLoadingComplete={(e) => (isLoading = false)} />
+                <Image
+                  src={v.img.url}
+                  alt=""
+                  priority={true}
+                  fill={true}
+                  onLoadingComplete={(e) => (isLoading = false)}
+                />
               </SwiperSlide>
             )
           })}
