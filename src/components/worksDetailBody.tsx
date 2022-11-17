@@ -214,27 +214,25 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
               }}
             />
             {next && (
-              <Link href={`/works/${next.slug}/`}>
-                <a
-                  className={`${className.pager} ${className.next}`}
-                  onClick={() => {
-                    clickHandler('next', `/works/${next.slug}`)
-                  }}
-                >
-                  <FontAwesomeIcon className={className.icon} icon={faChevronLeft} color="#ffffff" />
-                </a>
+              <Link
+                className={`${className.pager} ${className.next}`}
+                onClick={() => {
+                  clickHandler('next', `/works/${next.slug}`)
+                }}
+                href={`/works/${next.slug}/`}
+              >
+                <FontAwesomeIcon className={className.icon} icon={faChevronLeft} color="#ffffff" />
               </Link>
             )}
             {prev && (
-              <Link href={`/works/${prev.slug}`}>
-                <a
-                  className={`${className.pager} ${className.prev}`}
-                  onClick={() => {
-                    clickHandler('prev', `/works/${prev.slug}`)
-                  }}
-                >
-                  <FontAwesomeIcon className={className.icon} icon={faChevronRight} color="#ffffff" />
-                </a>
+              <Link
+                className={`${className.pager} ${className.prev}`}
+                onClick={() => {
+                  clickHandler('prev', `/works/${prev.slug}`)
+                }}
+                href={`/works/${prev.slug}`}
+              >
+                <FontAwesomeIcon className={className.icon} icon={faChevronRight} color="#ffffff" />
               </Link>
             )}
           </div>
