@@ -13,6 +13,7 @@ module.exports = {
   },
   reactStrictMode: true,
   trailingSlash: true,
+  experimental: { appDir: true },
   images: {
     domains: ['images.microcms-assets.io', 'assets.st-note.com', 'res.cloudinary.com'],
   },

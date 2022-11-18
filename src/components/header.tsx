@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 
 // libs
 import { event } from 'libs/gtag'
@@ -17,7 +17,8 @@ const className = {
 const linkStyle = ' hover:text-linkActive font-bold text-14px md:text-16px'
 
 const Header = ({}: Props) => {
-  const { asPath } = useRouter()
+  const pathname = usePathname()
+
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: `header`, label, value })
   }
@@ -41,7 +42,7 @@ const Header = ({}: Props) => {
               <li>
                 <Link
                   href="/"
-                  className={(asPath === '/' ? 'text-linkActive' : '') + linkStyle}
+                  className={(pathname === '/' ? 'text-linkActive' : '') + linkStyle}
                   onClick={() => {
                     clickHandler('top', '/')
                   }}
@@ -54,7 +55,7 @@ const Header = ({}: Props) => {
                   <li className="ml-20px" key={index}>
                     <Link
                       href={`/${v}/`}
-                      className={(asPath.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle}
+                      className={(pathname?.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle}
                       onClick={() => {
                         clickHandler(v, `/${v}/`)
                       }}

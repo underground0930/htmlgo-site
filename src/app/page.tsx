@@ -1,6 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+// const
+import { ARTICLE_PER_PAGE, WORKS_PER_PAGE } from 'const/index'
+
+// libs
+import { client } from 'libs/client'
+
 // store
 import { RootState } from '../store'
 
@@ -18,7 +24,6 @@ import Title from 'components/title'
 import TextBtn from 'components/textBtn'
 import WorksList from 'components/worksList'
 import Panels from 'components/panels'
-import { topGetStaticProps } from 'libs/getStaticProps'
 
 type Props = {
   works: WorksPosts
@@ -31,9 +36,10 @@ const className = {
   section: 'mb-40px pb-20px md:mb-80px md:pb-40px border-b-1 border-border',
 }
 
-export default function Home({ works = [], articles = [] }: Props) {
-  const type = useSelector((state: RootState) => state.panelType.value)
-
+export default async function Home() {
+  //  const type = useSelector((state: RootState) => state.panelType.value)
+  const { works, articles } = await fetchData()
+  const type = 'list'
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: 'top', label, value })
   }
@@ -50,8 +56,7 @@ export default function Home({ works = [], articles = [] }: Props) {
         {/* articles */}
         <section className={className.section}>
           <Title title="ARTICLES" text="最新の記事" />
-          <ViewSwitch type={type} />
-          <Panels articles={articles} type={type} clickHandler={clickHandler} />
+
           <div className={className.btnWrap}>
             <TextBtn
               title="MORE"
@@ -81,4 +86,30 @@ export default function Home({ works = [], articles = [] }: Props) {
   )
 }
 
-export const getStaticProps = topGetStaticProps
+export async function fetchData() {
+  const articles = (
+    await import('public/feed.json')
+      .then((response) => {
+        return response.default
+      })
+      .catch((err) => {
+        console.log(err)
+        return []
+      })
+  ).slice(0, 4)
+
+  const works: any = await client
+    .get({
+      endpoint: 'works',
+      queries: { limit: 3, fields: 'id,title,slug,date,category,technology,slider' },
+    })
+    .catch((err) => {
+      console.log('top err :' + err)
+      return { contents: [] }
+    })
+
+  return {
+    works: works.contents,
+    articles,
+  }
+}

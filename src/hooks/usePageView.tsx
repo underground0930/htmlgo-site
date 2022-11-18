@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import * as gtag from 'libs/gtag'
 
 export default function usePageView() {

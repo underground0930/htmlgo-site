@@ -1,3 +1,4 @@
+'use client'
 import IconNextjs from '../svgs/IconNextjs.svg'
 import IconVercel from '../svgs/IconVercel.svg'
 import IconMicrocms from '../svgs/IconMicrocms.svg'
