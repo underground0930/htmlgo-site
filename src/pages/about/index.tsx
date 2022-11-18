@@ -81,7 +81,7 @@ export default function About() {
                 text: 'フリーランス',
               },
               {
-                heading: '2022年7月 -',
+                heading: '2022年7月 - 2022年8月',
                 text: 'ちょっと株式会社',
                 link: 'https://chot-inc.com/',
               },
