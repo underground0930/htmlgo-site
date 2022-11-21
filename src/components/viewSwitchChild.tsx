@@ -1,6 +1,5 @@
 'use client'
 
-import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
 // slice
@@ -21,7 +20,6 @@ const className = {
 }
 
 const ViewSwitchButton = ({ type, icon, isCurrent }: Props) => {
-  // const dispatch = useDispatch()
   return (
     <button
       className={`${className.button} ${isCurrent ? 'opacity-100' : ''}`}

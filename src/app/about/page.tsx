@@ -3,7 +3,6 @@ import { event } from 'libs/gtag'
 
 // components
 import HeadWrap from 'components/headWrap'
-import Layout from 'components/layout'
 import Title from 'components/title'
 import SnsBox from 'components/snsBox'
 import IconBtn from 'components/IconBtn'
@@ -25,12 +24,12 @@ export default function About() {
   }
 
   return (
-    <Layout>
-      <HeadWrap
+    <>
+      {/* <HeadWrap
         title={'ABOUT | HTMLGO'}
         description={'このサイトについて'}
         url={`https://htmlgo.site/about/`}
-      />
+      /> */}
       <main className={className.main}>
         <Title title="ABOUT" text="このサイトや主について説明しています" />
         <div className={className.body}>
@@ -120,6 +119,6 @@ export default function About() {
           />
         </div>
       </main>
-    </Layout>
+    </>
   )
 }

@@ -1,3 +1,5 @@
+'use client'
+
 // components
 import PanelsTile from 'components/panelsTile'
 import PanelsList from 'components/panelsList'
@@ -9,7 +11,6 @@ import { FeedObj, PanelType } from 'types/index'
 type Props = {
   articles: FeedObj[]
   type: PanelType
-  clickHandler: (label: string, value: string) => void
 }
 
 const Panels = ({ articles = [], type, clickHandler }: Props) => {

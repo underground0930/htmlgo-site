@@ -12,12 +12,14 @@ import { WorksPosts } from 'types/index'
 // modules
 import { conversionDate } from 'utils/conversionDate'
 
+// libs
+import { event } from 'libs/gtag'
+
 type Props = {
   works: WorksPosts
-  clickHandler: (label: string, value: string) => void
 }
 
-const WorksList = ({ works = [], clickHandler }: Props) => {
+const WorksList = ({ works = [] }: Props) => {
   return (
     <>
       <ul className="md:flex md:flex-wrap md:justify-between">
@@ -26,7 +28,7 @@ const WorksList = ({ works = [], clickHandler }: Props) => {
             <Link
               className="block"
               onClick={() => {
-                clickHandler(work.title, `/works/${work.slug}`)
+                event({ action: 'click', category: 'works', label: work.title, value: `/works/${work.slug}` })
               }}
               href={`/works/${work.slug}`}
             >

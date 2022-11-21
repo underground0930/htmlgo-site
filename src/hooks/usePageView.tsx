@@ -4,7 +4,7 @@ import * as gtag from 'libs/gtag'
 
 export default function usePageView() {
   // MEMO: まだサポートされていない
-  // const router = useRouter()
+  const router = useRouter()
   // useEffect(() => {
   //   const handleRouteChange = (url: string) => {
   //     gtag.pageview(url)

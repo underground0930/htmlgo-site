@@ -8,7 +8,6 @@ import { FeedObj } from 'types/index'
 
 type Props = {
   articles: FeedObj[]
-  clickHandler: (label: string, value: string) => void
 }
 
 const PanelsTile = ({ articles, clickHandler }: Props) => {

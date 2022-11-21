@@ -1,9 +1,16 @@
-export default async function Head() {
+import { DefaultHead } from 'components/defaultHead'
+
+export default async function Head({}) {
   return (
     <>
-      <title></title>
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <link rel="icon" href="/favicon.ico" />
+      <DefaultHead
+        title={'TOP | HTMLGO'}
+        description={'WEB技術を書き連ねるサイト'}
+        image={''}
+        url={'`https://htmlgo.site/`'}
+        isTop={true}
+        isPreview={false}
+      />
     </>
   )
 }
