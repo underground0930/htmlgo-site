@@ -2,7 +2,6 @@
 import { event } from 'libs/gtag'
 
 // components
-import HeadWrap from 'components/headWrap'
 import Title from 'components/title'
 import SnsBox from 'components/snsBox'
 import IconBtn from 'components/IconBtn'
@@ -49,9 +48,9 @@ export default function About() {
               href="https://twitter.com/resistance_gowy"
               target="_blank"
               rel="noreferrer"
-              onClick={(e) => {
-                clickHandler('profile_text_twitter', e.currentTarget.href)
-              }}
+              // onClick={(e) => {
+              //   clickHandler('profile_text_twitter', e.currentTarget.href)
+              // }}
             >
               @resistance_gowy
             </a>
@@ -109,14 +108,14 @@ export default function About() {
           />
         </div>
         <div className={className.btnWrap}>
-          <IconBtn
+          {/* <IconBtn
             icon="faHome"
             link="/"
             color="#ffffff"
             onClick={() => {
               clickHandler('top', '/')
             }}
-          />
+          /> */}
         </div>
       </main>
     </>
