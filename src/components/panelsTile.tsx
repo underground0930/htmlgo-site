@@ -24,9 +24,9 @@ const PanelsTile = ({ articles, clickHandler }: Props) => {
               href={article.link}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => {
-                clickHandler(article.title, article.link)
-              }}
+              // onClick={(e) => {
+              //   clickHandler(article.title, article.link)
+              // }}
             >
               <dl>
                 <dt className="relative h-[140px] border-b-1 border-border bg-main">

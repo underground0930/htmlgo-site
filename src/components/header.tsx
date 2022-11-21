@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -16,12 +18,13 @@ const className = {
 
 const linkStyle = ' hover:text-linkActive font-bold text-14px md:text-16px'
 
+const clickHandler = (label: string, value: string) => {
+  event({ action: 'click', category: `header`, label, value })
+}
+
 const Header = ({}: Props) => {
   const pathname = usePathname()
 
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category: `header`, label, value })
-  }
   return (
     <>
       <header className={className.header}>

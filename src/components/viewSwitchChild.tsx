@@ -1,3 +1,5 @@
+'use client'
+
 import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
@@ -19,12 +21,12 @@ const className = {
 }
 
 const ViewSwitchButton = ({ type, icon, isCurrent }: Props) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   return (
     <button
       className={`${className.button} ${isCurrent ? 'opacity-100' : ''}`}
       onClick={() => {
-        dispatch(setType(type))
+        // dispatch(setType(type))
       }}
     >
       <FontAwesomeIcon className={className.icon} icon={icon} />

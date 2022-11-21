@@ -1,25 +1,40 @@
+'use client'
+
 import Link from 'next/link'
+// libs
+import { event } from 'libs/gtag'
 
 type Props = {
   title: string
   link: string
   blank?: boolean
-  onClick?: () => void
+  eventParams: { action: string; category: string; label: string; value: string }
 }
-
 const className =
   'min-w-[120px] inline-block bg-btn text-btnIcon text-14px text-center text-decoration-none px-15px py-10px :visited:text-btnIcon'
 
-const TextBtn = ({ title, link, blank = false, onClick }: Props) => {
+const TextBtn = ({ title, link, blank = false, eventParams }: Props) => {
   return (
     <>
       {blank && (
-        <a className={className} href={link} onClick={onClick}>
+        <a
+          className={className}
+          href={link}
+          onClick={() => {
+            event(eventParams)
+          }}
+        >
           {title}
         </a>
       )}
       {!blank && (
-        <Link href={link} className={className} onClick={onClick}>
+        <Link
+          href={link}
+          className={className}
+          onClick={() => {
+            event(eventParams)
+          }}
+        >
           {title}
         </Link>
       )}

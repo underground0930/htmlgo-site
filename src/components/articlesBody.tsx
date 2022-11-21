@@ -15,7 +15,6 @@ import ViewSwitch from 'components/viewSwitch'
 import Pagenation from 'components/pagenation'
 import Panels from 'components/panels'
 import HeadWrap from 'components/headWrap'
-import Layout from 'components/layout'
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
 
@@ -36,7 +35,7 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
     event({ action: 'click', category: 'articles', label, value })
   }
   return (
-    <Layout>
+    <>
       <HeadWrap
         title={(page === 1 ? '' : `${page}ページ目 | `) + `ARTICLES | HTMLGO`}
         description={'色々なブログの記事のフィードをまとめたものです'}
@@ -58,6 +57,6 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
           />
         </div>
       </main>
-    </Layout>
+    </>
   )
 }
