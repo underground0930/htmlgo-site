@@ -10,7 +10,8 @@ const getNoteFeed = async function () {
     .then((result) => {
       return result.map((post) => {
         const { name, publishAt, key, eyecatch, hashtags } = post
-        const hashtag = hashtags.length > 0 ? hashtags.map((h) => h.hashtag.name.replace('#', '')) : []
+        const hashtag =
+          hashtags.length > 0 ? hashtags.map((h) => h.hashtag.name.replace('#', '')) : []
         return {
           title: name,
           category: 'note',

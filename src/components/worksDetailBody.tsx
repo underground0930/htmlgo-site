@@ -73,14 +73,16 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
     <Layout>
       <HeadWrap
         title={`${post.title} | WORKS | HTMLGO`}
-        description={post.body ? cutText(removeHtml(post.body), 120) : post.title + 'の実績紹介です。'}
+        description={
+          post.body ? cutText(removeHtml(post.body), 120) : post.title + 'の実績紹介です。'
+        }
         image={post.slider?.[0]?.img?.url}
         url={`https://htmlgo.site/works/${post.slug}/`}
         isPreview={isPreview}
       />
       {isPreview && <PreviewBtn />}
       <main className={className.main}>
-        <Title title={post.title} text="WORKS NAME" />
+        <Title title={post.title} text='WORKS NAME' />
         <article className={className.article}>
           <div className={className.kv}>
             <div className={className.kvInner}>
@@ -99,12 +101,12 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
             <div className={className.infoBody}>
               <ul className={className.infoList}>
                 {post?.date && (
-                  <WorksDetailInfo title="公開日">
+                  <WorksDetailInfo title='公開日'>
                     <time dateTime={conversionDate(post.date)}>{conversionDate(post.date)}</time>
                   </WorksDetailInfo>
                 )}
                 {post?.category?.length > 0 && (
-                  <WorksDetailInfo title="カテゴリー">
+                  <WorksDetailInfo title='カテゴリー'>
                     {post.category.map((v) => (
                       <span className={className.span} key={v.category_label}>
                         {v.category_label}
@@ -113,7 +115,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   </WorksDetailInfo>
                 )}
                 {post?.technology?.length > 0 && (
-                  <WorksDetailInfo title="テクノロジー">
+                  <WorksDetailInfo title='テクノロジー'>
                     {post.technology.map((v) => (
                       <span className={className.span} key={v.technology_label}>
                         {v.technology_label}
@@ -122,16 +124,16 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   </WorksDetailInfo>
                 )}
                 {post?.production_period && (
-                  <WorksDetailInfo title="制作期間">{post.production_period}</WorksDetailInfo>
+                  <WorksDetailInfo title='制作期間'>{post.production_period}</WorksDetailInfo>
                 )}
                 {(post?.url || post?.url2) && (
-                  <WorksDetailInfo title="URL">
+                  <WorksDetailInfo title='URL'>
                     {post?.url && (
                       <a
                         className={`${className.link} underline`}
                         href={post.url}
-                        target="_blank"
-                        rel="noreferrer"
+                        target='_blank'
+                        rel='noreferrer'
                       >
                         {post.url}
                       </a>
@@ -140,8 +142,8 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                       <a
                         className={`${className.link} underline`}
                         href={post.url2}
-                        target="_blank"
-                        rel="noreferrer"
+                        target='_blank'
+                        rel='noreferrer'
                       >
                         {post.url2}
                       </a>
@@ -149,18 +151,18 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   </WorksDetailInfo>
                 )}
                 {post?.credit?.length > 0 && (
-                  <WorksDetailInfo title="クレジット">
+                  <WorksDetailInfo title='クレジット'>
                     <ul>
                       {post.credit.map((v) => (
                         <li key={v.value} className={'mb-20px last-of-type:mb-0px'}>
-                          <p className="mb-2px text-14px font-bold">{v.label}</p>
-                          <p className="text-14px">
+                          <p className='mb-2px text-14px font-bold'>{v.label}</p>
+                          <p className='text-14px'>
                             {v.link ? (
                               <a
                                 className={`${className.link} underline`}
                                 href={v.link}
-                                target="_blank"
-                                rel="noreferrer"
+                                target='_blank'
+                                rel='noreferrer'
                               >
                                 {v.value}
                               </a>
@@ -181,34 +183,34 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
               <a
                 className={`${className.snsLink} ${className.facebook}`}
                 href={shareFacebookUrl(post.slug)}
-                target="_blank"
-                rel="noreferrer"
+                target='_blank'
+                rel='noreferrer'
                 onClick={() => {
                   clickHandler('facebook', `/works/${post.slug}`)
                 }}
               >
-                <FontAwesomeIcon className={className.icon} icon={faFacebookF} color="#ffffff" />
+                <FontAwesomeIcon className={className.icon} icon={faFacebookF} color='#ffffff' />
               </a>
             </li>
             <li className={className.snsChild}>
               <a
                 className={`${className.snsLink} ${className.twitter}`}
                 href={shareTwitterUrl(post.slug)}
-                target="_blank"
-                rel="noreferrer"
+                target='_blank'
+                rel='noreferrer'
                 onClick={() => {
                   clickHandler('twitter', `/works/${post.slug}`)
                 }}
               >
-                <FontAwesomeIcon className={className.icon} icon={faTwitter} color="#ffffff" />
+                <FontAwesomeIcon className={className.icon} icon={faTwitter} color='#ffffff' />
               </a>
             </li>
           </ul>
           <div className={className.back}>
             <IconBtn
-              icon="faAlignJustify"
-              link="/works/"
-              color="#ffffff"
+              icon='faAlignJustify'
+              link='/works/'
+              color='#ffffff'
               onClick={() => {
                 clickHandler('works', `/works/`)
               }}
@@ -221,7 +223,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                 }}
                 href={`/works/${next.slug}/`}
               >
-                <FontAwesomeIcon className={className.icon} icon={faChevronLeft} color="#ffffff" />
+                <FontAwesomeIcon className={className.icon} icon={faChevronLeft} color='#ffffff' />
               </Link>
             )}
             {prev && (
@@ -232,7 +234,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                 }}
                 href={`/works/${prev.slug}`}
               >
-                <FontAwesomeIcon className={className.icon} icon={faChevronRight} color="#ffffff" />
+                <FontAwesomeIcon className={className.icon} icon={faChevronRight} color='#ffffff' />
               </Link>
             )}
           </div>

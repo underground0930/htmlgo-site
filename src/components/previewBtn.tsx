@@ -8,7 +8,7 @@ const className = {
 const PreviewBtn = () => {
   return (
     <div className={className.root}>
-      <Link href="/api/exit-preview/" prefetch={false} className={className.link}>
+      <Link href='/api/exit-preview/' prefetch={false} className={className.link}>
         プレビューCookie削除
       </Link>
     </div>

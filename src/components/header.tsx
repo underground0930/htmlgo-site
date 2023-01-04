@@ -31,8 +31,8 @@ const Header = ({}: Props) => {
         <div className={className.inner}>
           <h1 className={className.h1}>
             <Link
-              href="/"
-              className="no-underline"
+              href='/'
+              className='no-underline'
               onClick={() => {
                 clickHandler('top_logo', '/')
               }}
@@ -44,7 +44,7 @@ const Header = ({}: Props) => {
             <ul className={className.ul}>
               <li>
                 <Link
-                  href="/"
+                  href='/'
                   className={(pathname === '/' ? 'text-linkActive' : '') + linkStyle}
                   onClick={() => {
                     clickHandler('top', '/')
@@ -55,10 +55,12 @@ const Header = ({}: Props) => {
               </li>
               {['about', 'works', 'articles', 'contact'].map((v, index) => {
                 return (
-                  <li className="ml-20px" key={index}>
+                  <li className='ml-20px' key={index}>
                     <Link
                       href={`/${v}/`}
-                      className={(pathname?.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle}
+                      className={
+                        (pathname?.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle
+                      }
                       onClick={() => {
                         clickHandler(v, `/${v}/`)
                       }}

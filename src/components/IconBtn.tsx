@@ -26,7 +26,7 @@ const IconBtn = ({ title, link, blank = false, color, icon, onClick }: Props) =>
   return (
     <>
       {blank && (
-        <a className={className.btn} href={link} target="_blank" rel="noreferrer" onClick={onClick}>
+        <a className={className.btn} href={link} target='_blank' rel='noreferrer' onClick={onClick}>
           <FontAwesomeIcon
             className={className.icon}
             icon={icons[icon]}

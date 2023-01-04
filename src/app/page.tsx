@@ -34,26 +34,36 @@ export default async function Home() {
     <main className={className.main}>
       {/* articles */}
       <section className={className.section}>
-        <Title title="ARTICLES" text="最新の記事" />
+        <Title title='ARTICLES' text='最新の記事' />
         <ViewSwitch type={type} />
         <Panels articles={articles} type={type} />
         <div className={className.btnWrap}>
           <TextBtn
-            title="MORE"
-            link="/articles/"
-            eventParams={{ action: 'click', category: 'top', label: 'article-index', value: '/articles/' }}
+            title='MORE'
+            link='/articles/'
+            eventParams={{
+              action: 'click',
+              category: 'top',
+              label: 'article-index',
+              value: '/articles/',
+            }}
           />
         </div>
       </section>
       {/* works */}
       <section className={className.section}>
-        <Title title="WORKS" text="最新のお仕事の実績や、自主制作" />
+        <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
         <WorksList works={works} />
         <div className={className.btnWrap}>
           <TextBtn
-            title="MORE"
-            link="/works/"
-            eventParams={{ action: 'click', category: 'top', label: 'works-index', value: '/works/' }}
+            title='MORE'
+            link='/works/'
+            eventParams={{
+              action: 'click',
+              category: 'top',
+              label: 'works-index',
+              value: '/works/',
+            }}
           />
         </div>
       </section>

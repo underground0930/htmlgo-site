@@ -42,15 +42,15 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
         url={`https://htmlgo.site/articles/`}
       />
       <main className={className.main}>
-        <Title title="ARTICLES" text="技術系やそれ以外の記事" />
+        <Title title='ARTICLES' text='技術系やそれ以外の記事' />
         <ViewSwitch type={type} />
         <Panels articles={articles} type={type} clickHandler={clickHandler} />
         <Pagenation pages={pages} page={page} />
         <div className={className.btnWrap + ` mt-40px`}>
           <IconBtn
-            icon="faHome"
-            link="/"
-            color="#ffffff"
+            icon='faHome'
+            link='/'
+            color='#ffffff'
             onClick={() => {
               clickHandler('top', '/')
             }}

@@ -22,31 +22,36 @@ type Props = {
 const WorksList = ({ works = [] }: Props) => {
   return (
     <>
-      <ul className="md:flex md:flex-wrap md:justify-between">
+      <ul className='md:flex md:flex-wrap md:justify-between'>
         {works.map((work, i) => (
-          <li key={work.id} className="mb-30px border-1 border-border md:w-[32%]">
+          <li key={work.id} className='mb-30px border-1 border-border md:w-[32%]'>
             <Link
-              className="block"
+              className='block'
               onClick={() => {
-                event({ action: 'click', category: 'works', label: work.title, value: `/works/${work.slug}` })
+                event({
+                  action: 'click',
+                  category: 'works',
+                  label: work.title,
+                  value: `/works/${work.slug}`,
+                })
               }}
               href={`/works/${work.slug}`}
             >
               <dl>
-                <dt className="relative mb-10px aspect-[16/9] border-b-1 border-border">
+                <dt className='relative mb-10px aspect-[16/9] border-b-1 border-border'>
                   {work.slider[0]?.img?.url && (
                     <Image
                       src={work.slider[0].img.url + '?w=800'}
-                      alt=""
+                      alt=''
                       fill={true}
                       priority={i < 6 ? true : false}
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes='(max-width: 768px) 100vw, 33vw'
                     />
                   )}
                 </dt>
-                <dd className="px-15px pb-10px">
-                  <time className="mb-5px block">{conversionDate(work.date)}</time>
-                  <h3 className="mb-10px break-all text-16px font-bold leading-5">{work.title}</h3>
+                <dd className='px-15px pb-10px'>
+                  <time className='mb-5px block'>{conversionDate(work.date)}</time>
+                  <h3 className='mb-10px break-all text-16px font-bold leading-5'>{work.title}</h3>
                   <p>
                     {work.category.map((c) => (
                       <CategoryIcon key={c.id} text={c.category_label} />

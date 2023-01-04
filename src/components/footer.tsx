@@ -77,8 +77,8 @@ const Footer = ({}: Props) => {
                   <li className={className.li} key={v.key}>
                     <a
                       href={v.href}
-                      target="_blank"
-                      rel="noreferrer"
+                      target='_blank'
+                      rel='noreferrer'
                       onClick={(e) => {
                         clickHandler(v.key, e.currentTarget.href)
                       }}

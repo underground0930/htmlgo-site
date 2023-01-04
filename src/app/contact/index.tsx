@@ -62,15 +62,27 @@ export default function Contact() {
         url={`https://htmlgo.site/contact/`}
       />
       <main className={className.main}>
-        <Title title="CONTACT" text="お仕事のお問い合わせはこちらからどうぞ" />
+        <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />
         <div className={className.body}>
-          <form className="formrun" action="https://form.run/api/v1/r/slpviahq150x5q8lxsyw5x8z" method="post">
+          <form
+            className='formrun'
+            action='https://form.run/api/v1/r/slpviahq150x5q8lxsyw5x8z'
+            method='post'
+          >
             <ul className={className.list}>
               <li className={className.listChild}>
                 <label className={className.label}>お名前 [必須]</label>
-                <input className={className.input} name="お名前" type="text" data-formrun-required />
+                <input
+                  className={className.input}
+                  name='お名前'
+                  type='text'
+                  data-formrun-required
+                />
                 {isInitFormRun && (
-                  <div className={className['formrun-system-show']} data-formrun-show-if-error="お名前">
+                  <div
+                    className={className['formrun-system-show']}
+                    data-formrun-show-if-error='お名前'
+                  >
                     お名前を入力してください
                   </div>
                 )}
@@ -79,15 +91,15 @@ export default function Contact() {
                 <label className={className.label}>メールアドレス [必須]</label>
                 <input
                   className={className.input}
-                  name="メールアドレス"
-                  type="text"
-                  data-formrun-type="email"
+                  name='メールアドレス'
+                  type='text'
+                  data-formrun-type='email'
                   data-formrun-required
                 />
                 {isInitFormRun && (
                   <div
                     className={className['formrun-system-show']}
-                    data-formrun-show-if-error="メールアドレス"
+                    data-formrun-show-if-error='メールアドレス'
                   >
                     メールアドレスを正しく入力してください
                   </div>
@@ -97,28 +109,31 @@ export default function Contact() {
                 <label className={className.label}>お問い合わせ [必須]</label>
                 <textarea
                   className={className.textarea}
-                  name="お問い合わせ"
+                  name='お問い合わせ'
                   data-formrun-required
                   rows={14}
                 ></textarea>
 
                 {isInitFormRun && (
-                  <div className={className['formrun-system-show']} data-formrun-show-if-error="お問い合わせ">
+                  <div
+                    className={className['formrun-system-show']}
+                    data-formrun-show-if-error='お問い合わせ'
+                  >
                     お問い合わせ入力してください
                   </div>
                 )}
               </li>
             </ul>
             <div className={className.recaptcha}>
-              <div id="recaptchaMain"></div>
+              <div id='recaptchaMain'></div>
             </div>
             <button
               className={className.submit}
-              id="contact__submit"
+              id='contact__submit'
               disabled
-              type="submit"
-              data-formrun-error-text="未入力の項目があります"
-              data-formrun-submitting-text="送信中..."
+              type='submit'
+              data-formrun-error-text='未入力の項目があります'
+              data-formrun-submitting-text='送信中...'
               onClick={() => {
                 clickHandler('form_submit', '')
               }}
@@ -129,16 +144,16 @@ export default function Contact() {
         </div>
         <div className={className.back}>
           <IconBtn
-            icon="faHome"
-            link="/"
-            color="#ffffff"
+            icon='faHome'
+            link='/'
+            color='#ffffff'
             onClick={() => {
               clickHandler('top', '/')
             }}
           />
         </div>
       </main>
-      <Script id="inline-js">
+      <Script id='inline-js'>
         {`
           window.onloadCallback = ()=>{
             console.log('onloadCallback')
@@ -155,12 +170,12 @@ export default function Contact() {
         `}
       </Script>
       <Script
-        id="recaptcha-js"
-        src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        id='recaptcha-js'
+        src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'
         async
         defer
       />
-      <Script id="formrun-js" src="https://sdk.form.run/js/v2/formrun.js" onLoad={initFormrun} />
+      <Script id='formrun-js' src='https://sdk.form.run/js/v2/formrun.js' onLoad={initFormrun} />
     </Layout>
   )
 }

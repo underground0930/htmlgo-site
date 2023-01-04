@@ -29,7 +29,7 @@ export default function Thanks() {
         url={`https://htmlgo.site/contact/thanks/`}
       />
       <main className={className.main}>
-        <Title title="THANKS" text="お問合せありがとうございました" />
+        <Title title='THANKS' text='お問合せありがとうございました' />
         <div className={className.body}>
           <div className={className.thanks}>
             お問い合わせありがとうございました。
@@ -41,10 +41,10 @@ export default function Thanks() {
         </div>
         <div className={className.back}>
           <IconBtn
-            icon="faHome"
-            title="back to top"
-            link="/"
-            color="#ffffff"
+            icon='faHome'
+            title='back to top'
+            link='/'
+            color='#ffffff'
             onClick={() => {
               clickHandler('top', '/')
             }}

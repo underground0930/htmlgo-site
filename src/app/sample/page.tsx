@@ -4,7 +4,7 @@ import { SampleBtn } from 'components/sampleBtn'
 
 const Page = () => {
   return (
-    <div className="abcded">
+    <div className='abcded'>
       <SampleBtn />
       <div>これはサーバー</div>
     </div>

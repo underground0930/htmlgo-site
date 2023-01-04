@@ -35,33 +35,33 @@ const SnsBox = ({ category }: Props) => {
       <ul className={className.snsBox}>
         <li className={className.snsBoxChild}>
           <a
-            href="https://github.com/underground0930"
-            target="_blank"
-            rel="noreferrer"
+            href='https://github.com/underground0930'
+            target='_blank'
+            rel='noreferrer'
             onClick={(e) => {
               clickHandler('github', e.currentTarget.href)
             }}
           >
-            <FontAwesomeIcon className={className.github} icon={faGithubSquare} color="#24292e" />
+            <FontAwesomeIcon className={className.github} icon={faGithubSquare} color='#24292e' />
           </a>
         </li>
         <li className={className.snsBoxChild}>
           <a
-            href="https://twitter.com/resistance_gowy"
-            target="_blank"
-            rel="noreferrer"
+            href='https://twitter.com/resistance_gowy'
+            target='_blank'
+            rel='noreferrer'
             onClick={(e) => {
               clickHandler('twitter', e.currentTarget.href)
             }}
           >
-            <FontAwesomeIcon className={className.twitter} icon={faTwitterSquare} color="#1DA1F2" />
+            <FontAwesomeIcon className={className.twitter} icon={faTwitterSquare} color='#1DA1F2' />
           </a>
         </li>
         <li className={className.snsBoxChild}>
           <a
-            href="http://qiita.com/resistance_gowy"
-            target="_blank"
-            rel="noreferrer"
+            href='http://qiita.com/resistance_gowy'
+            target='_blank'
+            rel='noreferrer'
             onClick={(e) => {
               clickHandler('qiita', e.currentTarget.href)
             }}
@@ -71,9 +71,9 @@ const SnsBox = ({ category }: Props) => {
         </li>
         <li className={className.snsBoxChild}>
           <a
-            href="https://zenn.dev/resistance_gowy"
-            target="_blank"
-            rel="noreferrer"
+            href='https://zenn.dev/resistance_gowy'
+            target='_blank'
+            rel='noreferrer'
             onClick={(e) => {
               clickHandler('zenn', e.currentTarget.href)
             }}
@@ -83,9 +83,9 @@ const SnsBox = ({ category }: Props) => {
         </li>
         <li className={className.snsBoxChild}>
           <a
-            href="https://note.com/resistance_gowy"
-            target="_blank"
-            rel="noreferrer"
+            href='https://note.com/resistance_gowy'
+            target='_blank'
+            rel='noreferrer'
             onClick={(e) => {
               clickHandler('note', e.currentTarget.href)
             }}

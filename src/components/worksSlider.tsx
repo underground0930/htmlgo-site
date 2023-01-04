@@ -122,7 +122,7 @@ const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
         onSwiper={(swiper) => setSw(swiper)}
         onSlideChange={(swiper) => sliderChangeHandle()}
       >
-        <div className={`swiper-wrapper`}>
+        <div className='swiper-wrapper'>
           {slider.map((v, i) => {
             let isLoading = true
             return (
@@ -130,7 +130,7 @@ const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
                 {isLoading && <div className={className.loader}>Loading...</div>}
                 <Image
                   src={v.img.url}
-                  alt=""
+                  alt=''
                   priority={true}
                   fill={true}
                   onLoadingComplete={(e) => (isLoading = false)}

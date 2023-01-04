@@ -30,10 +30,10 @@ export default function About() {
         url={`https://htmlgo.site/about/`}
       /> */}
       <main className={className.main}>
-        <Title title="ABOUT" text="このサイトや主について説明しています" />
+        <Title title='ABOUT' text='このサイトや主について説明しています' />
         <div className={className.body}>
           <div className={className.img}>
-            <img src="/img/profile.jpg" width="210" height="210" alt="" />
+            <img src='/img/profile.jpg' width='210' height='210' alt='' />
           </div>
           <div className={className.sns}>
             <SnsBox category={'about'} />
@@ -45,9 +45,9 @@ export default function About() {
           <h3 className={className.title}>プロフィール</h3>
           <p className={className.text}>
             <a
-              href="https://twitter.com/resistance_gowy"
-              target="_blank"
-              rel="noreferrer"
+              href='https://twitter.com/resistance_gowy'
+              target='_blank'
+              rel='noreferrer'
               // onClick={(e) => {
               //   clickHandler('profile_text_twitter', e.currentTarget.href)
               // }}
@@ -87,7 +87,8 @@ export default function About() {
           />
           <h3 className={className.title}>経験した技術・ツール</h3>
           <p className={className.text}>
-            html / css / TypeScript / React / Next.js / Wordpress / Docker / Webpack / github / Backlog
+            html / css / TypeScript / React / Next.js / Wordpress / Docker / Webpack / github /
+            Backlog
           </p>
           <h3 className={className.title}>仕事道具</h3>
           <HistoryList

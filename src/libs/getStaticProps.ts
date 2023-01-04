@@ -169,7 +169,7 @@ export const worksDetailGetStaticProps = async ({
         if (r.status === 'fulfilled') {
           return r.value
         }
-      })
+      }),
     )
   }
   return {

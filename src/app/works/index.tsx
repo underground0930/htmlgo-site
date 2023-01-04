@@ -100,7 +100,8 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
   const filterPost = (): WorksPosts => {
     const { category, technology } = filters
     return works.filter((work) => {
-      const categoryMatch = category === '' || work.category.map((c) => c.category_slug).includes(category)
+      const categoryMatch =
+        category === '' || work.category.map((c) => c.category_slug).includes(category)
       const technologyMatch =
         technology === '' || work.technology.map((c) => c.technology_slug).includes(technology)
 
@@ -136,11 +137,15 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
         url={`https://htmlgo.site/works/`}
       />
       <main className={className.main}>
-        <Title title="WORKS" text="最新のお仕事の実績や、自主制作" />
+        <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
         <div className={className.filter}>
           <div className={className.filterChild}>
-            <select className={className.filterSelect} onChange={categoryHandler} value={filters.category}>
-              <option value="" key={''}>
+            <select
+              className={className.filterSelect}
+              onChange={categoryHandler}
+              value={filters.category}
+            >
+              <option value='' key={''}>
                 Category
               </option>
               {categories.map((c) => (
@@ -156,7 +161,7 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
               onChange={technologyHandler}
               value={filters.technology}
             >
-              <option value="" key={''}>
+              <option value='' key={''}>
                 Technology
               </option>
               {technologies.map((c) => (
@@ -171,9 +176,9 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
         <footer className={className.footer}>
           <div className={className.back}>
             <IconBtn
-              icon="faHome"
-              link="/"
-              color="#ffffff"
+              icon='faHome'
+              link='/'
+              color='#ffffff'
               onClick={() => {
                 clickHandler('top', '/')
               }}

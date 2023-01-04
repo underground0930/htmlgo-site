@@ -37,7 +37,7 @@ const HistoryList = ({ data }: Props) => {
                 <dt className={className.dt}>{heading}</dt>
                 <dd className={className.dd}>
                   {link ? (
-                    <a className={className.a} href={link} target="_blank" rel="noreferrer">
+                    <a className={className.a} href={link} target='_blank' rel='noreferrer'>
                       {text}
                     </a>
                   ) : (
