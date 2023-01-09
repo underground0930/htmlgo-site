@@ -1,11 +1,7 @@
 import React from 'react'
 
 // libs
-import { client } from 'libs/client'
-
-// type
-import type { FeedObj } from 'types/feed'
-import type { MicroCMSResponse } from 'types/microcms'
+import { fetchTopList } from 'libs/fetchTopList'
 
 // components
 import Title from 'components/title'
@@ -19,7 +15,7 @@ const className = {
 }
 
 export default async function Home() {
-  const { works, articles } = await fetchData()
+  const { works, articles } = await fetchTopList()
   return (
     <main className='mx-20px max-w-[800px] md:mx-auto'>
       {/* articles */}
@@ -40,31 +36,4 @@ export default async function Home() {
       </section>
     </main>
   )
-}
-
-export async function fetchData() {
-  const articles: FeedObj[] = (
-    await import('public/feed.json')
-      .then((response) => response.default)
-      .catch((err) => {
-        console.log(err)
-        return []
-      })
-  ).slice(0, 4)
-
-  const works = await client
-    .get<MicroCMSResponse>({
-      endpoint: 'works',
-      queries: { limit: 3, fields: 'id,title,slug,date,category,technology,slider' },
-    })
-    .then((result) => result.contents)
-    .catch((err) => {
-      console.log('top err :' + err)
-      return []
-    })
-
-  return {
-    works,
-    articles,
-  }
 }

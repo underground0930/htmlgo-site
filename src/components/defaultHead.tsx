@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 type Props = {
   title: string
   description: string
@@ -5,6 +7,7 @@ type Props = {
   url: string
   isTop?: boolean
   isPreview?: boolean
+  children?: ReactNode
 }
 
 export const DefaultHead = ({
@@ -14,6 +17,7 @@ export const DefaultHead = ({
   url,
   isTop,
   isPreview,
+  children,
 }: Props): JSX.Element => {
   const img = image ? image : 'https://htmlgo.site/img/ogp_new.png'
   return (
