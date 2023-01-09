@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+
 // type
 import { FeedObj } from 'types/feed'
 
@@ -20,10 +22,15 @@ const className = {
 }
 
 export default function ArticlesBody({ articles = [], page, pages }: Props) {
+  const title = useMemo(
+    () => (page === 1 ? '' : `${page}ページ目 | `) + `ARTICLES | HTMLGO`,
+    [page],
+  )
+
   return (
     <>
       <HeadWrap
-        title={(page === 1 ? '' : `${page}ページ目 | `) + `ARTICLES | HTMLGO`}
+        title={title}
         description='色々なブログの記事のフィードをまとめたものです'
         url='https://htmlgo.site/articles/'
       />
