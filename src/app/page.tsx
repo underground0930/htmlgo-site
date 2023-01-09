@@ -1,8 +1,5 @@
 import React from 'react'
 
-// const
-import { ARTICLE_PER_PAGE, WORKS_PER_PAGE } from 'const/index'
-
 // libs
 import { client } from 'libs/client'
 
