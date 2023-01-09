@@ -6,7 +6,7 @@ import Pagenation from 'components/pagenation'
 import Panels from 'components/panels'
 import HeadWrap from 'components/headWrap'
 import Title from 'components/title'
-import IconBtn from 'components/IconBtn'
+import TextBtn from 'components/textBtn'
 
 type Props = {
   articles: FeedObj[]
@@ -32,7 +32,7 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
         <Panels articles={articles} />
         <Pagenation pages={pages} page={page} />
         <div className={className.btnWrap + ` mt-40px`}>
-          <IconBtn icon='faHome' link='/' color='#ffffff' />
+          <TextBtn title='HOME' link='/' />
         </div>
       </main>
     </>

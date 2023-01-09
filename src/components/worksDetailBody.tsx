@@ -7,13 +7,9 @@ import { Post } from 'types/microcms'
 // module
 import { conversionDate } from 'utils/conversionDate'
 
-// libs
-import { event } from 'libs/gtag'
-
 // components
 import Title from 'components/title'
-import IconBtn from 'components/IconBtn'
-import PreviewBtn from './previewBtn'
+import TextBtn from 'components/textBtn'
 import WorksDetailInfo from './worksDetailInfo'
 
 const WorksSlider = dynamic(() => import('components/worksSlider'), {
@@ -24,7 +20,6 @@ type Props = {
   post: Post
   prev: { slug: string } | null
   next: { slug: string } | null
-  isPreview: boolean
 }
 
 const className = {
@@ -50,20 +45,16 @@ const className = {
   back: `relative text-center mt-40px mb-40px`,
 }
 
-export default function WorksDetailBody({ post, prev, next, isPreview }: Props) {
+export default function WorksDetailBody({ post, prev, next }: Props) {
   const shareTwitterUrl = (slug: string) => {
     return `https://twitter.com/share?url=https://htmlgo.site/works/${slug}/`
   }
   const shareFacebookUrl = (slug: string) => {
     return `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
   }
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category: 'works-detail', label, value })
-  }
 
   return (
     <>
-      {isPreview && <PreviewBtn />}
       <main className={className.main}>
         <Title title={post.title} text='WORKS NAME' />
         <article className={className.article}>
@@ -168,9 +159,6 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                 href={shareFacebookUrl(post.slug)}
                 target='_blank'
                 rel='noreferrer'
-                onClick={() => {
-                  clickHandler('facebook', `/works/${post.slug}`)
-                }}
               >
                 FACEBOOK
               </a>
@@ -181,42 +169,23 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                 href={shareTwitterUrl(post.slug)}
                 target='_blank'
                 rel='noreferrer'
-                onClick={() => {
-                  clickHandler('twitter', `/works/${post.slug}`)
-                }}
               >
                 TWITTER
               </a>
             </li>
           </ul>
           <div className={className.back}>
-            <IconBtn
-              icon='faAlignJustify'
-              link='/works/'
-              color='#ffffff'
-              onClick={() => {
-                clickHandler('works', `/works/`)
-              }}
-            />
+            <TextBtn title='WORKS' link='/works/' />
             {next && (
               <Link
                 className={`${className.pager} ${className.next}`}
-                onClick={() => {
-                  clickHandler('next', `/works/${next.slug}`)
-                }}
                 href={`/works/${next.slug}/`}
               >
                 NEXT
               </Link>
             )}
             {prev && (
-              <Link
-                className={`${className.pager} ${className.prev}`}
-                onClick={() => {
-                  clickHandler('prev', `/works/${prev.slug}`)
-                }}
-                href={`/works/${prev.slug}`}
-              >
+              <Link className={`${className.pager} ${className.prev}`} href={`/works/${prev.slug}`}>
                 PREV
               </Link>
             )}

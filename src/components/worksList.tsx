@@ -12,9 +12,6 @@ import { WorksPost } from 'types/microcms'
 // modules
 import { conversionDate } from 'utils/conversionDate'
 
-// libs
-import { event } from 'libs/gtag'
-
 type Props = {
   works: WorksPost[]
 }
@@ -25,18 +22,7 @@ const WorksList = ({ works = [] }: Props) => {
       <ul className='md:flex md:flex-wrap md:justify-between'>
         {works.map((work, i) => (
           <li key={work.id} className='mb-30px border-1 border-border md:w-[32%]'>
-            <Link
-              className='block'
-              onClick={() => {
-                event({
-                  action: 'click',
-                  category: 'works',
-                  label: work.title,
-                  value: `/works/${work.slug}`,
-                })
-              }}
-              href={`/works/${work.slug}`}
-            >
+            <Link className='block' href={`/works/${work.slug}`}>
               <dl>
                 <dt className='relative mb-10px aspect-[16/9] border-b-1 border-border'>
                   {work.slider[0]?.img?.url && (
