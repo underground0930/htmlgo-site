@@ -36,8 +36,13 @@ const className = {
     h-[40px]
     cursor-pointer
     z-1
+    items-center
+    justify-center
     hidden
-    md:block
+    md:flex
+    bg-btn
+    text-base
+    rounded-full
   `,
   sliderPrev: `left-[-55px]`,
   sliderNext: `right-[-55px]`,
@@ -139,12 +144,12 @@ const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
       </Swiper>
       {!isFirst && slider.length > 1 && (
         <div className={`${className.sliderBtn} ${className.sliderPrev} prevBtn`} onClick={goPrev}>
-          PREV
+          &lt;
         </div>
       )}
       {!isLast && slider.length > 1 && (
         <div className={`${className.sliderBtn} ${className.sliderNext} nextBtn`} onClick={goNext}>
-          NEXT
+          &gt;
         </div>
       )}
       {slider.length > 1 && (

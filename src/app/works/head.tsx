@@ -6,7 +6,6 @@ export default async function Head({}) {
       <DefaultHead
         title='WORKS | HTMLGO'
         description='WEB技術を書き連ねるサイト'
-        image=''
         url='https://htmlgo.site/works/'
       />
     </>

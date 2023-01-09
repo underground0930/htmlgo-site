@@ -56,7 +56,6 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
 
   return (
     <>
-      <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css' />
       <main className={className.main}>
         <Title title={post.title} text='WORKS NAME' />
         <article className={className.article}>

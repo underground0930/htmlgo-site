@@ -17,7 +17,6 @@ export const DefaultHead = ({
   url,
   isTop,
   isPreview,
-  children,
 }: Props): JSX.Element => {
   const img = image ? image : 'https://htmlgo.site/img/ogp_new.png'
   return (
@@ -34,6 +33,12 @@ export const DefaultHead = ({
       <meta name='twitter:card' content='summary_large_image' key='twitter:card' />
       <meta name='twitter:site' content='@resistance_gowy' />
       <link rel='canonical' href={url} key='canonical' />
+      <link
+        rel='stylesheet'
+        href='https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css'
+        // @ts-ignore
+        precedence='default'
+      />
       {isPreview && <meta name='robots' content='noindex' />}
     </>
   )
