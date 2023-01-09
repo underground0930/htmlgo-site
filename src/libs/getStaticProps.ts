@@ -46,9 +46,7 @@ export async function articlesGetStaticProps({ params }: { params: { page: strin
   const page = params?.page ? Number(params.page) : 1
 
   let articles = await import('public/feed.json')
-    .then((response) => {
-      return response.default
-    })
+    .then((response) => response.default)
     .catch((err) => {
       console.log(err)
       return []

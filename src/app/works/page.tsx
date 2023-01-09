@@ -10,7 +10,7 @@ import { worksGetStaticProps } from 'libs/getStaticProps'
 
 // components
 import Title from 'components/title'
-import IconBtn from 'components/IconBtn'
+import TextBtn from 'components/textBtn'
 import WorksList from 'components/worksList'
 
 type Props = {
@@ -164,17 +164,10 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
           </select>
         </div>
       </div>
-      <WorksList works={filterPost()} clickHandler={clickHandler} />
+      <WorksList works={filterPost()} />
       <footer className={className.footer}>
         <div className={className.back}>
-          <IconBtn
-            icon='faHome'
-            link='/'
-            color='#ffffff'
-            onClick={() => {
-              clickHandler('top', '/')
-            }}
-          />
+          <TextBtn title='HOME' link='/' />
         </div>
       </footer>
     </main>

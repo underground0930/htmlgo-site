@@ -47,16 +47,7 @@ export default async function Home() {
         <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
         <WorksList works={works} />
         <div className={className.btnWrap}>
-          <TextBtn
-            title='MORE'
-            link='/works/'
-            eventParams={{
-              action: 'click',
-              category: 'top',
-              label: 'works-index',
-              value: '/works/',
-            }}
-          />
+          <TextBtn title='MORE' link='/works/' />
         </div>
       </section>
     </main>

@@ -1,10 +1,9 @@
-// libs
-import { event } from 'libs/gtag'
+import Image from 'next/image'
 
 // components
 import Title from 'components/title'
 import SnsBox from 'components/snsBox'
-import IconBtn from 'components/IconBtn'
+import TextBtn from 'components/textBtn'
 import HistoryList from 'components/historyList'
 
 const className = {
@@ -18,25 +17,16 @@ const className = {
 }
 
 export default function About() {
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category: 'about', label, value })
-  }
-
   return (
     <>
-      {/* <HeadWrap
-        title={'ABOUT | HTMLGO'}
-        description={'このサイトについて'}
-        url={`https://htmlgo.site/about/`}
-      /> */}
       <main className={className.main}>
         <Title title='ABOUT' text='このサイトや主について説明しています' />
         <div className={className.body}>
           <div className={className.img}>
-            <img src='/img/profile.jpg' width='210' height='210' alt='' />
+            <Image src='/img/profile.jpg' width='210' height='210' alt='' />
           </div>
           <div className={className.sns}>
-            <SnsBox category="about" />
+            <SnsBox category='about' />
           </div>
           <h3 className={className.title}>このサイトについて</h3>
           <p className={className.text}>
@@ -44,14 +34,7 @@ export default function About() {
           </p>
           <h3 className={className.title}>プロフィール</h3>
           <p className={className.text}>
-            <a
-              href='https://twitter.com/resistance_gowy'
-              target='_blank'
-              rel='noreferrer'
-              // onClick={(e) => {
-              //   clickHandler('profile_text_twitter', e.currentTarget.href)
-              // }}
-            >
+            <a href='https://twitter.com/resistance_gowy' target='_blank' rel='noreferrer'>
               @resistance_gowy
             </a>
             <span>(フロントエンドエンジニア)</span>
@@ -109,14 +92,7 @@ export default function About() {
           />
         </div>
         <div className={className.btnWrap}>
-          {/* <IconBtn
-            icon="faHome"
-            link="/"
-            color="#ffffff"
-            onClick={() => {
-              clickHandler('top', '/')
-            }}
-          /> */}
+          <TextBtn title='HOME' link='/' />
         </div>
       </main>
     </>

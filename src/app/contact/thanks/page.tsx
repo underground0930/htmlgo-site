@@ -1,9 +1,6 @@
-// libs
-
 // components
-
 import Title from 'components/title'
-import IconBtn from 'components/IconBtn'
+import TextBtn from 'components/textBtn'
 
 const className = {
   main: 'mx-20px',
@@ -27,7 +24,7 @@ export default function Thanks() {
           </div>
         </div>
         <div className={className.back}>
-          <IconBtn icon='faHome' title='back to top' link='/' color='#ffffff' />
+          <TextBtn title='HOME' link='/' />
         </div>
       </main>
     </>

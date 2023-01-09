@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 
 // components
 import Title from 'components/title'
-import IconBtn from 'components/IconBtn'
+import TextBtn from 'components/textBtn'
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
@@ -128,7 +128,7 @@ export default function Contact() {
           </form>
         </div>
         <div className={className.back}>
-          <IconBtn icon='faHome' link='/' color='#ffffff' />
+          <TextBtn title='HOME' link='/' />
         </div>
       </main>
       <Script id='inline-js'>
