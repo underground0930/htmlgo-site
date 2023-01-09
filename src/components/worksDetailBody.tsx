@@ -37,9 +37,9 @@ const className = {
   twitter: `bg-[#1da1f2]`,
   sns: `py-25px flex items-center justify-center border-b-[1px] border-border`,
   snsChild: `mx-6px`,
-  snsLink: `flex items-center justify-center w-[80px] h-[35px] cursor-pointer`,
+  snsLink: `inline-block leading-[35px] h-[35px] px-10px cursor-pointer text-base`,
   icon: `w-[25px] h-[25px]`,
-  pager: `absolute top-0 bottom-0 m-auto w-[40px] h-[40px] bg-[#000] flex items-center justify-center`,
+  pager: `absolute top-0 bottom-0 m-auto w-[40px] h-[40px] bg-[#000] text-base flex items-center justify-center`,
   prev: `right-0`,
   next: `left-0`,
   back: `relative text-center mt-40px mb-40px`,
@@ -181,12 +181,12 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
                 className={`${className.pager} ${className.next}`}
                 href={`/works/${next.slug}/`}
               >
-                NEXT
+                &lt;
               </Link>
             )}
             {prev && (
               <Link className={`${className.pager} ${className.prev}`} href={`/works/${prev.slug}`}>
-                PREV
+                &gt;
               </Link>
             )}
           </div>

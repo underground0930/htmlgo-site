@@ -10,7 +10,7 @@ type Props = {
   articles: FeedObj[]
 }
 
-const Panels = ({ articles, clickHandler }: Props) => {
+const Panels = ({ articles }: Props) => {
   return (
     <div className="mb-20px md:mb-40px md:flex md:flex-wrap md:justify-between md:after:block md:after:w-[23.5%] md:after:content-['']">
       {articles.map((article, i) => {
@@ -19,14 +19,7 @@ const Panels = ({ articles, clickHandler }: Props) => {
             key={article.link}
             className='mb-30px w-[100%] shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] md:w-[23.5%] '
           >
-            <a
-              href={article.link}
-              target='_blank'
-              rel='noopener noreferrer'
-              // onClick={(e) => {
-              //   clickHandler(article.title, article.link)
-              // }}
-            >
+            <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>
                 <dt className='relative h-[140px] border-b-1 border-border bg-main'>
                   <Image
