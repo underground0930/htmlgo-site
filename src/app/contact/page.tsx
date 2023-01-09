@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import Script from 'next/script'
 import { useEffect } from 'react'

@@ -7,9 +7,6 @@ import IconGithub from '../svgs/IconGithub.svg'
 import IconFormrun from '../svgs/IconFormrun.svg'
 import IconRecaptcha from '../svgs/IconRecaptcha.svg'
 
-// libs
-import { event } from 'libs/gtag'
-
 type Props = {}
 
 const links = [
@@ -61,10 +58,6 @@ const className = {
 }
 
 const Footer = ({}: Props) => {
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category: `footer`, label, value })
-  }
-
   return (
     <>
       <footer className={className.footer}>
@@ -75,14 +68,7 @@ const Footer = ({}: Props) => {
               {links.map((v, index) => {
                 return (
                   <li className={className.li} key={v.key}>
-                    <a
-                      href={v.href}
-                      target='_blank'
-                      rel='noreferrer'
-                      onClick={(e) => {
-                        clickHandler(v.key, e.currentTarget.href)
-                      }}
-                    >
+                    <a href={v.href} target='_blank' rel='noreferrer'>
                       {v.icon}
                     </a>
                   </li>

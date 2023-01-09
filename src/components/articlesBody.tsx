@@ -1,9 +1,6 @@
 // type
 import { FeedObj } from 'types/feed'
 
-// libs
-import { event } from 'libs/gtag'
-
 // components
 import Pagenation from 'components/pagenation'
 import Panels from 'components/panels'
@@ -23,9 +20,6 @@ const className = {
 }
 
 export default function ArticlesBody({ articles = [], page, pages }: Props) {
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category: 'articles', label, value })
-  }
   return (
     <>
       <HeadWrap

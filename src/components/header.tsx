@@ -3,9 +3,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-// libs
-import { event } from 'libs/gtag'
-
 type Props = {}
 
 const className = {
@@ -17,10 +14,6 @@ const className = {
 }
 
 const linkStyle = ' hover:text-linkActive font-bold text-14px md:text-16px'
-
-const clickHandler = (label: string, value: string) => {
-  event({ action: 'click', category: `header`, label, value })
-}
 
 const Header = ({}: Props) => {
   const pathname = usePathname()

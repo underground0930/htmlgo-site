@@ -1,16 +1,3 @@
-'use client'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
-
-// libs
-import { event } from 'libs/gtag'
-
-// components
-import IconQiita from '../svgs/IconQiita.svg'
-import IconZenn from '../svgs/IconZenn.svg'
-import IconNote from '../svgs/IconNote.svg'
-
 type Props = {
   category: string
 }
@@ -26,61 +13,32 @@ const className = {
 }
 
 const SnsBox = ({ category }: Props) => {
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category, label, value })
-  }
-
   return (
     <>
       <ul className={className.snsBox}>
         <li className={className.snsBoxChild}>
-          <a
-            href='https://github.com/underground0930'
-            target='_blank'
-            rel='noreferrer'
-            onClick={(e) => clickHandler('github', e.currentTarget.href)}
-          >
-            <FontAwesomeIcon className={className.github} icon={faGithubSquare} color='#24292e' />
+          <a href='https://github.com/underground0930' target='_blank' rel='noreferrer'>
+            github
           </a>
         </li>
         <li className={className.snsBoxChild}>
-          <a
-            href='https://twitter.com/resistance_gowy'
-            target='_blank'
-            rel='noreferrer'
-            onClick={(e) => clickHandler('twitter', e.currentTarget.href)}
-          >
-            <FontAwesomeIcon className={className.twitter} icon={faTwitterSquare} color='#1DA1F2' />
+          <a href='https://twitter.com/resistance_gowy' target='_blank' rel='noreferrer'>
+            twitter
           </a>
         </li>
         <li className={className.snsBoxChild}>
-          <a
-            href='http://qiita.com/resistance_gowy'
-            target='_blank'
-            rel='noreferrer'
-            onClick={(e) => clickHandler('qiita', e.currentTarget.href)}
-          >
-            <IconQiita className={className.qiita} />
+          <a href='http://qiita.com/resistance_gowy' target='_blank' rel='noreferrer'>
+            qiita
           </a>
         </li>
         <li className={className.snsBoxChild}>
-          <a
-            href='https://zenn.dev/resistance_gowy'
-            target='_blank'
-            rel='noreferrer'
-            onClick={(e) => clickHandler('zenn', e.currentTarget.href)}
-          >
-            <IconZenn className={className.zenn} />
+          <a href='https://zenn.dev/resistance_gowy' target='_blank' rel='noreferrer'>
+            zenn
           </a>
         </li>
         <li className={className.snsBoxChild}>
-          <a
-            href='https://note.com/resistance_gowy'
-            target='_blank'
-            rel='noreferrer'
-            onClick={(e) => clickHandler('note', e.currentTarget.href)}
-          >
-            <IconNote className={className.note} />
+          <a href='https://note.com/resistance_gowy' target='_blank' rel='noreferrer'>
+            note
           </a>
         </li>
       </ul>
