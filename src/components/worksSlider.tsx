@@ -6,8 +6,6 @@ import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/virtual'
 
 type Props = {
   slider: {
