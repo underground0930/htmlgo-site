@@ -1,5 +1,5 @@
 // type
-import { FeedObj } from 'types/index'
+import { FeedObj } from 'types/feed'
 
 // components
 import ArticlesBody from 'components/articlesBody'

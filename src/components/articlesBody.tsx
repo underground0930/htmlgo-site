@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../store'
 
 // type
-import { FeedObj } from 'types/index'
+import { FeedObj } from 'types/feed'
 
 // libs
 import { event } from 'libs/gtag'
@@ -38,8 +38,8 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
     <>
       <HeadWrap
         title={(page === 1 ? '' : `${page}ページ目 | `) + `ARTICLES | HTMLGO`}
-        description={'色々なブログの記事のフィードをまとめたものです'}
-        url={`https://htmlgo.site/articles/`}
+        description='色々なブログの記事のフィードをまとめたものです'
+        url='https://htmlgo.site/articles/'
       />
       <main className={className.main}>
         <Title title='ARTICLES' text='技術系やそれ以外の記事' />

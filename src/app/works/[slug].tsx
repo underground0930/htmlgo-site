@@ -1,7 +1,7 @@
 import ErrorPage from 'next/error'
 
 // type
-import { Post } from 'types/index'
+import { Post } from 'types/feed'
 
 // components
 import WorksDetailBody from 'components/worksDetailBody'

@@ -7,7 +7,7 @@ import Image from 'next/image'
 import CategoryIcon from './categoryIcon'
 
 // type
-import { WorksPosts } from 'types/index'
+import { WorksPost } from 'types/microcms'
 
 // modules
 import { conversionDate } from 'utils/conversionDate'
@@ -16,7 +16,7 @@ import { conversionDate } from 'utils/conversionDate'
 import { event } from 'libs/gtag'
 
 type Props = {
-  works: WorksPosts
+  works: WorksPost[]
 }
 
 const WorksList = ({ works = [] }: Props) => {

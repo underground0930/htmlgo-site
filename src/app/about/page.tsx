@@ -36,7 +36,7 @@ export default function About() {
             <img src='/img/profile.jpg' width='210' height='210' alt='' />
           </div>
           <div className={className.sns}>
-            <SnsBox category={'about'} />
+            <SnsBox category="about" />
           </div>
           <h3 className={className.title}>このサイトについて</h3>
           <p className={className.text}>

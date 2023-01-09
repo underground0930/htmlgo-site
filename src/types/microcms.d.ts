@@ -1,10 +1,8 @@
-export type FeedObj = {
-  category: string
-  title: string
-  published: string
-  link: string
-  img: string
-  tags: string[]
+export type MicroCMSResponse = {
+  contents: WorksPost[]
+  totalCount: number
+  offset: number
+  limit: number
 }
 
 export type WorksPost = {
@@ -16,8 +14,6 @@ export type WorksPost = {
   technology: { id: string; technology_label: string; technology_slug: string }[]
   slider: { img: { url: string } }[]
 }
-
-export type WorksPosts = WorksPost[]
 
 export type Post = {
   title: string
@@ -45,5 +41,3 @@ export type Post = {
     }
   }[]
 }
-
-export type PanelType = 'tile' | 'list' | 'text'

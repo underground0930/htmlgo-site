@@ -57,9 +57,9 @@ export default function Contact() {
   return (
     <Layout>
       <HeadWrap
-        title={'CONTACT | HTMLGO'}
-        description={'お問い合わせ'}
-        url={`https://htmlgo.site/contact/`}
+        title="CONTACT | HTMLGO"
+        description="お問い合わせ"
+        url="https://htmlgo.site/contact/"
       />
       <main className={className.main}>
         <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />

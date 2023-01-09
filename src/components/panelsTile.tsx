@@ -4,7 +4,7 @@ import Image from 'next/image'
 import CategoryIcon from './categoryIcon'
 
 // types
-import { FeedObj } from 'types/index'
+import { FeedObj } from 'types/feed'
 
 type Props = {
   articles: FeedObj[]
@@ -31,7 +31,7 @@ const PanelsTile = ({ articles, clickHandler }: Props) => {
                 <dt className='relative h-[140px] border-b-1 border-border bg-main'>
                   <Image
                     src={article.img}
-                    alt={''}
+                    alt=''
                     fill={true}
                     sizes='(max-width: 768px) 100vw, 33vw'
                     priority={i < 8 ? true : false}

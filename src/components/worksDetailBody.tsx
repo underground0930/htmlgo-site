@@ -154,7 +154,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   <WorksDetailInfo title='クレジット'>
                     <ul>
                       {post.credit.map((v) => (
-                        <li key={v.value} className={'mb-20px last-of-type:mb-0px'}>
+                        <li key={v.value} className="mb-20px last-of-type:mb-0px">
                           <p className='mb-2px text-14px font-bold'>{v.label}</p>
                           <p className='text-14px'>
                             {v.link ? (

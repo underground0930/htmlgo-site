@@ -24,9 +24,9 @@ export default function Thanks() {
   return (
     <Layout>
       <HeadWrap
-        title={'THANKS | HTMLGO'}
-        description={'お問い合わせ'}
-        url={`https://htmlgo.site/contact/thanks/`}
+        title="THANKS | HTMLGO"
+        description="お問い合わせ"
+        url="https://htmlgo.site/contact/thanks/"
       />
       <main className={className.main}>
         <Title title='THANKS' text='お問合せありがとうございました' />

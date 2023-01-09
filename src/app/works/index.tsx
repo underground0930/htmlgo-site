@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 // type
-import { WorksPosts } from 'types/index'
+import { WorksPosts } from 'types/feed'
 
 // libs
 import { event } from 'libs/gtag'
@@ -10,7 +10,6 @@ import { worksGetStaticProps } from 'libs/getStaticProps'
 
 // components
 import HeadWrap from 'components/headWrap'
-import Layout from 'components/layout'
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
 import WorksList from 'components/worksList'
@@ -130,11 +129,10 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
   }, [router])
 
   return (
-    <Layout>
       <HeadWrap
-        title={'WORKS | HTMLGO'}
-        description={'実績を紹介しています'}
-        url={`https://htmlgo.site/works/`}
+        title='WORKS | HTMLGO'
+        description='実績を紹介しています'
+        url='https://htmlgo.site/works/'
       />
       <main className={className.main}>
         <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
@@ -145,7 +143,7 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
               onChange={categoryHandler}
               value={filters.category}
             >
-              <option value='' key={''}>
+              <option value='' key=''>
                 Category
               </option>
               {categories.map((c) => (
@@ -161,7 +159,7 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
               onChange={technologyHandler}
               value={filters.technology}
             >
-              <option value='' key={''}>
+              <option value='' key=''>
                 Technology
               </option>
               {technologies.map((c) => (
@@ -186,7 +184,7 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
           </div>
         </footer>
       </main>
-    </Layout>
+
   )
 }
 
