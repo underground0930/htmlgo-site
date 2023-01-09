@@ -2,12 +2,7 @@ import { useState } from 'react'
 import Script from 'next/script'
 import { useEffect } from 'react'
 
-// libs
-import { event } from 'libs/gtag'
-
 // components
-import HeadWrap from 'components/headWrap'
-import Layout from 'components/layout'
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
 
@@ -35,10 +30,6 @@ export default function Contact() {
     setIsInitFormRun(true)
   }
 
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category: 'contact', label, value })
-  }
-
   useEffect(() => {
     if (window.Formrun) {
       initFormrun()
@@ -55,12 +46,7 @@ export default function Contact() {
   }, [])
 
   return (
-    <Layout>
-      <HeadWrap
-        title="CONTACT | HTMLGO"
-        description="お問い合わせ"
-        url="https://htmlgo.site/contact/"
-      />
+    <>
       <main className={className.main}>
         <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />
         <div className={className.body}>
@@ -134,23 +120,13 @@ export default function Contact() {
               type='submit'
               data-formrun-error-text='未入力の項目があります'
               data-formrun-submitting-text='送信中...'
-              onClick={() => {
-                clickHandler('form_submit', '')
-              }}
             >
               送信
             </button>
           </form>
         </div>
         <div className={className.back}>
-          <IconBtn
-            icon='faHome'
-            link='/'
-            color='#ffffff'
-            onClick={() => {
-              clickHandler('top', '/')
-            }}
-          />
+          <IconBtn icon='faHome' link='/' color='#ffffff' />
         </div>
       </main>
       <Script id='inline-js'>
@@ -176,6 +152,6 @@ export default function Contact() {
         defer
       />
       <Script id='formrun-js' src='https://sdk.form.run/js/v2/formrun.js' onLoad={initFormrun} />
-    </Layout>
+    </>
   )
 }

@@ -1,12 +1,7 @@
-// styles
-import styles from 'styles/page/Thanks.module.scss'
-
 // libs
-import { event } from 'libs/gtag'
 
 // components
-import HeadWrap from 'components/headWrap'
-import Layout from 'components/layout'
+
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
 
@@ -18,16 +13,8 @@ const className = {
 }
 
 export default function Thanks() {
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category: 'contact-thanks', label, value })
-  }
   return (
-    <Layout>
-      <HeadWrap
-        title="THANKS | HTMLGO"
-        description="お問い合わせ"
-        url="https://htmlgo.site/contact/thanks/"
-      />
+    <>
       <main className={className.main}>
         <Title title='THANKS' text='お問合せありがとうございました' />
         <div className={className.body}>
@@ -40,17 +27,9 @@ export default function Thanks() {
           </div>
         </div>
         <div className={className.back}>
-          <IconBtn
-            icon='faHome'
-            title='back to top'
-            link='/'
-            color='#ffffff'
-            onClick={() => {
-              clickHandler('top', '/')
-            }}
-          />
+          <IconBtn icon='faHome' title='back to top' link='/' color='#ffffff' />
         </div>
       </main>
-    </Layout>
+    </>
   )
 }

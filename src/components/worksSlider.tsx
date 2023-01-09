@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -142,12 +140,12 @@ const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
       </Swiper>
       {!isFirst && slider.length > 1 && (
         <div className={`${className.sliderBtn} ${className.sliderPrev} prevBtn`} onClick={goPrev}>
-          <FontAwesomeIcon className={className.icon} icon={faArrowCircleLeft} />
+          PREV
         </div>
       )}
       {!isLast && slider.length > 1 && (
         <div className={`${className.sliderBtn} ${className.sliderNext} nextBtn`} onClick={goNext}>
-          <FontAwesomeIcon className={className.icon} icon={faArrowCircleRight} />
+          NEXT
         </div>
       )}
       {slider.length > 1 && (

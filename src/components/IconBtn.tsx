@@ -1,8 +1,5 @@
 import Link from 'next/link'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faAlignJustify } from '@fortawesome/free-solid-svg-icons'
-
 type Props = {
   title?: string
   link: string
@@ -10,11 +7,6 @@ type Props = {
   color: string
   icon: 'faHome' | 'faAlignJustify'
   onClick?: () => void
-}
-
-const icons = {
-  faHome: faHome,
-  faAlignJustify: faAlignJustify,
 }
 
 const className = {
@@ -26,25 +18,15 @@ const IconBtn = ({ title, link, blank = false, color, icon, onClick }: Props) =>
   return (
     <>
       {blank && (
-        <a className={className.btn} href={link} target='_blank' rel='noreferrer' onClick={onClick}>
-          <FontAwesomeIcon
-            className={className.icon}
-            icon={icons[icon]}
-            title={title ? title : ''}
-            style={{ color: color }}
-          />
-        </a>
+        <a
+          className={className.btn}
+          href={link}
+          target='_blank'
+          rel='noreferrer'
+          onClick={onClick}
+        ></a>
       )}
-      {!blank && (
-        <Link href={link} className={className.btn} onClick={onClick}>
-          <FontAwesomeIcon
-            className={className.icon}
-            icon={icons[icon]}
-            title={title ? title : ''}
-            style={{ color: color }}
-          />
-        </Link>
-      )}
+      {!blank && <Link href={link} className={className.btn} onClick={onClick}></Link>}
     </>
   )
 }

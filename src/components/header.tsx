@@ -30,26 +30,14 @@ const Header = ({}: Props) => {
       <header className={className.header}>
         <div className={className.inner}>
           <h1 className={className.h1}>
-            <Link
-              href='/'
-              className='no-underline'
-              onClick={() => {
-                clickHandler('top_logo', '/')
-              }}
-            >
+            <Link href='/' className='no-underline'>
               HTMLGO
             </Link>
           </h1>
           <nav className={className.nav}>
             <ul className={className.ul}>
               <li>
-                <Link
-                  href='/'
-                  className={(pathname === '/' ? 'text-linkActive' : '') + linkStyle}
-                  onClick={() => {
-                    clickHandler('top', '/')
-                  }}
-                >
+                <Link href='/' className={(pathname === '/' ? 'text-linkActive' : '') + linkStyle}>
                   TOP
                 </Link>
               </li>
@@ -61,9 +49,6 @@ const Header = ({}: Props) => {
                       className={
                         (pathname?.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle
                       }
-                      onClick={() => {
-                        clickHandler(v, `/${v}/`)
-                      }}
                     >
                       {v.toLocaleUpperCase()}
                     </Link>

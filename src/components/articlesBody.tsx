@@ -1,9 +1,3 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-
-// store
-import { RootState } from '../store'
-
 // type
 import { FeedObj } from 'types/feed'
 
@@ -11,7 +5,6 @@ import { FeedObj } from 'types/feed'
 import { event } from 'libs/gtag'
 
 // components
-import ViewSwitch from 'components/viewSwitch'
 import Pagenation from 'components/pagenation'
 import Panels from 'components/panels'
 import HeadWrap from 'components/headWrap'
@@ -30,7 +23,6 @@ const className = {
 }
 
 export default function ArticlesBody({ articles = [], page, pages }: Props) {
-  const type = useSelector((state: RootState) => state.panelType.value)
   const clickHandler = (label: string, value: string) => {
     event({ action: 'click', category: 'articles', label, value })
   }
@@ -43,18 +35,10 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
       />
       <main className={className.main}>
         <Title title='ARTICLES' text='技術系やそれ以外の記事' />
-        <ViewSwitch type={type} />
-        <Panels articles={articles} type={type} clickHandler={clickHandler} />
+        <Panels articles={articles} />
         <Pagenation pages={pages} page={page} />
         <div className={className.btnWrap + ` mt-40px`}>
-          <IconBtn
-            icon='faHome'
-            link='/'
-            color='#ffffff'
-            onClick={() => {
-              clickHandler('top', '/')
-            }}
-          />
+          <IconBtn icon='faHome' link='/' color='#ffffff' />
         </div>
       </main>
     </>

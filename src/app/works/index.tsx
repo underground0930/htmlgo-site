@@ -2,20 +2,19 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 // type
-import { WorksPosts } from 'types/feed'
+import { WorksPost } from 'types/microcms'
 
 // libs
 import { event } from 'libs/gtag'
 import { worksGetStaticProps } from 'libs/getStaticProps'
 
 // components
-import HeadWrap from 'components/headWrap'
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
 import WorksList from 'components/worksList'
 
 type Props = {
-  works: WorksPosts
+  works: WorksPost[]
   categories: { category_label: string; category_slug: string }[]
   technologies: { technology_label: string; technology_slug: string }[]
 }
@@ -96,7 +95,7 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
     event({ action: 'click', category: 'works', label, value })
   }
 
-  const filterPost = (): WorksPosts => {
+  const filterPost = (): WorksPost[] => {
     const { category, technology } = filters
     return works.filter((work) => {
       const categoryMatch =
@@ -129,62 +128,56 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
   }, [router])
 
   return (
-      <HeadWrap
-        title='WORKS | HTMLGO'
-        description='実績を紹介しています'
-        url='https://htmlgo.site/works/'
-      />
-      <main className={className.main}>
-        <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
-        <div className={className.filter}>
-          <div className={className.filterChild}>
-            <select
-              className={className.filterSelect}
-              onChange={categoryHandler}
-              value={filters.category}
-            >
-              <option value='' key=''>
-                Category
+    <main className={className.main}>
+      <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
+      <div className={className.filter}>
+        <div className={className.filterChild}>
+          <select
+            className={className.filterSelect}
+            onChange={categoryHandler}
+            value={filters.category}
+          >
+            <option value='' key=''>
+              Category
+            </option>
+            {categories.map((c) => (
+              <option value={c.category_slug} key={c.category_slug}>
+                {c.category_label}
               </option>
-              {categories.map((c) => (
-                <option value={c.category_slug} key={c.category_slug}>
-                  {c.category_label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={className.filterChild}>
-            <select
-              className={className.filterSelect}
-              onChange={technologyHandler}
-              value={filters.technology}
-            >
-              <option value='' key=''>
-                Technology
-              </option>
-              {technologies.map((c) => (
-                <option value={c.technology_slug} key={c.technology_slug}>
-                  {c.technology_label}
-                </option>
-              ))}
-            </select>
-          </div>
+            ))}
+          </select>
         </div>
-        <WorksList works={filterPost()} clickHandler={clickHandler} />
-        <footer className={className.footer}>
-          <div className={className.back}>
-            <IconBtn
-              icon='faHome'
-              link='/'
-              color='#ffffff'
-              onClick={() => {
-                clickHandler('top', '/')
-              }}
-            />
-          </div>
-        </footer>
-      </main>
-
+        <div className={className.filterChild}>
+          <select
+            className={className.filterSelect}
+            onChange={technologyHandler}
+            value={filters.technology}
+          >
+            <option value='' key=''>
+              Technology
+            </option>
+            {technologies.map((c) => (
+              <option value={c.technology_slug} key={c.technology_slug}>
+                {c.technology_label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <WorksList works={filterPost()} clickHandler={clickHandler} />
+      <footer className={className.footer}>
+        <div className={className.back}>
+          <IconBtn
+            icon='faHome'
+            link='/'
+            color='#ffffff'
+            onClick={() => {
+              clickHandler('top', '/')
+            }}
+          />
+        </div>
+      </footer>
+    </main>
   )
 }
 

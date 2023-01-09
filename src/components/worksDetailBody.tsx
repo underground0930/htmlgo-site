@@ -1,24 +1,16 @@
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-
 // type
-import { Post } from 'types/index'
+import { Post } from 'types/microcms'
 
 // module
 import { conversionDate } from 'utils/conversionDate'
-import { removeHtml } from 'utils/removeHtml'
-import { cutText } from 'utils/cutText'
 
 // libs
 import { event } from 'libs/gtag'
 
 // components
-import HeadWrap from 'components/headWrap'
-import Layout from 'components/layout'
 import Title from 'components/title'
 import IconBtn from 'components/IconBtn'
 import PreviewBtn from './previewBtn'
@@ -70,16 +62,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
   }
 
   return (
-    <Layout>
-      <HeadWrap
-        title={`${post.title} | WORKS | HTMLGO`}
-        description={
-          post.body ? cutText(removeHtml(post.body), 120) : post.title + 'の実績紹介です。'
-        }
-        image={post.slider?.[0]?.img?.url}
-        url={`https://htmlgo.site/works/${post.slug}/`}
-        isPreview={isPreview}
-      />
+    <>
       {isPreview && <PreviewBtn />}
       <main className={className.main}>
         <Title title={post.title} text='WORKS NAME' />
@@ -154,7 +137,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   <WorksDetailInfo title='クレジット'>
                     <ul>
                       {post.credit.map((v) => (
-                        <li key={v.value} className="mb-20px last-of-type:mb-0px">
+                        <li key={v.value} className='mb-20px last-of-type:mb-0px'>
                           <p className='mb-2px text-14px font-bold'>{v.label}</p>
                           <p className='text-14px'>
                             {v.link ? (
@@ -189,7 +172,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   clickHandler('facebook', `/works/${post.slug}`)
                 }}
               >
-                <FontAwesomeIcon className={className.icon} icon={faFacebookF} color='#ffffff' />
+                FACEBOOK
               </a>
             </li>
             <li className={className.snsChild}>
@@ -202,7 +185,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                   clickHandler('twitter', `/works/${post.slug}`)
                 }}
               >
-                <FontAwesomeIcon className={className.icon} icon={faTwitter} color='#ffffff' />
+                TWITTER
               </a>
             </li>
           </ul>
@@ -223,7 +206,7 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                 }}
                 href={`/works/${next.slug}/`}
               >
-                <FontAwesomeIcon className={className.icon} icon={faChevronLeft} color='#ffffff' />
+                NEXT
               </Link>
             )}
             {prev && (
@@ -234,12 +217,12 @@ export default function WorksDetailBody({ post, prev, next, isPreview }: Props) 
                 }}
                 href={`/works/${prev.slug}`}
               >
-                <FontAwesomeIcon className={className.icon} icon={faChevronRight} color='#ffffff' />
+                PREV
               </Link>
             )}
           </div>
         </article>
       </main>
-    </Layout>
+    </>
   )
 }
