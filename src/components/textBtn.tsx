@@ -19,7 +19,7 @@ const TextBtn = ({ title, link, blank = false }: Props) => {
         </a>
       )}
       {!blank && (
-        <Link href={link} className={className}>
+        <Link href={link} className={className} prefetch={false}>
           {title}
         </Link>
       )}

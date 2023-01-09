@@ -9,7 +9,7 @@ import HistoryList from 'components/historyList'
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
   body: `mb-40px pb-30px`,
-  img: `rounded-full w-[210px] h-[210px] mx-auto mb-40px overflow-hidden`,
+  img: `mx-auto mb-40px overflow-hidden`,
   sns: `mb-45px`,
   title: `text-18px font-bold mt-40px mb-30px border-l-5 border-l-[#000] border-b-1 border-b-[#000]/30 pl-5px pb-5px`,
   text: `text-15px`,
@@ -70,8 +70,7 @@ export default function About() {
           />
           <h3 className={className.title}>経験した技術・ツール</h3>
           <p className={className.text}>
-            html / css / TypeScript / React / Next.js / Wordpress / Docker / Webpack / github /
-            Backlog
+            html5 / css3 / TypeScript / React / Next.js / Wordpress / Webpack
           </p>
           <h3 className={className.title}>仕事道具</h3>
           <HistoryList

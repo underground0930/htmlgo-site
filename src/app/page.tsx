@@ -30,16 +30,7 @@ export default async function Home() {
         <Title title='ARTICLES' text='最新の記事' />
         <Panels articles={articles} />
         <div className={className.btnWrap}>
-          <TextBtn
-            title='MORE'
-            link='/articles/'
-            eventParams={{
-              action: 'click',
-              category: 'top',
-              label: 'article-index',
-              value: '/articles/',
-            }}
-          />
+          <TextBtn title='MORE' link='/articles/' />
         </div>
       </section>
       {/* works */}
@@ -57,9 +48,7 @@ export default async function Home() {
 export async function fetchData() {
   const articles: FeedObj[] = (
     await import('public/feed.json')
-      .then((response) => {
-        return response.default
-      })
+      .then((response) => response.default)
       .catch((err) => {
         console.log(err)
         return []
@@ -74,7 +63,7 @@ export async function fetchData() {
     .then((result) => result.contents)
     .catch((err) => {
       console.log('top err :' + err)
-      return { contents: [] }
+      return []
     })
 
   return {

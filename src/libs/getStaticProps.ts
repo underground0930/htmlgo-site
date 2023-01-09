@@ -1,6 +1,9 @@
 // const
 import { ARTICLE_PER_PAGE, WORKS_PER_PAGE } from 'const/index'
 
+// types
+import { FeedObj } from 'types/feed'
+
 // libs
 import { client } from 'libs/client'
 
@@ -45,22 +48,20 @@ export async function topGetStaticProps() {
 export async function articlesGetStaticProps({ params }: { params: { page: string } }) {
   const page = params?.page ? Number(params.page) : 1
 
-  let articles = await import('public/feed.json')
-    .then((response) => response.default)
-    .catch((err) => {
-      console.log(err)
-      return []
-    })
+  let articles: FeedObj[] = []
 
-  let total = articles.length
+  try {
+    articles = await import('public/feed.json').then((response) => response.default)
+  } catch (e) {
+    articles = []
+  }
+
   articles = articles.slice(ARTICLE_PER_PAGE * (page - 1), ARTICLE_PER_PAGE * page)
 
   return {
-    props: {
-      articles,
-      page,
-      pages: Math.ceil(total / ARTICLE_PER_PAGE),
-    },
+    articles,
+    page,
+    pages: Math.ceil(articles.length / ARTICLE_PER_PAGE),
   }
 }
 
