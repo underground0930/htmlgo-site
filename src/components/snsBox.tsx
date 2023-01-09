@@ -1,10 +1,7 @@
-type Props = {
-  category: string
-}
-
 const className = {
-  snsBox: `mx-auto max-w-[240px] md:max-w-[260px] flex items-center justify-center flex-wrap`,
-  snsBoxChild: `mb-10px w-[20%] text-center last-of-type:mr-0px`,
+  snsBox: `mx-auto max-w-[220px] flex items-center justify-center flex-wrap`,
+  snsBoxChild: `mb-10px mr-15px`,
+  snsBoxLink: `font-bold`,
   github: `w-[40px] h-[40px]`,
   twitter: `w-[40px] h-[40px]`,
   qiita: `w-[40px] h-[40px]`,
@@ -12,33 +9,58 @@ const className = {
   note: `w-[40px] h-[40px] rounded-[4px]`,
 }
 
-const SnsBox = ({ category }: Props) => {
+const SnsBox = () => {
   return (
     <>
       <ul className={className.snsBox}>
         <li className={className.snsBoxChild}>
-          <a href='https://github.com/underground0930' target='_blank' rel='noreferrer'>
-            github
+          <a
+            className={className.snsBoxLink}
+            href='https://github.com/underground0930'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Github
           </a>
         </li>
         <li className={className.snsBoxChild}>
-          <a href='https://twitter.com/resistance_gowy' target='_blank' rel='noreferrer'>
-            twitter
+          <a
+            className={className.snsBoxLink}
+            href='https://twitter.com/resistance_gowy'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Twitter
           </a>
         </li>
         <li className={className.snsBoxChild}>
-          <a href='http://qiita.com/resistance_gowy' target='_blank' rel='noreferrer'>
-            qiita
+          <a
+            className={className.snsBoxLink}
+            href='http://qiita.com/resistance_gowy'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Qiita
           </a>
         </li>
         <li className={className.snsBoxChild}>
-          <a href='https://zenn.dev/resistance_gowy' target='_blank' rel='noreferrer'>
-            zenn
+          <a
+            className={className.snsBoxLink}
+            href='https://zenn.dev/resistance_gowy'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Zenn
           </a>
         </li>
         <li className={className.snsBoxChild}>
-          <a href='https://note.com/resistance_gowy' target='_blank' rel='noreferrer'>
-            note
+          <a
+            className={className.snsBoxLink}
+            href='https://note.com/resistance_gowy'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Note
           </a>
         </li>
       </ul>

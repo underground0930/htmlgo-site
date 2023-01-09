@@ -9,7 +9,7 @@ import HistoryList from 'components/historyList'
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
   body: `mb-40px pb-30px`,
-  img: `mx-auto mb-40px overflow-hidden`,
+  img: `mx-auto mb-40px rounded-full`,
   sns: `mb-45px`,
   title: `text-18px font-bold mt-40px mb-30px border-l-5 border-l-[#000] border-b-1 border-b-[#000]/30 pl-5px pb-5px`,
   text: `text-15px`,
@@ -22,11 +22,17 @@ export default function About() {
       <main className={className.main}>
         <Title title='ABOUT' text='このサイトや主について説明しています' />
         <div className={className.body}>
-          <div className={className.img}>
-            <Image src='/img/profile.jpg' width='210' height='210' alt='' />
+          <div className=''>
+            <Image
+              className={className.img}
+              src='/img/profile.jpg'
+              width='210'
+              height='210'
+              alt=''
+            />
           </div>
           <div className={className.sns}>
-            <SnsBox category='about' />
+            <SnsBox />
           </div>
           <h3 className={className.title}>このサイトについて</h3>
           <p className={className.text}>
