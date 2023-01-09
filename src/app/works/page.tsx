@@ -1,25 +1,10 @@
-'use client'
-
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-
-// type
-import { WorksPost } from 'types/microcms'
-
 // libs
-import { event } from 'libs/gtag'
-import { worksGetStaticProps } from 'libs/getStaticProps'
+import { fetchWorksList } from 'libs/fetchWorksList'
 
 // components
 import Title from 'components/title'
 import TextBtn from 'components/textBtn'
 import WorksList from 'components/worksList'
-
-type Props = {
-  works: WorksPost[]
-  categories: { category_label: string; category_slug: string }[]
-  technologies: { technology_label: string; technology_slug: string }[]
-}
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
@@ -67,106 +52,14 @@ const className = {
   back: `text-center`,
 }
 
-export default function Works({ works, categories = [], technologies = [] }: Props) {
-  const router = useRouter()
-  const [filters, setFilters] = useState({
-    category: '',
-    technology: '',
-  })
-
-  const categoryHandler = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    const { value } = e.currentTarget
-    const { technology } = router.query
-    router.push({
-      query: {
-        ...(value ? { category: value } : {}),
-        ...(technology ? { technology } : {}),
-      },
-    })
-  }
-
-  const technologyHandler = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    const { value } = e.currentTarget
-    const { category } = router.query
-    router.push({
-      query: { ...(category ? { category } : {}), ...(value ? { technology: value } : {}) },
-    })
-  }
-
-  const clickHandler = (label: string, value: string) => {
-    event({ action: 'click', category: 'works', label, value })
-  }
-
-  const filterPost = (): WorksPost[] => {
-    const { category, technology } = filters
-    return works.filter((work) => {
-      const categoryMatch =
-        category === '' || work.category.map((c) => c.category_slug).includes(category)
-      const technologyMatch =
-        technology === '' || work.technology.map((c) => c.technology_slug).includes(technology)
-
-      return categoryMatch && technologyMatch
-    })
-  }
-
-  const changeToString = (param: string | string[] | undefined): string => {
-    if (Array.isArray(param)) {
-      return param[0]
-    } else if (param === undefined) {
-      return ''
-    }
-    return param
-  }
-
-  useEffect(() => {
-    // パラメータを取ってくる
-    if (router.isReady) {
-      const { category, technology } = router.query
-      setFilters({
-        category: changeToString(category),
-        technology: changeToString(technology),
-      })
-    }
-  }, [router])
+export default async function Works() {
+  const { works, categories, technologies } = await fetchWorksList()
 
   return (
     <main className={className.main}>
       <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
-      <div className={className.filter}>
-        <div className={className.filterChild}>
-          <select
-            className={className.filterSelect}
-            onChange={categoryHandler}
-            value={filters.category}
-          >
-            <option value='' key=''>
-              Category
-            </option>
-            {categories.map((c) => (
-              <option value={c.category_slug} key={c.category_slug}>
-                {c.category_label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={className.filterChild}>
-          <select
-            className={className.filterSelect}
-            onChange={technologyHandler}
-            value={filters.technology}
-          >
-            <option value='' key=''>
-              Technology
-            </option>
-            {technologies.map((c) => (
-              <option value={c.technology_slug} key={c.technology_slug}>
-                {c.technology_label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <WorksList works={filterPost()} />
+
+      <WorksList works={works} />
       <footer className={className.footer}>
         <div className={className.back}>
           <TextBtn title='HOME' link='/' />
@@ -175,5 +68,3 @@ export default function Works({ works, categories = [], technologies = [] }: Pro
     </main>
   )
 }
-
-export const getStaticProps = worksGetStaticProps

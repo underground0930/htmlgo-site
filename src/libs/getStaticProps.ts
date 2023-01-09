@@ -42,30 +42,6 @@ export async function topGetStaticProps() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// articles
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export async function articlesGetStaticProps({ params }: { params: { page: string } }) {
-  const page = params?.page ? Number(params.page) : 1
-
-  let articles: FeedObj[] = []
-
-  try {
-    articles = await import('public/feed.json').then((response) => response.default)
-  } catch (e) {
-    articles = []
-  }
-
-  articles = articles.slice(ARTICLE_PER_PAGE * (page - 1), ARTICLE_PER_PAGE * page)
-
-  return {
-    articles,
-    page,
-    pages: Math.ceil(articles.length / ARTICLE_PER_PAGE),
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 // works
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
