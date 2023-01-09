@@ -9,7 +9,6 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "open": "open -a 'Google Chrome' http://localhost:3000",
     "lint": "next lint",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx}'"
   },
