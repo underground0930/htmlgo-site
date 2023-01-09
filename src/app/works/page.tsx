@@ -58,7 +58,6 @@ export default async function Works() {
   return (
     <main className={className.main}>
       <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
-
       <WorksList works={works} />
       <footer className={className.footer}>
         <div className={className.back}>

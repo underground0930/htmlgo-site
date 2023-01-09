@@ -4,10 +4,10 @@ export default async function Head({}) {
   return (
     <>
       <DefaultHead
-        title='WORKS | HTMLGO'
-        description='WEB技術を書き連ねるサイト'
+        title='ABOUT | HTMLGO'
+        description='このサイトについて'
         image=''
-        url='https://htmlgo.site/works/'
+        url='https://htmlgo.site/about/'
       />
     </>
   )
