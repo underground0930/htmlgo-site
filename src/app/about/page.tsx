@@ -1,10 +1,9 @@
-import Image from 'next/image'
-
 // components
 import Title from '@/components/title'
 import SnsBox from '@/components/snsBox'
 import TextBtn from '@/components/textBtn'
 import HistoryList from '@/components/historyList'
+import ImageBox from '@/components/ImageBox'
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
@@ -23,13 +22,7 @@ export default function About() {
         <Title title='ABOUT' text='このサイトや主について説明しています' />
         <div className={className.body}>
           <div className=''>
-            <Image
-              className={className.img}
-              src='/img/profile.jpg'
-              width='210'
-              height='210'
-              alt=''
-            />
+            <ImageBox cls={className.img} src='/img/profile.jpg' width={210} height={210} />
           </div>
           <div className={className.sns}>
             <SnsBox />

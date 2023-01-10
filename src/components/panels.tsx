@@ -1,7 +1,6 @@
-import Image from 'next/image'
-
 // components
 import CategoryIcon from '@/components/categoryIcon'
+import ImageBox from '@/components/ImageBox'
 
 // types
 import { FeedObj } from '@/types/feed'
@@ -22,13 +21,11 @@ const Panels = ({ articles }: Props) => {
             <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>
                 <dt className='relative h-[140px] border-b-1 border-border bg-main'>
-                  <Image
+                  <ImageBox
+                    cls='object-cover'
                     src={article.img}
-                    alt=''
-                    fill={true}
-                    sizes='(max-width: 768px) 100vw, 33vw'
                     priority={i < 8 ? true : false}
-                    className='object-cover'
+                    sizes='(max-width: 768px) 100vw, 33vw'
                   />
                 </dt>
                 <dd className='p-12px'>

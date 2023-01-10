@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-// Import Swiper styles
+import ImageBox from '@/components/ImageBox'
 
 type Slider = {
   fieldId: string
@@ -33,6 +33,7 @@ const className = {
     h-full
     before:content-[""]
     block
+    aspect-video
   `,
   sliderBtn: `
     absolute
@@ -150,17 +151,10 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
           {sliderList.map((v, i) => {
             return (
               <SwiperSlide className={className.slider} virtualIndex={i} key={v.img.url}>
-                {v.loading && (
-                  <div className='w-hull h-hull aspect-video'>
-                    <div className={className.loader}>Loading...</div>
-                  </div>
-                )}
-                <Image
-                  className='!relative'
+                {v.loading && <div className={className.loader}>Loading...</div>}
+                <ImageBox
+                  cls=''
                   src={v.img.url}
-                  alt=''
-                  priority={true}
-                  fill={true}
                   onLoadingComplete={() => {
                     setSliderList((prev) => {
                       return prev.map((s, j) => {

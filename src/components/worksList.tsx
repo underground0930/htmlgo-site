@@ -1,15 +1,15 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 
 // components
-import CategoryIcon from './categoryIcon'
+import CategoryIcon from '@/components/categoryIcon'
+import ImageBox from '@/components/ImageBox'
 
 // type
 import { WorksPost } from '@/types/microcms'
 
-// modules
+// utils
 import { conversionDate } from '@/utils/conversionDate'
 
 type Props = {
@@ -26,10 +26,8 @@ const WorksList = ({ works = [] }: Props) => {
               <dl>
                 <dt className='relative mb-10px aspect-[16/9] border-b-1 border-border'>
                   {work.slider[0]?.img?.url && (
-                    <Image
+                    <ImageBox
                       src={work.slider[0].img.url + '?w=800'}
-                      alt=''
-                      fill={true}
                       priority={i < 6 ? true : false}
                       sizes='(max-width: 768px) 100vw, 33vw'
                     />
