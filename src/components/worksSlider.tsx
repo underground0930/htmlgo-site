@@ -24,13 +24,15 @@ type Props = {
 
 const className = {
   container: `w-[100%] border-border border-1`,
+  sliderWrapper: `
+    aspect-[16/9]
+  `,
   slider: `
     relative
     object-fit-cover
     h-full
     before:content-[""]
     block
-    aspect-video
   `,
   sliderBtn: `
     absolute
@@ -148,8 +150,13 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
           {sliderList.map((v, i) => {
             return (
               <SwiperSlide className={className.slider} virtualIndex={i} key={v.img.url}>
-                {v.loading && <div className={className.loader}>Loading...</div>}
+                {v.loading && (
+                  <div className='w-hull h-hull aspect-video'>
+                    <div className={className.loader}>Loading...</div>
+                  </div>
+                )}
                 <Image
+                  className='!relative'
                   src={v.img.url}
                   alt=''
                   priority={true}
