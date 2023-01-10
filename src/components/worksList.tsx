@@ -22,7 +22,7 @@ const WorksList = ({ works = [] }: Props) => {
       <ul className='md:flex md:flex-wrap md:justify-between'>
         {works.map((work, i) => (
           <li key={work.id} className='mb-30px border-1 border-border md:w-[32%]'>
-            <Link className='block' href={`/works/${work.slug}`}>
+            <Link className='block' href={`/works/${work.slug}`} prefetch={false}>
               <dl>
                 <dt className='relative mb-10px aspect-[16/9] border-b-1 border-border'>
                   {work.slider[0]?.img?.url && (
