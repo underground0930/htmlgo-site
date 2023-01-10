@@ -1,8 +1,8 @@
 import '../styles/globals.css'
 
 // components
-import Header from '@/components/header'
-import Footer from '@/components/footer'
+import Header from '@/components/common/header'
+import Footer from '@/components/common/footer'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

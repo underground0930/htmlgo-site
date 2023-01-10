@@ -1,6 +1,6 @@
 // components
-import Title from '@/components/title'
-import TextBtn from '@/components/textBtn'
+import Title from '@/components/common/title'
+import TextBtn from '@/components/common/textBtn'
 
 const className = {
   main: 'mx-20px',

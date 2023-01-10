@@ -3,8 +3,8 @@
 import Link from 'next/link'
 
 // components
-import CategoryIcon from '@/components/categoryIcon'
-import ImageBox from '@/components/ImageBox'
+import CategoryIcon from '@/components/common/categoryIcon'
+import ImageBox from '@/components/common/ImageBox'
 
 // type
 import { WorksPost } from '@/types/microcms'

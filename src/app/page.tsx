@@ -4,10 +4,10 @@ import React from 'react'
 import { fetchTopList } from '@/libs/fetchTopList'
 
 // components
-import Title from '@/components/title'
-import TextBtn from '@/components/textBtn'
-import WorksList from '@/components/worksList'
-import Panels from '@/components/panels'
+import Title from '@/components/common/title'
+import TextBtn from '@/components/common/textBtn'
+import WorksList from '@/components/pages/works/worksList'
+import ArticlesList from '@/components/pages/articles/articlesList'
 
 const className = {
   btnWrap: 'text-center',
@@ -21,7 +21,7 @@ export default async function Home() {
       {/* articles */}
       <section className={className.section}>
         <Title title='ARTICLES' text='最新の記事' />
-        <Panels articles={articles} />
+        <ArticlesList articles={articles} />
         <div className={className.btnWrap}>
           <TextBtn title='MORE' link='/articles/' />
         </div>

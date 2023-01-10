@@ -4,11 +4,10 @@ import { useMemo } from 'react'
 import { FeedObj } from '@/types/feed'
 
 // components
-import Pagenation from '@/components/pagenation'
-import Panels from '@/components/panels'
-import HeadWrap from '@/components/headWrap'
-import Title from '@/components/title'
-import TextBtn from '@/components/textBtn'
+import Pagenation from '@/components/common/pagenation'
+import ArticlesList from '@/components/pages/articles/articlesList'
+import Title from '@/components/common/title'
+import TextBtn from '@/components/common/textBtn'
 
 type Props = {
   articles: FeedObj[]
@@ -29,14 +28,9 @@ export default function ArticlesBody({ articles = [], page, pages }: Props) {
 
   return (
     <>
-      <HeadWrap
-        title={title}
-        description='色々なブログの記事のフィードをまとめたものです'
-        url='https://htmlgo.site/articles/'
-      />
       <main className={className.main}>
         <Title title='ARTICLES' text='技術系やそれ以外の記事' />
-        <Panels articles={articles} />
+        <ArticlesList articles={articles} />
         <Pagenation pages={pages} page={page} />
         <div className={className.btnWrap + ` mt-40px`}>
           <TextBtn title='HOME' link='/' />

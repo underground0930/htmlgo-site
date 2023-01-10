@@ -1,7 +1,7 @@
 import ErrorPage from 'next/error'
 
 // components
-import WorksDetailBody from '@/components/worksDetailBody'
+import WorksDetailBody from '@/components/pages/works/worksDetailBody'
 
 // libs
 import { fetchWorksDetail } from '@/libs/fetchWorksDetail'

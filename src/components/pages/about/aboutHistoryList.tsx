@@ -25,7 +25,7 @@ const className = {
   a: `underline decoration-1`,
 }
 
-const HistoryList = ({ data }: Props) => {
+const AboutHistoryList = ({ data }: Props) => {
   return (
     <>
       <ul className={className.list}>
@@ -53,4 +53,4 @@ const HistoryList = ({ data }: Props) => {
   )
 }
 
-export default HistoryList
+export default AboutHistoryList

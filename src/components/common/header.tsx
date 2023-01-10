@@ -38,7 +38,7 @@ const Header = ({}: Props) => {
                 return (
                   <li className='ml-20px' key={index}>
                     <Link
-                      href={`/${v}/`}
+                      href={`/${v}`}
                       className={
                         (pathname?.startsWith(`/${v}`) ? 'text-linkActive' : '') + linkStyle
                       }

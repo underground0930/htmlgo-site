@@ -1,4 +1,4 @@
-import { DefaultHead } from '@/components/defaultHead'
+import { DefaultHead } from '@/components/common/defaultHead'
 
 export default async function Head({}) {
   return (
@@ -6,7 +6,7 @@ export default async function Head({}) {
       <DefaultHead
         title='ARTICLES | HTMLGO'
         description='色々なブログの記事のフィードをまとめたものです'
-        url='https://htmlgo.site/article/'
+        url='https://htmlgo.site/article'
       />
     </>
   )

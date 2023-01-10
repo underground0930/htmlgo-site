@@ -2,9 +2,9 @@
 import { fetchWorksList } from '@/libs/fetchWorksList'
 
 // components
-import Title from '@/components/title'
-import TextBtn from '@/components/textBtn'
-import WorksList from '@/components/worksList'
+import Title from '@/components/common/title'
+import TextBtn from '@/components/common/textBtn'
+import WorksList from '@/components/pages/works/worksList'
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',

@@ -8,11 +8,11 @@ import { Post } from '@/types/microcms'
 import { conversionDate } from '@/utils/conversionDate'
 
 // components
-import Title from '@/components/title'
-import TextBtn from '@/components/textBtn'
-import WorksDetailInfo from '@/components/worksDetailInfo'
+import Title from '@/components/common/title'
+import TextBtn from '@/components/common/textBtn'
+import WorksDetailInfo from '@/components/pages/works/worksDetailInfo'
 
-const WorksSlider = dynamic(() => import('@/components/worksSlider'), {
+const WorksSlider = dynamic(() => import('@/components/pages/works/worksSlider'), {
   ssr: false,
 })
 
@@ -47,7 +47,7 @@ const className = {
 
 export default function WorksDetailBody({ post, prev, next }: Props) {
   const shareTwitterUrl = (slug: string) => {
-    return `https://twitter.com/share?url=https://htmlgo.site/works/${slug}/`
+    return `https://twitter.com/share?url=https://htmlgo.site/works/${slug}`
   }
   const shareFacebookUrl = (slug: string) => {
     return `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
@@ -175,12 +175,9 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
             </li>
           </ul>
           <div className={className.back}>
-            <TextBtn title='WORKS' link='/works/' />
+            <TextBtn title='WORKS' link='/works' />
             {next && (
-              <Link
-                className={`${className.pager} ${className.next}`}
-                href={`/works/${next.slug}/`}
-              >
+              <Link className={`${className.pager} ${className.next}`} href={`/works/${next.slug}`}>
                 &lt;
               </Link>
             )}

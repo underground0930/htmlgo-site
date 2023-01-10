@@ -1,9 +1,9 @@
 // components
-import Title from '@/components/title'
-import SnsBox from '@/components/snsBox'
-import TextBtn from '@/components/textBtn'
-import HistoryList from '@/components/historyList'
-import ImageBox from '@/components/ImageBox'
+import Title from '@/components/common/title'
+import TextBtn from '@/components/common/textBtn'
+import ImageBox from '@/components/common/ImageBox'
+import AboutSnsBox from '@/components/pages/about/aboutSnsBox'
+import AboutHistoryList from '@/components/pages/about/aboutHistoryList'
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
@@ -25,7 +25,7 @@ export default function About() {
             <ImageBox cls={className.img} src='/img/profile.jpg' width={210} height={210} />
           </div>
           <div className={className.sns}>
-            <SnsBox />
+            <AboutSnsBox />
           </div>
           <h3 className={className.title}>このサイトについて</h3>
           <p className={className.text}>
@@ -44,7 +44,7 @@ export default function About() {
           <h3 className={className.title}>趣味</h3>
           <p className={className.text}>漫画、youtube、筋トレ、プール、散歩</p>
           <h3 className={className.title}>経歴</h3>
-          <HistoryList
+          <AboutHistoryList
             data={[
               {
                 heading: '2009年 - 2010年',
@@ -72,7 +72,7 @@ export default function About() {
             html5 / css3 / TypeScript / React / Next.js / Wordpress / Webpack
           </p>
           <h3 className={className.title}>仕事道具</h3>
-          <HistoryList
+          <AboutHistoryList
             data={[
               {
                 heading: 'PC',

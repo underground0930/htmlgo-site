@@ -1,5 +1,5 @@
 // components
-import ArticlesBody from '@/components/articlesBody'
+import ArticlesBody from '@/components/pages/articles/articlesBody'
 
 // libs
 import { fetchArticles } from '@/libs/fetchArticles'

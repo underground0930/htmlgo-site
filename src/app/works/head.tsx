@@ -1,12 +1,12 @@
-import { DefaultHead } from '@/components/defaultHead'
+import { DefaultHead } from '@/components/common/defaultHead'
 
 export default async function Head({}) {
   return (
     <>
       <DefaultHead
         title='WORKS | HTMLGO'
-        description='WEB技術を書き連ねるサイト'
-        url='https://htmlgo.site/works/'
+        description='今までの実績一覧です'
+        url='https://htmlgo.site/works'
       />
     </>
   )

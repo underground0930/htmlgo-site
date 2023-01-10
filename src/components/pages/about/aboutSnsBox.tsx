@@ -9,7 +9,7 @@ const className = {
   note: `w-[40px] h-[40px] rounded-[4px]`,
 }
 
-const SnsBox = () => {
+const AboutSnsBox = () => {
   return (
     <>
       <ul className={className.snsBox}>
@@ -68,4 +68,4 @@ const SnsBox = () => {
   )
 }
 
-export default SnsBox
+export default AboutSnsBox

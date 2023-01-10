@@ -1,6 +1,6 @@
 // components
-import CategoryIcon from '@/components/categoryIcon'
-import ImageBox from '@/components/ImageBox'
+import CategoryIcon from '@/components/common/categoryIcon'
+import ImageBox from '@/components/common/ImageBox'
 
 // types
 import { FeedObj } from '@/types/feed'
@@ -9,7 +9,7 @@ type Props = {
   articles: FeedObj[]
 }
 
-const Panels = ({ articles }: Props) => {
+const ArticlesList = ({ articles }: Props) => {
   return (
     <div className="mb-20px md:mb-40px md:flex md:flex-wrap md:justify-between md:after:block md:after:w-[23.5%] md:after:content-['']">
       {articles.map((article, i) => {
@@ -49,4 +49,4 @@ const Panels = ({ articles }: Props) => {
   )
 }
 
-export default Panels
+export default ArticlesList
