@@ -1,0 +1,33 @@
+name: deploy from microcms
+on:
+  repository_dispatch:
+    types: [micro_cms_updated] # microcmsからのwebhook
+
+env:
+  cache-version: v1
+  PROJECT_DOMAIN: ${{ secrets.PROJECT_DOMAIN }}
+  PROJECT_DIR: ${{ secrets.PROJECT_DIR }}
+  PROJECT_PORT: ${{ secrets.PROJECT_PORT }}
+  BUILD_DIR: ./out/*
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create .env file
+        run: echo "${{ secrets.ENV_PROD }}" > .env
+      - name: build task
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.14.0'
+      - name: npm ci
+        run: npm ci
+      - name: npm run build
+        run: npm run build
+      - name: ssh key generate
+        run: echo "$SSH_PRIVATE_KEY" > key && chmod 600 key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: rsync deploy
+        run: rsync -auzrv --delete --exclude ".*" -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${PROJECT_PORT}" ${BUILD_DIR} ${PROJECT_DOMAIN}:${PROJECT_DIR}

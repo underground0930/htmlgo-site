@@ -1,0 +1,49 @@
+{
+  "name": "htmlgo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "predev": "node ./scripts/generateFeedJson.js",
+    "dev": "next dev",
+    "prebuild": "node ./scripts/generateFeedJson.js",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx}'",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@types/eslint": "8.4.10",
+    "@types/node": "18.11.18",
+    "@types/prettier": "2.7.2",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.10",
+    "axios": "^1.1.3",
+    "dayjs": "^1.10.7",
+    "dotenv": "^10.0.0",
+    "microcms-js-sdk": "^2.3.2",
+    "next": "^13.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swiper": "^8.4.5"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.2.1",
+    "@types/gtag.js": "^0.0.10",
+    "@types/xml2js": "^0.4.9",
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.30.0",
+    "eslint-config-next": "13.1.1",
+    "eslint-config-prettier": "8.5.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "postcss": "^8.4.20",
+    "prettier": "2.8.2",
+    "prettier-plugin-tailwindcss": "^0.1.11",
+    "tailwindcss": "^3.2.4",
+    "typescript": "4.9.4",
+    "xml2js": "^0.4.23"
+  }
+}
