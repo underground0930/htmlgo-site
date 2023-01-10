@@ -2,13 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Required
 
-```bash
-# .env
-MICROCMS_API_KEY=xxxxxxxxxxx
-QIITA_API_KEY=xxxxxxxxxxx
-NEXT_PUBLIC_GA_ID=xxxxxxxxxxx
-
-```
+.env.sample → .envに変更して必要な環境変数を入力してください
 
 ## Getting Started!
 
