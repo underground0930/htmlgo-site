@@ -2,12 +2,12 @@
 // works detail
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // libs
-import { client } from '@/libs/client'
+import { microcmsClient } from '@/libs/microcmsClient'
 
 export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
   let pager: any[] = []
 
-  const post = await client
+  const post = await microcmsClient
     .get({
       endpoint: 'works',
       queries: {
@@ -22,7 +22,7 @@ export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
 
   if (post !== null) {
     pager = await Promise.allSettled([
-      client
+      microcmsClient
         .get({
           endpoint: 'works',
           queries: {
@@ -36,7 +36,7 @@ export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
           return v?.contents?.length ? v.contents[0] : null
         })
         .catch((err) => null),
-      client
+      microcmsClient
         .get({
           endpoint: 'works',
           queries: {

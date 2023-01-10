@@ -2,7 +2,7 @@
 // works List
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // libs
-import { client } from '@/libs/client'
+import { microcmsClient } from '@/libs/microcmsClient'
 // const
 import { WORKS_PER_PAGE } from '@/const/index'
 
@@ -16,7 +16,7 @@ export async function fetchWorksList() {
     { endpoint: 'works_category', limit: 20 },
     { endpoint: 'works_technology', limit: 20 },
   ].map((child) => {
-    return client
+    return microcmsClient
       .get<ResponseType>({ endpoint: child.endpoint, queries: { limit: child.limit } })
       .catch((err) => {
         console.log('works err :' + err)
