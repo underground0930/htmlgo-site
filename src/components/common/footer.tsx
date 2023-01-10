@@ -26,7 +26,7 @@ const links = [
     icon: <IconTailwindcss />,
   },
   {
-    href: 'https://github.com/',
+    href: 'https://github.com/underground0930/htmlgo-site',
     key: 'github',
     icon: <IconGithub />,
   },
