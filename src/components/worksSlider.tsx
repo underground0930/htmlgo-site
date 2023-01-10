@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
@@ -7,25 +7,32 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Import Swiper styles
 
+type Slider = {
+  fieldId: string
+  img: {
+    url: string
+    height: number
+    width: number
+  }
+}
+
+type NewSlider = Slider & { loading: boolean }
+
 type Props = {
-  slider: {
-    fieldId: string
-    img: {
-      url: string
-      height: number
-      width: number
-    }
-  }[]
+  sliders: Slider[]
 }
 
 const className = {
   container: `w-[100%] border-border border-1`,
+  sliderWrapper: `
+    aspect-[16/9]
+  `,
   slider: `
     relative
     object-fit-cover
+    h-full
     before:content-[""]
     block
-    aspect-video
   `,
   sliderBtn: `
     absolute
@@ -86,32 +93,47 @@ const className = {
   `,
 }
 
-const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
+const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
   const [index, setIndex] = useState(1)
-  const [isFirst, setIsFirst] = useState(true)
-  const [isLast, setIsLast] = useState(false)
+  const [bothEnds, setBothEnds] = useState({
+    first: true,
+    last: false,
+  })
   const [sw, setSw] = useState<any | null>(null)
+  const [sliderList, setSliderList] = useState<NewSlider[]>([])
 
-  const goNext = () => {
-    sw.slideNext()
-  }
+  const goNext = () => sw.slideNext()
+  const goPrev = () => sw.slidePrev()
 
-  const goPrev = () => {
-    sw.slidePrev()
-  }
+  useEffect(() => {
+    const newSliders = sliders.map((s) => {
+      return {
+        ...s,
+        loading: true,
+      }
+    })
+    setSliderList(newSliders)
+  }, [sliders])
 
   const sliderChangeHandle = (): void => {
     setIndex(sw?.activeIndex + 1)
     if (sw?.activeIndex === 0) {
-      setIsFirst(true)
-      setIsLast(false)
-    } else if (sw?.activeIndex === slider.length - 1) {
-      setIsFirst(false)
-      setIsLast(true)
-    } else {
-      setIsFirst(false)
-      setIsLast(false)
+      setBothEnds({
+        first: true,
+        last: false,
+      })
+      return
+    } else if (sw?.activeIndex === sliders.length - 1) {
+      setBothEnds({
+        first: false,
+        last: true,
+      })
+      return
     }
+    setBothEnds({
+      first: false,
+      last: false,
+    })
   }
 
   return (
@@ -122,39 +144,52 @@ const WorksSlider: React.FC<Props> = ({ slider }: Props) => {
         virtual
         lazy={{ loadPrevNext: true }}
         onSwiper={(swiper) => setSw(swiper)}
-        onSlideChange={(swiper) => sliderChangeHandle()}
+        onSlideChange={() => sliderChangeHandle()}
       >
         <div className='swiper-wrapper'>
-          {slider.map((v, i) => {
-            let isLoading = true
+          {sliderList.map((v, i) => {
             return (
               <SwiperSlide className={className.slider} virtualIndex={i} key={v.img.url}>
-                {isLoading && <div className={className.loader}>Loading...</div>}
+                {v.loading && (
+                  <div className='w-hull h-hull aspect-video'>
+                    <div className={className.loader}>Loading...</div>
+                  </div>
+                )}
                 <Image
+                  className='!relative'
                   src={v.img.url}
                   alt=''
                   priority={true}
                   fill={true}
-                  onLoadingComplete={(e) => (isLoading = false)}
+                  onLoadingComplete={() => {
+                    setSliderList((prev) => {
+                      return prev.map((s, j) => {
+                        if (i === j) {
+                          s.loading = false
+                        }
+                        return s
+                      })
+                    })
+                  }}
                 />
               </SwiperSlide>
             )
           })}
         </div>
       </Swiper>
-      {!isFirst && slider.length > 1 && (
+      {!bothEnds.first && sliders.length > 1 && (
         <div className={`${className.sliderBtn} ${className.sliderPrev} prevBtn`} onClick={goPrev}>
           &lt;
         </div>
       )}
-      {!isLast && slider.length > 1 && (
+      {!bothEnds.last && sliders.length > 1 && (
         <div className={`${className.sliderBtn} ${className.sliderNext} nextBtn`} onClick={goNext}>
           &gt;
         </div>
       )}
-      {slider.length > 1 && (
+      {sliders.length > 1 && (
         <div className={`${className.indicator}`}>
-          {index} / {slider.length}
+          {index} / {sliders.length}
         </div>
       )}
     </>
