@@ -60,7 +60,7 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
         <article className={className.article}>
           <div className={className.kv}>
             <div className={className.kvInner}>
-              {post?.slider && <WorksSlider slider={post.slider}></WorksSlider>}
+              {post?.slider && <WorksSlider sliders={post.slider}></WorksSlider>}
             </div>
           </div>
           {post.body && (
