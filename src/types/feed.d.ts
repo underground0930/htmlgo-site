@@ -1,3 +1,5 @@
+// Articlesの記事のデータ型
+
 export type FeedObj = {
   category: string
   title: string

@@ -1,4 +1,4 @@
-import ErrorPage from 'next/error'
+import { notFound } from 'next/navigation'
 
 // components
 import WorksDetailBody from '@/components/pages/works/worksDetailBody'
@@ -15,6 +15,10 @@ type Props = {
 export default async function WorksDetail({ params }: Props) {
   const result = await fetchWorksDetail({ slug: params.slug })
   const { post, prev, next } = result
+
+  if (!post) {
+    notFound()
+  }
 
   return WorksDetailBody({ post, prev, next })
 }
