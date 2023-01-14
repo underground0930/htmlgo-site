@@ -1,7 +1,7 @@
 // components
 import Title from '@/components/common/title'
 import TextBtn from '@/components/common/textBtn'
-import ImageBox from '@/components/common/ImageBox'
+import ImageBox from '@/components/common/ImageWrapper'
 import AboutSnsBox from '@/components/pages/about/aboutSnsBox'
 import AboutHistoryList from '@/components/pages/about/aboutHistoryList'
 

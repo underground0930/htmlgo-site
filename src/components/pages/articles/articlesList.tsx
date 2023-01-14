@@ -1,6 +1,6 @@
 // components
 import CategoryIcon from '@/components/common/categoryIcon'
-import ImageBox from '@/components/common/ImageBox'
+import ImageBox from '@/components/common/ImageWrapper'
 
 // types
 import { FeedObj } from '@/types/feed'

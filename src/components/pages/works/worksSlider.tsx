@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import ImageBox from '@/components/common/ImageBox'
+import ImageBox from '@/components/common/ImageWrapper'
 
 type Slider = {
   fieldId: string

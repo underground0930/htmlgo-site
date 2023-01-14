@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 // components
 import CategoryIcon from '@/components/common/categoryIcon'
-import ImageBox from '@/components/common/ImageBox'
+import ImageBox from '@/components/common/ImageWrapper'
 
 // type
 import { WorkIndex } from '@/types/microcms'
