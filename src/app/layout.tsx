@@ -23,6 +23,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 const className = {
-  wrapper: ``,
+  wrapper: 'flex-1',
   container: ``,
 }

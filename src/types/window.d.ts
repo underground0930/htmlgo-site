@@ -1,3 +1,5 @@
+// windowオブジェクトに存在するプロパティのデータ型
+
 interface Window {
   grecaptcha: any
   Formrun: any

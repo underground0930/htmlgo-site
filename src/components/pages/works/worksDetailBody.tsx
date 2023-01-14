@@ -2,7 +2,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
 // type
-import { Post } from '@/types/microcms'
+import { WorkDetail } from '@/types/microcms'
 
 // utils
 import { conversionDate } from '@/utils/conversionDate'
@@ -17,7 +17,7 @@ const WorksSlider = dynamic(() => import('@/components/pages/works/worksSlider')
 })
 
 type Props = {
-  post: Post
+  post: WorkDetail
   prev: { slug: string } | null
   next: { slug: string } | null
 }

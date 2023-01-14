@@ -1,11 +1,11 @@
-export type MicroCMSResponse = {
-  contents: WorksPost[]
+export type MicroCMSResponse<T> = {
+  contents: T
   totalCount: number
   offset: number
   limit: number
 }
 
-export type WorksPost = {
+export type WorkIndex = {
   id: string
   title: string
   slug: string
@@ -15,7 +15,7 @@ export type WorksPost = {
   slider: { img: { url: string } }[]
 }
 
-export type Post = {
+export type WorkDetail = {
   title: string
   slug: string
   url?: string

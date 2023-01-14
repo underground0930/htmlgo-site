@@ -4,26 +4,27 @@
 // libs
 import { microcmsClient } from '@/libs/microcmsClient'
 
+// type
+import { MicroCMSResponse, WorkDetail } from '@/types/microcms'
+
 export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
-  let pager: any[] = []
+  let pager: ({ slug: string } | null)[] = []
 
   const post = await microcmsClient
-    .get({
+    .get<MicroCMSResponse<WorkDetail[]>>({
       endpoint: 'works',
       queries: {
         filters: `slug[equals]${slug}`,
         fields: 'title,slug,url,url2,date,body,production_period,credit,category,technology,slider',
       },
     })
-    .then((v) => {
-      return v.contents.length ? v.contents[0] : null
-    })
+    .then((v) => (v.contents.length ? v.contents[0] : null))
     .catch((err) => null)
 
   if (post !== null) {
     pager = await Promise.allSettled([
       microcmsClient
-        .get({
+        .get<MicroCMSResponse<{ slug: string }[]>>({
           endpoint: 'works',
           queries: {
             limit: 1,
@@ -32,12 +33,9 @@ export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
             fields: 'slug',
           },
         })
-        .then((v) => {
-          return v?.contents?.length ? v.contents[0] : null
-        })
-        .catch((err) => null),
+        .then((v) => (v.contents.length ? v.contents[0] : null)),
       microcmsClient
-        .get({
+        .get<MicroCMSResponse<{ slug: string }[]>>({
           endpoint: 'works',
           queries: {
             limit: 1,
@@ -46,15 +44,13 @@ export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
             fields: 'slug',
           },
         })
-        .then((v) => {
-          return v?.contents?.length ? v.contents[0] : null
-        })
-        .catch((err) => null),
+        .then((v) => (v.contents.length ? v.contents[0] : null)),
     ]).then((results) =>
       results.map((r) => {
         if (r.status === 'fulfilled') {
           return r.value
         }
+        return null
       }),
     )
   }
