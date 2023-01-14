@@ -7,13 +7,13 @@ import CategoryIcon from '@/components/common/categoryIcon'
 import ImageBox from '@/components/common/ImageBox'
 
 // type
-import { WorksPost } from '@/types/microcms'
+import { WorkIndex } from '@/types/microcms'
 
 // utils
 import { conversionDate } from '@/utils/conversionDate'
 
 type Props = {
-  works: WorksPost[]
+  works: WorkIndex[]
 }
 
 const WorksList = ({ works = [] }: Props) => {
