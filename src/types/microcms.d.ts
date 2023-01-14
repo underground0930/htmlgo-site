@@ -1,8 +1,16 @@
+// MicroCMS関連のデータ型
+
 export type MicroCMSResponse<T> = {
   contents: T
   totalCount: number
   offset: number
   limit: number
+}
+
+export type WorksCategory = {
+  id: string
+  category_label: string
+  category_slug: string
 }
 
 export type WorkIndex = {

@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // const
-import { ARTICLE_PER_PAGE } from '@/const/index'
+import { ARTICLE_PER_PAGE } from '@/const/articles'
 
 // types
 import { FeedObj } from '@/types/feed'

@@ -5,30 +5,24 @@
 // libs
 import { microcmsClient } from '@/libs/microcmsClient'
 
+// type
+import { MicroCMSResponse, WorkIndex } from '@/types/microcms'
+
 export async function fetchTopList() {
   const articles = (
-    await import('public/feed.json')
-      .then((response) => {
-        return response.default
-      })
-      .catch((err) => {
-        console.log(err)
-        return []
-      })
+    await import('public/feed.json').then((response) => response.default).catch((err) => [])
   ).slice(0, 4)
 
-  const works: any = await microcmsClient
-    .get({
+  const works: WorkIndex[] = await microcmsClient
+    .get<MicroCMSResponse<WorkIndex[]>>({
       endpoint: 'works',
       queries: { limit: 3, fields: 'id,title,slug,date,category,technology,slider' },
     })
-    .catch((err) => {
-      console.log('top err :' + err)
-      return { contents: [] }
-    })
+    .then((result) => result.contents)
+    .catch((err) => [])
 
   return {
-    works: works.contents,
+    works,
     articles,
   }
 }

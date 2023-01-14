@@ -1,5 +1,5 @@
 // libs
-import { fetchWorksList } from '@/libs/fetchWorksList'
+import { fetchWorksIndex } from '@/libs/fetchWorksIndex'
 
 // components
 import Title from '@/components/common/title'
@@ -53,7 +53,7 @@ const className = {
 }
 
 export default async function Works() {
-  const { works, categories, technologies } = await fetchWorksList()
+  const { works, categories, technologies } = await fetchWorksIndex()
 
   return (
     <main className={className.main}>
