@@ -9,7 +9,7 @@ import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/const/microcms'
 import type { MicroCMSResponse, WorkIndex, WorksCategory } from '@/types/microcms'
 
 export async function fetchWorksIndex() {
-  const result = (await Promise.allSettled([
+  const result = await Promise.allSettled([
     microcmsClient.get<MicroCMSResponse<WorkIndex[]>>({
       endpoint: 'works',
       queries: { limit: WORKS_PER_PAGE, fields: 'id,title,slug,date,category,technology,slider' },
@@ -33,12 +33,12 @@ export async function fetchWorksIndex() {
       works: resultsVal[0],
       categories: resultsVal[1],
       technologies: resultsVal[2],
+    } as {
+      works: WorkIndex[]
+      categories: WorksCategory[]
+      technologies: WorksCategory[]
     }
-  })) as {
-    works: WorkIndex[]
-    categories: WorksCategory[]
-    technologies: WorksCategory[]
-  }
+  })
 
   return result
 }
