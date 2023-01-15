@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 
 // components
@@ -20,5 +21,15 @@ export default async function WorksDetail({ params }: Props) {
     notFound()
   }
 
-  return WorksDetailBody({ post, prev, next })
+  return (
+    <Suspense
+      fallback={
+        <div className='relative flex h-10 w-full items-center justify-center'>
+          <div>Loading...</div>
+        </div>
+      }
+    >
+      <WorksDetailBody post={post} prev={prev} next={next} />
+    </Suspense>
+  )
 }
