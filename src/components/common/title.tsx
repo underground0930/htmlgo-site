@@ -5,8 +5,6 @@ type Props = {
   text?: string
 }
 
-// style
-
 const Title = ({ title, text }: Props) => {
   return (
     <>

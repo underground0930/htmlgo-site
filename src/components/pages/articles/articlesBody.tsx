@@ -1,13 +1,11 @@
 import { useMemo } from 'react'
 
-// type
-import { FeedObj } from '@/types/feed'
-
-// components
 import Pagenation from '@/components/common/pagenation'
-import ArticlesList from '@/components/pages/articles/articlesList'
-import Title from '@/components/common/title'
 import TextBtn from '@/components/common/textBtn'
+import Title from '@/components/common/title'
+import ArticlesList from '@/components/pages/articles/articlesList'
+
+import { FeedObj } from '@/types/feed'
 
 type Props = {
   articles: FeedObj[]

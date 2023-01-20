@@ -1,9 +1,8 @@
-// components
-import Title from '@/components/common/title'
-import TextBtn from '@/components/common/textBtn'
 import ImageBox from '@/components/common/ImageWrapper'
-import AboutSnsBox from '@/components/pages/about/aboutSnsBox'
+import TextBtn from '@/components/common/textBtn'
+import Title from '@/components/common/title'
 import AboutHistoryList from '@/components/pages/about/aboutHistoryList'
+import AboutSnsBox from '@/components/pages/about/aboutSnsBox'
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',

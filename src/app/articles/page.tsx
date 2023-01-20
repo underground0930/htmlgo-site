@@ -1,8 +1,6 @@
-// components
-import ArticlesBody from '@/components/pages/articles/articlesBody'
-
-// libs
 import { fetchArticles } from '@/libs/fetchArticles'
+
+import ArticlesBody from '@/components/pages/articles/articlesBody'
 
 export default async function Articles() {
   const result = await fetchArticles({ params: { page: '1' } })

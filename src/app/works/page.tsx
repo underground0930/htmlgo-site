@@ -1,9 +1,7 @@
-// libs
 import { fetchWorksIndex } from '@/libs/fetchWorksIndex'
 
-// components
-import Title from '@/components/common/title'
 import TextBtn from '@/components/common/textBtn'
+import Title from '@/components/common/title'
 import WorksList from '@/components/pages/works/worksList'
 
 const className = {

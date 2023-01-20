@@ -1,11 +1,13 @@
-import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
-// components
+import { fetchWorksDetail } from '@/libs/fetchWorksDetail'
+
 import WorksDetailBody from '@/components/pages/works/worksDetailBody'
 
+// components
+
 // libs
-import { fetchWorksDetail } from '@/libs/fetchWorksDetail'
 
 type Props = {
   params: {

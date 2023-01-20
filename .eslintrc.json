@@ -5,15 +5,19 @@
     "import/order": [
       "error",
       {
-        "groups": [
-          "index",
-          "sibling",
-          "parent",
-          "internal",
-          "external",
-          "builtin",
-          "object",
-          "type"
+        "groups": ["builtin", "external", "internal", ["parent", "sibling"], "object", "type", "index"],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "pathGroups": [
+          { "pattern": "@/utils/**", "group": "internal", "position": "before" },
+          { "pattern": "@/libs/**", "group": "internal", "position": "before" },
+          { "pattern": "@/hooks/**", "group": "internal", "position": "before" },
+          { "pattern": "@/components/**", "group": "internal", "position": "before" },
+          { "pattern": "@/const/**", "group": "internal", "position": "before" },
+          { "pattern": "@/types/**", "group": "internal", "position": "before" },
+          { "pattern": "@/styles/**", "group": "internal", "position": "before" },
+          { "pattern": "@/svgs/**", "group": "internal", "position": "before" }
         ]
       }
     ]

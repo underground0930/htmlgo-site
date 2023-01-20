@@ -1,13 +1,9 @@
-import React from 'react'
-
-// libs
 import { fetchTopList } from '@/libs/fetchTopList'
 
-// components
-import Title from '@/components/common/title'
 import TextBtn from '@/components/common/textBtn'
-import WorksList from '@/components/pages/works/worksList'
+import Title from '@/components/common/title'
 import ArticlesList from '@/components/pages/articles/articlesList'
+import WorksList from '@/components/pages/works/worksList'
 
 const className = {
   btnWrap: 'text-center',

@@ -3,8 +3,10 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // libs
 import { microcmsClient } from '@/libs/microcmsClient'
+
 // const
 import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/const/microcms'
+
 // types
 import type { MicroCMSResponse, WorkIndex, WorksCategory } from '@/types/microcms'
 

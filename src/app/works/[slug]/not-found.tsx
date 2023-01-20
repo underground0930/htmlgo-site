@@ -1,6 +1,5 @@
-// components
-import Title from '@/components/common/title'
 import TextBtn from '@/components/common/textBtn'
+import Title from '@/components/common/title'
 
 const className = {
   btnWrap: 'text-center',

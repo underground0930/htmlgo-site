@@ -1,16 +1,13 @@
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
-// type
-import { WorkDetail } from '@/types/microcms'
-
-// utils
 import { conversionDate } from '@/utils/conversionDate'
 
-// components
-import Title from '@/components/common/title'
 import TextBtn from '@/components/common/textBtn'
+import Title from '@/components/common/title'
 import WorksDetailInfo from '@/components/pages/works/worksDetailInfo'
+
+import { WorkDetail } from '@/types/microcms'
 
 const WorksSlider = dynamic(() => import('@/components/pages/works/worksSlider'), {
   ssr: false,

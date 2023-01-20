@@ -2,15 +2,12 @@
 
 import Link from 'next/link'
 
-// components
+import { conversionDate } from '@/utils/conversionDate'
+
 import CategoryIcon from '@/components/common/categoryIcon'
 import ImageBox from '@/components/common/ImageWrapper'
 
-// type
 import { WorkIndex } from '@/types/microcms'
-
-// utils
-import { conversionDate } from '@/utils/conversionDate'
 
 type Props = {
   works: WorkIndex[]

@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
 import Script from 'next/script'
+import { useState } from 'react'
 import { useEffect } from 'react'
 
-// components
-import Title from '@/components/common/title'
 import TextBtn from '@/components/common/textBtn'
+import Title from '@/components/common/title'
+
+// components
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
