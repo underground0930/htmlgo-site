@@ -9,9 +9,11 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
   }, [error])
 
   return (
-    <div>
-      <p>Something went wrong!</p>
-      <button onClick={() => reset()}>Reset error boundary</button>
+    <div className='flex h-40 items-center justify-center font-bold'>
+      <div>
+        <p>Something went wrong!</p>
+        <button onClick={() => reset()}>Reset error boundary</button>
+      </div>
     </div>
   )
 }
