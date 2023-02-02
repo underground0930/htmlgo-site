@@ -1,7 +1,6 @@
 'use client'
-import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import { Pagination, Navigation, Virtual, Lazy } from 'swiper'
+import { Pagination, Navigation, Virtual } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import ImageBox from '@/components/common/ImageWrapper'
@@ -139,10 +138,9 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
   return (
     <>
       <Swiper
-        modules={[Pagination, Navigation, Virtual, Lazy]}
+        modules={[Pagination, Navigation, Virtual]}
         className={`${className.container}`}
         virtual
-        lazy={{ loadPrevNext: true }}
         onSwiper={(swiper) => setSw(swiper)}
         onSlideChange={() => sliderChangeHandle()}
       >
