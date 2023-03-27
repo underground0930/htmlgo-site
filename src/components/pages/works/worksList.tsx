@@ -16,7 +16,7 @@ type Props = {
 const WorksList = ({ works = [] }: Props) => {
   return (
     <>
-      <ul className='md:flex md:flex-wrap md:justify-between'>
+      <ul className='after:block after:content-[""] md:flex md:flex-wrap md:justify-between after:md:w-[32%]'>
         {works.map((work, i) => (
           <li key={work.id} className='mb-30px border-1 border-border md:w-[32%]'>
             <Link className='block' href={`/works/${work.slug}`} prefetch={false}>
