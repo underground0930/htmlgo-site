@@ -16,7 +16,7 @@ export async function fetchTopList() {
   const works: WorkIndex[] = await microcmsClient
     .get<MicroCMSResponse<WorkIndex[]>>({
       endpoint: 'works',
-      queries: { limit: 3, fields: 'id,title,slug,date,category,technology,slider' },
+      queries: { limit: 3, fields: 'id,title,slug,date,publishedAt2,category,technology,slider' },
     })
     .then((result) => result.contents)
     .catch((err) => [])

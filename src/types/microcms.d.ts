@@ -18,6 +18,7 @@ export type WorkIndex = {
   title: string
   slug: string
   date: string
+  publishedAt2?: string
   category: { id: string; category_label: string; category_slug: string }[]
   technology: { id: string; technology_label: string; technology_slug: string }[]
   slider: { img: { url: string } }[]
@@ -29,6 +30,7 @@ export type WorkDetail = {
   url?: string
   url2?: string
   date: string
+  publishedAt2?: string
   body?: string
   production_period: string
   credit: { label: string; value: string; link?: string }[]

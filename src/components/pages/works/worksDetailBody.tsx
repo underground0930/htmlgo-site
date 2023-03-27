@@ -76,6 +76,13 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
                     <time dateTime={conversionDate(post.date)}>{conversionDate(post.date)}</time>
                   </WorksDetailInfo>
                 )}
+                {post?.publishedAt2 && (
+                  <WorksDetailInfo title='改修日'>
+                    <time dateTime={conversionDate(post.date)}>
+                      {conversionDate(post.publishedAt2)}
+                    </time>
+                  </WorksDetailInfo>
+                )}
                 {post?.category?.length > 0 && (
                   <WorksDetailInfo title='カテゴリー'>
                     {post.category.map((v) => (

@@ -31,8 +31,15 @@ const WorksList = ({ works = [] }: Props) => {
                   )}
                 </dt>
                 <dd className='px-15px pb-10px'>
-                  <time className='mb-5px block'>{conversionDate(work.date)}</time>
-                  <h3 className='mb-10px break-all text-16px font-bold leading-5'>{work.title}</h3>
+                  <time className='block text-13px'>公開日:{conversionDate(work.date)}</time>
+                  {work.publishedAt2 && (
+                    <time className='mb-8px block text-13px'>
+                      改修日:{conversionDate(work.publishedAt2)}
+                    </time>
+                  )}
+                  <h3 className='mb-10px mt-10px break-all text-16px font-bold leading-5'>
+                    {work.title}
+                  </h3>
                   <p>
                     {work.category.map((c) => (
                       <CategoryIcon key={c.id} text={c.category_label} />
