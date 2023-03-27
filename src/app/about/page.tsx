@@ -10,6 +10,7 @@ const className = {
   img: `mx-auto mb-40px rounded-full`,
   sns: `mb-45px`,
   title: `text-18px font-bold mt-40px mb-30px border-l-5 border-l-[#000] border-b-1 border-b-[#000]/30 pl-5px pb-5px`,
+  link: `font-bold`,
   text: `text-15px`,
   btnWrap: `border-t-1 border-border text-center pt-40px mb-40px`,
 }
@@ -32,13 +33,26 @@ export default function About() {
           </p>
           <h3 className={className.title}>プロフィール</h3>
           <p className={className.text}>
-            <a href='https://twitter.com/resistance_gowy' target='_blank' rel='noreferrer'>
+            <a
+              className={className.link}
+              href='https://twitter.com/resistance_gowy'
+              target='_blank'
+              rel='noreferrer'
+            >
               @resistance_gowy
             </a>
             <span>(フロントエンドエンジニア)</span>
           </p>
           <p className={className.text}>
-            プロモーションサイト、コーポレートサイト、キャンペーンサイト等の様々なサイトを実装してきました。様々なデバイスに対応させること、更新性の高いサイトを作ることが得意です。ギークというよりかは、周りと協調してプロジェクトを円滑に進めることが得意なタイプ。お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
+            プロモーションサイト、コーポレートサイト、キャンペーンサイト等の様々なサイトを実装してきました。
+            <br />
+            様々なデバイスに対応させること、更新性の高いサイトを作ることが得意です。
+            <br />
+            ギークというよりかは、周りと協調してプロジェクトを円滑に進めることが得意なタイプ。
+            <br />
+            お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
+            <br />
+            最近はReact、TypeScript、Next.js を触ることが多いです。
           </p>
           <h3 className={className.title}>趣味</h3>
           <p className={className.text}>漫画、youtube、筋トレ、プール、散歩</p>
@@ -68,7 +82,8 @@ export default function About() {
           />
           <h3 className={className.title}>経験した技術・ツール</h3>
           <p className={className.text}>
-            html5 / css3 / TypeScript / React / Next.js / Wordpress / Webpack
+            html5 / css3 / TypeScript / React / Next.js / Webpack / tailwindcss /
+            Wordpress(プラグイン実装レベル)
           </p>
           <h3 className={className.title}>仕事道具</h3>
           <AboutHistoryList
