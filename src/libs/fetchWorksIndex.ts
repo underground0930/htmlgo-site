@@ -14,7 +14,10 @@ export async function fetchWorksIndex() {
   const result = await Promise.allSettled([
     microcmsClient.get<MicroCMSResponse<WorkIndex[]>>({
       endpoint: 'works',
-      queries: { limit: WORKS_PER_PAGE, fields: 'id,title,slug,date,category,technology,slider' },
+      queries: {
+        limit: WORKS_PER_PAGE,
+        fields: 'id,title,slug,date,publishedAt2,category,technology,slider',
+      },
     }),
     microcmsClient.get<MicroCMSResponse<WorksCategory[]>>({
       endpoint: 'works_category',
