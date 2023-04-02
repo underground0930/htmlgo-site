@@ -3924,10 +3924,10 @@
     "picocolors" "^1.0.0"
     "stable" "^0.1.8"
 
-"swiper@^9.0.0":
-  "integrity" "sha512-7MbA7gg8VEFwCTd14KK5HL8KagT2sKQwu04Oud+gR+ivg8gAFK5xtZrPNkXg1wjpQB0gdA34YBqsPkFJ5HiRdA=="
-  "resolved" "https://registry.npmjs.org/swiper/-/swiper-9.0.0.tgz"
-  "version" "9.0.0"
+"swiper@^9.2.0":
+  "integrity" "sha512-lWK9toYumUQss+YuTL+Mt0+8twiMJEyzioER4bbS4rrGHlkeLrDM8uhtAmnpdijELrNscuNUujDgKoMQZfQGlQ=="
+  "resolved" "https://registry.npmjs.org/swiper/-/swiper-9.2.0.tgz"
+  "version" "9.2.0"
   dependencies:
     "ssr-window" "^4.0.2"
 

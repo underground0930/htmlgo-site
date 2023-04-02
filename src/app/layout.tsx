@@ -33,6 +33,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <html lang='ja'>
+        <head>
+          <link
+            rel='stylesheet'
+            href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'
+          />
+        </head>
         <body>
           <Header />
           <div className={className.wrapper}>
