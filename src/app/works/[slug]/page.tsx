@@ -39,10 +39,8 @@ export async function generateMetadata({ params }: Props) {
         images: ogp,
         type: 'article',
       },
-
       twitter: {
         title: `${title} | WORKS`,
-        card: 'summary_large_image',
         images: ogp,
       },
     }

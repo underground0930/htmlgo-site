@@ -1,6 +1,19 @@
 'use client'
-
 import { useEffect } from 'react'
+
+import { baseURL, setBaseUrl } from '@/const/config'
+
+export const metadata = {
+  title: 'ERROR',
+  alternates: {
+    canonical: baseURL,
+  },
+  openGraph: {
+    url: baseURL,
+    images: setBaseUrl('/img/ogp_new.png'),
+    type: 'article',
+  },
+}
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   useEffect(() => {

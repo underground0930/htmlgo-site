@@ -16,6 +16,10 @@ export const metadata = {
     description,
     images: setBaseUrl('/img/ogp_new.png'),
   },
+  twitter: {
+    description,
+    images: setBaseUrl('/img/ogp_new.png'),
+  },
 }
 
 const className = {

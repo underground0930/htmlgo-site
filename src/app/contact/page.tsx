@@ -12,6 +12,10 @@ export const metadata = {
     description,
     images: setBaseUrl('/img/ogp_new.png'),
   },
+  twitter: {
+    title: description,
+    images: setBaseUrl('/img/ogp_new.png'),
+  },
 }
 
 export default function Contact() {

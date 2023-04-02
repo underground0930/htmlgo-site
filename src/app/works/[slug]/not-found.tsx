@@ -1,6 +1,24 @@
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
 
+import { setBaseUrl } from '@/const/config'
+
+const description = 'お問い合わせ頂きありがとうございました'
+
+export const metadata = {
+  title: '404 | WORKS',
+  description,
+  openGraph: {
+    url: setBaseUrl('/404'),
+    description,
+    images: setBaseUrl('/img/ogp_new.png'),
+  },
+  twitter: {
+    description,
+    images: setBaseUrl('/img/ogp_new.png'),
+  },
+}
+
 const className = {
   btnWrap: 'text-center',
   text: 'py-20px text-center mb-30px',
