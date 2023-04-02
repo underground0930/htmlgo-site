@@ -9,13 +9,13 @@ import { baseURL, setBaseUrl } from '@/const/config'
 
 export const metadata = {
   title: 'TOP',
-  description: 'WEB技術を書き連ねるサイト',
   alternates: {
     canonical: baseURL,
   },
   openGraph: {
     url: baseURL,
     images: setBaseUrl('/img/ogp_new.png'),
+    type: 'website',
   },
 }
 

@@ -14,6 +14,7 @@ export const metadata = {
   openGraph: {
     url: setBaseUrl('/works'),
     description,
+    type: 'article',
     images: setBaseUrl('/img/ogp_new.png'),
   },
 }
