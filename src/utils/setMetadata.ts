@@ -72,5 +72,5 @@ export function setMetaData({
     }
   }
 
-  return meta
+  return meta ?? {}
 }
