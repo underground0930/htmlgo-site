@@ -51,3 +51,17 @@ export type WorkDetail = {
     }
   }[]
 }
+
+export type WorkDetailMeta = {
+  title: string
+  slug: string
+  body?: string
+  slider?: {
+    fieldId: string
+    img: {
+      url: string
+      height: number
+      width: number
+    }
+  }[]
+}

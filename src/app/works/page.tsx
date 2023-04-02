@@ -1,8 +1,28 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import { fetchWorksIndex } from '@/libs/fetchWorksIndex'
 
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
 import WorksList from '@/components/pages/works/worksList'
+
+import { setBaseUrl } from '@/const/config'
+
+const description = '最新のお仕事の実績や、自主制作'
+
+export const metadata = {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: 'WORKS',
+    description,
+    url: setBaseUrl('/works'),
+    images: setBaseUrl('/img/ogp_new.png'),
+  }),
+}
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',

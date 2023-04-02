@@ -1,5 +1,25 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
+
+import { setBaseUrl } from '@/const/config'
+
+const description = 'お問い合わせ頂きありがとうございました'
+
+export const metadata = {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: 'CONTACT',
+    description,
+    url: setBaseUrl('/contact/thanks'),
+    images: setBaseUrl('/img/ogp_new.png'),
+  }),
+}
 
 const className = {
   main: 'mx-20px',

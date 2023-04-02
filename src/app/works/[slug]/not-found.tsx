@@ -1,5 +1,25 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
+
+import { setBaseUrl } from '@/const/config'
+
+const description = 'お探しのページは見つかりませんでした'
+
+export const metadata = {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: '404 | WORKS',
+    description,
+    url: setBaseUrl('/404'),
+    images: setBaseUrl('/img/ogp_new.png'),
+  }),
+}
 
 const className = {
   btnWrap: 'text-center',

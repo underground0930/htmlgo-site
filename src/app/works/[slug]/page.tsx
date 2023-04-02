@@ -1,17 +1,53 @@
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
+import { removeHtml } from '@/utils/removeHtml'
+import { setMetaData } from '@/utils/setMetadata'
+
 import { fetchWorksDetail } from '@/libs/fetchWorksDetail'
+import { fetchWorksDetailMeta } from '@/libs/fetchWorksDetailMeta'
 
 import WorksDetailBody from '@/components/pages/works/worksDetailBody'
 
-// components
-
-// libs
+import { setBaseUrl } from '@/const/config'
 
 type Props = {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata({ params }: Props) {
+  const result = await fetchWorksDetailMeta({ slug: params.slug })
+  let meta = {}
+  if (result) {
+    const { title, body: description, slider } = result
+    const ogp =
+      slider?.length && slider[0]?.img?.url ? slider[0].img.url : setBaseUrl('/img/ogp_new.png')
+    const maxLength = 120
+    const parsedDescription = removeHtml(description ?? '')
+    const slicedDescription =
+      parsedDescription.length > maxLength
+        ? parsedDescription.slice(0, maxLength) + '...'
+        : parsedDescription
+
+    meta = {
+      ...setMetaData({
+        meta: {
+          openGraph: {
+            type: 'article',
+          },
+        },
+        title: `${title} | WORKS`,
+        description: slicedDescription,
+        url: setBaseUrl(`/works/${params.slug}`),
+        images: ogp,
+      }),
+    }
+  }
+
+  return {
+    ...meta,
   }
 }
 

@@ -1,8 +1,28 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import ImageBox from '@/components/common/ImageWrapper'
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
 import AboutHistoryList from '@/components/pages/about/aboutHistoryList'
 import AboutSnsBox from '@/components/pages/about/aboutSnsBox'
+
+import { setBaseUrl } from '@/const/config'
+
+const description = 'このサイトについて'
+
+export const metadata = {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: 'ABOUT',
+    description,
+    url: setBaseUrl('/about'),
+    images: setBaseUrl('/img/ogp_new.png'),
+  }),
+}
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
