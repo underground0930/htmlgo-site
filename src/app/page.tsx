@@ -5,6 +5,20 @@ import Title from '@/components/common/title'
 import ArticlesList from '@/components/pages/articles/articlesList'
 import WorksList from '@/components/pages/works/worksList'
 
+import { baseURL, setBaseUrl } from '@/const/config'
+
+export const metadata = {
+  title: 'TOP',
+  description: 'WEB技術を書き連ねるサイト',
+  alternates: {
+    canonical: baseURL,
+  },
+  openGraph: {
+    url: baseURL,
+    images: setBaseUrl('/img/ogp_new.png'),
+  },
+}
+
 const className = {
   btnWrap: 'text-center',
   section: 'mb-40px pb-20px md:mb-80px md:pb-40px border-b-1 border-border',

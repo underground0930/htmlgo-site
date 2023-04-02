@@ -4,6 +4,20 @@ import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
 import WorksList from '@/components/pages/works/worksList'
 
+import { setBaseUrl } from '@/const/config'
+
+const description = '最新のお仕事の実績や、自主制作'
+
+export const metadata = {
+  title: 'WORKS',
+  description,
+  openGraph: {
+    url: setBaseUrl('/works'),
+    description,
+    images: setBaseUrl('/img/ogp_new.png'),
+  },
+}
+
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
   filter: `mb-20px md:flex`,

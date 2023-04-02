@@ -3,7 +3,23 @@ import '../styles/globals.css'
 import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const title = 'HTMLGO'
+
+export const metadata = {
+  title: {
+    default: title,
+    template: `%s | ${title}`,
+  },
+  openGraph: {
+    title: {
+      default: title,
+      template: `%s | ${title}`,
+    },
+    images: 'https://www.htmlgo.site/img/ogp_new.png',
+  },
+}
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <html>

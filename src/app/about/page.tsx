@@ -4,6 +4,20 @@ import Title from '@/components/common/title'
 import AboutHistoryList from '@/components/pages/about/aboutHistoryList'
 import AboutSnsBox from '@/components/pages/about/aboutSnsBox'
 
+import { setBaseUrl } from '@/const/config'
+
+const description = 'このサイトについて'
+
+export const metadata = {
+  title: 'ABOUT',
+  description,
+  openGraph: {
+    url: setBaseUrl('/about'),
+    description,
+    images: setBaseUrl('/img/ogp_new.png'),
+  },
+}
+
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
   body: `mb-40px pb-30px`,
