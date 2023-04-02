@@ -3,26 +3,20 @@ import '../styles/globals.css'
 import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
 
-import { baseURL } from '@/const/config'
-
 const title = 'HTMLGO'
-
-const description = 'WEB技術を書き連ねるサイト'
 
 export const metadata = {
   title: {
     default: title,
     template: `%s | ${title}`,
   },
-  description,
   openGraph: {
     title: {
       default: title,
       template: `%s | ${title}`,
     },
-    description,
     siteName: title,
-    images: ['https://www.htmlgo.site/img/ogp_new.png'],
+    images: 'https://www.htmlgo.site/img/ogp_new.png',
   },
   twitter: {
     card: 'summary_large_image',
@@ -30,9 +24,8 @@ export const metadata = {
       default: title,
       template: `%s | ${title}`,
     },
-    description,
     creator: '@resistance_gowy',
-    images: ['https://www.htmlgo.site/img/ogp_new.png'],
+    images: 'https://www.htmlgo.site/img/ogp_new.png',
   },
 }
 

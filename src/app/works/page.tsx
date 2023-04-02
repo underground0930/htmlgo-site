@@ -1,3 +1,5 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import { fetchWorksIndex } from '@/libs/fetchWorksIndex'
 
 import TextBtn from '@/components/common/textBtn'
@@ -9,18 +11,17 @@ import { setBaseUrl } from '@/const/config'
 const description = '最新のお仕事の実績や、自主制作'
 
 export const metadata = {
-  title: 'WORKS',
-  description,
-  openGraph: {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: 'WORKS',
+    description,
     url: setBaseUrl('/works'),
-    description,
-    type: 'article',
     images: setBaseUrl('/img/ogp_new.png'),
-  },
-  twitter: {
-    description,
-    images: setBaseUrl('/img/ogp_new.png'),
-  },
+  }),
 }
 
 const className = {

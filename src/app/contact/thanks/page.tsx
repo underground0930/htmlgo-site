@@ -1,29 +1,31 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
 
 import { setBaseUrl } from '@/const/config'
+
+const description = 'お問い合わせ頂きありがとうございました'
+
+export const metadata = {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: 'CONTACT',
+    description,
+    url: setBaseUrl('/contact/thanks'),
+    images: setBaseUrl('/img/ogp_new.png'),
+  }),
+}
 
 const className = {
   main: 'mx-20px',
   body: `max-w-[600px] mx-auto mb-40px`,
   thanks: `text-16px text-center md:text-20px`,
   back: `border-border border-t-[1px] text-center pt-40px pb-40px mt-40px`,
-}
-
-const description = 'お問い合わせ頂きありがとうございました'
-
-export const metadata = {
-  title: 'CONTACT',
-  description,
-  openGraph: {
-    url: setBaseUrl('/contact/thanks'),
-    description,
-    images: setBaseUrl('/img/ogp_new.png'),
-  },
-  twitter: {
-    description,
-    images: setBaseUrl('/img/ogp_new.png'),
-  },
 }
 
 export default function Thanks() {

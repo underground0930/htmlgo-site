@@ -1,22 +1,24 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
 
 import { setBaseUrl } from '@/const/config'
 
-const description = 'お問い合わせ頂きありがとうございました'
+const description = 'お探しのページは見つかりませんでした'
 
 export const metadata = {
-  title: '404 | WORKS',
-  description,
-  openGraph: {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: '404 | WORKS',
+    description,
     url: setBaseUrl('/404'),
-    description,
     images: setBaseUrl('/img/ogp_new.png'),
-  },
-  twitter: {
-    description,
-    images: setBaseUrl('/img/ogp_new.png'),
-  },
+  }),
 }
 
 const className = {

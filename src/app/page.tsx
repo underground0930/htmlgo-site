@@ -1,3 +1,5 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import { fetchTopList } from '@/libs/fetchTopList'
 
 import TextBtn from '@/components/common/textBtn'
@@ -7,16 +9,20 @@ import WorksList from '@/components/pages/works/worksList'
 
 import { baseURL, setBaseUrl } from '@/const/config'
 
+const description = 'WEB技術を書き連ねるサイト'
+
 export const metadata = {
-  title: 'TOP',
-  alternates: {
-    canonical: baseURL,
-  },
-  openGraph: {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'website',
+      },
+    },
+    title: 'TOP',
     url: baseURL,
+    description,
     images: setBaseUrl('/img/ogp_new.png'),
-    type: 'website',
-  },
+  }),
 }
 
 const className = {

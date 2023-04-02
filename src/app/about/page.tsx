@@ -1,3 +1,5 @@
+import { setMetaData } from '@/utils/setMetadata'
+
 import ImageBox from '@/components/common/ImageWrapper'
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
@@ -9,17 +11,17 @@ import { setBaseUrl } from '@/const/config'
 const description = 'このサイトについて'
 
 export const metadata = {
-  title: 'ABOUT',
-  description,
-  openGraph: {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: 'ABOUT',
+    description,
     url: setBaseUrl('/about'),
-    description,
     images: setBaseUrl('/img/ogp_new.png'),
-  },
-  twitter: {
-    description,
-    images: setBaseUrl('/img/ogp_new.png'),
-  },
+  }),
 }
 
 const className = {

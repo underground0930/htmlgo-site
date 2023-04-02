@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { removeHtml } from '@/utils/removeHtml'
+import { setMetaData } from '@/utils/setMetadata'
 
 import { fetchWorksDetail } from '@/libs/fetchWorksDetail'
 import { fetchWorksDetailMeta } from '@/libs/fetchWorksDetailMeta'
@@ -29,20 +30,19 @@ export async function generateMetadata({ params }: Props) {
       parsedDescription.length > maxLength
         ? parsedDescription.slice(0, maxLength) + '...'
         : parsedDescription
+
     meta = {
-      title: `${title} | WORKS`,
-      description: slicedDescription,
-      openGraph: {
+      ...setMetaData({
+        meta: {
+          openGraph: {
+            type: 'article',
+          },
+        },
         title: `${title} | WORKS`,
-        url: setBaseUrl(`/works/${params.slug}`),
         description: slicedDescription,
+        url: setBaseUrl(`/works/${params.slug}`),
         images: ogp,
-        type: 'article',
-      },
-      twitter: {
-        title: `${title} | WORKS`,
-        images: ogp,
-      },
+      }),
     }
   }
 
