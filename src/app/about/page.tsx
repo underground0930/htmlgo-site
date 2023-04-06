@@ -82,12 +82,10 @@ export default function About() {
               {
                 heading: '2009年 - 2010年',
                 text: 'あとらす二十一',
-                link: 'https://at21.jp/',
               },
               {
                 heading: '2010年 - 2016年',
                 text: 'SONICJAM Inc.',
-                link: 'https://www.sonicjam.co.jp/',
               },
               {
                 heading: '2016年 - 2022年6月',
@@ -96,7 +94,6 @@ export default function About() {
               {
                 heading: '2022年7月 - 9月',
                 text: 'ちょっと株式会社',
-                link: 'https://chot-inc.com/',
               },
               {
                 heading: '2022年9月 -',
