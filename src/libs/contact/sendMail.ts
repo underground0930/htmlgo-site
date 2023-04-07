@@ -69,16 +69,10 @@ export const sendMail = async ({
         console.log('Message sent:', result.messageId)
         console.log('Preview URL:', nodemailer.getTestMessageUrl(result))
       }
-      return { success: true, error: null }
+      return true
     })
     .catch((error) => {
       console.error(error)
-      return {
-        success: false,
-        error: {
-          type: 'failed_mail',
-          data: null,
-        },
-      }
+      return false
     })
 }

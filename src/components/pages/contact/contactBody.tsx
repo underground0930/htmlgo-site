@@ -1,7 +1,8 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
+import ReCAPTCHA from 'react-google-recaptcha'
 import Script from 'next/script'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -10,7 +11,7 @@ import Title from '@/components/common/title'
 
 import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types/contact'
 
-import { Input } from './Input'
+import { InputText } from './InputText'
 
 const className = {
   main: 'mx-20px max-w-[800px] md:mx-auto',
@@ -22,15 +23,36 @@ const className = {
   back: `border-t-1 border-border text-center pt-40px pb-40px mt-40px`,
 }
 
+const inputElements = [
+  {
+    name: 'username',
+    label: 'お名前 [必須]',
+  },
+  {
+    name: 'company',
+    label: '会社名',
+  },
+  {
+    name: 'email',
+    label: 'メールアドレス [必須]',
+  },
+  {
+    name: 'detail',
+    textarea: true,
+    label: 'お問い合わせ [必須]',
+    row: 15,
+  },
+]
+
+type ErrorType = { [key: string]: string }
+
 const debug = true
 
 export default function ContactBody() {
-  const formRef = useRef<HTMLFormElement>(null)
-
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
+  const parentRef = useRef<HTMLDivElement>(null)
   const [loading, setLoading] = useState(false)
-  const [serverInvalidErrors, setServerInvalidErrors] = useState<{
-    [key: string]: string
-  }>({})
+  const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
   const [result, setResult] = useState<string>('')
 
   const {
@@ -40,18 +62,14 @@ export default function ContactBody() {
   } = useForm({ resolver: debug ? undefined : zodResolver(FormBodyDataSchema) })
 
   useEffect(() => {
-    if (!formRef.current) return
-
-    if (loading) {
-      formRef.current.setAttribute('inert', '')
-      return
-    }
-    formRef.current.removeAttribute('inert')
+    const { current } = parentRef
+    if (!current) return
+    loading ? current.setAttribute('inert', '') : current.removeAttribute('inert')
   }, [loading])
 
   const frontInvalidErrors = useMemo(() => {
-    const newErrors: { [key: string]: string } = {}
-    for (let key in errors) {
+    const newErrors: ErrorType = {}
+    for (const key in errors) {
       newErrors[key] = errors[key]?.message as string
     }
     return newErrors
@@ -64,15 +82,26 @@ export default function ContactBody() {
     [frontInvalidErrors, serverInvalidErrors],
   )
 
-  const submit = async (data: FormBodyData) => {
+  const onChange = (e) => {
+    console.log(e)
+  }
+  const onSubmit = async (data: FormBodyData) => {
+    const recapcha = recaptchaRef.current
+    const recaptchaValue = recapcha?.getValue()
+    if (!recapcha || !recaptchaValue) return
+    recapcha.reset()
+
     setLoading(true)
-    formRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setResult('')
+
+    parentRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     await fetch('/contact/api', {
       method: 'post',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         ...data,
         ...(debug ? { dev: true } : {}),
+        recaptchaValue,
       }),
     })
       .then((response) => {
@@ -93,7 +122,7 @@ export default function ContactBody() {
           return
         }
         if (type === 'invalid') {
-          const err: { [key: string]: string } = {}
+          const err: ErrorType = {}
           for (let key in data) {
             err[data[key].path[0]] = data[key].message
           }
@@ -101,7 +130,7 @@ export default function ContactBody() {
           return
         }
       })
-      .catch((error) => setResult('エラーが発生しました'))
+      .catch((error) => setResult('サーバーとの通信でエラーが発生しました'))
     setLoading(false)
   }
 
@@ -117,49 +146,24 @@ export default function ContactBody() {
     }
   }, [])
 
-  const inputElements = [
-    {
-      name: 'username',
-      type: 'text',
-      label: 'お名前 [必須]',
-    },
-    {
-      name: 'company',
-      type: 'text',
-      label: '会社名',
-    },
-    {
-      name: 'email',
-      type: 'email',
-      label: 'メールアドレス [必須]',
-    },
-    {
-      name: 'detail',
-      type: 'textarea',
-      label: 'お問い合わせ [必須]',
-      row: 15,
-    },
-  ]
-
   return (
     <>
-      <main className={className.main}>
+      <main className={className.main} ref={parentRef}>
         <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />
         {result && <div>{result}</div>}
         <div className={className.body}>
           <form
             className={`${loading ? 'opacity-50' : 'opacity-100'}`}
-            onSubmit={handleSubmit((d) => submit(d))}
-            ref={formRef}
+            onSubmit={handleSubmit((d) => onSubmit(d))}
           >
             <ul className={className.list}>
               {inputElements.map((elem, index) => {
-                const { name, type, row, label } = elem
+                const { name, textarea, row, label } = elem
                 return (
                   <li key={index} className={className.listChild}>
-                    <Input
+                    <InputText
                       name={name}
-                      type={type}
+                      textarea={textarea}
                       label={label}
                       {...(row ? { row } : {})}
                       register={register}
@@ -170,7 +174,11 @@ export default function ContactBody() {
               })}
             </ul>
             <div className={className.recaptcha}>
-              <div id='recaptchaMain'></div>
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={process.env.RECAPTCHA_SITE_KEY as string}
+                onChange={onChange}
+              />
             </div>
             <button className={className.submit} type='submit'>
               送信
@@ -181,28 +189,6 @@ export default function ContactBody() {
           <TextBtn title='HOME' link='/' />
         </div>
       </main>
-      <Script id='inline-js'>
-        {`
-          window.onloadCallback = ()=>{
-            console.log('onloadCallback')
-            window.contact_grecaptcha_id = window.grecaptcha.render('recaptchaMain', {
-              sitekey: "6Ldu_1UbAAAAABKzqC0VRtFsRoCmdI1ruAB_Pkb4",
-              callback: () => {
-                document.getElementById('contact__submit')?.removeAttribute('disabled')
-              },
-              'expired-callback': () => {
-                document.getElementById('contact__submit')?.setAttribute('disabled', 'true')
-              },
-            })
-          }
-        `}
-      </Script>
-      <Script
-        id='recaptcha-js'
-        src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'
-        async
-        defer
-      />
     </>
   )
 }

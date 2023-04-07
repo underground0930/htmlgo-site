@@ -4,7 +4,7 @@ import { FieldValues, UseFormRegister } from 'react-hook-form'
 type Props = {
   name: string
   label: string
-  type: string
+  textarea?: boolean
   row?: number
   getError: (key: string) => string | undefined
   register: UseFormRegister<FieldValues>
@@ -13,16 +13,15 @@ type Props = {
 const existType = (type: string) =>
   ['text', 'email', 'textarea'].some((v) => v === type) ? type : 'text'
 
-export const Input: React.FC<Props> = ({
+export const InputText: React.FC<Props> = ({
   name,
   label,
-  type,
+  textarea = false,
   row,
   getError,
   register,
 }) => {
   const error = getError(name)
-  const typeVal = existType(type)
   return (
     <>
       <label
@@ -31,7 +30,7 @@ export const Input: React.FC<Props> = ({
       >
         {label}
       </label>
-      {typeVal === 'textarea' ? (
+      {textarea ? (
         <textarea
           className='block w-full resize-none border-1 border-border p-8px text-16px'
           id={name}
@@ -40,7 +39,7 @@ export const Input: React.FC<Props> = ({
         />
       ) : (
         <input
-          type={typeVal}
+          type='text'
           className='block w-full border-1 border-border p-8px text-16px'
           id={name}
           {...register(name)}
