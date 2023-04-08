@@ -1,5 +1,5 @@
 'use client'
-import IconFormrun from '@/svgs/IconFormrun.svg'
+
 import IconGithub from '@/svgs/IconGithub.svg'
 import IconMicrocms from '@/svgs/IconMicrocms.svg'
 import IconNextjs from '@/svgs/IconNextjs.svg'
