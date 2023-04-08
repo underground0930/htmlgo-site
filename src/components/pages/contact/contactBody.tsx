@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import useRecaptcha from '@/hooks/useReCaptcha'
+import useDebugMode from '@/hooks/useDebugMode'
 
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
@@ -49,14 +50,13 @@ const inputElements = [
 
 type ErrorType = { [key: string]: string }
 
-const debug = true
-
 export default function ContactBody() {
+  const { DebugModal, isDebug } = useDebugMode({ isDebug: true })
   const parentRef = useRef<HTMLDivElement>(null)
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
-  const { recaptchaRef, recaptchaToken, resetRecaptcha } = useRecaptcha({
+  const { recaptchaRef, recaptchaToken } = useRecaptcha({
     siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string,
   })
 
@@ -64,7 +64,7 @@ export default function ContactBody() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: debug ? undefined : zodResolver(FormBodyDataSchema) })
+  } = useForm({ resolver: isDebug ? undefined : zodResolver(FormBodyDataSchema) })
 
   useEffect(() => {
     const { current } = parentRef
@@ -81,9 +81,8 @@ export default function ContactBody() {
   }, [errors])
 
   const getError = useCallback(
-    (key: string): string | undefined => {
-      return frontInvalidErrors[key] || serverInvalidErrors[key]
-    },
+    (key: string): string | undefined =>
+      frontInvalidErrors[key] || serverInvalidErrors[key],
     [frontInvalidErrors, serverInvalidErrors],
   )
 
@@ -99,7 +98,7 @@ export default function ContactBody() {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         ...data,
-        ...(debug ? { dev: true } : {}),
+        ...(isDebug ? { dev: true } : {}),
         token: recaptchaToken,
       }),
     })
@@ -111,8 +110,7 @@ export default function ContactBody() {
       })
       .then((result: ResultType) => {
         if (result.success) {
-          alert('success')
-          // location.href = '/contact/thanks'
+          location.href = '/contact/thanks'
           return
         }
         const { type, data } = result.error
@@ -129,12 +127,12 @@ export default function ContactBody() {
       .catch((error) => setError(errorText['server']))
       .finally(() => {
         setLoading(false)
-        resetRecaptcha()
       })
   }
 
   return (
     <>
+      <DebugModal />
       <main className={className.main} ref={parentRef}>
         <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />
         {true && <div className={className.error}>{error}</div>}
