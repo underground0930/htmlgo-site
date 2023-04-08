@@ -8,7 +8,6 @@
         "groups": ["builtin", "external", "internal", ["parent", "sibling"], "object", "type", "index"],
         "newlines-between": "always",
         "pathGroupsExcludedImportTypes": ["builtin"],
-        "alphabetize": { "order": "asc", "caseInsensitive": true },
         "pathGroups": [
           { "pattern": "@/utils/**", "group": "internal", "position": "before" },
           { "pattern": "@/libs/**", "group": "internal", "position": "before" },

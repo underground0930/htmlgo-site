@@ -1,5 +1,5 @@
 'use client'
-import IconFormrun from '@/svgs/IconFormrun.svg'
+
 import IconGithub from '@/svgs/IconGithub.svg'
 import IconMicrocms from '@/svgs/IconMicrocms.svg'
 import IconNextjs from '@/svgs/IconNextjs.svg'
@@ -34,11 +34,6 @@ const links = [
     href: 'https://microcms.io/',
     key: 'microcms',
     icon: <IconMicrocms />,
-  },
-  {
-    href: 'https://form.run/ja',
-    key: 'form.run',
-    icon: <IconFormrun />,
   },
   {
     href: 'https://www.google.com/recaptcha/about/',
@@ -77,7 +72,9 @@ const Footer = ({}: Props) => {
             </ul>
           </dd>
         </dl>
-        <small className={className.small}>Copyright © 2016 htmlgo.site All rights reserved.</small>
+        <small className={className.small}>
+          Copyright © 2016 htmlgo.site All rights reserved.
+        </small>
       </footer>
     </>
   )
