@@ -40,7 +40,21 @@ export type ResultType =
   | {
       success: false
       error: {
-        type: 'failed_mail'
+        type: 'mail_failed'
+        data: null
+      }
+    }
+  | {
+      success: false
+      error: {
+        type: 'recapcha_error'
+        data: null
+      }
+    }
+  | {
+      success: false
+      error: {
+        type: 'recapcha_failed'
         data: null
       }
     }

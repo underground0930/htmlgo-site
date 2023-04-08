@@ -8,11 +8,29 @@ import { FormBodyDataSchema } from '@/types/contact'
 export async function POST(request: Request) {
   const requestBodyText = await request.text()
   const requestBody = JSON.parse(requestBodyText)
-  const { username, email, company, detail, recaptchaValue, dev } = requestBody
+  const { username, email, company, detail, token, dev } = requestBody
+
+  // フォームの入力値のバリデート ////////////////////////////////////
+  const validateResult = FormBodyDataSchema.safeParse({
+    username,
+    email,
+    company,
+    detail,
+  })
+
+  if (!validateResult.success) {
+    return NextResponse.json({
+      success: false,
+      error: {
+        type: 'invalid',
+        data: validateResult.error.issues,
+      },
+    })
+  }
 
   // recapchaのテスト ////////////////////////////////////
 
-  const recaptchaResult = await verifyRecaptcha(recaptchaValue)
+  const recaptchaResult = await verifyRecaptcha(token)
 
   if (recaptchaResult === 0) {
     // 検証中にエラーが発生
@@ -30,24 +48,6 @@ export async function POST(request: Request) {
       error: {
         type: 'recapcha_failed',
         data: null,
-      },
-    })
-  }
-
-  // フォームの入力値のバリデート ////////////////////////////////////
-  const validateResult = FormBodyDataSchema.safeParse({
-    username,
-    email,
-    company,
-    detail,
-  })
-
-  if (!validateResult.success) {
-    return NextResponse.json({
-      success: false,
-      error: {
-        type: 'invalid',
-        data: validateResult.error.issues,
       },
     })
   }

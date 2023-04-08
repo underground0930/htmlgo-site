@@ -1,22 +1,25 @@
 'use client'
 
-import ReCAPTCHA from 'react-google-recaptcha'
-import Script from 'next/script'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import useRecaptcha from '@/hooks/useReCaptcha'
+
 import TextBtn from '@/components/common/textBtn'
 import Title from '@/components/common/title'
+
+import { errorText } from '@/const/contact'
 
 import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types/contact'
 
 import { InputText } from './InputText'
 
 const className = {
-  main: 'mx-20px max-w-[800px] md:mx-auto',
+  main: 'pt-20px mx-20px max-w-[800px] md:mx-auto',
   body: `mb-40px `,
   list: `mb-40px`,
+  error: 'text-16px pb-30px text-[#f00] font-bold',
   listChild: `mb-25px`,
   submit: `block bg-[#000] w-[200px] mx-auto p-8px text-[#fff] font-bold disabled:opacity-30`,
   recaptcha: `flex items-center justify-center pb-40px`,
@@ -49,11 +52,13 @@ type ErrorType = { [key: string]: string }
 const debug = true
 
 export default function ContactBody() {
-  const recaptchaRef = useRef<ReCAPTCHA>(null)
   const parentRef = useRef<HTMLDivElement>(null)
+  const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
-  const [result, setResult] = useState<string>('')
+  const { recaptchaRef, recaptchaToken, resetRecaptcha } = useRecaptcha({
+    siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string,
+  })
 
   const {
     register,
@@ -82,26 +87,20 @@ export default function ContactBody() {
     [frontInvalidErrors, serverInvalidErrors],
   )
 
-  const onChange = (e) => {
-    console.log(e)
-  }
   const onSubmit = async (data: FormBodyData) => {
-    const recapcha = recaptchaRef.current
-    const recaptchaValue = recapcha?.getValue()
-    if (!recapcha || !recaptchaValue) return
-    recapcha.reset()
-
+    if (!recaptchaToken) return
     setLoading(true)
-    setResult('')
+    setError('')
 
     parentRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
     await fetch('/contact/api', {
       method: 'post',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         ...data,
         ...(debug ? { dev: true } : {}),
-        recaptchaValue,
+        token: recaptchaToken,
       }),
     })
       .then((response) => {
@@ -117,10 +116,6 @@ export default function ContactBody() {
           return
         }
         const { type, data } = result.error
-        if (type === 'failed_mail') {
-          setResult('メールの送信に失敗しました')
-          return
-        }
         if (type === 'invalid') {
           const err: ErrorType = {}
           for (let key in data) {
@@ -129,32 +124,27 @@ export default function ContactBody() {
           setServerInvalidErrors(err)
           return
         }
+        setError(errorText[type])
       })
-      .catch((error) => setResult('サーバーとの通信でエラーが発生しました'))
-    setLoading(false)
+      .catch((error) => setError(errorText['server']))
+      .finally(() => {
+        setLoading(false)
+        resetRecaptcha()
+      })
   }
-
-  useEffect(() => {
-    if (window.grecaptcha) {
-      window.contact_timer = window.setTimeout(window.onloadCallback, 200)
-    }
-    return () => {
-      clearInterval(window.contact_timer)
-      if (window.grecaptcha) {
-        window.grecaptcha.reset(window.contact_grecaptcha_id)
-      }
-    }
-  }, [])
 
   return (
     <>
       <main className={className.main} ref={parentRef}>
         <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />
-        {result && <div>{result}</div>}
+        {true && <div className={className.error}>{error}</div>}
         <div className={className.body}>
           <form
             className={`${loading ? 'opacity-50' : 'opacity-100'}`}
-            onSubmit={handleSubmit((d) => onSubmit(d))}
+            onSubmit={handleSubmit((d) => {
+              const { username, company, email, detail } = d
+              onSubmit({ username, company, email, detail })
+            })}
           >
             <ul className={className.list}>
               {inputElements.map((elem, index) => {
@@ -174,13 +164,13 @@ export default function ContactBody() {
               })}
             </ul>
             <div className={className.recaptcha}>
-              <ReCAPTCHA
-                ref={recaptchaRef}
-                sitekey={process.env.RECAPTCHA_SITE_KEY as string}
-                onChange={onChange}
-              />
+              <div id='rechapcha' ref={recaptchaRef}></div>
             </div>
-            <button className={className.submit} type='submit'>
+            <button
+              className={className.submit}
+              type='submit'
+              disabled={recaptchaToken ? false : true}
+            >
               送信
             </button>
           </form>
