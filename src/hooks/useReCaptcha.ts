@@ -1,29 +1,37 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-interface UseRecaptchaResult {
+type Props = {
+  sitekey: string
+  targetId: string
+  scriptId?: string
+  size?: 'invisible' | null
+  badge?: 'bottomright' | 'bottomleft' | 'inline'
+  callback?: () => void
+  expiredCallback?: () => void
+  errorCallback?: () => void
+}
+
+type UseRecaptchaResult = {
   recaptchaRef: React.MutableRefObject<HTMLDivElement | null>
   recaptchaToken: string | null
   resetRecaptcha: () => void
 }
 
 const useRecaptcha = ({
-  siteKey,
+  sitekey,
+  targetId,
+  size = null,
+  scriptId = 'recaptchaApiScript',
+  badge = 'bottomright',
   callback,
   expiredCallback,
   errorCallback,
-}: {
-  siteKey: string
-  callback?: () => void
-  expiredCallback?: () => void
-  errorCallback?: () => void
-}): UseRecaptchaResult => {
+}: Props): UseRecaptchaResult => {
   const recaptchaRef = useRef<HTMLDivElement>(null)
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
   const [recaptchaInstance, setRecaptchaInstance] = useState<number | null>(null)
 
   const loadRecaptchaScript = () => {
-    const scriptId = 'recaptchaApiScript'
-
     if (document.getElementById(scriptId)) return
 
     const script = document.createElement('script')
@@ -40,18 +48,20 @@ const useRecaptcha = ({
   }
 
   const renderRecaptcha = useCallback(() => {
-    if (!window.grecaptcha || typeof window.grecaptcha.render !== 'function') {
+    if (!window.grecaptcha || typeof window.grecaptcha?.render !== 'function') {
       return
     }
 
-    const target = document.getElementById('rechapcha')
+    const target = document.getElementById(targetId)
 
     // stop reRender
     if (target && target.innerHTML !== '') return
 
     setRecaptchaInstance(
       window.grecaptcha.render(recaptchaRef.current as HTMLElement, {
-        sitekey: siteKey,
+        sitekey,
+        size,
+        badge,
         callback: (token: string) => {
           setRecaptchaToken(token)
           callback?.()

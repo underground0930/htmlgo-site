@@ -50,16 +50,17 @@ const inputElements = [
 
 type ErrorType = { [key: string]: string }
 
+const targetId = 'rechapchaTarget'
+const scriptId = 'rechapchaScriptId'
+const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
+
 export default function ContactBody() {
   const { DebugModal, debug } = useDebugMode({ debug: false })
   const parentRef = useRef<HTMLDivElement>(null)
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
-  const { recaptchaRef, recaptchaToken } = useRecaptcha({
-    siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string,
-  })
-
+  const { recaptchaRef, recaptchaToken } = useRecaptcha({ sitekey, targetId, scriptId })
   const {
     register,
     handleSubmit,
@@ -160,7 +161,7 @@ export default function ContactBody() {
               })}
             </ul>
             <div className={className.recaptcha}>
-              <div id='rechapcha' ref={recaptchaRef}></div>
+              <div id={targetId} ref={recaptchaRef}></div>
             </div>
             <button
               className={className.submit}
