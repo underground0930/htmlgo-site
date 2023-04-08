@@ -6,11 +6,10 @@
 const { zIndex, fontSize, spacing } = require('./tailwind.custom')
 
 module.exports = {
-  mode: 'jit',
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
-    './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/hooks/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     screens: {
@@ -19,28 +18,6 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
       '2xl': '1536px',
-    },
-    fontSize: {
-      ...fontSize(),
-    },
-    margin: ({ theme }) => ({
-      auto: 'auto',
-      ...spacing(),
-    }),
-    padding: spacing,
-    zIndex: {
-      auto: 'auto',
-      ...zIndex(),
-    },
-    borderWidth: {
-      default: '1px',
-      0: '0',
-      1: '1px',
-      2: '2px',
-      3: '3px',
-      4: '4px',
-      5: '5px',
-      6: '6px',
     },
     colors: {
       linkActive: '#339fef',
@@ -63,8 +40,29 @@ module.exports = {
           '100%': { transform: 'rotate(360deg)' },
         },
       },
+      fontSize: {
+        ...fontSize(),
+      },
+      margin: ({ theme }) => ({
+        auto: 'auto',
+        ...spacing(),
+      }),
+      padding: spacing,
+      zIndex: {
+        auto: 'auto',
+        ...zIndex(),
+      },
+      borderWidth: {
+        default: '1px',
+        0: '0',
+        1: '1px',
+        2: '2px',
+        3: '3px',
+        4: '4px',
+        5: '5px',
+        6: '6px',
+      },
     },
   },
-  variants: {},
   plugins: [],
 }

@@ -51,7 +51,7 @@ const inputElements = [
 type ErrorType = { [key: string]: string }
 
 export default function ContactBody() {
-  const { DebugModal, isDebug } = useDebugMode({ isDebug: true })
+  const { DebugModal, debug } = useDebugMode({ debug: false })
   const parentRef = useRef<HTMLDivElement>(null)
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
@@ -64,7 +64,7 @@ export default function ContactBody() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: isDebug ? undefined : zodResolver(FormBodyDataSchema) })
+  } = useForm({ resolver: debug ? undefined : zodResolver(FormBodyDataSchema) })
 
   useEffect(() => {
     const { current } = parentRef
@@ -98,7 +98,7 @@ export default function ContactBody() {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         ...data,
-        ...(isDebug ? { dev: true } : {}),
+        ...(debug ? { dev: true } : {}),
         token: recaptchaToken,
       }),
     })
@@ -125,9 +125,7 @@ export default function ContactBody() {
         setError(errorText[type])
       })
       .catch((error) => setError(errorText['server']))
-      .finally(() => {
-        setLoading(false)
-      })
+      .finally(() => setLoading(false))
   }
 
   return (
@@ -135,7 +133,7 @@ export default function ContactBody() {
       <DebugModal />
       <main className={className.main} ref={parentRef}>
         <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />
-        {true && <div className={className.error}>{error}</div>}
+        {error && <div className={className.error}>{error}</div>}
         <div className={className.body}>
           <form
             className={`${loading ? 'opacity-50' : 'opacity-100'}`}
