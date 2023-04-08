@@ -5,7 +5,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 
-import useRecaptcha from '@/hooks/useReCaptcha'
 import useDebugMode from '@/hooks/useDebugMode'
 
 import TextBtn from '@/components/common/textBtn'
