@@ -36,11 +36,6 @@ const links = [
     icon: <IconMicrocms />,
   },
   {
-    href: 'https://form.run/ja',
-    key: 'form.run',
-    icon: <IconFormrun />,
-  },
-  {
     href: 'https://www.google.com/recaptcha/about/',
     key: 'recaptcha',
     icon: <IconRecaptcha />,
@@ -77,7 +72,9 @@ const Footer = ({}: Props) => {
             </ul>
           </dd>
         </dl>
-        <small className={className.small}>Copyright © 2016 htmlgo.site All rights reserved.</small>
+        <small className={className.small}>
+          Copyright © 2016 htmlgo.site All rights reserved.
+        </small>
       </footer>
     </>
   )
