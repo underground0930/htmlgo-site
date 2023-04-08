@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 
 import useRecaptcha from '@/hooks/useReCaptcha'
 import useDebugMode from '@/hooks/useDebugMode'
@@ -60,7 +61,12 @@ export default function ContactBody() {
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
-  const { recaptchaRef, recaptchaToken } = useRecaptcha({ sitekey, targetId, scriptId })
+  const { recaptchaRef, recaptchaToken } = useRecaptchaV2({
+    sitekey,
+    targetId,
+    scriptId,
+  })
+
   const {
     register,
     handleSubmit,

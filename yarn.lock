@@ -1324,6 +1324,15 @@
     "@types/scheduler" "*"
     "csstype" "^3.0.2"
 
+"@types/react@^18.0.33":
+  "integrity" "sha512-sHxzVxeanvQyQ1lr8NSHaj0kDzcNiGpILEVt69g9S31/7PfMvNCKLKcsHw4lYKjs3cGNJjXSP4mYzX43QlnjNA=="
+  "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.33.tgz"
+  "version" "18.0.33"
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    "csstype" "^3.0.2"
+
 "@types/scheduler@*":
   "integrity" "sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew=="
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
@@ -3560,6 +3569,15 @@
   "integrity" "sha512-AUDN3Pz2NSeoxQ7Hs6OhQhDr6gtF9YRuutGDwPQqhSUAHJSgGl2VeY3qN19MG0SucpjgDiuMJ4iC5T5uB+eaNQ=="
   "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.43.9.tgz"
   "version" "7.43.9"
+
+"react-hook-recaptcha-v2@^1.0.2":
+  "integrity" "sha512-EdeLB1RH9xboaJI1sn5s+vIC5XIZs3S/mA2qhkKlkmFyEQ+iRHc3GXfyiiflnf+fHcEpJZK1ywzBJ2q8SYvfeg=="
+  "resolved" "https://registry.npmjs.org/react-hook-recaptcha-v2/-/react-hook-recaptcha-v2-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "@types/grecaptcha" "^3.0.4"
+    "@types/react" "^18.0.33"
+    "react" "^18.2.0"
 
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
