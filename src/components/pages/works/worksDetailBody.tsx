@@ -73,7 +73,9 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
               <ul className={className.infoList}>
                 {post?.date && (
                   <WorksDetailInfo title='公開日'>
-                    <time dateTime={conversionDate(post.date)}>{conversionDate(post.date)}</time>
+                    <time dateTime={conversionDate(post.date)}>
+                      {conversionDate(post.date)}
+                    </time>
                   </WorksDetailInfo>
                 )}
                 {post?.publishedAt2 && (
@@ -102,7 +104,9 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
                   </WorksDetailInfo>
                 )}
                 {post?.production_period && (
-                  <WorksDetailInfo title='制作期間'>{post.production_period}</WorksDetailInfo>
+                  <WorksDetailInfo title='制作期間'>
+                    {post.production_period}
+                  </WorksDetailInfo>
                 )}
                 {(post?.url || post?.url2) && (
                   <WorksDetailInfo title='URL'>
@@ -181,12 +185,18 @@ export default function WorksDetailBody({ post, prev, next }: Props) {
           <div className={className.back}>
             <TextBtn title='WORKS' link='/works' />
             {next && (
-              <Link className={`${className.pager} ${className.next}`} href={`/works/${next.slug}`}>
+              <Link
+                className={`${className.pager} ${className.next}`}
+                href={`/works/${next.slug}`}
+              >
                 &lt;
               </Link>
             )}
             {prev && (
-              <Link className={`${className.pager} ${className.prev}`} href={`/works/${prev.slug}`}>
+              <Link
+                className={`${className.pager} ${className.prev}`}
+                href={`/works/${prev.slug}`}
+              >
                 &gt;
               </Link>
             )}

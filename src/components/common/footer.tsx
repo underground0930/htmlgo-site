@@ -7,8 +7,6 @@ import IconRecaptcha from '@/svgs/IconRecaptcha.svg'
 import IconTailwindcss from '@/svgs/IconTailwindcss.svg'
 import IconVercel from '@/svgs/IconVercel.svg'
 
-type Props = {}
-
 const links = [
   {
     href: 'https://nextjs.org/',
@@ -52,7 +50,7 @@ const className = {
   small: `block text-10 text-center`,
 }
 
-const Footer = ({}: Props) => {
+const Footer = () => {
   return (
     <>
       <footer className={className.footer}>

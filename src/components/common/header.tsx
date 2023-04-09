@@ -3,8 +3,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-type Props = {}
-
 const className = {
   header: 'relative z-[1] mb-32px mx-20px border-b-1 border-border',
   inner: 'items-center justify-between max-w-[800px] mx-auto md:flex',
@@ -17,7 +15,7 @@ const className = {
 
 const navList = ['about', 'works', 'articles', 'contact']
 
-const Header = ({}: Props) => {
+const Header = () => {
   const pathname = usePathname()
   const { header, inner, title, nav, ul, linkStyle } = className
   return (
@@ -32,7 +30,10 @@ const Header = ({}: Props) => {
           <nav className={nav}>
             <ul className={ul}>
               <li>
-                <Link href='/' className={(pathname === '/' ? 'text-linkActive' : '') + linkStyle}>
+                <Link
+                  href='/'
+                  className={(pathname === '/' ? 'text-linkActive' : '') + linkStyle}
+                >
                   TOP
                 </Link>
               </li>
@@ -43,7 +44,8 @@ const Header = ({}: Props) => {
                       prefetch={false}
                       href={`/${nav}`}
                       className={
-                        (pathname?.startsWith(`/${nav}`) ? 'text-linkActive' : '') + linkStyle
+                        (pathname?.startsWith(`/${nav}`) ? 'text-linkActive' : '') +
+                        linkStyle
                       }
                     >
                       {nav.toLocaleUpperCase()}

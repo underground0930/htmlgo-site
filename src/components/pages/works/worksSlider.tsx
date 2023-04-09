@@ -169,12 +169,18 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
         </div>
       </Swiper>
       {!bothEnds.first && sliders.length > 1 && (
-        <div className={`${className.sliderBtn} ${className.sliderPrev} prevBtn`} onClick={goPrev}>
+        <div
+          className={`${className.sliderBtn} ${className.sliderPrev} prevBtn`}
+          onClick={goPrev}
+        >
           &lt;
         </div>
       )}
       {!bothEnds.last && sliders.length > 1 && (
-        <div className={`${className.sliderBtn} ${className.sliderNext} nextBtn`} onClick={goNext}>
+        <div
+          className={`${className.sliderBtn} ${className.sliderNext} nextBtn`}
+          onClick={goNext}
+        >
           &gt;
         </div>
       )}

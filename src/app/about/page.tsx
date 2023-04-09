@@ -42,7 +42,12 @@ export default function About() {
         <Title title='ABOUT' text='このサイトや主について説明しています' />
         <div className={className.body}>
           <div className=''>
-            <ImageBox cls={className.img} src='/img/profile.jpg' width={210} height={210} />
+            <ImageBox
+              cls={className.img}
+              src='/img/profile.jpg'
+              width={210}
+              height={210}
+            />
           </div>
           <div className={className.sns}>
             <AboutSnsBox />

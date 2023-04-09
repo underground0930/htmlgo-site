@@ -56,14 +56,15 @@ const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
 
 export default function ContactBody() {
   const { DebugModal, debug } = useDebugMode({ debug: false })
+  const [token, setToken] = useState<string | null>(null)
   const parentRef = useRef<HTMLDivElement>(null)
   const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
-  const { recaptchaRef, recaptchaToken } = useRecaptchaV2({
+  const { recaptchaRef } = useRecaptchaV2({
     sitekey,
-    targetId,
     scriptId,
+    callback: (token) => setToken(token),
   })
 
   const {
@@ -93,7 +94,7 @@ export default function ContactBody() {
   )
 
   const onSubmit = async (data: FormBodyData) => {
-    if (!recaptchaToken) return
+    if (!token) return
     setLoading(true)
     setError('')
 
@@ -105,7 +106,7 @@ export default function ContactBody() {
       body: JSON.stringify({
         ...data,
         ...(debug ? { dev: true } : {}),
-        token: recaptchaToken,
+        token,
       }),
     })
       .then((response) => {
@@ -168,11 +169,7 @@ export default function ContactBody() {
             <div className={className.recaptcha}>
               <div id={targetId} ref={recaptchaRef}></div>
             </div>
-            <button
-              className={className.submit}
-              type='submit'
-              disabled={recaptchaToken ? false : true}
-            >
+            <button className={className.submit} type='submit' disabled={!token}>
               送信
             </button>
           </form>

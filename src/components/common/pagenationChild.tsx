@@ -41,7 +41,10 @@ const PagenationChild = ({ page, loopIndex, children }: Props) => {
   }
   return (
     <li className={className.li}>
-      <Link className={linkClass} href={setLink(loopIndex !== undefined ? loopIndex + 1 : page)}>
+      <Link
+        className={linkClass}
+        href={setLink(loopIndex !== undefined ? loopIndex + 1 : page)}
+      >
         {children}
       </Link>
     </li>
