@@ -17,14 +17,13 @@ export async function fetchTopList() {
     .get<MicroCMSResponse<WorkIndex[]>>({
       endpoint: 'works',
       queries: {
-        limit: 6,
+        limit: 3,
         fields: 'id,title,slug,date,publishedAt2,category,technology,slider',
       },
     })
     .then((result) => result.contents)
     .catch(() => [])
 
-  console.log(works)
   return {
     works,
     articles,
