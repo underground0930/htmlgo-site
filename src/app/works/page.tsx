@@ -70,6 +70,8 @@ const className = {
   back: `text-center`,
 }
 
+export const revalidate = 60
+
 export default async function Works() {
   const { works, categories, technologies } = await fetchWorksIndex()
 
