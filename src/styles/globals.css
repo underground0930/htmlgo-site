@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --------------------------------------------------------------
+  カスタマイズ
+-------------------------------------------------------------- */
+
+body {
+  min-height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+/* works詳細の本文エリア */
+
+.workDetailBody p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.workDetailBody a {
+  text-decoration: underline;
+}
