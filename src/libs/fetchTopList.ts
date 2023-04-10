@@ -17,7 +17,7 @@ export async function fetchTopList() {
     .get<MicroCMSResponse<WorkIndex[]>>({
       endpoint: 'works',
       queries: {
-        limit: 3,
+        limit: 6,
         fields: 'id,title,slug,date,publishedAt2,category,technology,slider',
       },
     })
