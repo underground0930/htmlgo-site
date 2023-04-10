@@ -29,7 +29,7 @@ const className = {
   section: 'mb-40px pb-20px md:mb-80px md:pb-40px border-b-1 border-border',
 }
 
-export const revalidate = 60
+export const revalidate = 0
 
 export default async function Home() {
   const { works, articles } = await fetchTopList()
