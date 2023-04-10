@@ -24,6 +24,7 @@ export async function fetchTopList() {
     .then((result) => result.contents)
     .catch(() => [])
 
+  console.log(works)
   return {
     works,
     articles,
