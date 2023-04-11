@@ -1,19 +1,19 @@
 [branchname] 
 
 # ==== Emojis ====
-# ✏️  :pencil2: Writing docs
-# 🐛  :bug: Fix bugs
-# 👍  :+1: Feature improvements
-# ✨  :sparkles: Additional partial feature
-# 🎉  :tada: Grand major features added to celebrate
-# ♻️   :recycle :Refactoring
-# 🚿  :shower: Removal of obsolete functions or features.
-# 💚  :green_heart: Modification and improvement of testing and CI
-# 👕  :shirt: Fixing of errors found by Lint.
-# 🚀  :rocket: Performance improvement
-# 🆙  :up: Updates, such as dependent package
-# 🔒  :lock: Limit of the range of new features
-# 👮  :cop: Security-related improvements
+#✏️ :pencil2: - ドキュメントの作成や更新
+#🐛 :bug: - バグ修正
+#👍 :+1: - 既存機能の改善
+#✨ :sparkles: - 部分的な新機能の追加
+#🎉 :tada: - 大きな新機能の追加（お祝いを意味する）
+#♻️ :recycle: - リファクタリング（コードの整理や構造の改善）
+#🚿 :shower: - 廃止された機能や機能の削除
+#💚 :green_heart: - テストやCI（継続的インテグレーション）の修正や改善
+#👕 :shirt: - Lint（静的解析ツール）によって見つかったエラーの修正
+#🚀 :rocket: - パフォーマンスの改善
+#🆙 :up: - 依存パッケージなどのアップデート
+#🔒 :lock: - 新機能の範囲制限やセキュリティ強化
+#👮 :cop: - セキュリティ関連の改善
 
 # ==== Format ====
 # :emoji: Subject #issue No.
