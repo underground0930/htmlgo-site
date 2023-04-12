@@ -23,5 +23,3 @@ git config commit.template .gitmessage
 https://www.praha-inc.com/lab/posts/commit-message
 https://www.conventionalcommits.org/ja/v1.0.0/
 
-
-
