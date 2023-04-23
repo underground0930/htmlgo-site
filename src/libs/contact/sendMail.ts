@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-import { FormBodyData } from '@/types/contact'
+import { FormBodyData } from '@/types'
 
 const setText = (args: FormBodyData): string => {
   const text = `
@@ -8,7 +8,7 @@ const setText = (args: FormBodyData): string => {
 お問い合わせ内容
 -------------------------------
 お名前: ${args.username}
-会社名: ${args.company}
+会社名: ${args.company ?? ''}
 メールアドレス: ${args.email}
 お問い合わせ: ${args.detail}
 `
@@ -20,24 +20,24 @@ export const sendMail = async ({
   company,
   email,
   detail,
-  dev,
+  debug,
 }: {
   username: string
   company?: string
   email: string
   detail: string
-  dev: boolean
+  debug: boolean
 }) => {
   const gmail = process.env.MAIL_ACCOUNT
   const pass = process.env.MAIL_PASSWORD
-  const from = `"HTMLGO SITE" <${gmail}>`
+  const from = `"HTMLGO SITE" <${gmail ?? ''}>`
   const to = gmail
   const subject = '[HTMLGO]:ホームページよりお問い合わせがありました'
   const text = setText({ username, company, email, detail })
 
   const transporter = await (async () => {
     let account
-    if (dev) {
+    if (debug) {
       // テストのメールの設定
       account = await nodemailer.createTestAccount()
       const {
@@ -64,7 +64,7 @@ export const sendMail = async ({
   return transporter
     .sendMail({ from, to, subject, text })
     .then((result) => {
-      if (dev) {
+      if (debug) {
         // こちらのURLで送信結果が見れる
         console.log('Message sent:', result.messageId)
         console.log('Preview URL:', nodemailer.getTestMessageUrl(result))

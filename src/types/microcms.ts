@@ -65,3 +65,5 @@ export type WorkDetailMeta = {
     }
   }[]
 }
+
+export type WorksSlider = NonNullable<WorkDetailMeta['slider']>[number]

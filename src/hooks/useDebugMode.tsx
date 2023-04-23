@@ -1,4 +1,4 @@
-const useDebugMode = ({
+export const useDebugMode = ({
   debug = false,
   isRight = false,
 }: {
@@ -20,5 +20,3 @@ const useDebugMode = ({
   }
   return { DebugModal, debug }
 }
-
-export default useDebugMode

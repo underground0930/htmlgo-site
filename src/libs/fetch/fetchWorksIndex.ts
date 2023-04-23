@@ -1,14 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // works List
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// libs
-import { microcmsClient } from '@/libs/microcmsClient'
 
-// const
-import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/const/microcms'
+import { microcmsClient } from '@/libs'
+import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/const'
+
+import type { MicroCMSResponse, WorkIndex, WorksCategory } from '@/types'
 
 // types
-import type { MicroCMSResponse, WorkIndex, WorksCategory } from '@/types/microcms'
 
 export async function fetchWorksIndex() {
   const result = await Promise.allSettled([

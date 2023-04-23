@@ -1,4 +1,4 @@
-const list = [
+export const snsList = [
   {
     href: 'https://github.com/underground0930',
     target: '_blank',
@@ -30,23 +30,3 @@ const list = [
     label: 'Note',
   },
 ]
-
-const AboutSnsBox = () => {
-  return (
-    <>
-      <ul className='mx-auto flex max-w-[220px] flex-wrap items-center justify-center'>
-        {list.map((v, i) => {
-          return (
-            <li key={i} className='mb-10px mr-15px'>
-              <a className='font-bold' rel={v.rel} href={v.href} target={v.target}>
-                {v.label}
-              </a>
-            </li>
-          )
-        })}
-      </ul>
-    </>
-  )
-}
-
-export default AboutSnsBox

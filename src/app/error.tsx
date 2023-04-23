@@ -1,9 +1,8 @@
 'use client'
 import { useEffect } from 'react'
 
-import { setMetaData } from '@/utils/setMetadata'
-
-import { setBaseUrl } from '@/const/config'
+import { setMetaData } from '@/utils'
+import { setBaseUrl } from '@/const'
 
 const description = 'ページでエラーが発生しました'
 

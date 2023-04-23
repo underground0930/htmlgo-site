@@ -1,13 +1,15 @@
 import React from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
+import { FormBodyData } from '@/types'
+
 type Props = {
   name: string
   label: string
   textarea?: boolean
   row?: number
   getError: (name: string) => string | undefined
-  register: UseFormRegister<FieldValues>
+  register: UseFormRegister<FormBodyData & FieldValues>
 }
 
 export const InputText: React.FC<Props> = ({

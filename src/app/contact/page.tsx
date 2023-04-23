@@ -1,8 +1,6 @@
-import { setMetaData } from '@/utils/setMetadata'
-
-import ContactBody from '@/components/pages/contact/Body'
-
-import { setBaseUrl } from '@/const/config'
+import { setMetaData } from '@/utils'
+import { ContactBody } from '@/components'
+import { setBaseUrl } from '@/const'
 
 const description = 'お問い合わせはこちらからお願いします'
 

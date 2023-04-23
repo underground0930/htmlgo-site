@@ -1,19 +1,10 @@
 # Ignore artifacts:
 build
 coverage
-package.json
-tsconfig.json
 yarn.lock
-next-env.d.ts
-next.config.js
 
 # dotfile
-.lintstagedrc.js
-.eslintrc.json
-.prettierrc.json
-.vscode/settings.json
 .env*
-
 
 # markdown
 *.md

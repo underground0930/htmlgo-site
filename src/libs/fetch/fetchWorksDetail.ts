@@ -1,11 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // works detail
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// libs
-import { microcmsClient } from '@/libs/microcmsClient'
 
-// type
-import { MicroCMSResponse, WorkDetail } from '@/types/microcms'
+import { MicroCMSResponse, WorkDetail } from '@/types'
+import { microcmsClient } from '@/libs'
 
 export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
   let pager: ({ slug: string } | null)[] = []

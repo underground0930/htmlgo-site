@@ -1,0 +1,8 @@
+export { CategoryIcon } from './CategoryIcon'
+export { Footer } from './Footer'
+export { Header } from './Header'
+export { ImageWrapper } from './ImageWrapper'
+export { Pagination } from './Pagination'
+export { PaginationChild } from './PaginationChild'
+export { Title } from './Title'
+export { TextBtn } from './TextBtn'

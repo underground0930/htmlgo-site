@@ -1,14 +1,12 @@
 import { NextResponse } from 'next/server'
 
-import { verifyRecaptcha } from '@/libs/contact/verifyRecaptcha'
-import { sendMail } from '@/libs/contact/sendMail'
-
-import { FormBodyDataSchema } from '@/types/contact'
+import { verifyRecaptcha, sendMail } from '@/libs'
+import { FormBodyDataSchema, PostFormBodyData } from '@/types'
 
 export async function POST(request: Request) {
   const requestBodyText = await request.text()
-  const requestBody = JSON.parse(requestBodyText)
-  const { username, email, company, detail, token, dev } = requestBody
+  const requestBody = JSON.parse(requestBodyText) as PostFormBodyData
+  const { username, email, company, detail, token, debug } = requestBody
 
   // フォームの入力値のバリデート ////////////////////////////////////
   const validateResult = FormBodyDataSchema.safeParse({
@@ -53,7 +51,7 @@ export async function POST(request: Request) {
   }
 
   // メール送信処理  ////////////////////////////////////
-  const sendMailResult = await sendMail({ dev, ...validateResult.data })
+  const sendMailResult = await sendMail({ debug, ...validateResult.data })
 
   const result = sendMailResult
     ? { success: true, error: null }

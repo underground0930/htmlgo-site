@@ -1,6 +1,8 @@
 export const verifyRecaptcha = async (recaptchaValue: string): Promise<0 | 1 | 2> => {
   return await fetch(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaValue}`,
+    `https://www.google.com/recaptcha/api/siteverify?secret=${
+      process.env.RECAPTCHA_SECRET_KEY ?? ''
+    }&response=${recaptchaValue}`,
     {
       method: 'POST',
     },
@@ -11,7 +13,7 @@ export const verifyRecaptcha = async (recaptchaValue: string): Promise<0 | 1 | 2
       }
       throw new Error('response')
     })
-    .then((result) => {
+    .then((result: { success: boolean }) => {
       return result.success ? 1 : 2 // reCAPTCHA 検証成功 or 検証失敗
     })
     .catch(

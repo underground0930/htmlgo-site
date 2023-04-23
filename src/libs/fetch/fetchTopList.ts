@@ -2,18 +2,29 @@
 // top
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// libs
-import { microcmsClient } from '@/libs/microcmsClient'
-
-// type
-import { MicroCMSResponse, WorkIndex } from '@/types/microcms'
+import { microcmsClient } from '@/libs'
+import { MicroCMSResponse, WorkIndex, FeedObj } from '@/types'
 
 export async function fetchTopList() {
   const articles = (
-    await import('public/feed.json').then((response) => response.default).catch(() => [])
-  ).slice(0, 4)
+    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/feed.json`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        }
+        throw new Error(response.statusText)
+      })
+      .then((data: FeedObj[]) => {
+        return data
+      })
+      .catch((error: unknown) => {
+        console.error(error)
+        return []
+      })
+  ).slice(0, 8)
 
   const works: WorkIndex[] = await microcmsClient
+
     .get<MicroCMSResponse<WorkIndex[]>>({
       endpoint: 'works',
       queries: {

@@ -7,6 +7,11 @@ export type FormBodyData = {
   detail: string
 }
 
+export type PostFormBodyData = FormBodyData & {
+  token: string
+  debug: boolean
+}
+
 const errorMessages = {
   min: '必須項目です',
   max: (max: number) => `最大${max}文字までにしてください`,

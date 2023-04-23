@@ -1,13 +1,11 @@
-import CategoryIcon from '@/components/common/CategoryIcon'
-import ImageBox from '@/components/common/ImageWrapper'
-
-import { FeedObj } from '@/types/feed'
+import { FeedObj } from '@/types'
+import { CategoryIcon, ImageWrapper } from '@/components'
 
 type Props = {
   articles: FeedObj[]
 }
 
-const ArticlesList = ({ articles }: Props) => {
+export const ArticlesList = ({ articles }: Props) => {
   return (
     <div className="mb-20px md:mb-40px md:flex md:flex-wrap md:justify-between md:after:block md:after:w-[23.5%] md:after:content-['']">
       {articles.map((article, i) => {
@@ -19,7 +17,7 @@ const ArticlesList = ({ articles }: Props) => {
             <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>
                 <dt className='relative h-[140px] border-b-1 border-border bg-main'>
-                  <ImageBox
+                  <ImageWrapper
                     cls='object-cover'
                     src={article.img}
                     priority={i < 8 ? true : false}
@@ -46,5 +44,3 @@ const ArticlesList = ({ articles }: Props) => {
     </div>
   )
 }
-
-export default ArticlesList

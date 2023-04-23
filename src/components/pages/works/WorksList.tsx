@@ -2,18 +2,15 @@
 
 import Link from 'next/link'
 
-import { conversionDate } from '@/utils/conversionDate'
-
-import CategoryIcon from '@/components/common/CategoryIcon'
-import ImageBox from '@/components/common/ImageWrapper'
-
-import { WorkIndex } from '@/types/microcms'
+import { CategoryIcon, ImageWrapper } from '@/components'
+import { conversionDate } from '@/utils'
+import { WorkIndex } from '@/types'
 
 type Props = {
   works: WorkIndex[]
 }
 
-const WorksList = ({ works = [] }: Props) => {
+export const WorksList = ({ works = [] }: Props) => {
   return (
     <>
       <ul className='after:block after:content-[""] md:flex md:flex-wrap md:justify-between after:md:w-[32%]'>
@@ -23,7 +20,7 @@ const WorksList = ({ works = [] }: Props) => {
               <dl>
                 <dt className='relative mb-10px aspect-[16/9] border-b-1 border-border'>
                   {work.slider[0]?.img?.url && (
-                    <ImageBox
+                    <ImageWrapper
                       src={work.slider[0].img.url + '?w=800'}
                       priority={i < 6 ? true : false}
                       sizes='(max-width: 768px) 100vw, 33vw'
@@ -59,5 +56,3 @@ const WorksList = ({ works = [] }: Props) => {
     </>
   )
 }
-
-export default WorksList

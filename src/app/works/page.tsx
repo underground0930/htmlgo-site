@@ -1,12 +1,7 @@
-import { setMetaData } from '@/utils/setMetadata'
-
-import { fetchWorksIndex } from '@/libs/fetchWorksIndex'
-
-import TextBtn from '@/components/common/TextBtn'
-import Title from '@/components/common/Title'
-import WorksList from '@/components/pages/works/List'
-
-import { setBaseUrl } from '@/const/config'
+import { TextBtn, Title, WorksList } from '@/components'
+import { fetchWorksIndex } from '@/libs'
+import { setMetaData } from '@/utils'
+import { setBaseUrl } from '@/const'
 
 const description = '最新のお仕事の実績や、自主制作'
 
@@ -71,7 +66,7 @@ const className = {
 }
 
 export default async function Works() {
-  const { works, categories, technologies } = await fetchWorksIndex()
+  const { works } = await fetchWorksIndex()
 
   return (
     <main className={className.main}>

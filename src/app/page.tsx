@@ -1,13 +1,8 @@
-import { setMetaData } from '@/utils/setMetadata'
+import { setMetaData } from '@/utils'
+import { baseURL, setBaseUrl } from '@/const'
+import { TextBtn, Title, ArticlesList, WorksList } from '@/components'
+import { fetchTopList } from '@/libs'
 
-import { fetchTopList } from '@/libs/fetchTopList'
-
-import TextBtn from '@/components/common/TextBtn'
-import Title from '@/components/common/Title'
-import ArticlesList from '@/components/pages/articles/List'
-import WorksList from '@/components/pages/works/List'
-
-import { baseURL, setBaseUrl } from '@/const/config'
 const description = 'WEB技術を書き連ねるサイト'
 
 export const metadata = {
