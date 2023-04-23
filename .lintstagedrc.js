@@ -7,8 +7,8 @@ const buildEslintCommand = (filenames) =>
 
 module.exports = {
   '*.{ts,tsx}': [
-    // () => 'tsc --incremental false --noEmit --pretty false',
-    // buildEslintCommand,
+    () => 'tsc --incremental false --noEmit --pretty false',
+    buildEslintCommand,
     'prettier --write',
   ],
 }
