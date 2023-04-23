@@ -1,23 +1,15 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Pagination, Navigation, Virtual } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 
-import { ImageWrapper } from '@/components/common'
+import { ImageWrapper } from '@/components'
+import { WorksSlider } from '@/types'
 
-type Slider = {
-  fieldId: string
-  img: {
-    url: string
-    height: number
-    width: number
-  }
-}
-
-type NewSlider = Slider & { loading: boolean }
+type NewSlider = WorksSlider & { loading: boolean }
 
 type Props = {
-  sliders: Slider[]
+  sliders: WorksSlider[]
 }
 
 const className = {
@@ -92,23 +84,18 @@ const className = {
   `,
 }
 
-type SwiperInstanceType = {
-  slidePrev: () => void
-  slideNext: () => void
-  activeIndex: number
-}
-
 const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
   const [index, setIndex] = useState(1)
   const [bothEnds, setBothEnds] = useState({
     first: true,
     last: false,
   })
-  const [sw, setSw] = useState<SwiperInstanceType | null>(null)
-  const [sliderList, setSliderList] = useState<NewSlider[]>([])
+  const swiperRef = useRef<SwiperRef>(null)
 
-  const goNext = () => sw?.slideNext()
-  const goPrev = () => sw?.slidePrev()
+  const goNext = () => swiperRef.current?.swiper.slideNext()
+  const goPrev = () => swiperRef.current?.swiper.slidePrev()
+
+  const [sliderList, setSliderList] = useState<NewSlider[]>([])
 
   useEffect(() => {
     const newSliders = sliders.map((s) => {
@@ -121,15 +108,15 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
   }, [sliders])
 
   const sliderChangeHandle = (): void => {
-    if (!sw) return
-    setIndex(sw.activeIndex + 1)
-    if (sw?.activeIndex === 0) {
+    if (!swiperRef.current) return
+    setIndex(swiperRef.current?.swiper.activeIndex + 1)
+    if (swiperRef.current.swiper.activeIndex === 0) {
       setBothEnds({
         first: true,
         last: false,
       })
       return
-    } else if (sw?.activeIndex === sliders.length - 1) {
+    } else if (swiperRef.current.swiper.activeIndex === sliders.length - 1) {
       setBothEnds({
         first: false,
         last: true,
@@ -148,8 +135,8 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
         modules={[Pagination, Navigation, Virtual]}
         className={`${className.container}`}
         virtual
-        onSwiper={(swiper) => setSw(swiper)}
         onSlideChange={() => sliderChangeHandle()}
+        ref={swiperRef}
       >
         <div className='swiper-wrapper'>
           {sliderList.map((v, i) => {

@@ -31,4 +31,3 @@ export const Pagination = ({ pages, page }: Props) => {
     </>
   )
 }
-Array.from(Array(5))
