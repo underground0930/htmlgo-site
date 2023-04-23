@@ -1,9 +1,8 @@
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
 
-export default function usePageView() {
+export function usePageView() {
   // MEMO: まだサポートされていない
-  const router = useRouter()
+  //  const router = useRouter()
   // useEffect(() => {
   //   const handleRouteChange = (url: string) => {
   //     gtag.pageview(url)

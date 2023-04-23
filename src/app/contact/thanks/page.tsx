@@ -1,7 +1,6 @@
 import { setMetaData } from '@/utils/setMetadata'
 
-import TextBtn from '@/components/common/TextBtn'
-import Title from '@/components/common/Title'
+import { TextBtn, Title } from '@/components/common'
 
 import { setBaseUrl } from '@/const/config'
 

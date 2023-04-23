@@ -1,15 +1,10 @@
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
-import { removeHtml } from '@/utils/removeHtml'
-import { setMetaData } from '@/utils/setMetadata'
-
-import { fetchWorksDetail } from '@/libs/fetchWorksDetail'
-import { fetchWorksDetailMeta } from '@/libs/fetchWorksDetailMeta'
-
-import WorksDetailBody from '@/components/pages/works/DetailBody'
-
-import { setBaseUrl } from '@/const/config'
+import { WorksDetailBody } from '@/components'
+import { setBaseUrl } from '@/const'
+import { fetchWorksDetail, fetchWorksDetailMeta } from '@/libs'
+import { removeHtml, setMetaData } from '@/utils'
 
 type Props = {
   params: {

@@ -1,15 +1,14 @@
-// MEMO:参考 これでないとエラーになる
-// https://nextjs.org/docs/basic-features/eslint#lint-staged
-
 const path = require('path')
 
+const buildEslintCommand = (filenames) =>
+  `next lint --fix --file ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`
+
 module.exports = {
-  './src/**/*.{js,jsx,ts,tsx}': [
-    'tsc --noEmit --incremental false --pretty false',
-    (filenames) =>
-      `next lint --ignore-path .prettierignore --fix --file ${filenames
-        .map((file) => path.relative(process.cwd(), file))
-        .join(' --file ')}`,
+  '*.{ts,tsx}': [
+    // () => 'tsc --incremental false --noEmit --pretty false',
+    // buildEslintCommand,
     'prettier --write',
   ],
 }

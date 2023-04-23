@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Pagination, Navigation, Virtual } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import ImageBox from '@/components/common/ImageWrapper'
+import { ImageWrapper } from '@/components/common'
 
 type Slider = {
   fieldId: string
@@ -149,7 +149,7 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
             return (
               <SwiperSlide className={className.slider} virtualIndex={i} key={v.img.url}>
                 {v.loading && <div className={className.loader}>Loading...</div>}
-                <ImageBox
+                <ImageWrapper
                   cls=''
                   src={v.img.url}
                   onLoadingComplete={() => {

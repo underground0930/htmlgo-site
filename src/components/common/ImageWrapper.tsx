@@ -14,7 +14,7 @@ type Props = {
   onLoadingComplete?: () => void
 }
 
-export default function ImageBox({
+export function ImageWrapper({
   src,
   cls = '',
   alt = '',

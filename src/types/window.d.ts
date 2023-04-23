@@ -6,5 +6,4 @@ interface Window {
   contact_grecaptcha_id: number | undefined
   contact_timer: number | undefined
   grecaptchaWidgetId: string | undefined
-  onloadCallback: () => void
 }

@@ -2,19 +2,13 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 
-import useDebugMode from '@/hooks/useDebugMode'
-
-import TextBtn from '@/components/common/TextBtn'
-import Title from '@/components/common/Title'
-
-import { errorText } from '@/const/contact'
-
-import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types/contact'
-
-import { InputText } from './InputText'
+import { TextBtn, Title, InputText } from '@/components'
+import { useDebugMode } from '@/hooks'
+import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types'
+import { errorText } from '@/const'
 
 const className = {
   main: 'pt-20px mx-20px max-w-[800px] md:mx-auto',
@@ -27,34 +21,13 @@ const className = {
   back: `border-t-1 border-border text-center pt-40px pb-40px mt-40px`,
 }
 
-const inputElements = [
-  {
-    name: 'username',
-    label: 'お名前 [必須]',
-  },
-  {
-    name: 'company',
-    label: '会社名',
-  },
-  {
-    name: 'email',
-    label: 'メールアドレス [必須]',
-  },
-  {
-    name: 'detail',
-    textarea: true,
-    label: 'お問い合わせ [必須]',
-    row: 15,
-  },
-]
-
 type ErrorType = { [key: string]: string }
 
 const targetId = 'rechapchaTarget'
 const scriptId = 'rechapchaScriptId'
 const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
 
-export default function ContactBody() {
+export function ContactBody() {
   const { DebugModal, debug } = useDebugMode({ debug: false })
   const [token, setToken] = useState<string | null>(null)
   const parentRef = useRef<HTMLDivElement>(null)
@@ -71,7 +44,9 @@ export default function ContactBody() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: debug ? undefined : zodResolver(FormBodyDataSchema) })
+  } = useForm<FormDataType>({
+    resolver: debug ? undefined : zodResolver(FormBodyDataSchema),
+  })
 
   useEffect(() => {
     const { current } = parentRef
@@ -93,7 +68,7 @@ export default function ContactBody() {
     [frontInvalidErrors, serverInvalidErrors],
   )
 
-  const onSubmit = async (data: FormBodyData) => {
+  const onSubmit: SubmitHandler<FormDataType> = async (data) => {
     if (!token) return
     setLoading(true)
     setError('')
@@ -123,8 +98,8 @@ export default function ContactBody() {
         const { type, data } = result.error
         if (type === 'invalid') {
           const err: ErrorType = {}
-          for (let key in data) {
-            err[data[key].path[0]] = data[key].message
+          for (let i = 0; i < data.length; i++) {
+            err[data[i].path[0]] = data[i].message
           }
           setServerInvalidErrors(err)
           return
@@ -144,10 +119,7 @@ export default function ContactBody() {
         <div className={className.body}>
           <form
             className={`${loading ? 'opacity-50' : 'opacity-100'}`}
-            onSubmit={handleSubmit((d) => {
-              const { username, company, email, detail } = d
-              onSubmit({ username, company, email, detail })
-            })}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <ul className={className.list}>
               {inputElements.map((elem, index) => {

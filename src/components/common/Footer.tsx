@@ -50,7 +50,7 @@ const className = {
   small: `block text-10 text-center`,
 }
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <>
       <footer className={className.footer}>
@@ -77,5 +77,3 @@ const Footer = () => {
     </>
   )
 }
-
-export default Footer

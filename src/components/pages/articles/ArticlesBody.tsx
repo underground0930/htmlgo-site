@@ -1,9 +1,5 @@
-import Pagenation from '@/components/common/Pagenation'
-import TextBtn from '@/components/common/TextBtn'
-import Title from '@/components/common/Title'
-import ArticlesList from '@/components/pages/articles/List'
-
-import { FeedObj } from '@/types/feed'
+import { FeedObj } from '@/types'
+import { Pagenation, TextBtn, Title, ArticlesList } from '@/components'
 
 type Props = {
   articles: FeedObj[]
@@ -16,7 +12,7 @@ const className = {
   btnWrap: 'text-center mb-40px md:mb-80',
 }
 
-export default function ArticlesBody({ articles = [], page, pages }: Props) {
+export function ArticlesBody({ articles = [], page, pages }: Props) {
   return (
     <>
       <main className={className.main}>

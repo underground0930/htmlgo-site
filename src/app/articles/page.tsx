@@ -1,10 +1,7 @@
-import { setMetaData } from '@/utils/setMetadata'
-
-import { fetchArticles } from '@/libs/fetchArticles'
-
-import ArticlesBody from '@/components/pages/articles/Body'
-
-import { setBaseUrl } from '@/const/config'
+import { ArticlesBody } from '@/components'
+import { setBaseUrl } from '@/const'
+import { setMetaData } from '@/utils'
+import { fetchArticles } from '@/libs'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 type Props = {
   data: { heading: string; text: string; link?: string }[]
 }
@@ -25,7 +23,7 @@ const className = {
   a: `underline decoration-1`,
 }
 
-const AboutHistoryList = ({ data }: Props) => {
+export const AboutHistoryList = ({ data }: Props) => {
   return (
     <>
       <ul className={className.list}>
@@ -57,5 +55,3 @@ const AboutHistoryList = ({ data }: Props) => {
     </>
   )
 }
-
-export default AboutHistoryList

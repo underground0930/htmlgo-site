@@ -1,4 +1,4 @@
-import PagenationChild from './PagenationChild'
+import { PagenationChild } from './PagenationChild'
 
 type Props = {
   pages: number
@@ -14,12 +14,12 @@ const className = {
   `,
 }
 
-const Pagenation = ({ pages, page }: Props) => {
+export const Pagenation = ({ pages, page }: Props) => {
   return (
     <>
       <ul className={className.ul}>
         {page > 1 && <PagenationChild page={page - 1}>&lt;</PagenationChild>}
-        {[...Array(pages)].map((_, i) => {
+        {Array.from(Array(pages)).map((_, i) => {
           return (
             <PagenationChild page={page} key={i + 1} loopIndex={i}>
               {i + 1}
@@ -31,5 +31,4 @@ const Pagenation = ({ pages, page }: Props) => {
     </>
   )
 }
-
-export default Pagenation
+Array.from(Array(5))

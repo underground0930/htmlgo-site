@@ -1,11 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // works detail Meta
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// libs
-import { microcmsClient } from '@/libs/microcmsClient'
 
-// type
-import { MicroCMSResponse, WorkDetailMeta } from '@/types/microcms'
+import { microcmsClient } from '@/libs'
+import { MicroCMSResponse, WorkDetailMeta } from '@/types'
 
 export const fetchWorksDetailMeta = async ({ slug }: { slug: string }) => {
   const post = await microcmsClient

@@ -12,7 +12,7 @@ const className = {
   dd: `p-20px flex-1 md:text-16px break-words`,
 }
 
-const WorksDetailInfoChild: React.FC<Props> = ({ title, children }) => {
+export const WorksDetailInfo: React.FC<Props> = ({ title, children }) => {
   return (
     <li className={className.li}>
       <dl className={className.dl}>
@@ -22,5 +22,3 @@ const WorksDetailInfoChild: React.FC<Props> = ({ title, children }) => {
     </li>
   )
 }
-
-export default WorksDetailInfoChild

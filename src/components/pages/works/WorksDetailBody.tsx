@@ -1,15 +1,11 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
-import { conversionDate } from '@/utils/conversionDate'
+import { conversionDate } from '@/utils'
+import { WorkDetail } from '@/types'
+import { TextBtn, Title, WorksDetailInfo } from '@/components'
 
-import TextBtn from '@/components/common/TextBtn'
-import Title from '@/components/common/Title'
-import WorksDetailInfo from '@/components/pages/works/DetailInfo'
-
-import { WorkDetail } from '@/types/microcms'
-
-const WorksSlider = dynamic(() => import('@/components/pages/works/Slider'), {
+const WorksSlider = dynamic(() => import('@/components/pages/works/WorksSlider'), {
   ssr: false,
 })
 
@@ -42,7 +38,7 @@ const className = {
   back: `relative text-center mt-40px mb-40px`,
 }
 
-export default function WorksDetailBody({ post, prev, next }: Props) {
+export function WorksDetailBody({ post, prev, next }: Props) {
   const shareTwitterUrl = (slug: string) => {
     return `https://twitter.com/share?url=https://htmlgo.site/works/${slug}`
   }

@@ -5,7 +5,7 @@ type Props = {
   text?: string
 }
 
-const Title = ({ title, text }: Props) => {
+export const Title = ({ title, text }: Props) => {
   return (
     <>
       <h2 className='mb-24px text-center leading-[1.55] md:mb-40px'>
@@ -17,5 +17,3 @@ const Title = ({ title, text }: Props) => {
     </>
   )
 }
-
-export default Title

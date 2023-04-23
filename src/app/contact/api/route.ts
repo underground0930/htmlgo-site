@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server'
 
-import { verifyRecaptcha } from '@/libs/contact/verifyRecaptcha'
-import { sendMail } from '@/libs/contact/sendMail'
+import { verifyRecaptcha, sendMail } from '@/libs'
 
-import { FormBodyDataSchema } from '@/types/contact'
+import type { FormBodyDataSchema, FormBodyData } from '@/types'
 
 export async function POST(request: Request) {
   const requestBodyText = await request.text()
-  const requestBody = JSON.parse(requestBodyText)
+  const requestBody: FormBodyData = JSON.parse(requestBodyText)
   const { username, email, company, detail, token, dev } = requestBody
 
   // フォームの入力値のバリデート ////////////////////////////////////

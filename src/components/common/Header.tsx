@@ -15,7 +15,7 @@ const className = {
 
 const navList = ['about', 'works', 'articles', 'contact']
 
-const Header = () => {
+export const Header = () => {
   const pathname = usePathname()
   const { header, inner, title, nav, ul, linkStyle } = className
   return (
@@ -60,5 +60,3 @@ const Header = () => {
     </>
   )
 }
-
-export default Header

@@ -10,7 +10,7 @@ type Props = {
 const className =
   'min-w-[120px] inline-block bg-btn text-btnIcon text-14px text-center text-decoration-none px-15px py-10px :visited:text-btnIcon'
 
-const TextBtn = ({ title, link, blank = false }: Props) => {
+export const TextBtn = ({ title, link, blank = false }: Props) => {
   return (
     <>
       {blank && (
@@ -26,5 +26,3 @@ const TextBtn = ({ title, link, blank = false }: Props) => {
     </>
   )
 }
-
-export default TextBtn

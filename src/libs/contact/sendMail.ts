@@ -8,7 +8,7 @@ const setText = (args: FormBodyData): string => {
 お問い合わせ内容
 -------------------------------
 お名前: ${args.username}
-会社名: ${args.company}
+会社名: ${args.company ?? ''}
 メールアドレス: ${args.email}
 お問い合わせ: ${args.detail}
 `
@@ -30,7 +30,7 @@ export const sendMail = async ({
 }) => {
   const gmail = process.env.MAIL_ACCOUNT
   const pass = process.env.MAIL_PASSWORD
-  const from = `"HTMLGO SITE" <${gmail}>`
+  const from = `"HTMLGO SITE" <${gmail ?? ''}>`
   const to = gmail
   const subject = '[HTMLGO]:ホームページよりお問い合わせがありました'
   const text = setText({ username, company, email, detail })

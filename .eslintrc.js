@@ -3,13 +3,29 @@ module.exports = {
     React: 'readonly',
     JSX: 'readonly',
   },
-  extends: ['eslint:recommended', 'next', 'next/core-web-vitals', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'next/core-web-vitals',
+    'prettier',
+  ],
+  root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  parserOptions: {
+    project: './tsconfig.json',
+  },
+  plugins: ['import', '@typescript-eslint'],
   rules: {
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
     'react/jsx-curly-brace-presence': 'error',
+    '@typescript-eslint/no-misused-promises': [
+      2,
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
     'import/order': [
       'error',
       {

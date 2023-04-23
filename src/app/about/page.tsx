@@ -1,12 +1,6 @@
-import { setMetaData } from '@/utils/setMetadata'
-
-import ImageBox from '@/components/common/ImageWrapper'
-import TextBtn from '@/components/common/TextBtn'
-import Title from '@/components/common/Title'
-import AboutHistoryList from '@/components/pages/about/HistoryList'
-import AboutSnsBox from '@/components/pages/about/SnsBox'
-
-import { setBaseUrl } from '@/const/config'
+import { setMetaData } from '@/utils'
+import { setBaseUrl } from '@/const'
+import { ImageWrapper, TextBtn, Title, AboutHistoryList, AboutSnsBox } from '@/components'
 
 const description = 'このサイトについて'
 
@@ -42,7 +36,7 @@ export default function About() {
         <Title title='ABOUT' text='このサイトや主について説明しています' />
         <div className={className.body}>
           <div className=''>
-            <ImageBox
+            <ImageWrapper
               cls={className.img}
               src='/img/profile.jpg'
               width={210}

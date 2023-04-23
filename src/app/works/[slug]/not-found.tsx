@@ -1,9 +1,6 @@
-import { setMetaData } from '@/utils/setMetadata'
-
-import TextBtn from '@/components/common/TextBtn'
-import Title from '@/components/common/Title'
-
-import { setBaseUrl } from '@/const/config'
+import { setBaseUrl } from '@/const'
+import { setMetaData } from '@/utils'
+import { TextBtn, Title } from '@/components'
 
 const description = 'お探しのページは見つかりませんでした'
 

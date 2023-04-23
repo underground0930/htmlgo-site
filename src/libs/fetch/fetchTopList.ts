@@ -2,15 +2,15 @@
 // top
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// libs
-import { microcmsClient } from '@/libs/microcmsClient'
-
-// type
-import { MicroCMSResponse, WorkIndex } from '@/types/microcms'
+import { microcmsClient } from '@/libs'
+import { MicroCMSResponse, WorkIndex, FeedObj } from '@/types'
 
 export async function fetchTopList() {
   const articles = (
-    await import('public/feed.json').then((response) => response.default).catch(() => [])
+    await fetch('public/feed.json')
+      .then((response) => response.json())
+      .then((data: FeedObj[]) => data)
+      .catch(() => [])
   ).slice(0, 4)
 
   const works: WorkIndex[] = await microcmsClient
