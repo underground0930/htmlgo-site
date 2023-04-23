@@ -1,4 +1,3 @@
-export * from './WorksDetailBody'
-export * from './WorksDetailInfo'
-export * from './WorksList'
-export * from './WorksSlider'
+export { WorksDetailBody } from './WorksDetailBody'
+export { WorksDetailInfo } from './WorksDetailInfo'
+export { WorksList } from './WorksList'

@@ -1,2 +1,2 @@
-export * from './InputText'
-export * from './ContactBody'
+export { InputText } from './InputText'
+export { ContactBody } from './ContactBody'

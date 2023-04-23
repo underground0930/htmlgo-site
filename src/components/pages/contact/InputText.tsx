@@ -12,7 +12,7 @@ type Props = {
   register: UseFormRegister<FormBodyData & FieldValues>
 }
 
-const InputText: React.FC<Props> = ({
+export const InputText: React.FC<Props> = ({
   name,
   label,
   textarea = false,
@@ -49,4 +49,3 @@ const InputText: React.FC<Props> = ({
     </>
   )
 }
-export default InputText

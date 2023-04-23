@@ -1,8 +1,6 @@
-import { setMetaData } from '@/utils/setMetadata'
-
-import { TextBtn, Title } from '@/components/common'
-
-import { setBaseUrl } from '@/const/config'
+import { setMetaData } from '@/utils'
+import { TextBtn, Title } from '@/components'
+import { setBaseUrl } from '@/const'
 
 const description = 'お問い合わせ頂きありがとうございました'
 

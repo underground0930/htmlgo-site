@@ -8,7 +8,7 @@ import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { TextBtn, Title, InputText } from '@/components'
 import { useDebugMode } from '@/hooks'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types'
-import { errorText } from '@/const'
+import { errorText, inputElements } from '@/const'
 
 const className = {
   main: 'pt-20px mx-20px max-w-[800px] md:mx-auto',
@@ -20,6 +20,8 @@ const className = {
   recaptcha: `flex items-center justify-center pb-40px`,
   back: `border-t-1 border-border text-center pt-40px pb-40px mt-40px`,
 }
+
+type FormDataType = FormBodyData & FieldValues
 
 type ErrorType = { [key: string]: string }
 
@@ -80,7 +82,7 @@ export function ContactBody() {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         ...data,
-        ...(debug ? { dev: true } : {}),
+        ...(debug ? { debug: true } : {}),
         token,
       }),
     })

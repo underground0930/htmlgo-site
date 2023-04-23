@@ -1,2 +1,2 @@
-export * from './HistoryList'
-export * from './AboutSnsBox'
+export { AboutHistoryList } from './HistoryList'
+export { AboutSnsBox } from './AboutSnsBox'

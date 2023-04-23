@@ -92,17 +92,23 @@ const className = {
   `,
 }
 
+type SwiperInstanceType = {
+  slidePrev: () => void
+  slideNext: () => void
+  activeIndex: number
+}
+
 const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
   const [index, setIndex] = useState(1)
   const [bothEnds, setBothEnds] = useState({
     first: true,
     last: false,
   })
-  const [sw, setSw] = useState<any | null>(null)
+  const [sw, setSw] = useState<SwiperInstanceType | null>(null)
   const [sliderList, setSliderList] = useState<NewSlider[]>([])
 
-  const goNext = () => sw.slideNext()
-  const goPrev = () => sw.slidePrev()
+  const goNext = () => sw?.slideNext()
+  const goPrev = () => sw?.slidePrev()
 
   useEffect(() => {
     const newSliders = sliders.map((s) => {
@@ -115,7 +121,8 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
   }, [sliders])
 
   const sliderChangeHandle = (): void => {
-    setIndex(sw?.activeIndex + 1)
+    if (!sw) return
+    setIndex(sw.activeIndex + 1)
     if (sw?.activeIndex === 0) {
       setBothEnds({
         first: true,

@@ -1,2 +1,2 @@
-export * from './ArticlesList'
-export * from './ArticlesBody'
+export { ArticlesList } from './ArticlesList'
+export { ArticlesBody } from './ArticlesBody'

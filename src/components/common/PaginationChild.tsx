@@ -28,7 +28,7 @@ const className = {
   `,
 }
 
-export const PagenationChild = ({ page, loopIndex, children }: Props) => {
+export const PaginationChild = ({ page, loopIndex, children }: Props) => {
   const linkClass =
     loopIndex !== undefined
       ? `${className.a} ${loopIndex + 1 === page ? className.currentLink : ''}`
