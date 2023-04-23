@@ -5,6 +5,7 @@ const path = require('path')
 
 module.exports = {
   './src/**/*.{js,jsx,ts,tsx}': [
+    'tsc --noEmit --incremental false --pretty false',
     (filenames) =>
       `next lint --ignore-path .prettierignore --fix --file ${filenames
         .map((file) => path.relative(process.cwd(), file))
