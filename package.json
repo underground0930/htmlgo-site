@@ -26,6 +26,7 @@
     "dayjs": "^1.11.7",
     "eslint": "^8.38.0",
     "microcms-js-sdk": "^2.3.3",
+    "newt-client-js": "^3.2.4",
     "next": "^13.3.0",
     "nodemailer": "^6.9.1",
     "react": "18.2.0",

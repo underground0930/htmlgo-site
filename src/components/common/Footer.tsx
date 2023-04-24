@@ -2,6 +2,7 @@
 
 import IconGithub from '@/svgs/IconGithub.svg'
 import IconMicrocms from '@/svgs/IconMicrocms.svg'
+import IconNewt from '@/svgs/IconNewt.svg'
 import IconNextjs from '@/svgs/IconNextjs.svg'
 import IconRecaptcha from '@/svgs/IconRecaptcha.svg'
 import IconTailwindcss from '@/svgs/IconTailwindcss.svg'
@@ -34,6 +35,11 @@ const links = [
     icon: <IconMicrocms />,
   },
   {
+    href: 'https://www.newt.so/',
+    key: 'newt',
+    icon: <IconNewt />,
+  },
+  {
     href: 'https://www.google.com/recaptcha/about/',
     key: 'recaptcha',
     icon: <IconRecaptcha />,
@@ -47,6 +53,7 @@ const className = {
   dd: ``,
   ul: `flex justify-center items-center`,
   li: `mx-7px`,
+  a: `flex justify-center items-center w-[30px] [&>svg]:w-full [&>svg]:h-auto`,
   small: `block text-10 text-center`,
 }
 
@@ -61,7 +68,12 @@ export const Footer = () => {
               {links.map((v) => {
                 return (
                   <li className={className.li} key={v.key}>
-                    <a href={v.href} target='_blank' rel='noreferrer'>
+                    <a
+                      className={className.a}
+                      href={v.href}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
                       {v.icon}
                     </a>
                   </li>

@@ -7,7 +7,12 @@ export const AboutSnsBox = () => {
         {snsList.map((v, i) => {
           return (
             <li key={i} className='mb-10px mr-15px'>
-              <a className='font-bold' rel={v.rel} href={v.href} target={v.target}>
+              <a
+                className='font-bold hover:text-linkActive'
+                rel={v.rel}
+                href={v.href}
+                target={v.target}
+              >
                 {v.label}
               </a>
             </li>

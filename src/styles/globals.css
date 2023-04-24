@@ -6,6 +6,27 @@
   カスタマイズ
 -------------------------------------------------------------- */
 
+@layer components {
+  .cms-works-content p {
+    @apply mb-6 text-sm md:text-lg;
+  }
+  .cms-works-content a {
+    @apply underline;
+  }
+  .cms-about-content section {
+  }
+
+  .cms-about-content section a {
+  }
+
+  .cms-about-content section ul {
+  }
+
+  .cms-about-content section li {
+    @apply mb-3;
+  }
+}
+
 body {
   min-height: 100vh;
   overflow-y: scroll;
@@ -14,11 +35,3 @@ body {
 }
 
 /* works詳細の本文エリア */
-
-.workDetailBody p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-.workDetailBody a {
-  text-decoration: underline;
-}

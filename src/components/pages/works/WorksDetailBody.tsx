@@ -58,7 +58,7 @@ export function WorksDetailBody({ post, prev, next }: Props) {
           </div>
           {post.body && (
             <div
-              className={`${className.body} workDetailBody`}
+              className={`${className.body} cms-works-content`}
               dangerouslySetInnerHTML={{
                 __html: `${post.body}`,
               }}
