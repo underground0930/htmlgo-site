@@ -30,6 +30,7 @@ module.exports = {
       footerText: '#fff',
       loader: '#333333',
       border: '#ccc',
+      transparent: 'transparent',
     },
     container: {
       center: true,
@@ -66,4 +67,5 @@ module.exports = {
     },
   },
   plugins: [],
+  important: true,
 }

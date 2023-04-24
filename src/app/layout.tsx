@@ -53,6 +53,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 }
 
 const className = {
-  wrapper: 'flex-1',
+  wrapper: 'min-h-[500px]',
   container: ``,
 }

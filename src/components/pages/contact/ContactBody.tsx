@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 
-import { TextBtn, Title, InputText } from '@/components'
+import { TextBtn, Title, InputText, LoadingSpinner } from '@/components'
 import { useDebugMode } from '@/hooks'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types'
 import { errorText, inputElements } from '@/const'
@@ -14,6 +14,7 @@ const className = {
   main: 'pt-20px mx-20px max-w-[800px] md:mx-auto',
   body: `mb-40px `,
   list: `mb-40px`,
+  loading: `fixed inset-0 z-[10] m-auto bg-opacity-50 bg-[#000] flex items-center justify-center`,
   error: 'text-16px pb-30px text-[#f00] font-bold',
   listChild: `mb-25px`,
   submit: `block bg-[#000] w-[200px] mx-auto p-8px text-[#fff] font-bold disabled:opacity-30`,
@@ -25,8 +26,6 @@ type FormDataType = FormBodyData & FieldValues
 
 type ErrorType = { [key: string]: string }
 
-const targetId = 'rechapchaTarget'
-const scriptId = 'rechapchaScriptId'
 const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
 
 export function ContactBody() {
@@ -38,7 +37,6 @@ export function ContactBody() {
   const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
   const { recaptchaRef } = useRecaptchaV2({
     sitekey,
-    scriptId,
     callback: (token) => setToken(token),
   })
 
@@ -115,14 +113,16 @@ export function ContactBody() {
   return (
     <>
       <DebugModal />
+      {loading && (
+        <div className={className.loading}>
+          <LoadingSpinner />
+        </div>
+      )}
       <main className={className.main} ref={parentRef}>
         <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />
         {error && <div className={className.error}>{error}</div>}
         <div className={className.body}>
-          <form
-            className={`${loading ? 'opacity-50' : 'opacity-100'}`}
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form onSubmit={handleSubmit(onSubmit)}>
             <ul className={className.list}>
               {inputElements.map((elem, index) => {
                 const { name, textarea, row, label } = elem
@@ -141,7 +141,7 @@ export function ContactBody() {
               })}
             </ul>
             <div className={className.recaptcha}>
-              <div id={targetId} ref={recaptchaRef}></div>
+              <div ref={recaptchaRef}></div>
             </div>
             <button className={className.submit} type='submit' disabled={!token}>
               送信

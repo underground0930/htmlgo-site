@@ -1,28 +1,17 @@
-<<<<<<< Updated upstream
-# config
-=======
 # node_modules/ is ignored.
 
->>>>>>> Stashed changes
 .eslintrc.js
 prettier.config.js
 next.config.js
 tailwind.config.js
+tailwind.custom.js
 tsconfig.json
 postcss.config.js
 
-<<<<<<< Updated upstream
-# build dir
-=======
 
 # ビルドファイル
->>>>>>> Stashed changes
 build/
 bin/
 obj/
 out/
-<<<<<<< Updated upstream
 .next/
-=======
-.next/
->>>>>>> Stashed changes
