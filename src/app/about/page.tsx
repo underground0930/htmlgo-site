@@ -1,7 +1,7 @@
 import { fetchAbout } from '@/libs'
 import { setMetaData } from '@/utils'
 import { setBaseUrl } from '@/const'
-import { ImageWrapper, TextBtn, Title, AboutHistoryList, AboutSnsBox } from '@/components'
+import { ImageWrapper, TextBtn, Title, AboutSnsBox } from '@/components'
 
 const description = 'このサイトについて'
 
