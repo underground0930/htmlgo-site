@@ -1,3 +1,5 @@
+import { ServiceList } from '@/components/pages/top/ServiceList'
+
 import { setMetaData } from '@/utils'
 import { baseURL, setBaseUrl } from '@/const'
 import { TextBtn, Title, ArticlesList, WorksList } from '@/components'
@@ -28,6 +30,14 @@ export default async function Home() {
   const { works, articles } = await fetchTopList()
   return (
     <main className='mx-20px max-w-[800px] md:mx-auto'>
+      {/* services */}
+      <section className={className.section}>
+        <Title title='SERVICES' text='事業内容' />
+        <ServiceList />
+        <div className={className.btnWrap}>
+          <TextBtn title='to ABOUT' link='/about/' />
+        </div>
+      </section>
       {/* works */}
       <section className={className.section}>
         <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
