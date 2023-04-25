@@ -12,6 +12,8 @@ type Props = {
   }
 }
 
+export const revalidate = 10
+
 export async function generateMetadata({ params }: Props) {
   const result = await fetchWorksDetailMeta({ slug: params.slug })
   let meta = {}
