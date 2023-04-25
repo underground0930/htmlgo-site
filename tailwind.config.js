@@ -29,7 +29,7 @@ module.exports = {
       btnIcon: '#fff',
       footerText: '#fff',
       loader: '#333333',
-      border: '#ccc',
+      border: '#dddddd',
       transparent: 'transparent',
     },
     container: {
