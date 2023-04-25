@@ -1,14 +1,16 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { TextBtn, Title, InputText, LoadingSpinner } from '@/components'
+import { TextBtn, Title, LoadingSpinner } from '@/components'
 import { useDebugMode } from '@/hooks'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types'
 import { errorText, inputElements } from '@/const'
+
+import { InputText } from './InputText'
 
 const className = {
   main: 'pt-20px mx-20px max-w-[800px] md:mx-auto',

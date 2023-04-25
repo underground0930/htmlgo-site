@@ -8,7 +8,7 @@ import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/const'
 
 import type { WorkIndex, WorksCategory } from '@/types'
 
-export async function fetchWorksIndex() {
+export async function fetchWorksPaths() {
   const result = await Promise.allSettled([
     microcmsClient.get<MicroCMSListResponse<WorkIndex>>({
       endpoint: 'works',
@@ -33,9 +33,9 @@ export async function fetchWorksIndex() {
       return []
     })
     return {
-      works: resultsVal[0] as WorkIndex[],
-      categories: resultsVal[1] as WorksCategory[],
-      technologies: resultsVal[2] as WorksCategory[],
+      works: resultsVal[0],
+      categories: resultsVal[1],
+      technologies: resultsVal[2],
     }
   })
 

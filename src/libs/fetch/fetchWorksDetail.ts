@@ -1,15 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // works detail
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+import { MicroCMSListResponse } from 'microcms-js-sdk'
 
-import { MicroCMSResponse, WorkDetail } from '@/types'
+import { WorkDetail } from '@/types'
 import { microcmsClient } from '@/libs'
 
 export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
   let pager: ({ slug: string } | null)[] = []
 
   const post = await microcmsClient
-    .get<MicroCMSResponse<WorkDetail[]>>({
+    .get<MicroCMSListResponse<WorkDetail>>({
       endpoint: 'works',
       queries: {
         filters: `slug[equals]${slug}`,
@@ -23,7 +24,7 @@ export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
   if (post !== null) {
     pager = await Promise.allSettled([
       microcmsClient
-        .get<MicroCMSResponse<{ slug: string }[]>>({
+        .get<MicroCMSListResponse<{ slug: string }>>({
           endpoint: 'works',
           queries: {
             limit: 1,
@@ -34,7 +35,7 @@ export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
         })
         .then((v) => (v.contents.length ? v.contents[0] : null)),
       microcmsClient
-        .get<MicroCMSResponse<{ slug: string }[]>>({
+        .get<MicroCMSListResponse<{ slug: string }>>({
           endpoint: 'works',
           queries: {
             limit: 1,

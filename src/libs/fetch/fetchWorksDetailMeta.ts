@@ -1,13 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // works detail Meta
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+import { MicroCMSListResponse } from 'microcms-js-sdk'
 
 import { microcmsClient } from '@/libs'
-import { MicroCMSResponse, WorkDetailMeta } from '@/types'
+import { WorkDetailMeta } from '@/types'
 
 export const fetchWorksDetailMeta = async ({ slug }: { slug: string }) => {
   const post = await microcmsClient
-    .get<MicroCMSResponse<WorkDetailMeta[]>>({
+    .get<MicroCMSListResponse<WorkDetailMeta>>({
       endpoint: 'works',
       queries: {
         filters: `slug[equals]${slug}`,

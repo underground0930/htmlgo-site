@@ -1,9 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // top
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+import { MicroCMSListResponse } from 'microcms-js-sdk'
 
 import { microcmsClient } from '@/libs'
-import { MicroCMSResponse, WorkIndex, FeedObj } from '@/types'
+import { WorkIndex, FeedObj } from '@/types'
 
 export async function fetchTopList() {
   const articles = (
@@ -23,9 +24,9 @@ export async function fetchTopList() {
       })
   ).slice(0, 8)
 
-  const works: WorkIndex[] = await microcmsClient
+  const works = await microcmsClient
 
-    .get<MicroCMSResponse<WorkIndex[]>>({
+    .get<MicroCMSListResponse<WorkIndex>>({
       endpoint: 'works',
       queries: {
         limit: 3,
@@ -33,7 +34,7 @@ export async function fetchTopList() {
       },
     })
     .then((result) => result.contents)
-    .catch(() => [])
+    .catch(() => [] as WorkIndex[])
 
   return {
     works,

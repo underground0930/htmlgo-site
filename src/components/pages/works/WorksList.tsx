@@ -19,10 +19,10 @@ export const WorksList: React.FC<Props> = ({ works = [] }) => {
             <Link className='block' href={`/works/${work.slug}`} prefetch={false}>
               <dl>
                 <dt className='relative mb-10px aspect-[16/9] border-b-1 border-border'>
-                  {work.slider[0]?.img?.url && (
+                  {work?.slider?.[0]?.img?.url && (
                     <ImageWrapper
                       src={work.slider[0].img.url + '?w=800'}
-                      priority={i < 6 ? true : false}
+                      priority={i < 6}
                       sizes='(max-width: 768px) 100vw, 33vw'
                     />
                   )}
@@ -41,10 +41,10 @@ export const WorksList: React.FC<Props> = ({ works = [] }) => {
                   </h3>
                   <p>
                     {work.category.map((c) => (
-                      <CategoryIcon key={c.id} text={c.category_label} />
+                      <CategoryIcon key={c.category_slug} text={c.category_label} />
                     ))}
                     {work.technology.map((t) => (
-                      <CategoryIcon key={t.id} text={t.technology_label} />
+                      <CategoryIcon key={t.technology_slug} text={t.technology_label} />
                     ))}
                   </p>
                 </dd>

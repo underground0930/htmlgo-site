@@ -1,28 +1,12 @@
-// MicroCMS関連のデータ型
+import { MicroCMSListContent } from 'microcms-js-sdk'
 
-export type MicroCMSResponse<T> = {
-  contents: T
-  totalCount: number
-  offset: number
-  limit: number
-}
+// MicroCMS関連のデータ型
 
 export type WorksCategory = {
   id: string
   category_label: string
   category_slug: string
-}
-
-export type WorkIndex = {
-  id: string
-  title: string
-  slug: string
-  date: string
-  publishedAt2?: string
-  category: { id: string; category_label: string; category_slug: string }[]
-  technology: { id: string; technology_label: string; technology_slug: string }[]
-  slider: { img: { url: string } }[]
-}
+} & MicroCMSListContent
 
 export type WorkDetail = {
   title: string
@@ -50,20 +34,13 @@ export type WorkDetail = {
       width: number
     }
   }[]
-}
+} & MicroCMSListContent
 
-export type WorkDetailMeta = {
-  title: string
-  slug: string
-  body?: string
-  slider?: {
-    fieldId: string
-    img: {
-      url: string
-      height: number
-      width: number
-    }
-  }[]
-}
+export type WorkIndex = Pick<
+  WorkDetail,
+  'id' | 'title' | 'slug' | 'date' | 'publishedAt2' | 'category' | 'technology' | 'slider'
+>
 
-export type WorksSlider = NonNullable<WorkDetailMeta['slider']>[number]
+export type WorkDetailMeta = Pick<WorkDetail, 'title' | 'slug' | 'body' | 'slider'>
+
+export type WorksSlider = NonNullable<WorkDetail['slider']>[number]

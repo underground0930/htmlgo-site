@@ -48,6 +48,10 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
+// export async function generateStaticParams(){
+//   const {}
+// }
+
 export default async function WorksDetail({ params }: Props) {
   const result = await fetchWorksDetail({ slug: params.slug })
   const { post, prev, next } = result
