@@ -1,6 +1,5 @@
 'use client'
 
-import { redirect } from 'next/navigation'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
@@ -94,7 +93,8 @@ export const ContactBody: React.FC = () => {
       })
       .then((result: ResultType) => {
         if (result.success) {
-          redirect('/contact/thanks')
+          location.href = '/contact/thanks'
+          return
         }
         const { type, data } = result.error
         if (type === 'invalid') {
