@@ -58,8 +58,6 @@ export async function generateStaticParams() {
   })
 }
 
-export const revalidate = 30
-
 export default async function WorksDetail({ params }: Props) {
   const result = await fetchWorksDetail({ slug: params.slug })
   const { post, prev, next } = result
