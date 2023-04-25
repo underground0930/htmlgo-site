@@ -1,7 +1,6 @@
 export { fetchArticles } from './fetchArticles'
 export { fetchTopList } from './fetchTopList'
 export { fetchWorksDetail } from './fetchWorksDetail'
-export { fetchWorksDetailMeta } from './fetchWorksDetailMeta'
 export { fetchWorksIndex } from './fetchWorksIndex'
 export { fetchAbout } from './fetchAbout'
 export { microcmsClient } from './microcmsClient'

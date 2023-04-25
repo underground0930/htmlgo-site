@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
+import { fetchWorksPaths } from '@/libs/fetch/fetchWorksPaths'
+
 import { WorksDetailBody } from '@/components'
 import { setBaseUrl } from '@/const'
-import { fetchWorksDetail, fetchWorksDetailMeta } from '@/libs'
+import { fetchWorksDetail } from '@/libs'
 import { removeHtml, setMetaData } from '@/utils'
 
 type Props = {
@@ -13,10 +15,10 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const result = await fetchWorksDetailMeta({ slug: params.slug })
+  const result = await fetchWorksDetail({ slug: params.slug })
   let meta = {}
-  if (result) {
-    const { title, body: description, slider } = result
+  if (result.post) {
+    const { title, body: description, slider } = result.post
     const ogp =
       slider?.length && slider[0]?.img?.url
         ? slider[0].img.url
@@ -48,9 +50,15 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-// export async function generateStaticParams(){
-//   const {}
-// }
+export async function generateStaticParams() {
+  const paths = await fetchWorksPaths()
+
+  return paths.map((path) => {
+    path.slug
+  })
+}
+
+export const revalidate = 30
 
 export default async function WorksDetail({ params }: Props) {
   const result = await fetchWorksDetail({ slug: params.slug })

@@ -13,6 +13,8 @@ const className = {
 }
 
 export const ArticlesBody: React.FC<Props> = ({ articles = [], page, pages }) => {
+  // MEMO: 現在は未使用
+  console.log(page, pages)
   return (
     <>
       <main className={className.main}>

@@ -1,7 +1,6 @@
 import { MicroCMSListContent } from 'microcms-js-sdk'
 
 // MicroCMS関連のデータ型
-
 export type WorksCategory = {
   id: string
   category_label: string
@@ -40,7 +39,5 @@ export type WorkIndex = Pick<
   WorkDetail,
   'id' | 'title' | 'slug' | 'date' | 'publishedAt2' | 'category' | 'technology' | 'slider'
 >
-
-export type WorkDetailMeta = Pick<WorkDetail, 'title' | 'slug' | 'body' | 'slider'>
 
 export type WorksSlider = NonNullable<WorkDetail['slider']>[number]
