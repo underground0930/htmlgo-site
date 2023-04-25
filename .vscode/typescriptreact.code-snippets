@@ -1,0 +1,39 @@
+{
+  "cinit": {
+    "prefix": "cinit",
+    "body": [
+      "import React from 'react'",
+      "",
+      "type Props = {$1}",
+      "",
+      "export const ${TM_FILENAME_BASE/(.)(.*)/${1:/upcase}${2}/}: React.FC<Props> = ({$2}) => {",
+      "  return (",
+      "    <>",
+      "      <div className='$3'>$4</div>",
+      "    </>",
+      "  )",
+      "}"
+    ],
+    "description": "コンポーネントの初期化"
+  },
+  "pinit": {
+    "prefix": "pinit",
+    "body": [
+      "import React from 'react'",
+      "",
+      "type Props = {",
+      "  $1",
+      "}",
+      "",
+      "export default function Page({$2}: Props) {",
+      "  return (",
+      "    <>",
+      "      <div className=''></div>",
+      "    </>",
+      "  )",
+      "}",
+      ""
+    ],
+    "description": "ページコンポーネントの初期化"
+  }
+}

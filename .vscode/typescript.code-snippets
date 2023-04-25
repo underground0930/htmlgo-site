@@ -1,0 +1,55 @@
+{
+  "arrowfunction": {
+    "prefix": "afn",
+    "body": "const $1 = ($2) => {$3}",
+    "description": "アロー関数"
+  },
+  "eafn": {
+    "prefix": "eafn",
+    "body": [
+      "",
+      "export const ${TM_FILENAME_BASE} = ({$1}: {$2}) => {",
+      "  $3",
+      "  return null",
+      "}"
+    ],
+    "description": "アロー関数 export"
+  },
+  "console.log": {
+    "prefix": "log",
+    "body": "console.log($1)",
+    "description": "console"
+  },
+  "promise": {
+    "prefix": "prom",
+    "body": [
+      "(async ()=>{",
+      "  await new Promise((resolve, reject) => {",
+      "    setTimeout(() => {",
+      "      resolve('ok')",
+      "    }, 1000)",
+      "  ",
+      "    reject()",
+      "  })",
+      "    .then((result) => {",
+      "      console.log(result)",
+      "    })",
+      "    .catch((error) => {",
+      "      console.log(error)",
+      "    })  ",
+      "})()",
+      ""
+    ],
+    "description": "promise"
+  },
+  "uses": {
+    "prefix": "uses",
+    "body": ["const [dummy,setDummy] = useState<string>(\"\")"],
+    "description": "useState"
+  },
+  "cond": {
+    "prefix": "cond",
+    "body": "{cond ? <$1 /> : <$2 />}",
+    "description": "ternary operator"
+  }
+}

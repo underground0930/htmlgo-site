@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --------------------------------------------------------------
+  カスタマイズ
+-------------------------------------------------------------- */
+
+@layer components {
+  .cms-works-content p {
+    @apply mb-6 text-sm md:text-lg;
+  }
+  .cms-works-content a {
+    @apply underline;
+  }
+  .cms-about-content section {
+  }
+
+  .cms-about-content section p {
+    @apply leading-[1.8];
+  }
+
+  .cms-about-content section a {
+    @apply underline hover:text-linkActive;
+  }
+
+  .cms-about-content section ul {
+  }
+
+  .cms-about-content section li {
+    @apply mb-3;
+  }
+}
+
+body {
+  overflow-y: scroll;
+  font-feature-settings: 'palt';
+  letter-spacing: 1px;
+}

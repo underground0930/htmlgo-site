@@ -1,0 +1,17 @@
+# node_modules/ is ignored.
+
+.eslintrc.js
+prettier.config.js
+next.config.js
+tailwind.config.js
+tailwind.custom.js
+tsconfig.json
+postcss.config.js
+
+
+# ビルドファイル
+build/
+bin/
+obj/
+out/
+.next/
