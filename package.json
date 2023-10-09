@@ -17,7 +17,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.0.1",
     "@types/eslint": "8.37.0",
-    "@types/node": "18.15.11",
+    "@types/node": "18.18.0",
     "@types/nodemailer": "^6.4.7",
     "@types/prettier": "2.7.2",
     "@types/react": "18.0.33",
