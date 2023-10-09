@@ -5,6 +5,7 @@ import { Footer, Header } from '@/components'
 const title = 'HTMLGO'
 
 export const metadata = {
+  metadataBase: new URL('https://www.htmlgo.site'),
   title: {
     default: title,
     template: `%s | ${title}`,
@@ -15,7 +16,7 @@ export const metadata = {
       template: `%s | ${title}`,
     },
     siteName: title,
-    images: 'https://www.htmlgo.site/img/ogp_new.png',
+    images: '/img/ogp_new.png',
   },
   twitter: {
     card: 'summary_large_image',
@@ -24,7 +25,7 @@ export const metadata = {
       template: `%s | ${title}`,
     },
     creator: '@resistance_gowy',
-    images: 'https://www.htmlgo.site/img/ogp_new.png',
+    images: '/img/ogp_new.png',
   },
 }
 

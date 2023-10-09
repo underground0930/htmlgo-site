@@ -1,5 +1,4 @@
 import { ArticlesBody } from '@/components'
-import { setBaseUrl } from '@/const'
 import { setMetaData } from '@/utils'
 import { fetchArticles } from '@/libs'
 
@@ -14,8 +13,8 @@ export const metadata = {
     },
     title: 'ARTICLES',
     description,
-    url: setBaseUrl('/articles'),
-    images: setBaseUrl('/img/ogp_new.png'),
+    url: '/articles',
+    images: '/img/ogp_new.png',
   }),
 }
 

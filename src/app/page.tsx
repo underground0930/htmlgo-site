@@ -1,7 +1,6 @@
 import { ServiceList } from '@/components/pages/top/ServiceList'
 
 import { setMetaData } from '@/utils'
-import { baseURL, setBaseUrl } from '@/const'
 import { TextBtn, Title, ArticlesList, WorksList } from '@/components'
 import { fetchTopList } from '@/libs'
 
@@ -15,9 +14,9 @@ export const metadata = {
       },
     },
     title: 'TOP',
-    url: baseURL,
+    url: '',
     description,
-    images: setBaseUrl('/img/ogp_new.png'),
+    images: '/img/ogp_new.png',
   }),
 }
 

@@ -1,4 +1,3 @@
-import { setBaseUrl } from '@/const'
 import { setMetaData } from '@/utils'
 import { TextBtn, Title } from '@/components'
 
@@ -13,8 +12,8 @@ export const metadata = {
     },
     title: '404 | WORKS',
     description,
-    url: setBaseUrl('/404'),
-    images: setBaseUrl('/img/ogp_new.png'),
+    url: '/404',
+    images: '/img/ogp_new.png',
   }),
 }
 
