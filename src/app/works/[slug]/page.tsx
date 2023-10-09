@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { fetchWorksPaths } from '@/libs/fetch/fetchWorksPaths'
+import { fetchWorksDetail } from '@/libs/fetch/fetchWorksDetail'
 
-import { WorksDetailBody } from '@/components'
-import { setBaseUrl } from '@/const'
-import { fetchWorksDetail } from '@/libs'
+import { WorksDetailBody } from '@/components/pages/works/WorksDetailBody'
+
 import { removeHtml, setMetaData } from '@/utils'
 
 type Props = {
@@ -20,9 +20,7 @@ export async function generateMetadata({ params }: Props) {
   if (result.post) {
     const { title, body: description, slider } = result.post
     const ogp =
-      slider?.length && slider[0]?.img?.url
-        ? slider[0].img.url
-        : setBaseUrl('/img/ogp_new.png')
+      slider?.length && slider[0]?.img?.url ? slider[0].img.url : '/img/ogp_new.png'
     const maxLength = 120
     const parsedDescription = removeHtml(description ?? '')
     const slicedDescription =
@@ -39,7 +37,7 @@ export async function generateMetadata({ params }: Props) {
         },
         title: `${title} | WORKS`,
         description: slicedDescription,
-        url: setBaseUrl(`/works/${params.slug}`),
+        url: `/works/${params.slug}`,
         images: ogp,
       }),
     }

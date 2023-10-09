@@ -1,7 +1,9 @@
-import { TextBtn, Title, WorksList } from '@/components'
+import { WorksList } from '@/components/pages/works/WorksList'
+import { TextBtn } from '@/components/common/TextBtn'
+import { Title } from '@/components/common/Title'
+
 import { fetchWorksIndex } from '@/libs'
 import { setMetaData } from '@/utils'
-import { setBaseUrl } from '@/const'
 
 const description = '最新のお仕事の実績や、自主制作'
 
@@ -14,8 +16,8 @@ export const metadata = {
     },
     title: 'WORKS',
     description,
-    url: setBaseUrl('/works'),
-    images: setBaseUrl('/img/ogp_new.png'),
+    url: '/works',
+    images: '/img/ogp_new.png',
   }),
 }
 

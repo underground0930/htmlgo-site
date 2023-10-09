@@ -1,10 +1,12 @@
 import '../styles/globals.css'
 
-import { Footer, Header } from '@/components'
+import { Header } from '@/components/common/Header'
+import { Footer } from '@/components/common/Footer'
 
 const title = 'HTMLGO'
 
 export const metadata = {
+  metadataBase: new URL('https://www.htmlgo.site'),
   title: {
     default: title,
     template: `%s | ${title}`,
@@ -15,7 +17,7 @@ export const metadata = {
       template: `%s | ${title}`,
     },
     siteName: title,
-    images: 'https://www.htmlgo.site/img/ogp_new.png',
+    images: '/img/ogp_new.png',
   },
   twitter: {
     card: 'summary_large_image',
@@ -24,7 +26,7 @@ export const metadata = {
       template: `%s | ${title}`,
     },
     creator: '@resistance_gowy',
-    images: 'https://www.htmlgo.site/img/ogp_new.png',
+    images: '/img/ogp_new.png',
   },
 }
 

@@ -1,6 +1,7 @@
+import { Title } from '@/components/common/Title'
+import { TextBtn } from '@/components/common/TextBtn'
+
 import { setMetaData } from '@/utils'
-import { TextBtn, Title } from '@/components'
-import { setBaseUrl } from '@/const'
 
 const description = 'お問い合わせ頂きありがとうございました'
 
@@ -13,8 +14,8 @@ export const metadata = {
     },
     title: 'CONTACT',
     description,
-    url: setBaseUrl('/contact/thanks'),
-    images: setBaseUrl('/img/ogp_new.png'),
+    url: '/contact/thanks',
+    images: '/img/ogp_new.png',
   }),
 }
 

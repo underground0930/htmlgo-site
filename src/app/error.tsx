@@ -2,7 +2,6 @@
 import { useEffect } from 'react'
 
 import { setMetaData } from '@/utils'
-import { setBaseUrl } from '@/const'
 
 const description = 'ページでエラーが発生しました'
 
@@ -15,8 +14,8 @@ export const metadata = {
     },
     title: 'ERROR',
     description,
-    url: setBaseUrl('/works'),
-    images: setBaseUrl('/img/ogp_new.png'),
+    url: '/works',
+    images: '/img/ogp_new.png',
   }),
 }
 

@@ -1,7 +1,10 @@
+import { ImageWrapper } from '@/components/common/ImageWrapper'
+import { TextBtn } from '@/components/common/TextBtn'
+import { Title } from '@/components/common/Title'
+import { AboutSnsBox } from '@/components/pages/about/AboutSnsBox'
+
 import { fetchAbout } from '@/libs'
 import { setMetaData } from '@/utils'
-import { setBaseUrl } from '@/const'
-import { ImageWrapper, TextBtn, Title, AboutSnsBox } from '@/components'
 
 const description = 'このサイトについて'
 
@@ -14,8 +17,8 @@ export const metadata = {
     },
     title: 'ABOUT',
     description,
-    url: setBaseUrl('/about'),
-    images: setBaseUrl('/img/ogp_new.png'),
+    url: '/about',
+    images: '/img/ogp_new.png',
   }),
 }
 

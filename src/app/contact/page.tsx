@@ -1,7 +1,6 @@
 import { ContactBody } from '@/components/pages/contact/ContactBody'
 
 import { setMetaData } from '@/utils'
-import { setBaseUrl } from '@/const'
 
 const description = 'お問い合わせはこちらからお願いします'
 
@@ -14,8 +13,8 @@ export const metadata = {
     },
     title: 'CONTACT',
     description,
-    url: setBaseUrl('/contact'),
-    images: setBaseUrl('/img/ogp_new.png'),
+    url: '/contact',
+    images: '/img/ogp_new.png',
   }),
 }
 
