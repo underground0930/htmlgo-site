@@ -37,7 +37,7 @@
     "react-tailwindcss-select": "^1.8.5",
     "server-only": "^0.0.1",
     "swiper": "^9.2.4",
-    "zod": "^3.21.4"
+    "zod": "^3.22.3"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
