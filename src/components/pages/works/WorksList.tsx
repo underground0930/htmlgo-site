@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 
-import { CategoryIcon, ImageWrapper } from '@/components'
+import { CategoryIcon } from '@/components/common/CategoryIcon'
+import { ImageWrapper } from '@/components/common/ImageWrapper'
+
 import { conversionDate } from '@/utils'
 import { WorkIndex } from '@/types'
 

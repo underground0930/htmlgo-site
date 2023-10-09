@@ -1,9 +1,12 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
-import { conversionDate } from '@/utils'
+import { Title } from '@/components/common/Title'
+import { TextBtn } from '@/components/common/TextBtn'
+import { WorksDetailInfo } from '@/components/pages/works/WorksDetailInfo'
+
 import { WorkDetail } from '@/types'
-import { TextBtn, Title, WorksDetailInfo } from '@/components'
+import { conversionDate } from '@/utils'
 
 const WorksSlider = dynamic(() => import('@/components/pages/works/WorksSlider'), {
   ssr: false,

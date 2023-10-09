@@ -2,9 +2,10 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { fetchWorksPaths } from '@/libs/fetch/fetchWorksPaths'
+import { fetchWorksDetail } from '@/libs/fetch/fetchWorksDetail'
 
-import { WorksDetailBody } from '@/components'
-import { fetchWorksDetail } from '@/libs'
+import { WorksDetailBody } from '@/components/pages/works/WorksDetailBody'
+
 import { removeHtml, setMetaData } from '@/utils'
 
 type Props = {

@@ -1,4 +1,7 @@
-import { TextBtn, Title, WorksList } from '@/components'
+import { WorksList } from '@/components/pages/works/WorksList'
+import { TextBtn } from '@/components/common/TextBtn'
+import { Title } from '@/components/common/Title'
+
 import { fetchWorksIndex } from '@/libs'
 import { setMetaData } from '@/utils'
 

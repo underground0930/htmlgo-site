@@ -5,7 +5,10 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { TextBtn, Title, LoadingSpinner } from '@/components'
+import { TextBtn } from '@/components/common/TextBtn'
+import { Title } from '@/components/common/Title'
+import { LoadingSpinner } from '@/components/common/LoadingSpinner'
+
 import { useDebugMode } from '@/hooks'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types'
 import { errorText, inputElements } from '@/const'

@@ -1,5 +1,8 @@
+import { Title } from '@/components/common/Title'
+import { TextBtn } from '@/components/common/TextBtn'
+import { ArticlesList } from '@/components/pages/articles/ArticlesList'
+
 import { FeedObj } from '@/types'
-import { TextBtn, Title, ArticlesList } from '@/components'
 
 type Props = {
   articles: FeedObj[]

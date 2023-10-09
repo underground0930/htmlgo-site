@@ -3,7 +3,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Pagination, Navigation, Virtual } from 'swiper'
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 
-import { ImageWrapper } from '@/components'
+import { ImageWrapper } from '@/components/common/ImageWrapper'
+
 import { WorksSlider } from '@/types'
 
 type NewSlider = WorksSlider & { loading: boolean }

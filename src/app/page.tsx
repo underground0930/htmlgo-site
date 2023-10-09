@@ -1,7 +1,10 @@
 import { ServiceList } from '@/components/pages/top/ServiceList'
+import { TextBtn } from '@/components/common/TextBtn'
+import { Title } from '@/components/common/Title'
+import { ArticlesList } from '@/components/pages/articles/ArticlesList'
+import { WorksList } from '@/components/pages/works/WorksList'
 
 import { setMetaData } from '@/utils'
-import { TextBtn, Title, ArticlesList, WorksList } from '@/components'
 import { fetchTopList } from '@/libs'
 
 const description = 'WEB技術を書き連ねるサイト'

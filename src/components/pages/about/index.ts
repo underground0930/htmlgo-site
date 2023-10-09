@@ -1,1 +1,0 @@
-export { AboutSnsBox } from './AboutSnsBox'

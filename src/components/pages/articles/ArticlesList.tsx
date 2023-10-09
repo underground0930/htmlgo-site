@@ -1,5 +1,7 @@
+import { CategoryIcon } from '@/components/common/CategoryIcon'
+import { ImageWrapper } from '@/components/common/ImageWrapper'
+
 import { FeedObj } from '@/types'
-import { CategoryIcon, ImageWrapper } from '@/components'
 
 type Props = {
   articles: FeedObj[]
