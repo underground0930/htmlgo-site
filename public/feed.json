@@ -1,5 +1,29 @@
 [
   {
+    "title": "Next.js(App Router)での国際化対応",
+    "category": "zenn",
+    "published": "2024-01-01",
+    "link": "https://zenn.dev/resistance_gowy/articles/9f767d4f828f2e",
+    "img": "https://res.cloudinary.com/zenn/image/upload/s--RpdfaXqQ--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:Next.js%2528App%2520Router%2529%25E3%2581%25A7%25E3%2581%25AE%25E5%259B%25BD%25E9%259A%259B%25E5%258C%2596%25E5%25AF%25BE%25E5%25BF%259C%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:HTMLGO%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2hqc01qa3F3b0kycWV0ZTJVTHJPVDZva3hXWFV3NzlPNTJWemZlSGc9czI1MC1j%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png",
+    "tags": []
+  },
+  {
+    "title": "分割キーボード - Majestouch Xacro M10SPの左下のキーにCommandキーを当てたい",
+    "category": "zenn",
+    "published": "2023-12-29",
+    "link": "https://zenn.dev/resistance_gowy/articles/86c5ec0eedf75c",
+    "img": "https://res.cloudinary.com/zenn/image/upload/s--a_-6vIPZ--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:%25E5%2588%2586%25E5%2589%25B2%25E3%2582%25AD%25E3%2583%25BC%25E3%2583%259C%25E3%2583%25BC%25E3%2583%2589%2520-%2520Majestouch%2520Xacro%2520M10SP%25E3%2581%25AE%25E5%25B7%25A6%25E4%25B8%258B%25E3%2581%25AE%25E3%2582%25AD%25E3%2583%25BC%25E3%2581%25ABCommand%25E3%2582%25AD%25E3%2583%25BC%25E3%2582%2592%25E5%25BD%2593%25E3%2581%25A6%25E3%2581%259F%25E3%2581%2584%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:HTMLGO%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2hqc01qa3F3b0kycWV0ZTJVTHJPVDZva3hXWFV3NzlPNTJWemZlSGc9czI1MC1j%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png",
+    "tags": []
+  },
+  {
+    "title": "長い配列内要素の存在チェックにはSetがおすすめ",
+    "category": "zenn",
+    "published": "2023-12-14",
+    "link": "https://zenn.dev/resistance_gowy/articles/f3c8952be44a91",
+    "img": "https://res.cloudinary.com/zenn/image/upload/s--Nw3HF5h1--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:%25E9%2595%25B7%25E3%2581%2584%25E9%2585%258D%25E5%2588%2597%25E5%2586%2585%25E8%25A6%2581%25E7%25B4%25A0%25E3%2581%25AE%25E5%25AD%2598%25E5%259C%25A8%25E3%2583%2581%25E3%2582%25A7%25E3%2583%2583%25E3%2582%25AF%25E3%2581%25AB%25E3%2581%25AFSet%25E3%2581%258C%25E3%2581%258A%25E3%2581%2599%25E3%2581%2599%25E3%2582%2581%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:HTMLGO%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2hqc01qa3F3b0kycWV0ZTJVTHJPVDZva3hXWFV3NzlPNTJWemZlSGc9czI1MC1j%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png",
+    "tags": []
+  },
+  {
     "title": "【Mac】vscodeの便利なショートカット+コマンド",
     "category": "zenn",
     "published": "2023-07-27",
@@ -56,27 +80,6 @@
     "tags": []
   },
   {
-    "title": "指定ディレクトリへ移動するコマンドをaliasとしてセットするシェルスクリプトを書いた",
-    "category": "note",
-    "published": "2022-06-05",
-    "link": "https://note.com/resistance_gowy/n/nadcae13197e0",
-    "img": "https://assets.st-note.com/production/uploads/images/80029395/rectangle_large_type_2_09b80e7518d543572b0dc0e2bcf085ef.png?fit=bounds&quality=85&width=1280",
-    "tags": [
-      "コマンド",
-      "シェルスクリプト",
-      "ディレクトリ",
-      "エイリアス"
-    ]
-  },
-  {
-    "title": "githubリポジトリの一部のディレクトリだけダウンロードしたい",
-    "category": "note",
-    "published": "2022-06-02",
-    "link": "https://note.com/resistance_gowy/n/n559c06a57656",
-    "img": "https://assets.st-note.com/production/uploads/images/79817696/rectangle_large_type_2_d986a60b32dfb636a1182682667a609a.png?fit=bounds&quality=85&width=1280",
-    "tags": []
-  },
-  {
     "title": "レンタルサーバーでもmicroCMS + Next.js でプレビュー機能を使いたい (SSR未使用)",
     "category": "zenn",
     "published": "2022-04-26",
@@ -93,16 +96,6 @@
     "tags": []
   },
   {
-    "title": "「Fetch API」についてまとめる",
-    "category": "note",
-    "published": "2021-10-26",
-    "link": "https://note.com/resistance_gowy/n/nb57b6983f6ca",
-    "img": "https://assets.st-note.com/production/uploads/images/64273394/rectangle_large_type_2_c33c1c76350fca410a8fbeb46019aab7.jpeg?fit=bounds&quality=85&width=1280",
-    "tags": [
-      "JavaScript"
-    ]
-  },
-  {
     "category": "qiita",
     "title": "wp-env + VScode で Xdebugを使う",
     "published": "2021-10-16",
@@ -113,39 +106,6 @@
       "xdebug",
       "VSCode",
       "wp-env"
-    ]
-  },
-  {
-    "title": "sshでログインするのを楽にする",
-    "category": "note",
-    "published": "2021-09-23",
-    "link": "https://note.com/resistance_gowy/n/n2bb52c45630e",
-    "img": "/img/note.png",
-    "tags": [
-      "SSH",
-      "コマンドライン"
-    ]
-  },
-  {
-    "title": "Jest 入門",
-    "category": "note",
-    "published": "2021-09-23",
-    "link": "https://note.com/resistance_gowy/n/nf4277add0f87",
-    "img": "https://assets.st-note.com/production/uploads/images/61874278/rectangle_large_type_2_5fd6f6464eb961a48796068986d2000a.png?fit=bounds&quality=85&width=1280",
-    "tags": [
-      "JavaScript",
-      "test"
-    ]
-  },
-  {
-    "title": "mac でローカルIPを調べる時に観やすくする",
-    "category": "note",
-    "published": "2021-09-23",
-    "link": "https://note.com/resistance_gowy/n/n906261dcbf25",
-    "img": "https://assets.st-note.com/production/uploads/images/61866815/rectangle_large_type_2_4d7f87d193432dbd1cb161d6ae460b32.png?fit=bounds&quality=85&width=1280",
-    "tags": [
-      "Mac",
-      "コマンドライン"
     ]
   },
   {
