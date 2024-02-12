@@ -4,8 +4,10 @@ const dayjs = require('dayjs')
 
 const getZennFeed = async function () {
   const parser = new xml2js.Parser({ trim: true })
+  // スクラップも含める
   return await axios
-    .get('https://zenn.dev/resistance_gowy/feed')
+    // .get('https://zenn.dev/resistance_gowy/feed')
+    .get('https://zenn.dev/resistance_gowy/feed?include_scraps=1&all=1')
     .then((result) => {
       return parser.parseStringPromise(result.data)
     })
@@ -13,13 +15,13 @@ const getZennFeed = async function () {
       const posts = json.rss.channel[0].item
       return posts.map((post) => {
         const published = dayjs(post.pubDate[0]).format()
-
+        const enclosure = post?.enclosure
         return {
           title: post.title[0],
           category: 'zenn',
           published,
           link: post.link[0],
-          img: post.enclosure[0].$.url,
+          img: enclosure ? post.enclosure[0].$.url : '/img/zenn.png',
           tags: [],
         }
       })
