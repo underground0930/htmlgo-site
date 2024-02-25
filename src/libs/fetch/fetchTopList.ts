@@ -8,7 +8,9 @@ import { WorkIndex, FeedObj } from '@/types'
 
 export async function fetchTopList() {
   const articles = (
-    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/feed.json`)
+    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/feed.json`, {
+      next: { revalidate: 0 },
+    })
       .then((response) => {
         if (response.ok) {
           return response.json()
