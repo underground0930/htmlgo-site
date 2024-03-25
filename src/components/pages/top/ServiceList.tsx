@@ -13,14 +13,18 @@ export const ServiceList: React.FC = () => {
           <Icon className='m-3 h-auto w-[50px]' key={index} />
         ))}
       </div>
-      <div className='max-w-[400px mx-auto mb-30px w-full text-center'>
+      <div className='max-w-[400px mx-auto mb-20px w-full text-center'>
         <dl className='p-4'>
           <dt className='mb-4 text-center font-bold'>
             モダンな環境でのweb開発
             <br />
           </dt>
           <dd className='text text-16px leading-7'>
-            <b>React,TypeScript,Next.js,Ruby on Rails</b>
+            <b>
+              React,TypeScript,Next.js,
+              <br />
+              Ruby on Rails
+            </b>
             <br />
             を用いたWeb開発を行います。
             <br />

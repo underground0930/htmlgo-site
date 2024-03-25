@@ -13,6 +13,22 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ['images.microcms-assets.io', 'assets.st-note.com', 'res.cloudinary.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.microcms-assets.io',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.st-note.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+      },
+    ],
   },
 }
