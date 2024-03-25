@@ -8,26 +8,10 @@ import { WorkIndex, FeedObj } from '@/types'
 
 export async function fetchTopList() {
   const articles = (
-    await fetch(`${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/feed.json`, {
-      next: { revalidate: 0 },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        }
-        throw new Error(response.statusText)
-      })
-      .then((data: FeedObj[]) => {
-        return data
-      })
-      .catch((error: unknown) => {
-        console.error(error)
-        return []
-      })
-  ).slice(0, 8)
+    (await import('../../../public/feed.json')) as { default: FeedObj[] }
+  ).default.slice(0, 8)
 
   const works = await microcmsClient
-
     .get<MicroCMSListResponse<WorkIndex>>({
       endpoint: 'works',
       queries: {
