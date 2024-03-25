@@ -1,5 +1,21 @@
 [
   {
+    "title": "input[text=\"text\"]とpattern属性でinput[text=\"number\"]の代わりを実装する",
+    "category": "zenn",
+    "published": "2024-03-22",
+    "link": "https://zenn.dev/resistance_gowy/articles/a43b7a42306c53",
+    "img": "https://res.cloudinary.com/zenn/image/upload/s--VcpBxKB3--/c_fit%2Cg_north_west%2Cl_text:notosansjp-medium.otf_55:input%255Btext%253D%2522text%2522%255D%25E3%2581%25A8pattern%25E5%25B1%259E%25E6%2580%25A7%25E3%2581%25A7input%255Btext%253D%2522number%2522%255D%25E3%2581%25AE%25E4%25BB%25A3%25E3%2582%258F%25E3%2582%258A%25E3%2582%2592%25E5%25AE%259F%25E8%25A3%2585%25E3%2581%2599%25E3%2582%258B%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Cl_text:notosansjp-medium.otf_37:HTMLGO%2Cx_203%2Cy_121/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2hqc01qa3F3b0kycWV0ZTJVTHJPVDZva3hXWFV3NzlPNTJWemZlSGc9czI1MC1j%2Cr_max%2Cw_90%2Cx_87%2Cy_95/v1627283836/default/og-base-w1200-v2.png",
+    "tags": []
+  },
+  {
+    "title": "Next.js 14.1.1 から 'use server' をつけてexport したものは強制的に Promiseを返す？",
+    "category": "zenn",
+    "published": "2024-03-05",
+    "link": "https://zenn.dev/resistance_gowy/scraps/dd77eb46d77649",
+    "img": "/img/zenn.png",
+    "tags": []
+  },
+  {
     "title": "Next.js App Routerのキャッシュのメモ",
     "category": "zenn",
     "published": "2024-02-11",
