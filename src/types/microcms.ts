@@ -14,6 +14,7 @@ export type WorkDetail = {
   url2?: string
   date: string
   publishedAt2?: string
+  participationAt?: string
   body?: string
   production_period: string
   credit: { label: string; value: string; link?: string }[]
@@ -37,7 +38,15 @@ export type WorkDetail = {
 
 export type WorkIndex = Pick<
   WorkDetail,
-  'id' | 'title' | 'slug' | 'date' | 'publishedAt2' | 'category' | 'technology' | 'slider'
+  | 'id'
+  | 'title'
+  | 'slug'
+  | 'date'
+  | 'participationAt'
+  | 'publishedAt2'
+  | 'category'
+  | 'technology'
+  | 'slider'
 >
 
 export type WorksSlider = NonNullable<WorkDetail['slider']>[number]

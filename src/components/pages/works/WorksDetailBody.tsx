@@ -70,12 +70,22 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
           <div className={className.info}>
             <div className={className.infoBody}>
               <ul className={className.infoList}>
-                {post?.date && (
-                  <WorksDetailInfo title='公開日'>
-                    <time dateTime={conversionDate(post.date)}>
-                      {conversionDate(post.date)}
+                {post?.participationAt ? (
+                  <WorksDetailInfo title='参加期間'>
+                    <time dateTime={conversionDate(post.participationAt)}>
+                      {post.participationAt}
                     </time>
                   </WorksDetailInfo>
+                ) : (
+                  <>
+                    {post?.date && (
+                      <WorksDetailInfo title='公開日'>
+                        <time dateTime={conversionDate(post.date)}>
+                          {conversionDate(post.date)}
+                        </time>
+                      </WorksDetailInfo>
+                    )}
+                  </>
                 )}
                 {post?.publishedAt2 && (
                   <WorksDetailInfo title='改修日'>
