@@ -30,9 +30,19 @@ export const WorksList: React.FC<Props> = ({ works = [] }) => {
                   )}
                 </dt>
                 <dd className='px-15px pb-10px'>
-                  <time className='block text-13px'>
-                    公開日:{conversionDate(work.date)}
-                  </time>
+                  {work.participationAt ? (
+                    <time className='mb-8px block text-13px'>
+                      参加期間:{work.participationAt}
+                    </time>
+                  ) : (
+                    <>
+                      {work.date && (
+                        <time className='block text-13px'>
+                          公開日:{conversionDate(work.date)}
+                        </time>
+                      )}
+                    </>
+                  )}
                   {work.publishedAt2 && (
                     <time className='mb-8px block text-13px'>
                       改修日:{conversionDate(work.publishedAt2)}

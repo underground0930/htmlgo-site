@@ -14,7 +14,8 @@ export async function fetchWorksIndex() {
       endpoint: 'works',
       queries: {
         limit: WORKS_PER_PAGE,
-        fields: 'id,title,slug,date,publishedAt2,category,technology,slider',
+        fields:
+          'id,title,slug,date,publishedAt2,participationAt,category,technology,slider',
       },
     }),
     microcmsClient.get<MicroCMSListResponse<WorksCategory>>({

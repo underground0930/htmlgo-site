@@ -147,7 +147,7 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
                 <ImageWrapper
                   cls=''
                   src={v.img.url}
-                  onLoadingComplete={() => {
+                  onLoad={() => {
                     setSliderList((prev) => {
                       return prev.map((s, j) => {
                         if (i === j) {

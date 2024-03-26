@@ -16,7 +16,8 @@ export async function fetchTopList() {
       endpoint: 'works',
       queries: {
         limit: 3,
-        fields: 'id,title,slug,date,publishedAt2,category,technology,slider,url',
+        fields:
+          'id,title,slug,date,participationAt,publishedAt2,category,technology,slider,url',
       },
     })
     .then((result) => result.contents)

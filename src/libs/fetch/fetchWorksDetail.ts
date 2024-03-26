@@ -15,7 +15,7 @@ export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
       queries: {
         filters: `slug[equals]${slug}`,
         fields:
-          'title,slug,url,url2,date,publishedAt2,body,production_period,credit,category,technology,slider',
+          'title,slug,url,url2,date,publishedAt2,participationAt,body,production_period,credit,category,technology,slider',
       },
     })
     .then((v) => (v.contents.length ? v.contents[0] : null))
