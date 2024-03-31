@@ -1,5 +1,13 @@
 [
   {
+    "title": "Rails7 + Docker の初期構築 & つまり所メモ",
+    "category": "zenn",
+    "published": "2024-03-29",
+    "link": "https://zenn.dev/resistance_gowy/scraps/4148a85a69e4ad",
+    "img": "/img/zenn.png",
+    "tags": []
+  },
+  {
     "title": "input[text=\"text\"]とpattern属性でinput[text=\"number\"]の代わりを実装する",
     "category": "zenn",
     "published": "2024-03-22",

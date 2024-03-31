@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "predev": "node ./scripts/generateFeedJson.js",
-    "dev": "next dev",
+    "predev": "node ./scripts/generateFeedJson.js && rm -rf .next",
+    "dev": "PORT=5000 next dev",
     "prebuild": "node ./scripts/generateFeedJson.js",
     "build": "next build",
     "start": "next start",
