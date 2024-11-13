@@ -4,10 +4,10 @@ const dayjs = require('dayjs')
 
 const getZennFeed = async function () {
   const parser = new xml2js.Parser({ trim: true })
-  // スクラップも含める
+
   return await axios
-    // .get('https://zenn.dev/resistance_gowy/feed')
-    .get('https://zenn.dev/resistance_gowy/feed?include_scraps=1&all=1')
+    .get('https://zenn.dev/resistance_gowy/feed')
+    //    .get('https://zenn.dev/resistance_gowy/feed?include_scraps=1&all=1') // スクラップも含める場合
     .then((result) => {
       return parser.parseStringPromise(result.data)
     })
