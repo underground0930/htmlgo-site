@@ -177,7 +177,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 target='_blank'
                 rel='noreferrer'
               >
-                FACEBOOK
+                facebook
               </a>
             </li>
             <li className={className.snsChild}>
