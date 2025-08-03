@@ -19,20 +19,13 @@ export const metadata = {
   }),
 }
 
-const className = {
-  main: 'mx-20px',
-  body: `max-w-[600px] mx-auto mb-40px`,
-  thanks: `text-16px text-center md:text-20px`,
-  back: `border-border border-t-[1px] text-center pt-40px pb-40px mt-40px`,
-}
-
 export default function Thanks() {
   return (
     <>
-      <main className={className.main}>
+      <main className='mx-20px'>
         <Title title='THANKS' text='お問合せありがとうございました' />
-        <div className={className.body}>
-          <div className={className.thanks}>
+        <div className='mx-auto mb-40px max-w-[600px]'>
+          <div className='text-center text-16px md:text-20px'>
             お問い合わせありがとうございました。
             <br />
             内容を確認後、折り返しご連絡いたしますので、
@@ -40,7 +33,7 @@ export default function Thanks() {
             今しばらくおまちください。
           </div>
         </div>
-        <div className={className.back}>
+        <div className='mt-40px border-t-[1px] border-border pb-40px pt-40px text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

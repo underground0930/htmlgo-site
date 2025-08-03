@@ -10,19 +10,14 @@ type Props = {
   pages: number
 }
 
-const className = {
-  main: 'mx-20px max-w-[800px] md:mx-auto',
-  btnWrap: 'text-center mb-40px',
-}
-
 export const ArticlesBody: React.FC<Props> = ({ articles = [], page, pages }) => {
   return (
     <>
-      <main className={className.main}>
+      <main className='mx-20px max-w-[800px] md:mx-auto'>
         <Title title='Articles' text='技術系やそれ以外の記事' />
         <ArticlesList articles={articles} />
         {/* <Pager pages={pages} page={page} /> */}
-        <div className={className.btnWrap + ` mt-40px`}>
+        <div className='mb-40px mt-40px text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

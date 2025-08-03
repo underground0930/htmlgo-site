@@ -40,30 +40,19 @@ const links = [
   },
 ]
 
-const className = {
-  footer: `bg-main text-footerText p-20px`,
-  dl: `text-center text-14px mb-20px`,
-  dt: `mb-15px`,
-  dd: ``,
-  ul: `flex justify-center items-center`,
-  li: `mx-7px`,
-  a: `flex justify-center items-center w-[30px] [&>svg]:w-full [&>svg]:h-auto`,
-  small: `block text-10 text-center`,
-}
-
 export const Footer: React.FC = () => {
   return (
     <>
-      <footer className={className.footer}>
-        <dl className={className.dl}>
-          <dt className={className.dt}>This website powered by</dt>
+      <footer className='bg-main p-20px text-footerText'>
+        <dl className='mb-20px text-center text-14px'>
+          <dt className='mb-15px'>This website powered by</dt>
           <dd>
-            <ul className={className.ul}>
+            <ul className='flex items-center justify-center'>
               {links.map((v) => {
                 return (
-                  <li className={className.li} key={v.key}>
+                  <li className='mx-7px' key={v.key}>
                     <a
-                      className={className.a}
+                      className='flex w-[30px] items-center justify-center [&>svg]:h-auto [&>svg]:w-full'
                       href={v.href}
                       target='_blank'
                       rel='noreferrer'
@@ -76,7 +65,7 @@ export const Footer: React.FC = () => {
             </ul>
           </dd>
         </dl>
-        <small className={className.small}>
+        <small className='text-10 block text-center'>
           Copyright © 2016 htmlgo.site All rights reserved.
         </small>
       </footer>

@@ -23,36 +23,31 @@ export const metadata = {
   }),
 }
 
-const className = {
-  btnWrap: 'text-center',
-  section: 'mb-40px pb-20px md:mb-80px md:pb-40px border-b-1 border-border',
-}
-
 export default async function Home() {
   const { works, articles } = await fetchTopList()
   return (
     <main className='mx-20px max-w-[800px] md:mx-auto'>
       {/* services */}
-      <section className={className.section}>
+      <section className='mb-40px border-b-1 border-border pb-20px md:mb-80px md:pb-40px'>
         <Title title='Services' text='事業内容' />
         <ServiceList />
-        <div className={className.btnWrap}>
+        <div className='text-center'>
           <TextBtn title='to About' link='/about/' />
         </div>
       </section>
       {/* works */}
-      <section className={className.section}>
+      <section className='mb-40px border-b-1 border-border pb-20px md:mb-80px md:pb-40px'>
         <Title title='Works' text='最新の実績や、自主制作' />
         <WorksList works={works} />
-        <div className={className.btnWrap}>
+        <div className='text-center'>
           <TextBtn title='More Works' link='/works/' />
         </div>
       </section>
       {/* articles */}
-      <section className={className.section}>
+      <section className='mb-40px border-b-1 border-border pb-20px md:mb-80px md:pb-40px'>
         <Title title='Articles' text='最新の記事' />
         <ArticlesList articles={articles} />
-        <div className={className.btnWrap}>
+        <div className='text-center'>
           <TextBtn title='More Articles' link='/articles/' />
         </div>
       </section>

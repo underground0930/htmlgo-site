@@ -15,18 +15,6 @@ import { errorText, inputElements } from '@/const'
 
 import { InputText } from './InputText'
 
-const className = {
-  main: 'pt-20px mx-20px max-w-[800px] md:mx-auto',
-  body: `mb-40px `,
-  list: `mb-40px`,
-  loading: `fixed inset-0 z-[10] m-auto bg-opacity-50 bg-[#000] flex items-center justify-center`,
-  error: 'text-16px pb-30px text-[#f00] font-bold',
-  listChild: `mb-25px`,
-  submit: `block bg-[#000] w-[200px] mx-auto p-8px text-[#fff] font-bold disabled:opacity-30`,
-  recaptcha: `flex items-center justify-center pb-40px`,
-  back: `border-t-1 border-border text-center pt-40px pb-40px mt-40px`,
-}
-
 type FormDataType = FormBodyData & FieldValues
 
 type ErrorType = { [key: string]: string }
@@ -118,20 +106,20 @@ export const ContactBody: React.FC = () => {
     <>
       <DebugModal />
       {loading && (
-        <div className={className.loading}>
+        <div className='fixed inset-0 z-[10] m-auto flex items-center justify-center bg-[#000] bg-opacity-50'>
           <LoadingSpinner />
         </div>
       )}
-      <main className={className.main} ref={parentRef}>
+      <main className='mx-20px max-w-[800px] pt-20px md:mx-auto' ref={parentRef}>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
-        {error && <div className={className.error}>{error}</div>}
-        <div className={className.body}>
+        {error && <div className='pb-30px text-16px font-bold text-[#f00]'>{error}</div>}
+        <div className='mb-40px'>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <ul className={className.list}>
+            <ul className='mb-40px'>
               {inputElements.map((elem, index) => {
                 const { name, textarea, row, label } = elem
                 return (
-                  <li key={index} className={className.listChild}>
+                  <li key={index} className='mb-25px'>
                     <InputText
                       name={name}
                       textarea={textarea}
@@ -144,15 +132,19 @@ export const ContactBody: React.FC = () => {
                 )
               })}
             </ul>
-            <div className={className.recaptcha}>
-              <div ref={recaptchaRef}></div>
+            <div className='flex items-center justify-center pb-40px'>
+              <div ref={recaptchaRef} />
             </div>
-            <button className={className.submit} type='submit' disabled={!token}>
+            <button
+              className='mx-auto block w-[200px] bg-[#000] p-8px font-bold text-[#fff] disabled:opacity-30'
+              type='submit'
+              disabled={!token}
+            >
               送信
             </button>
           </form>
         </div>
-        <div className={className.back}>
+        <div className='mt-40px border-t-1 border-border pb-40px pt-40px text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>
