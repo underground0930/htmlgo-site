@@ -66,7 +66,7 @@ export default function About() {
                 <p>東京都→埼玉県でフリーランスとして活動しています。</p>
                 <p>
                   最近は<strong>React</strong>、<strong>TypeScript</strong>、
-                  <strong>Next.js</strong>、<strong>Ruby on Rails </strong>
+                  <strong>Next.js</strong>
                   のお仕事をやっています。
                 </p>
                 <p>
