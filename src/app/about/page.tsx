@@ -3,7 +3,6 @@ import { TextBtn } from '@/components/common/TextBtn'
 import { Title } from '@/components/common/Title'
 import { AboutSnsBox } from '@/components/pages/about/AboutSnsBox'
 
-import { fetchAbout } from '@/libs'
 import { setMetaData } from '@/utils'
 
 const description = 'このサイトについて'
@@ -33,9 +32,7 @@ const className = {
   btnWrap: `border-t-1 border-border text-center pt-40px mb-40px`,
 }
 
-export default async function About() {
-  const aboutData = await fetchAbout()
-
+export default function About() {
   return (
     <>
       <main className={className.main}>
@@ -53,25 +50,65 @@ export default async function About() {
             <AboutSnsBox />
           </div>
           <div className='cms-about-content'>
-            {aboutData.length > 0 ? (
-              <>
-                {aboutData[0].repeat.map((item, index) => {
-                  return (
-                    <section key={index}>
-                      <h3 className={className.title}>{item.title}</h3>
-                      <div
-                        className={className.text}
-                        dangerouslySetInnerHTML={{
-                          __html: item.content,
-                        }}
-                      />
-                    </section>
-                  )
-                })}
-              </>
-            ) : (
-              <></>
-            )}
+            <section>
+              <h3 className={className.title}>プロフィール</h3>
+              <div className={className.text}>
+                <p>
+                  <a
+                    href='https://twitter.com/resistance_gowy'
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
+                    <strong>@resistance_gowy</strong>
+                  </a>
+                  (フロントエンドエンジニア)
+                </p>
+                <p>東京都→埼玉県でフリーランスとして活動しています。</p>
+                <p>
+                  最近は<strong>React</strong>、<strong>TypeScript</strong>、
+                  <strong>Next.js</strong>、<strong>Ruby on Rails </strong>
+                  のお仕事をやっています。
+                </p>
+                <p>
+                  ギークというよりかは、周りと協調してプロジェクトを円滑に進めることが得意なタイプ。
+                </p>
+                <p>
+                  お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
+                </p>
+                <p>業務効率化のツールを作るのが最近の趣味です。</p>
+              </div>
+            </section>
+            <section>
+              <h3 className={className.title}>経験した技術・ツール・サービス</h3>
+              <div className={className.text}>
+                <p>
+                  React / TypeScript / Next.js / Tailwind CSS / Ruby on Rails / WordPress
+                  / TanStack Query / microCMS
+                </p>
+              </div>
+            </section>
+            <section>
+              <h3 className={className.title}>経歴</h3>
+              <div className={className.text}>
+                <ul>
+                  <li>
+                    <strong>2009年 ~ 2010年</strong> : あとらす二十一
+                  </li>
+                  <li>
+                    <strong>2010年 ~ 2016年</strong> : SONICJAM Inc.
+                  </li>
+                  <li>
+                    <strong>2016年 ~ 2022年6月</strong> : フリーランス
+                  </li>
+                  <li>
+                    <strong>2022年7月 ~ 9月</strong>: ちょっと株式会社
+                  </li>
+                  <li>
+                    <strong>2022年9月</strong> ~ : フリーランス
+                  </li>
+                </ul>
+              </div>
+            </section>
           </div>
         </div>
         <div className={className.btnWrap}>
