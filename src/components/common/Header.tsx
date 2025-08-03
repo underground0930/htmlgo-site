@@ -13,22 +13,22 @@ const navList = [
   {
     label: 'About',
     href: '/about',
-    active: (pathname: string): boolean => pathname === '/about',
+    active: (pathname: string): boolean => pathname.startsWith('/about'),
   },
   {
     label: 'Works',
     href: '/works',
-    active: (pathname: string): boolean => pathname === '/works',
+    active: (pathname: string): boolean => pathname.startsWith('/works'),
   },
   {
     label: 'Articles',
     href: '/articles',
-    active: (pathname: string): boolean => pathname === '/articles',
+    active: (pathname: string): boolean => pathname.startsWith('/articles'),
   },
   {
     label: 'Contact',
     href: '/contact',
-    active: (pathname: string): boolean => pathname === '/contact',
+    active: (pathname: string): boolean => pathname.startsWith('/contact'),
   },
 ]
 
