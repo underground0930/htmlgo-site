@@ -43,7 +43,7 @@ const className = {
 
 export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
   const shareTwitterUrl = (slug: string) => {
-    return `https://twitter.com/share?url=https://htmlgo.site/works/${slug}`
+    return `https://x.com/share?url=https://htmlgo.site/works/${slug}`
   }
   const shareFacebookUrl = (slug: string) => {
     return `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
@@ -177,7 +177,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 target='_blank'
                 rel='noreferrer'
               >
-                FACEBOOK
+                facebook
               </a>
             </li>
             <li className={className.snsChild}>
@@ -187,7 +187,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 target='_blank'
                 rel='noreferrer'
               >
-                TWITTER
+                X
               </a>
             </li>
           </ul>

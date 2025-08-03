@@ -55,7 +55,7 @@ export default function About() {
               <div className={className.text}>
                 <p>
                   <a
-                    href='https://twitter.com/resistance_gowy'
+                    href='https://x.com/resistance_gowy'
                     rel='noopener noreferrer'
                     target='_blank'
                   >
