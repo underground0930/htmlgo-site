@@ -16,12 +16,12 @@ type Props = {
 export const WorksList: React.FC<Props> = ({ works = [] }) => {
   return (
     <>
-      <ul className='after:block after:content-[""] md:flex md:flex-wrap md:justify-between after:md:w-[32%]'>
+      <ul className='md:grid md:grid-cols-3 md:gap-6'>
         {works.map((work, i) => {
           const thumb = work?.slider?.[0]?.img?.url
           const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE
           return (
-            <li key={work.id} className='mb-30px border-1 border-border md:w-[32%]'>
+            <li key={work.id} className='mb-20px border-1 border-border md:mb-0'>
               <Link className='block' href={`/works/${work.slug}`} prefetch={false}>
                 <dl>
                   <dt className='relative mb-10px aspect-[16/9] border-b-1 border-border'>
@@ -32,7 +32,7 @@ export const WorksList: React.FC<Props> = ({ works = [] }) => {
                       sizes='(max-width: 768px) 100vw, 33vw'
                     />
                   </dt>
-                  <dd className='px-15px pb-10px'>
+                  <dd className='px-15px pb-15px'>
                     {work.participationAt ? (
                       <time className='mb-8px block text-13px'>
                         参加期間:{work.participationAt}

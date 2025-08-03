@@ -9,12 +9,12 @@ type Props = {
 
 export const ArticlesList: React.FC<Props> = ({ articles }) => {
   return (
-    <div className="mb-20px md:mb-40px md:flex md:flex-wrap md:justify-between md:after:block md:after:w-[23.5%] md:after:content-['']">
+    <div className='mb-20px md:mb-40px md:grid md:grid-cols-4 md:gap-4'>
       {articles.map((article, i) => {
         return (
           <article
             key={article.link}
-            className='mb-30px w-[100%] shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] md:w-[23.5%] '
+            className='mb-20px w-[100%] shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] md:mb-0'
           >
             <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>

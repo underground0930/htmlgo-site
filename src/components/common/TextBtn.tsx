@@ -13,12 +13,11 @@ const className =
 export const TextBtn: React.FC<Props> = ({ title, link, blank = false }) => {
   return (
     <>
-      {blank && (
-        <a className={className} href={link}>
+      {blank ? (
+        <a className={className} href={link} target='_blank' rel='noreferrer'>
           {title}
         </a>
-      )}
-      {!blank && (
+      ) : (
         <Link href={link} className={className} prefetch={false}>
           {title}
         </Link>

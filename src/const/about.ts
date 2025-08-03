@@ -3,7 +3,7 @@ export const snsList = [
     href: 'https://github.com/underground0930',
     target: '_blank',
     rel: 'noreferrer',
-    label: 'Github',
+    label: 'GitHub',
   },
   {
     href: 'https://x.com/resistance_gowy',
@@ -12,16 +12,16 @@ export const snsList = [
     label: 'X',
   },
   {
-    href: 'http://qiita.com/resistance_gowy',
-    target: '_blank',
-    rel: 'noreferrer',
-    label: 'Qiita',
-  },
-  {
     href: 'https://zenn.dev/resistance_gowy',
     target: '_blank',
     rel: 'noreferrer',
     label: 'Zenn',
+  },
+  {
+    href: 'http://qiita.com/resistance_gowy',
+    target: '_blank',
+    rel: 'noreferrer',
+    label: 'Qiita',
   },
   {
     href: 'https://note.com/resistance_gowy',
