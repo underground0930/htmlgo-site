@@ -34,26 +34,26 @@ export default async function Home() {
     <main className='mx-20px max-w-[800px] md:mx-auto'>
       {/* services */}
       <section className={className.section}>
-        <Title title='SERVICES' text='事業内容' />
+        <Title title='Services' text='事業内容' />
         <ServiceList />
         <div className={className.btnWrap}>
-          <TextBtn title='to ABOUT' link='/about/' />
+          <TextBtn title='to About' link='/about/' />
         </div>
       </section>
       {/* works */}
       <section className={className.section}>
-        <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
+        <Title title='Works' text='最新の実績や、自主制作' />
         <WorksList works={works} />
         <div className={className.btnWrap}>
-          <TextBtn title='MORE' link='/works/' />
+          <TextBtn title='More Works' link='/works/' />
         </div>
       </section>
       {/* articles */}
       <section className={className.section}>
-        <Title title='ARTICLES' text='最新の記事' />
+        <Title title='Articles' text='最新の記事' />
         <ArticlesList articles={articles} />
         <div className={className.btnWrap}>
-          <TextBtn title='MORE' link='/articles/' />
+          <TextBtn title='More Articles' link='/articles/' />
         </div>
       </section>
     </main>

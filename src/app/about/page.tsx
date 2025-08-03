@@ -36,7 +36,7 @@ export default function About() {
   return (
     <>
       <main className={className.main}>
-        <Title title='ABOUT' text='このサイトや主について説明しています' />
+        <Title title='About' text='このサイトや主について' />
         <div className={className.body}>
           <div className=''>
             <ImageWrapper
@@ -66,7 +66,7 @@ export default function About() {
                 <p>東京都→埼玉県でフリーランスとして活動しています。</p>
                 <p>
                   最近は<strong>React</strong>、<strong>TypeScript</strong>、
-                  <strong>Next.js</strong>、<strong>Ruby on Rails </strong>
+                  <strong>Next.js</strong>
                   のお仕事をやっています。
                 </p>
                 <p>

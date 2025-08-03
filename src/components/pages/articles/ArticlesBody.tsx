@@ -16,12 +16,10 @@ const className = {
 }
 
 export const ArticlesBody: React.FC<Props> = ({ articles = [], page, pages }) => {
-  // MEMO: 現在は未使用
-  // console.log(page, pages)
   return (
     <>
       <main className={className.main}>
-        <Title title='ARTICLES' text='技術系やそれ以外の記事' />
+        <Title title='Articles' text='技術系やそれ以外の記事' />
         <ArticlesList articles={articles} />
         {/* <Pager pages={pages} page={page} /> */}
         <div className={className.btnWrap + ` mt-40px`}>

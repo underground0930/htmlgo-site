@@ -1,9 +1,9 @@
 import React from 'react'
 import { IconType } from 'react-icons'
 import { FaReact } from 'react-icons/fa'
-import { SiTypescript, SiNextdotjs, SiRubyonrails } from 'react-icons/si'
+import { SiTypescript, SiNextdotjs } from 'react-icons/si'
 
-const List: IconType[] = [FaReact, SiTypescript, SiNextdotjs, SiRubyonrails]
+const List: IconType[] = [FaReact, SiTypescript, SiNextdotjs]
 
 export const ServiceList: React.FC = () => {
   return (
@@ -20,11 +20,7 @@ export const ServiceList: React.FC = () => {
             <br />
           </dt>
           <dd className='text text-16px leading-7'>
-            <b>
-              React,TypeScript,Next.js,
-              <br />
-              Ruby on Rails
-            </b>
+            <b>React,TypeScript,Next.js</b>
             <br />
             を用いたWeb開発を行います。
             <br />

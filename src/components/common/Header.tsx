@@ -13,7 +13,7 @@ const className = {
   linkStyle: ' hover:text-linkActive font-bold text-14px md:text-16px',
 }
 
-const navList = ['about', 'works', 'articles', 'contact']
+const navList = ['About', 'Works', 'Articles', 'Contact']
 
 export const Header: React.FC = () => {
   const pathname = usePathname()
@@ -34,21 +34,21 @@ export const Header: React.FC = () => {
                   href='/'
                   className={(pathname === '/' ? 'text-linkActive' : '') + linkStyle}
                 >
-                  TOP
+                  Top
                 </Link>
               </li>
-              {navList.map((nav, index) => {
+              {navList.map((item, index) => {
                 return (
-                  <li className='ml-20px' key={nav + String(index)}>
+                  <li className='ml-20px' key={item + String(index)}>
                     <Link
                       prefetch={false}
-                      href={`/${nav}`}
+                      href={`/${item}`}
                       className={
-                        (pathname?.startsWith(`/${nav}`) ? 'text-linkActive' : '') +
+                        (pathname?.startsWith(`/${item}`) ? 'text-linkActive' : '') +
                         linkStyle
                       }
                     >
-                      {nav.toLocaleUpperCase()}
+                      {item}
                     </Link>
                   </li>
                 )
