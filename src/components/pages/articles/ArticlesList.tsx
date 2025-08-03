@@ -14,7 +14,7 @@ export const ArticlesList: React.FC<Props> = ({ articles }) => {
         return (
           <article
             key={article.link}
-            className='mb-30px w-[100%] shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)]'
+            className='mb-20px w-[100%] shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] md:mb-0'
           >
             <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>
