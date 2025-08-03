@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Pagination, Navigation, Virtual } from 'swiper'
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
-import { twMerge } from 'tailwind-merge'
 
 import { ImageWrapper } from '@/components/common/ImageWrapper'
 
