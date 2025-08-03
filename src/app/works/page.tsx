@@ -5,7 +5,7 @@ import { Title } from '@/components/common/Title'
 import { fetchWorksIndex } from '@/libs'
 import { setMetaData } from '@/utils'
 
-const description = '最新のお仕事の実績や、自主制作'
+const description = '最新の実績や、自主制作'
 
 export const metadata = {
   ...setMetaData({
@@ -72,11 +72,11 @@ export default async function Works() {
 
   return (
     <main className={className.main}>
-      <Title title='WORKS' text='最新のお仕事の実績や、自主制作' />
+      <Title title='Works' text='最新の実績や、自主制作' />
       <WorksList works={works} />
       <footer className={className.footer}>
         <div className={className.back}>
-          <TextBtn title='HOME' link='/' />
+          <TextBtn title='Home' link='/' />
         </div>
       </footer>
     </main>

@@ -36,7 +36,7 @@ export default function About() {
   return (
     <>
       <main className={className.main}>
-        <Title title='ABOUT' text='このサイトや主について説明しています' />
+        <Title title='About' text='このサイトや主について' />
         <div className={className.body}>
           <div className=''>
             <ImageWrapper

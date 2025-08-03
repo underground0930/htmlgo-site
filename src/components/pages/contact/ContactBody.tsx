@@ -123,7 +123,7 @@ export const ContactBody: React.FC = () => {
         </div>
       )}
       <main className={className.main} ref={parentRef}>
-        <Title title='CONTACT' text='お仕事のお問い合わせはこちらからどうぞ' />
+        <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
         {error && <div className={className.error}>{error}</div>}
         <div className={className.body}>
           <form onSubmit={handleSubmit(onSubmit)}>
