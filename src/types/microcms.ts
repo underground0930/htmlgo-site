@@ -26,7 +26,7 @@ export type WorkDetail = {
     technology_label: string
     technology_slug: string
   }[]
-  slider?: {
+  slider: {
     fieldId: string
     img: {
       url: string

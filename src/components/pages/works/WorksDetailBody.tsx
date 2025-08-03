@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useMemo } from 'react'
 
 import { Title } from '@/components/common/Title'
 import { TextBtn } from '@/components/common/TextBtn'
@@ -42,12 +43,15 @@ const className = {
 }
 
 export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
-  const shareTwitterUrl = (slug: string) => {
-    return `https://x.com/share?url=https://htmlgo.site/works/${slug}`
-  }
-  const shareFacebookUrl = (slug: string) => {
-    return `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
-  }
+  const shareTwitterUrl = (slug: string) =>
+    `https://x.com/share?url=https://htmlgo.site/works/${slug}`
+  const shareFacebookUrl = (slug: string) =>
+    `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
+
+  const sliderList = useMemo(() => {
+    if (!post?.slider) return []
+    return post?.slider?.filter((item) => item?.img?.url)
+  }, [post.slider])
 
   return (
     <>
@@ -56,7 +60,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
         <article className={className.article}>
           <div className={className.kv}>
             <div className={className.kvInner}>
-              {post?.slider && <WorksSlider sliders={post.slider}></WorksSlider>}
+              {post?.slider && <WorksSlider sliders={sliderList} />}
             </div>
           </div>
           {post.body && (
