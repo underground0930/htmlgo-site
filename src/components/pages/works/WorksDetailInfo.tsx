@@ -5,19 +5,12 @@ type Props = {
   children: React.ReactNode
 }
 
-const className = {
-  li: `mb-15px last-of-type:mb-0px`,
-  dl: `block border-1 border-[#e5e5e5]`,
-  dt: `w-auto font-bold md:text-16px p-10px bg-[#e5e5e5]`,
-  dd: `p-20px flex-1 md:text-16px break-words`,
-}
-
 export const WorksDetailInfo: React.FC<Props> = ({ title, children }) => {
   return (
-    <li className={className.li}>
-      <dl className={className.dl}>
-        <dt className={className.dt}>{title}</dt>
-        <dd className={className.dd}>{children}</dd>
+    <li className='mb-15px last-of-type:mb-0px'>
+      <dl className='block border-1 border-[#e5e5e5]'>
+        <dt className='w-auto bg-[#e5e5e5] p-10px font-bold md:text-16px'>{title}</dt>
+        <dd className='flex-1 break-words p-20px md:text-16px'>{children}</dd>
       </dl>
     </li>
   )

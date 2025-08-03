@@ -42,8 +42,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </head>
         <body>
           <Header />
-          <div className={className.wrapper}>
-            <div className={className.container}>
+          <div className='min-h-[500px]'>
+            <div className=''>
               <div>{children}</div>
             </div>
           </div>
@@ -52,9 +52,4 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </html>
     </>
   )
-}
-
-const className = {
-  wrapper: 'min-h-[500px]',
-  container: ``,
 }

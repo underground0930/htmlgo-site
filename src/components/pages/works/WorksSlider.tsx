@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Pagination, Navigation, Virtual } from 'swiper'
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
+import { twMerge } from 'tailwind-merge'
 
 import { ImageWrapper } from '@/components/common/ImageWrapper'
 
@@ -12,78 +13,6 @@ type NewSlider = WorksSlider & { loading: boolean }
 
 type Props = {
   sliders: WorksSlider[]
-}
-
-const className = {
-  container: `w-[100%] border-border border-1`,
-  sliderWrapper: `
-    aspect-[16/9]
-  `,
-  slider: `
-    relative
-    object-fit-cover
-    h-full
-    before:content-[""]
-    block
-    aspect-video
-  `,
-  sliderBtn: `
-    absolute
-    m-auto
-    top-0
-    bottom-0
-    w-[40px]
-    h-[40px]
-    cursor-pointer
-    z-1
-    items-center
-    justify-center
-    hidden
-    md:flex
-    bg-btn
-    text-base
-    rounded-full
-  `,
-  sliderPrev: `left-[-55px]`,
-  sliderNext: `right-[-55px]`,
-  indicator: `
-  flex
-  items-center
-  justify-center
-  w-full
-  text-16px
-  font-bold
-  pt-20px
-  `,
-  icon: `w-[100%] h-[100%]`,
-  loader: `
-    rounded-[50%]
-    w-[10em]
-    h-[10em]
-    after:block
-    after:content-[""]
-    after:rounded-[50%]
-    after:w-[10em]
-    after:h-[10em]
-    left-0
-    right-0
-    top-0
-    bottom-0
-    m-auto
-    text-10px
-    absolute
-    indent-[-9999em]
-    border-t-[1.1em]
-    border-t-[#000]/10
-    border-r-[1.1em]
-    border-r-[#000]/10
-    border-b-[1.1em]
-    border-b-[#000]/10
-    border-l-[1.1em]
-    border-l-[#000]/30
-    transform-translate-z-[0]
-    animate-[load8_1.1s_linear_infinite]
-  `,
 }
 
 const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
@@ -150,7 +79,7 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
     <>
       <Swiper
         modules={[Pagination, Navigation, Virtual]}
-        className={`${className.container}`}
+        className='w-[100%] border-1 border-border'
         virtual
         onSlideChange={() => sliderChangeHandle()}
         ref={swiperRef}
@@ -159,11 +88,15 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
           {sliderList.map((item, i) => {
             return (
               <SwiperSlide
-                className={className.slider}
+                className="object-fit-cover relative block aspect-video h-full before:content-['']"
                 virtualIndex={i}
                 key={item.img.url}
               >
-                {item.loading && <div className={className.loader}>Loading...</div>}
+                {item.loading && (
+                  <div className="transform-translate-z-[0] absolute bottom-0 left-0 right-0 top-0 m-auto h-[10em] w-[10em] animate-[load8_1.1s_linear_infinite] rounded-[50%] border-b-[1.1em] border-l-[1.1em] border-r-[1.1em] border-t-[1.1em] border-b-[#000]/10 border-l-[#000]/30 border-r-[#000]/10 border-t-[#000]/10 indent-[-9999em] text-10px after:block after:h-[10em] after:w-[10em] after:rounded-[50%] after:content-['']">
+                    Loading...
+                  </div>
+                )}
                 <ImageWrapper
                   cls='object-cover'
                   src={item.img.url}
@@ -185,7 +118,7 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
       </Swiper>
       {!bothEnds.first && sliders.length > 1 && (
         <div
-          className={`${className.sliderBtn} ${className.sliderPrev} prevBtn`}
+          className='prevBtn absolute bottom-0 left-[-55px] top-0 z-1 m-auto hidden h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-btn text-base md:flex'
           onClick={goPrev}
         >
           &lt;
@@ -193,14 +126,14 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
       )}
       {!bothEnds.last && sliders.length > 1 && (
         <div
-          className={`${className.sliderBtn} ${className.sliderNext} nextBtn`}
+          className='nextBtn absolute bottom-0 right-[-55px] top-0 z-1 m-auto hidden h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-btn text-base md:flex'
           onClick={goNext}
         >
           &gt;
         </div>
       )}
       {sliders.length > 1 && (
-        <div className={`${className.indicator}`}>
+        <div className='flex w-full items-center justify-center pt-20px text-16px font-bold'>
           {index} / {sliders.length}
         </div>
       )}

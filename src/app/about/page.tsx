@@ -21,38 +21,29 @@ export const metadata = {
   }),
 }
 
-const className = {
-  main: 'mx-20px max-w-[800px] md:mx-auto',
-  body: `mb-40px pb-30px`,
-  img: `mx-auto mb-40px rounded-full`,
-  sns: `mb-45px`,
-  title: `text-18px font-bold mt-40px mb-30px border-l-5 border-l-[#000] border-b-1 border-b-[#000]/30 pl-5px pb-5px`,
-  link: `font-bold`,
-  text: `text-15px`,
-  btnWrap: `border-t-1 border-border text-center pt-40px mb-40px`,
-}
-
 export default function About() {
   return (
     <>
-      <main className={className.main}>
+      <main className='mx-20px max-w-[800px] md:mx-auto'>
         <Title title='About' text='このサイトや主について' />
-        <div className={className.body}>
+        <div className='mb-40px pb-30px'>
           <div className=''>
             <ImageWrapper
-              cls={className.img}
+              cls='mx-auto mb-40px rounded-full'
               src='/img/profile.jpg'
               width={210}
               height={210}
             />
           </div>
-          <div className={className.sns}>
+          <div className='mb-45px'>
             <AboutSnsBox />
           </div>
           <div className='cms-about-content'>
             <section>
-              <h3 className={className.title}>プロフィール</h3>
-              <div className={className.text}>
+              <h3 className='mb-30px mt-40px border-b-1 border-l-5 border-b-[#000]/30 border-l-[#000] pb-5px pl-5px text-18px font-bold'>
+                プロフィール
+              </h3>
+              <div className='text-15px'>
                 <p>
                   <a
                     href='https://x.com/resistance_gowy'
@@ -79,8 +70,10 @@ export default function About() {
               </div>
             </section>
             <section>
-              <h3 className={className.title}>経験した技術・ツール・サービス</h3>
-              <div className={className.text}>
+              <h3 className='mb-30px mt-40px border-b-1 border-l-5 border-b-[#000]/30 border-l-[#000] pb-5px pl-5px text-18px font-bold'>
+                経験した技術・ツール・サービス
+              </h3>
+              <div className='text-15px'>
                 <p>
                   React / TypeScript / Next.js / Tailwind CSS / Ruby on Rails / WordPress
                   / TanStack Query / microCMS
@@ -88,8 +81,10 @@ export default function About() {
               </div>
             </section>
             <section>
-              <h3 className={className.title}>経歴</h3>
-              <div className={className.text}>
+              <h3 className='mb-30px mt-40px border-b-1 border-l-5 border-b-[#000]/30 border-l-[#000] pb-5px pl-5px text-18px font-bold'>
+                経歴
+              </h3>
+              <div className='text-15px'>
                 <ul>
                   <li>
                     <strong>2009年 ~ 2010年</strong> : あとらす二十一
@@ -111,7 +106,7 @@ export default function About() {
             </section>
           </div>
         </div>
-        <div className={className.btnWrap}>
+        <div className='mb-40px border-t-1 border-border pt-40px text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

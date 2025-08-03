@@ -19,29 +19,6 @@ type Props = {
   next: { slug: string } | null
 }
 
-const className = {
-  main: 'mx-20px max-w-[800px] md:mx-auto',
-  kv: `relative mb-40px`,
-  kvInner: `relative`,
-  article: ``,
-  info: `py-40px border-b border-border`,
-  infoBody: ``,
-  infoList: ``,
-  link: `break-all block mb-15px last-of-type:mb-0px`,
-  span: `relative inline-block pr-16px after:absolute after:content-["/"] after:block last-of-type:after:hidden after:font-bold after:right-[5px] after:top-0`,
-  body: `mx-auto text-16px leading-[1.8] px-10px py-20px border-y-1 border-border break-words md:mx-25px md:py-40px`,
-  facebook: `bg-[#4267b2]`,
-  twitter: `bg-[#1da1f2]`,
-  sns: `py-25px flex items-center justify-center border-b-[1px] border-border`,
-  snsChild: `mx-6px`,
-  snsLink: `inline-block leading-[35px] h-[35px] px-10px cursor-pointer text-base`,
-  icon: `w-[25px] h-[25px]`,
-  pager: `absolute top-0 bottom-0 m-auto w-[40px] h-[40px] bg-[#000] text-base flex items-center justify-center`,
-  prev: `right-0`,
-  next: `left-0`,
-  back: `relative text-center mt-40px mb-40px`,
-}
-
 export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
   const shareTwitterUrl = (slug: string) =>
     `https://x.com/share?url=https://htmlgo.site/works/${slug}`
@@ -55,25 +32,25 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
 
   return (
     <>
-      <main className={className.main}>
+      <main className='mx-20px max-w-[800px] md:mx-auto'>
         <Title title={post.title} text='WORKS NAME' />
-        <article className={className.article}>
-          <div className={className.kv}>
-            <div className={className.kvInner}>
+        <article>
+          <div className='relative mb-40px'>
+            <div className='relative'>
               {post?.slider && <WorksSlider sliders={sliderList} />}
             </div>
           </div>
           {post.body && (
             <div
-              className={`${className.body} cms-works-content`}
+              className='cms-works-content mx-auto break-words border-y-1 border-border px-10px py-20px text-16px leading-[1.8] md:mx-25px md:py-40px'
               dangerouslySetInnerHTML={{
                 __html: `${post.body}`,
               }}
             ></div>
           )}
-          <div className={className.info}>
-            <div className={className.infoBody}>
-              <ul className={className.infoList}>
+          <div className='border-b border-border py-40px'>
+            <div>
+              <ul>
                 {post?.participationAt ? (
                   <WorksDetailInfo title='参加期間'>
                     <time dateTime={conversionDate(post.participationAt)}>
@@ -101,7 +78,10 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 {post?.category?.length > 0 && (
                   <WorksDetailInfo title='カテゴリー'>
                     {post.category.map((v) => (
-                      <span className={className.span} key={v.category_label}>
+                      <span
+                        className="relative inline-block pr-16px after:absolute after:right-[5px] after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
+                        key={v.category_label}
+                      >
                         {v.category_label}
                       </span>
                     ))}
@@ -110,7 +90,10 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 {post?.technology?.length > 0 && (
                   <WorksDetailInfo title='テクノロジー'>
                     {post.technology.map((v) => (
-                      <span className={className.span} key={v.technology_label}>
+                      <span
+                        className="relative inline-block pr-16px after:absolute after:right-[5px] after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
+                        key={v.technology_label}
+                      >
                         {v.technology_label}
                       </span>
                     ))}
@@ -125,7 +108,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                   <WorksDetailInfo title='URL'>
                     {post?.url && (
                       <a
-                        className={`${className.link} underline`}
+                        className='mb-15px block break-all underline last-of-type:mb-0px'
                         href={post.url}
                         target='_blank'
                         rel='noreferrer'
@@ -135,7 +118,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                     )}
                     {post?.url2 && (
                       <a
-                        className={`${className.link} underline`}
+                        className='mb-15px block break-all underline last-of-type:mb-0px'
                         href={post.url2}
                         target='_blank'
                         rel='noreferrer'
@@ -154,7 +137,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                           <p className='text-14px'>
                             {v.link ? (
                               <a
-                                className={`${className.link} underline`}
+                                className='mb-15px block break-all underline last-of-type:mb-0px'
                                 href={v.link}
                                 target='_blank'
                                 rel='noreferrer'
@@ -162,7 +145,9 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                                 {v.value}
                               </a>
                             ) : (
-                              <a className={className.link}>{v.value}</a>
+                              <a className='mb-15px block break-all last-of-type:mb-0px'>
+                                {v.value}
+                              </a>
                             )}
                           </p>
                         </li>
@@ -173,10 +158,10 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
               </ul>
             </div>
           </div>
-          <ul className={className.sns}>
-            <li className={className.snsChild}>
+          <ul className='flex items-center justify-center border-b-[1px] border-border py-25px'>
+            <li className='mx-6px'>
               <a
-                className={`${className.snsLink} ${className.facebook}`}
+                className='inline-block h-[35px] cursor-pointer bg-[#4267b2] px-10px leading-[35px] text-base'
                 href={shareFacebookUrl(post.slug)}
                 target='_blank'
                 rel='noreferrer'
@@ -184,9 +169,9 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 facebook
               </a>
             </li>
-            <li className={className.snsChild}>
+            <li className='mx-6px'>
               <a
-                className={`${className.snsLink} ${className.twitter}`}
+                className='inline-block h-[35px] cursor-pointer bg-[#1da1f2] px-10px leading-[35px] text-base'
                 href={shareTwitterUrl(post.slug)}
                 target='_blank'
                 rel='noreferrer'
@@ -195,11 +180,11 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
               </a>
             </li>
           </ul>
-          <div className={className.back}>
+          <div className='relative mb-40px mt-40px text-center'>
             <TextBtn title='WORKS' link='/works' />
             {next && (
               <Link
-                className={`${className.pager} ${className.next}`}
+                className='absolute bottom-0 left-0 top-0 m-auto flex h-[40px] w-[40px] items-center justify-center bg-[#000] text-base'
                 href={`/works/${next.slug}`}
               >
                 &lt;
@@ -207,7 +192,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
             )}
             {prev && (
               <Link
-                className={`${className.pager} ${className.prev}`}
+                className='absolute bottom-0 right-0 top-0 m-auto flex h-[40px] w-[40px] items-center justify-center bg-[#000] text-base'
                 href={`/works/${prev.slug}`}
               >
                 &gt;
