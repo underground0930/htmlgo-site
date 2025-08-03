@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 import { ImageWrapper } from '@/components/common/ImageWrapper'
 
 import { WorksSlider } from '@/types'
+import { NO_IMAGE } from '@/const'
 
 type NewSlider = WorksSlider & { loading: boolean }
 
@@ -99,9 +100,24 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
   const [sliderList, setSliderList] = useState<NewSlider[]>([])
 
   useEffect(() => {
-    const newSliders = sliders.map((s) => {
+    if (sliders.length === 0) {
+      setSliderList([
+        {
+          fieldId: 'noImage',
+          img: {
+            url: NO_IMAGE,
+            height: 600,
+            width: 1200,
+          },
+          loading: false,
+        },
+      ])
+      return
+    }
+
+    const newSliders = sliders.map((item) => {
       return {
-        ...s,
+        ...item,
         loading: true,
       }
     })
@@ -140,13 +156,17 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
         ref={swiperRef}
       >
         <div className='swiper-wrapper'>
-          {sliderList.map((v, i) => {
+          {sliderList.map((item, i) => {
             return (
-              <SwiperSlide className={className.slider} virtualIndex={i} key={v.img.url}>
-                {v.loading && <div className={className.loader}>Loading...</div>}
+              <SwiperSlide
+                className={className.slider}
+                virtualIndex={i}
+                key={item.img.url}
+              >
+                {item.loading && <div className={className.loader}>Loading...</div>}
                 <ImageWrapper
-                  cls=''
-                  src={v.img.url}
+                  cls='object-cover'
+                  src={item.img.url}
                   onLoad={() => {
                     setSliderList((prev) => {
                       return prev.map((s, j) => {

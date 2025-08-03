@@ -13,7 +13,33 @@ const className = {
   linkStyle: ' hover:text-linkActive font-bold text-14px md:text-16px',
 }
 
-const navList = ['about', 'works', 'articles', 'contact']
+const navList = [
+  {
+    label: 'Top',
+    href: '/',
+    active: (pathname: string) => pathname === '/',
+  },
+  {
+    label: 'About',
+    href: '/about',
+    active: (pathname: string) => pathname === '/about',
+  },
+  {
+    label: 'Works',
+    href: '/works',
+    active: (pathname: string) => pathname === '/works',
+  },
+  {
+    label: 'Articles',
+    href: '/articles',
+    active: (pathname: string) => pathname === '/articles',
+  },
+  {
+    label: 'Contact',
+    href: '/contact',
+    active: (pathname: string) => pathname === '/contact',
+  },
+]
 
 export const Header: React.FC = () => {
   const pathname = usePathname()
@@ -29,26 +55,17 @@ export const Header: React.FC = () => {
           </h1>
           <nav className={nav}>
             <ul className={ul}>
-              <li>
-                <Link
-                  href='/'
-                  className={(pathname === '/' ? 'text-linkActive' : '') + linkStyle}
-                >
-                  TOP
-                </Link>
-              </li>
-              {navList.map((nav, index) => {
+              {navList.map((item, index) => {
                 return (
-                  <li className='ml-20px' key={nav + String(index)}>
+                  <li className='ml-20px' key={item.href + String(index)}>
                     <Link
                       prefetch={false}
-                      href={`/${nav}`}
+                      href={item.href}
                       className={
-                        (pathname?.startsWith(`/${nav}`) ? 'text-linkActive' : '') +
-                        linkStyle
+                        (item.active(pathname) ? 'text-linkActive' : '') + linkStyle
                       }
                     >
-                      {nav.toLocaleUpperCase()}
+                      {item.label}
                     </Link>
                   </li>
                 )

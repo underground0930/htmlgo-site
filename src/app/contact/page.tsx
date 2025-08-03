@@ -2,7 +2,7 @@ import { ContactBody } from '@/components/pages/contact/ContactBody'
 
 import { setMetaData } from '@/utils'
 
-const description = 'お問い合わせはこちらからお願いします'
+const description = 'お仕事のお問い合わせはこちらから'
 
 export const metadata = {
   ...setMetaData({
