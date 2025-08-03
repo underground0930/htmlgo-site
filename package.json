@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "predev": "node ./scripts/generateFeedJson.js && rm -rf .next",
-    "dev": "PORT=5000 next dev",
+    "dev": "next dev",
     "prebuild": "node ./scripts/generateFeedJson.js",
     "build": "next build",
     "start": "next start",
