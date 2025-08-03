@@ -2,68 +2,59 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
-const className = {
-  header: 'relative z-[1] mb-32px mx-20px border-b-1 border-border',
-  inner: 'items-center justify-between max-w-[800px] mx-auto md:flex',
-  title:
-    'text-center leading-none font-bold text-25px pt-24px pb-16px md:text-left md:w-[210px] md:py-20px',
-  nav: 'overflow-x-scroll md:overflow-x-auto scrolling-touch',
-  ul: 'flex pb-10px md:pb-0px',
-  linkStyle: ' hover:text-linkActive font-bold text-14px md:text-16px',
-}
+import { twMerge } from 'tailwind-merge'
 
 const navList = [
   {
     label: 'Top',
     href: '/',
-    active: (pathname: string) => pathname === '/',
+    active: (pathname: string): boolean => pathname === '/',
   },
   {
     label: 'About',
     href: '/about',
-    active: (pathname: string) => pathname === '/about',
+    active: (pathname: string): boolean => pathname === '/about',
   },
   {
     label: 'Works',
     href: '/works',
-    active: (pathname: string) => pathname === '/works',
+    active: (pathname: string): boolean => pathname === '/works',
   },
   {
     label: 'Articles',
     href: '/articles',
-    active: (pathname: string) => pathname === '/articles',
+    active: (pathname: string): boolean => pathname === '/articles',
   },
   {
     label: 'Contact',
     href: '/contact',
-    active: (pathname: string) => pathname === '/contact',
+    active: (pathname: string): boolean => pathname === '/contact',
   },
 ]
 
 export const Header: React.FC = () => {
   const pathname = usePathname()
-  const { header, inner, title, nav, ul, linkStyle } = className
   return (
     <>
-      <header className={header}>
-        <div className={inner}>
-          <h1 className={title}>
+      <header className='relative z-[1] mx-20px mb-32px border-b-1 border-border'>
+        <div className='mx-auto max-w-[800px] items-center justify-between md:flex'>
+          <h1 className='pb-16px pt-24px text-center text-25px font-bold leading-none md:w-[210px] md:py-20px md:text-left'>
             <Link href='/' className='no-underline'>
               HTMLGO
             </Link>
           </h1>
-          <nav className={nav}>
-            <ul className={ul}>
+          <nav className='scrolling-touch overflow-x-scroll md:overflow-x-auto'>
+            <ul className='flex pb-10px md:pb-0px'>
               {navList.map((item, index) => {
                 return (
                   <li className='ml-20px' key={item.href + String(index)}>
                     <Link
                       prefetch={false}
                       href={item.href}
-                      className={
-                        (item.active(pathname) ? 'text-linkActive' : '') + linkStyle
-                      }
+                      className={twMerge(
+                        'text-14px font-bold hover:text-linkActive md:text-16px',
+                        item.active(pathname) && 'text-linkActive',
+                      )}
                     >
                       {item.label}
                     </Link>
