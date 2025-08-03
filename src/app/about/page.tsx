@@ -3,7 +3,6 @@ import { TextBtn } from '@/components/common/TextBtn'
 import { Title } from '@/components/common/Title'
 import { AboutSnsBox } from '@/components/pages/about/AboutSnsBox'
 
-import { fetchAbout } from '@/libs'
 import { setMetaData } from '@/utils'
 
 const description = 'このサイトについて'
@@ -33,9 +32,7 @@ const className = {
   btnWrap: `border-t-1 border-border text-center pt-40px mb-40px`,
 }
 
-export default async function About() {
-  const aboutData = await fetchAbout()
-
+export default function About() {
   return (
     <>
       <main className={className.main}>
@@ -53,25 +50,39 @@ export default async function About() {
             <AboutSnsBox />
           </div>
           <div className='cms-about-content'>
-            {aboutData.length > 0 ? (
-              <>
-                {aboutData[0].repeat.map((item, index) => {
-                  return (
-                    <section key={index}>
-                      <h3 className={className.title}>{item.title}</h3>
-                      <div
-                        className={className.text}
-                        dangerouslySetInnerHTML={{
-                          __html: item.content,
-                        }}
-                      />
-                    </section>
-                  )
-                })}
-              </>
-            ) : (
-              <></>
-            )}
+            <section>
+              <h3 className={className.title}>このサイトについて</h3>
+              <div className={className.text}>
+                <p>
+                  このサイトは私のポートフォリオサイトです。制作実績や技術記事などを掲載しています。
+                </p>
+                <p>
+                  Next.js、TypeScript、Tailwind
+                  CSSを使用して構築されており、定期的にアップデートを行っています。
+                </p>
+              </div>
+            </section>
+            <section>
+              <h3 className={className.title}>制作者について</h3>
+              <div className={className.text}>
+                <p>Web開発を中心に活動しているエンジニアです。</p>
+                <p>
+                  フロントエンド技術を軸に、ユーザビリティとパフォーマンスを重視したWebサイト・アプリケーションの開発を行っています。
+                </p>
+              </div>
+            </section>
+            <section>
+              <h3 className={className.title}>技術スタック</h3>
+              <div className={className.text}>
+                <p>主に以下の技術を使用しています：</p>
+                <ul>
+                  <li>JavaScript / TypeScript</li>
+                  <li>React / Next.js</li>
+                  <li>CSS / Tailwind CSS</li>
+                  <li>Node.js</li>
+                </ul>
+              </div>
+            </section>
           </div>
         </div>
         <div className={className.btnWrap}>
