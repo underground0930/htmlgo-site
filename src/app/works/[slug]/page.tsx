@@ -51,9 +51,7 @@ export async function generateMetadata({ params }: Props) {
 export async function generateStaticParams() {
   const paths = await fetchWorksPaths()
 
-  return paths.map((path) => {
-    path.slug
-  })
+  return paths.map((path) => path.slug)
 }
 
 export default async function WorksDetail({ params }: Props) {

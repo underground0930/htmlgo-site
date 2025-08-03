@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useMemo } from 'react'
+import { FaFacebookSquare } from 'react-icons/fa'
+import { FaSquareXTwitter } from 'react-icons/fa6'
 
 import { Title } from '@/components/common/Title'
 import { TextBtn } from '@/components/common/TextBtn'
@@ -158,25 +160,25 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
               </ul>
             </div>
           </div>
-          <ul className='flex items-center justify-center border-b-[1px] border-border py-25px'>
-            <li className='mx-6px'>
+          <ul className='flex items-center justify-center gap-5 border-b-[1px] border-border py-25px'>
+            <li className='text-[0px]'>
               <a
-                className='inline-block h-[35px] cursor-pointer bg-[#4267b2] px-10px leading-[35px] text-base'
+                className='inline-block h-[35px] cursor-pointer'
                 href={shareFacebookUrl(post.slug)}
                 target='_blank'
                 rel='noreferrer'
               >
-                facebook
+                <FaFacebookSquare className='h-full w-full' color='#4267b2' />
               </a>
             </li>
-            <li className='mx-6px'>
+            <li className='text-[0px]'>
               <a
-                className='inline-block h-[35px] cursor-pointer bg-[#1da1f2] px-10px leading-[35px] text-base'
+                className='inline-block h-[35px] cursor-pointer'
                 href={shareTwitterUrl(post.slug)}
                 target='_blank'
                 rel='noreferrer'
               >
-                X
+                <FaSquareXTwitter className='h-full w-full' />
               </a>
             </li>
           </ul>
