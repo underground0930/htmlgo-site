@@ -10,6 +10,11 @@
   .cms-works-content p {
     @apply mb-6 text-sm md:text-lg;
   }
+  .cms-works-content li {
+    @apply text-sm md:text-lg;
+    list-style: disc;
+    list-style-position: inside;
+  }
   .cms-works-content a {
     @apply underline;
   }
