@@ -6,10 +6,10 @@ export const snsList = [
     label: 'Github',
   },
   {
-    href: 'https://twitter.com/resistance_gowy',
+    href: 'https://x.com/resistance_gowy',
     target: '_blank',
     rel: 'noreferrer',
-    label: 'Twitter',
+    label: 'X',
   },
   {
     href: 'http://qiita.com/resistance_gowy',
