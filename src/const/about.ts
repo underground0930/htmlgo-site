@@ -23,10 +23,4 @@ export const snsList = [
     rel: 'noreferrer',
     label: 'Qiita',
   },
-  {
-    href: 'https://note.com/resistance_gowy',
-    target: '_blank',
-    rel: 'noreferrer',
-    label: 'Note',
-  },
 ]
