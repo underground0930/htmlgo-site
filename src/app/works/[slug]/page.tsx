@@ -9,12 +9,13 @@ import { WorksDetailBody } from '@/components/pages/works/WorksDetailBody'
 import { removeHtml, setMetaData } from '@/utils'
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
   const result = await fetchWorksDetail({ slug: params.slug })
   let meta = {}
   if (result.post) {
@@ -54,7 +55,8 @@ export async function generateStaticParams() {
   return paths.map((path) => path.slug)
 }
 
-export default async function WorksDetail({ params }: Props) {
+export default async function WorksDetail(props: Props) {
+  const params = await props.params;
   const result = await fetchWorksDetail({ slug: params.slug })
   const { post, prev, next } = result
 

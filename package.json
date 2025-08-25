@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "predev": "node ./scripts/generateFeedJson.js && rm -rf .next",
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "prebuild": "node ./scripts/generateFeedJson.js",
     "build": "next build",
     "start": "next start",
@@ -22,10 +22,10 @@
     "dayjs": "^1.11.7",
     "eslint": "^8.38.0",
     "microcms-js-sdk": "2.7.0",
-    "next": "^14.1.4",
+    "next": "15.5.0",
     "nodemailer": "^6.9.9",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "react-hook-form": "^7.43.9",
     "react-hook-recaptcha-v2": "^2.0.0",
     "react-icons": "5.4.0",
@@ -42,15 +42,15 @@
     "@types/node": "18.18.0",
     "@types/nodemailer": "^6.4.7",
     "@types/prettier": "2.7.2",
-    "@types/react": "18.0.33",
-    "@types/react-dom": "18.0.11",
+    "@types/react": "19.1.11",
+    "@types/react-dom": "19.1.7",
     "@types/xml2js": "^0.4.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "autoprefixer": "^10.4.14",
     "difit": "2.2.0",
     "dotenv": "^16.0.3",
-    "eslint-config-next": "13.3.0",
+    "eslint-config-next": "15.5.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "husky": "^8.0.3",
@@ -61,5 +61,9 @@
     "tailwindcss": "^3.3.1",
     "typescript": "5.0.4",
     "xml2js": "^0.5.0"
+  },
+  "overrides": {
+    "@types/react": "19.1.11",
+    "@types/react-dom": "19.1.7"
   }
 }
