@@ -3,14 +3,6 @@ module.exports = {
   //   locales: ['en-US', 'ja'],
   //   defaultLocale: 'ja',
   // },
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: ['@svgr/webpack'],
-    })
-    return config
-  },
   reactStrictMode: true,
   images: {
     remotePatterns: [
