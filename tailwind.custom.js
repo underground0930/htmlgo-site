@@ -34,7 +34,7 @@ const fontSize = () => {
   return s
 }
 
-export {
+module.exports = {
   zIndex,
   fontSize,
   spacing,

@@ -1,5 +1,19 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+/* --------------------------------------------------------------
+  カスタムカラーの定義
+-------------------------------------------------------------- */
+:root {
+  --color-linkActive: #339fef;
+  --color-main: #24292e;
+  --color-base: #fff;
+  --color-font: #000;
+  --color-btn: #000;
+  --color-btnIcon: #fff;
+  --color-footerText: #fff;
+  --color-loader: #333333;
+  --color-border: #dddddd;
+}
 
 /* --------------------------------------------------------------
   カスタマイズ
@@ -18,13 +32,16 @@
     @apply underline;
   }
 
-
   .cms-about-content section p {
     @apply leading-[1.8];
   }
 
   .cms-about-content section a {
-    @apply underline hover:text-linkActive;
+    @apply underline;
+  }
+
+  .cms-about-content section a:hover {
+    color: var(--color-linkActive);
   }
 
   .cms-about-content section ul {

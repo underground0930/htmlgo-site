@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 
-// Tailwind CSS 4の新しい設定形式
+// Tailwind CSS 4の設定ファイル
 // https://tailwindcss.com/docs/configuration
 
-const { zIndex, fontSize, spacing } = await import('./tailwind.custom.mjs')
+const { zIndex, fontSize, spacing } = require('./tailwind.custom.js')
 
-export default {
+module.exports = {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
