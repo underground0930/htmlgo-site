@@ -17,12 +17,7 @@ type Props = {
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
-  console.log('generateMetadata params:', params)
-  console.log('generateMetadata params.slug:', params.slug)
-  console.log('generateMetadata typeof params.slug:', typeof params.slug)
-
   const result = await fetchWorksDetail({ slug: params.slug })
-  console.log('generateMetadata result:', result)
 
   let meta = {}
   if (result.post) {
@@ -58,7 +53,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const paths = await fetchWorksPaths()
-  return paths.map((path) => path.slug)
+  return paths.map((path) => ({ slug: path.slug }))
 }
 
 export default async function WorksDetail(props: Props) {
