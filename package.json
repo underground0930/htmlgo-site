@@ -37,6 +37,7 @@
     "@eslint/eslintrc": "3.3.1",
     "@types/eslint": "8.37.0",
     "@types/gtag.js": "0.0.12",
+    "@types/node": "24.3.0",
     "@types/nodemailer": "6.4.7",
     "@types/prettier": "2.7.2",
     "@types/react": "19.1.11",

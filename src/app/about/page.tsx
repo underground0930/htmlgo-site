@@ -1,3 +1,5 @@
+import { Metadata } from 'next'
+
 import { ImageWrapper } from '@/components/common/ImageWrapper'
 import { TextBtn } from '@/components/common/TextBtn'
 import { Title } from '@/components/common/Title'
@@ -7,7 +9,7 @@ import { setMetaData } from '@/utils'
 
 const description = 'このサイトについて'
 
-export const metadata = {
+export const metadata: Metadata = {
   ...setMetaData({
     meta: {
       openGraph: {
