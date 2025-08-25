@@ -8,7 +8,7 @@ type Props = {
 export const Title: React.FC<Props> = ({ title, text }) => {
   return (
     <>
-      <h2 className='mb-6 text-center leading-[1.55] md:mb-10'>
+      <h2 className='mb-6 text-center leading-5 md:mb-10'>
         {title && (
           <span className='mb-1 block text-xl font-bold md:text-3xl'>{title}</span>
         )}

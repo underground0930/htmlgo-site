@@ -46,7 +46,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
           </div>
           {post.body && (
             <div
-              className='cms-works-content mx-auto break-words border-y border-border px-2.5 py-5 text-base leading-[1.8] md:mx-6 md:py-10'
+              className='mx-auto break-words border-y border-border px-2.5 py-5 text-base leading-[1.8] md:mx-6 md:py-10 [&>p]:mb-6 [&>p]:text-sm [&>p]:md:text-lg [&>li]:text-sm [&>li]:md:text-lg [&>a]:underline'
               dangerouslySetInnerHTML={{
                 __html: `${post.body}`,
               }}
@@ -82,7 +82,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 {post?.category?.length > 0 && (
                   <WorksDetailInfo title='カテゴリー'>
                     {post.category.map((v) => (
-                                              <span
+                      <span
                           className="relative inline-block pr-4 after:absolute after:right-[5px] after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
                           key={v.category_label}
                         >
@@ -94,8 +94,8 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 {post?.technology?.length > 0 && (
                   <WorksDetailInfo title='テクノロジー'>
                     {post.technology.map((v) => (
-                                              <span
-                          className="relative inline-block pr-4 after:absolute after:right-[5px] after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
+                        <span
+                          className="relative inline-block pr-4 after:absolute after:right-1.25 after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
                           key={v.technology_label}
                         >
                           {v.technology_label}
@@ -111,7 +111,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 {(post?.url || post?.url2) && (
                   <WorksDetailInfo title='URL'>
                     {post?.url && (
-                                              <a
+                        <a
                           className='mb-4 block break-all underline last-of-type:mb-0'
                           href={post.url}
                           target='_blank'

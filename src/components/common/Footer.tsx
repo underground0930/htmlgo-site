@@ -38,7 +38,7 @@ const links = [
 export const Footer: React.FC = () => {
   return (
     <>
-      <footer className='bg-main p-5 text-footerText'>
+      <footer className='bg-main p-5 text-white'>
         <dl className='mb-5 text-center text-sm'>
           <dt className='mb-4'>This website powered by</dt>
           <dd>
@@ -47,7 +47,7 @@ export const Footer: React.FC = () => {
                 return (
                   <li className='mx-2' key={v.key}>
                     <a
-                      className='flex w-[30px] items-center justify-center [&>svg]:h-auto [&>svg]:w-full'
+                      className='flex w-7 items-center justify-center [&>svg]:h-auto [&>svg]:w-full'
                       href={v.href}
                       target='_blank'
                       rel='noreferrer'

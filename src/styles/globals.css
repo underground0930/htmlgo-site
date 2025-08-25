@@ -1,73 +1,48 @@
 @import 'tailwindcss';
 
 /* --------------------------------------------------------------
-  カスタムカラーの定義
+  ユーティリティクラスとCSS変数の定義
 -------------------------------------------------------------- */
-:root {
-  --color-linkActive: #339fef;
-  --color-main: #24292e;
-  --color-base: #fff;
-  --color-font: #000;
-  --color-btn: #000;
-  --color-btnIcon: #fff;
-  --color-footerText: #fff;
-  --color-loader: #333333;
-  --color-border: #dddddd;
-}
 
 @theme {
+  /* breakpoint */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
 
+  /* color */
+  --color-link-active: #339fef;
+  --color-main: #24292e;
+  --color-base: #24292e;
+  --color-font: #000;
+  --color-loader: #333333;
+  --color-border: #dddddd;
+
+  /* animation */
   @keyframes load8 {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
 }
 
-
 /* --------------------------------------------------------------
-  カスタマイズ
+  CSS変数の定義
 -------------------------------------------------------------- */
 
-@layer components {
-  .cms-works-content p {
-    @apply mb-6 text-sm md:text-lg;
-  }
-  .cms-works-content li {
-    @apply text-sm md:text-lg;
-    list-style: disc;
-    list-style-position: inside;
-  }
-  .cms-works-content a {
-    @apply underline;
-  }
+:root {
 
-  .cms-about-content section p {
-    @apply leading-[1.8];
-  }
-
-  .cms-about-content section a {
-    @apply underline;
-  }
-
-  .cms-about-content section a:hover {
-    color: var(--color-linkActive);
-  }
-
-  .cms-about-content section ul {
-  }
-
-  .cms-about-content section li {
-    @apply mb-3;
-  }
 }
+
+
+/* --------------------------------------------------------------
+  全体の設定
+-------------------------------------------------------------- */
 
 body {
   overflow-y: scroll;
   font-feature-settings: 'palt';
   letter-spacing: 1px;
 }
+

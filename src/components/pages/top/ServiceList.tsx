@@ -10,7 +10,7 @@ export const ServiceList: React.FC = () => {
     <>
       <div className='mb-4 ml-auto mr-auto flex max-w-[680px] flex-wrap justify-center'>
         {List.map((Icon, index) => (
-          <Icon className='m-3 h-auto w-[50px]' key={index} />
+          <Icon className='m-3 h-auto w-12.5' key={index} />
         ))}
       </div>
       <div className='max-w-[400px mx-auto mb-5 w-full text-center'>

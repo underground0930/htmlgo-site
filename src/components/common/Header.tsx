@@ -52,8 +52,8 @@ export const Header: React.FC = () => {
                       prefetch={false}
                       href={item.href}
                       className={twMerge(
-                        'text-sm font-bold hover:text-linkActive md:text-base',
-                        item.active(pathname) && 'text-linkActive',
+                        'text-lg font-bold hover:text-link-active',
+                        item.active(pathname) && 'text-link-active',
                       )}
                     >
                       {item.label}
