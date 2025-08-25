@@ -8,7 +8,7 @@ type Props = {
 export const Pager: React.FC<Props> = ({ pages, page }) => {
   return (
     <>
-      <ul className='border-y-1 border-border py-20px text-center align-top'>
+      <ul className='border-y border-border py-20px text-center align-top'>
         {page > 1 && <PagerChild page={page - 1}>&lt;</PagerChild>}
         {Array.from(Array(pages)).map((_, i) => {
           return (

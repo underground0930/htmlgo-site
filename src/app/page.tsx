@@ -30,7 +30,7 @@ export default async function Home() {
   return (
     <main className='mx-20px max-w-[800px] md:mx-auto'>
       {/* services */}
-      <section className='mb-40px border-b-1 border-border pb-20px md:mb-80px md:pb-40px'>
+      <section className='mb-40px border-b border-border pb-20px md:mb-80px md:pb-40px'>
         <Title title='Services' text='事業内容' />
         <ServiceList />
         <div className='text-center'>
@@ -38,7 +38,7 @@ export default async function Home() {
         </div>
       </section>
       {/* works */}
-      <section className='mb-40px border-b-1 border-border pb-20px md:mb-80px md:pb-40px'>
+      <section className='mb-40px border-b border-border pb-20px md:mb-80px md:pb-40px'>
         <Title title='Works' text='最新の実績や、自主制作' />
         <WorksList works={works} />
         <div className='text-center'>
@@ -46,7 +46,7 @@ export default async function Home() {
         </div>
       </section>
       {/* articles */}
-      <section className='mb-40px border-b-1 border-border pb-20px md:mb-80px md:pb-40px'>
+      <section className='mb-40px border-b border-border pb-20px md:mb-80px md:pb-40px'>
         <Title title='Articles' text='最新の記事' />
         <ArticlesList articles={articles} />
         <div className='text-center'>

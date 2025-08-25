@@ -42,7 +42,7 @@ export default function About() {
           </div>
           <div className='cms-about-content'>
             <section>
-              <h3 className='mb-30px mt-40px border-b-1 border-l-5 border-b-[#000]/30 border-l-[#000] pb-5px pl-5px text-18px font-bold'>
+              <h3 className='mb-30px mt-40px border-b border-l-5 border-b-black/30 border-l-black pb-5px pl-5px text-18px font-bold'>
                 プロフィール
               </h3>
               <div className='text-15px'>
@@ -72,7 +72,7 @@ export default function About() {
               </div>
             </section>
             <section>
-              <h3 className='mb-30px mt-40px border-b-1 border-l-5 border-b-[#000]/30 border-l-[#000] pb-5px pl-5px text-18px font-bold'>
+              <h3 className='mb-30px mt-40px border-b border-l-5 border-b-black/30 border-l-black pb-5px pl-5px text-18px font-bold'>
                 経験した技術・ツール・サービス
               </h3>
               <div className='text-15px'>
@@ -83,7 +83,7 @@ export default function About() {
               </div>
             </section>
             <section>
-              <h3 className='mb-30px mt-40px border-b-1 border-l-5 border-b-[#000]/30 border-l-[#000] pb-5px pl-5px text-18px font-bold'>
+              <h3 className='mb-30px mt-40px border-b border-l-5 border-b-black/30 border-l-black pb-5px pl-5px text-18px font-bold'>
                 経歴
               </h3>
               <div className='text-15px'>
@@ -108,7 +108,7 @@ export default function About() {
             </section>
           </div>
         </div>
-        <div className='mb-40px border-t-1 border-border pt-40px text-center'>
+        <div className='mb-40px border-t border-border pt-40px text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

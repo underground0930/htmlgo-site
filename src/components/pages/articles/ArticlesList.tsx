@@ -14,11 +14,11 @@ export const ArticlesList: React.FC<Props> = ({ articles }) => {
         return (
           <article
             key={article.link}
-            className='mb-20px w-[100%] shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] md:mb-0'
+            className='mb-20px w-full shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] md:mb-0'
           >
             <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>
-                <dt className='relative h-[140px] border-b-1 border-border bg-main'>
+                <dt className='relative h-[140px] border-b border-border bg-main'>
                   <ImageWrapper
                     cls='object-cover'
                     src={article.img}

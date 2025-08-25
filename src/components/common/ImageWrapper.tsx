@@ -27,7 +27,7 @@ export const ImageWrapper: React.FC<Props> = ({
 }) => {
   return (
     <Image
-      className={'!relative ' + cls}
+      className={'relative! ' + cls}
       src={src}
       alt={alt}
       priority={priority}

@@ -10,7 +10,7 @@ export const useDebugMode = ({
       const positionVal = isRight ? 'right-0' : 'left-0'
       return (
         <div
-          className={`border-red fixed ${positionVal} top-0 z-20 flex h-[100px] w-[100px] items-center border-2 bg-[#fff] p-2 text-[#f00]`}
+          className={`border-red fixed ${positionVal} top-0 z-20 flex h-[100px] w-[100px] items-center border-2 bg-white p-2 text-[#f00]`}
         >
           debugging
         </div>

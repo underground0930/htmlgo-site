@@ -78,7 +78,7 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
     <>
       <Swiper
         modules={[Pagination, Navigation, Virtual]}
-        className='w-[100%] border-1 border-border'
+        className='w-full border border-border'
         virtual
         onSlideChange={() => sliderChangeHandle()}
         ref={swiperRef}
@@ -92,7 +92,7 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
                 key={item.img.url}
               >
                 {item.loading && (
-                  <div className="transform-translate-z-[0] absolute bottom-0 left-0 right-0 top-0 m-auto h-[10em] w-[10em] animate-[load8_1.1s_linear_infinite] rounded-[50%] border-b-[1.1em] border-l-[1.1em] border-r-[1.1em] border-t-[1.1em] border-b-[#000]/10 border-l-[#000]/30 border-r-[#000]/10 border-t-[#000]/10 indent-[-9999em] text-10px after:block after:h-[10em] after:w-[10em] after:rounded-[50%] after:content-['']">
+                  <div className="transform-translate-z-[0] absolute bottom-0 left-0 right-0 top-0 m-auto h-[10em] w-[10em] animate-[load8_1.1s_linear_infinite] rounded-[50%] border-b-[1.1em] border-l-[1.1em] border-r-[1.1em] border-t-[1.1em] border-b-black/10 border-l-black/30 border-r-black/10 border-t-black/10 indent-[-9999em] text-10px after:block after:h-[10em] after:w-[10em] after:rounded-[50%] after:content-['']">
                     Loading...
                   </div>
                 )}

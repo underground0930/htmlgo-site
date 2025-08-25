@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
   const pathname = usePathname()
   return (
     <>
-      <header className='relative z-[1] mx-20px mb-32px border-b-1 border-border'>
+      <header className='relative z-1 mx-20px mb-32px border-b border-border'>
         <div className='mx-auto max-w-[800px] items-center justify-between md:flex'>
           <h1 className='pb-16px pt-24px text-center text-25px font-bold leading-none md:w-[210px] md:py-20px md:text-left'>
             <Link href='/' className='no-underline'>

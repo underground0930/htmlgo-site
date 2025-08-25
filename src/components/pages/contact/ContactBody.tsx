@@ -113,7 +113,7 @@ export const ContactBody: React.FC = () => {
     <>
       <DebugModal />
       {loading && (
-        <div className='fixed inset-0 z-[10] m-auto flex items-center justify-center bg-[#000] bg-opacity-50'>
+        <div className='fixed inset-0 z-10 m-auto flex items-center justify-center bg-black bg-opacity-50'>
           <LoadingSpinner />
         </div>
       )}
@@ -143,7 +143,7 @@ export const ContactBody: React.FC = () => {
               <div ref={recaptchaRef} />
             </div>
             <button
-              className='mx-auto block w-[200px] bg-[#000] p-8px font-bold text-[#fff] disabled:opacity-30'
+              className='mx-auto block w-[200px] bg-black p-8px font-bold text-white disabled:opacity-30'
               type='submit'
               disabled={!token}
             >
@@ -151,7 +151,7 @@ export const ContactBody: React.FC = () => {
             </button>
           </form>
         </div>
-        <div className='mt-40px border-t-1 border-border pb-40px pt-40px text-center'>
+        <div className='mt-40px border-t border-border pb-40px pt-40px text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

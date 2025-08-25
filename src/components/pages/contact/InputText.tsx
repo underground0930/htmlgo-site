@@ -31,7 +31,7 @@ export const InputText: React.FC<Props> = ({
       </label>
       {textarea ? (
         <textarea
-          className='block w-full resize-none border-1 border-border p-8px text-16px'
+          className='block w-full resize-none border border-border p-8px text-16px'
           id={name}
           rows={row ?? 10}
           {...register(name)}
@@ -39,7 +39,7 @@ export const InputText: React.FC<Props> = ({
       ) : (
         <input
           type='text'
-          className='block w-full border-1 border-border p-8px text-16px'
+          className='block w-full border border-border p-8px text-16px'
           id={name}
           {...register(name)}
         />

@@ -22,7 +22,7 @@ export const metadata = {
 export default function NotFound() {
   return (
     <main className='mx-20px max-w-[800px] md:mx-auto'>
-      <section className='mb-40px border-b-1 border-border pb-20px md:mb-80px md:pb-40px'>
+      <section className='mb-40px border-b border-border pb-20px md:mb-80px md:pb-40px'>
         <Title title='Not Found' text='お探しのページは見つかりませんでした' />
         <div className='mb-30px py-20px text-center'>
           お探しのページは見つかりませんでした。

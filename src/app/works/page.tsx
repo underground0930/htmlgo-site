@@ -28,7 +28,7 @@ export default async function Works() {
     <main className='mx-20px max-w-[800px] md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
       <WorksList works={works} />
-      <footer className='mt-40px border-t-[1px] border-border pb-40px pt-40px'>
+      <footer className='mt-40px border-t border-border pb-40px pt-40px'>
         <div className='text-center'>
           <TextBtn title='Home' link='/' />
         </div>

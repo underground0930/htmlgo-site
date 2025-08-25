@@ -33,7 +33,7 @@ export default function Thanks() {
             今しばらくおまちください。
           </div>
         </div>
-        <div className='mt-40px border-t-[1px] border-border pb-40px pt-40px text-center'>
+        <div className='mt-40px border-t border-border pb-40px pt-40px text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

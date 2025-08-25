@@ -46,7 +46,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
           </div>
           {post.body && (
             <div
-              className='cms-works-content mx-auto break-words border-y-1 border-border px-10px py-20px text-16px leading-[1.8] md:mx-25px md:py-40px'
+              className='cms-works-content mx-auto break-words border-y border-border px-10px py-20px text-16px leading-[1.8] md:mx-25px md:py-40px'
               dangerouslySetInnerHTML={{
                 __html: `${post.body}`,
               }}
@@ -162,7 +162,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
               </ul>
             </div>
           </div>
-          <ul className='flex items-center justify-center gap-5 border-b-[1px] border-border py-25px'>
+          <ul className='flex items-center justify-center gap-5 border-b border-border py-25px'>
             <li className='text-[0px]'>
               <a
                 className='inline-block h-[35px] cursor-pointer'
@@ -188,7 +188,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
             <TextBtn title='WORKS' link='/works' />
             {next && (
               <Link
-                className='absolute bottom-0 left-0 top-0 m-auto flex h-[40px] w-[40px] items-center justify-center bg-[#000] text-base'
+                className='absolute bottom-0 left-0 top-0 m-auto flex h-[40px] w-[40px] items-center justify-center bg-black text-base'
                 href={`/works/${next.slug}`}
               >
                 &lt;
@@ -196,7 +196,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
             )}
             {prev && (
               <Link
-                className='absolute bottom-0 right-0 top-0 m-auto flex h-[40px] w-[40px] items-center justify-center bg-[#000] text-base'
+                className='absolute bottom-0 right-0 top-0 m-auto flex h-[40px] w-[40px] items-center justify-center bg-black text-base'
                 href={`/works/${prev.slug}`}
               >
                 &gt;

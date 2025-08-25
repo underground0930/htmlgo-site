@@ -21,10 +21,10 @@ export const WorksList: React.FC<Props> = ({ works = [] }) => {
           const thumb = work?.slider?.[0]?.img?.url
           const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE
           return (
-            <li key={work.id} className='mb-20px border-1 border-border md:mb-0'>
+            <li key={work.id} className='mb-20px border border-border md:mb-0'>
               <Link className='block' href={`/works/${work.slug}`} prefetch={false}>
                 <dl>
-                  <dt className='relative mb-10px aspect-[16/9] border-b-1 border-border'>
+                  <dt className='relative mb-10px aspect-video border-b border-border'>
                     <ImageWrapper
                       cls='object-cover '
                       src={thumbnail}
