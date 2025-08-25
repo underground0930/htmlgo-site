@@ -1,11 +1,12 @@
 import '../styles/globals.css'
+import { Metadata } from 'next'
 
 import { Header } from '@/components/common/Header'
 import { Footer } from '@/components/common/Footer'
 
 const title = 'HTMLGO'
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL('https://www.htmlgo.site'),
   title: {
     default: title,

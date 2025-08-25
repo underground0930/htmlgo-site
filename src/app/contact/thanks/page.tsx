@@ -22,10 +22,10 @@ export const metadata = {
 export default function Thanks() {
   return (
     <>
-      <main className='mx-20px'>
+      <main className='mx-5'>
         <Title title='THANKS' text='お問合せありがとうございました' />
-        <div className='mx-auto mb-40px max-w-[600px]'>
-          <div className='text-center text-16px md:text-20px'>
+        <div className='mx-auto mb-10 max-w-[600px]'>
+          <div className='text-center text-base md:text-xl'>
             お問い合わせありがとうございました。
             <br />
             内容を確認後、折り返しご連絡いたしますので、
@@ -33,7 +33,7 @@ export default function Thanks() {
             今しばらくおまちください。
           </div>
         </div>
-        <div className='mt-40px border-t-[1px] border-border pb-40px pt-40px text-center'>
+        <div className='mt-10 border-t border-border pb-10 pt-10 text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

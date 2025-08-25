@@ -8,7 +8,7 @@ type Props = {
   blank?: boolean
 }
 const className =
-  'min-w-[120px] inline-block bg-btn text-btnIcon text-14px text-center text-decoration-none px-15px py-10px :visited:text-btnIcon'
+  'min-w-[120px] inline-block bg-base text-white text-sm text-center text-decoration-none px-4 py-2.5 :visited:text-white'
 
 export const TextBtn: React.FC<Props> = ({ title, link, blank = false }) => {
   return (

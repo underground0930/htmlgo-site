@@ -24,14 +24,14 @@ export const InputText: React.FC<Props> = ({
   return (
     <>
       <label
-        className='mb-10px block border-l-5 pl-10px text-16px font-bold'
+        className='mb-2.5 block border-l-5 pl-2.5 text-base font-bold'
         htmlFor={name}
       >
         {label}
       </label>
       {textarea ? (
         <textarea
-          className='block w-full resize-none border-1 border-border p-8px text-16px'
+          className='block w-full resize-none border border-border p-2 text-base'
           id={name}
           rows={row ?? 10}
           {...register(name)}
@@ -39,13 +39,13 @@ export const InputText: React.FC<Props> = ({
       ) : (
         <input
           type='text'
-          className='block w-full border-1 border-border p-8px text-16px'
+          className='block w-full border border-border p-2 text-base'
           id={name}
           {...register(name)}
         />
       )}
 
-      {error && <div className='pt-5px text-14px font-bold text-[#f00]'>{error}</div>}
+      {error && <div className='pt-1 text-sm font-bold text-[#f00]'>{error}</div>}
     </>
   )
 }

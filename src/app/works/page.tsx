@@ -1,3 +1,5 @@
+import {Metadata} from 'next'
+
 import { WorksList } from '@/components/pages/works/WorksList'
 import { TextBtn } from '@/components/common/TextBtn'
 import { Title } from '@/components/common/Title'
@@ -7,7 +9,7 @@ import { setMetaData } from '@/utils'
 
 const description = '最新の実績や、自主制作'
 
-export const metadata = {
+export const metadata: Metadata = {
   ...setMetaData({
     meta: {
       openGraph: {
@@ -25,10 +27,10 @@ export default async function Works() {
   const { works } = await fetchWorksIndex()
 
   return (
-    <main className='mx-20px max-w-[800px] md:mx-auto'>
+    <main className='mx-5 max-w-[800px] md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
       <WorksList works={works} />
-      <footer className='mt-40px border-t-[1px] border-border pb-40px pt-40px'>
+      <footer className='mt-10 border-t border-border pb-10 pt-10'>
         <div className='text-center'>
           <TextBtn title='Home' link='/' />
         </div>

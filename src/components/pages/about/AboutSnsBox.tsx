@@ -8,7 +8,7 @@ export const AboutSnsBox: React.FC = () => {
           return (
             <li key={i}>
               <a
-                className='px-2 text-20px font-bold hover:text-linkActive'
+                className='px-2 text-xl font-bold hover:text-link-active'
                 rel={v.rel}
                 href={v.href}
                 target={v.target}
