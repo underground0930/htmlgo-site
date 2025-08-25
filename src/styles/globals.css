@@ -15,6 +15,20 @@
   --color-border: #dddddd;
 }
 
+@theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  @keyframes load8 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+
 /* --------------------------------------------------------------
   カスタマイズ
 -------------------------------------------------------------- */
