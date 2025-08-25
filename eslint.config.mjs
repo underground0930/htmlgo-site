@@ -13,15 +13,15 @@ const compat = new FlatCompat({
 })
 
 export default defineConfig([
+  // TypeScriptファイル用の設定
   {
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       globals: {
         React: 'readonly',
         JSX: 'readonly',
       },
-
       parser: tsParser,
-
       parserOptions: {
         project: './tsconfig.json',
       },
@@ -52,6 +52,9 @@ export default defineConfig([
           },
         },
       ],
+
+      // Next.jsのルールでパスがundefinedになる問題を解決
+      '@next/next/no-html-link-for-pages': ['error', 'src/app/'],
 
       'import/order': [
         'error',
