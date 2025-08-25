@@ -36,23 +36,23 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
 
   return (
     <>
-      <main className='mx-20px max-w-[800px] md:mx-auto'>
+      <main className='mx-5 max-w-[800px] md:mx-auto'>
         <Title title={post.title} text='WORKS NAME' />
         <article>
-          <div className='relative mb-40px'>
+          <div className='relative mb-10'>
             <div className='relative'>
               {post?.slider && <WorksSlider sliders={sliderList} />}
             </div>
           </div>
           {post.body && (
             <div
-              className='cms-works-content mx-auto break-words border-y border-border px-10px py-20px text-16px leading-[1.8] md:mx-25px md:py-40px'
+              className='cms-works-content mx-auto break-words border-y border-border px-2.5 py-5 text-base leading-[1.8] md:mx-6 md:py-10'
               dangerouslySetInnerHTML={{
                 __html: `${post.body}`,
               }}
             ></div>
           )}
-          <div className='border-b border-border py-40px'>
+          <div className='border-b border-border py-10'>
             <div>
               <ul>
                 {post?.participationAt ? (
@@ -82,24 +82,24 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 {post?.category?.length > 0 && (
                   <WorksDetailInfo title='カテゴリー'>
                     {post.category.map((v) => (
-                      <span
-                        className="relative inline-block pr-16px after:absolute after:right-[5px] after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
-                        key={v.category_label}
-                      >
-                        {v.category_label}
-                      </span>
+                                              <span
+                          className="relative inline-block pr-4 after:absolute after:right-[5px] after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
+                          key={v.category_label}
+                        >
+                          {v.category_label}
+                        </span>
                     ))}
                   </WorksDetailInfo>
                 )}
                 {post?.technology?.length > 0 && (
                   <WorksDetailInfo title='テクノロジー'>
                     {post.technology.map((v) => (
-                      <span
-                        className="relative inline-block pr-16px after:absolute after:right-[5px] after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
-                        key={v.technology_label}
-                      >
-                        {v.technology_label}
-                      </span>
+                                              <span
+                          className="relative inline-block pr-4 after:absolute after:right-[5px] after:top-0 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
+                          key={v.technology_label}
+                        >
+                          {v.technology_label}
+                        </span>
                     ))}
                   </WorksDetailInfo>
                 )}
@@ -111,24 +111,24 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                 {(post?.url || post?.url2) && (
                   <WorksDetailInfo title='URL'>
                     {post?.url && (
-                      <a
-                        className='mb-15px block break-all underline last-of-type:mb-0px'
-                        href={post.url}
-                        target='_blank'
-                        rel='noreferrer'
-                      >
-                        {post.url}
-                      </a>
-                    )}
-                    {post?.url2 && (
-                      <a
-                        className='mb-15px block break-all underline last-of-type:mb-0px'
-                        href={post.url2}
-                        target='_blank'
-                        rel='noreferrer'
-                      >
-                        {post.url2}
-                      </a>
+                                              <a
+                          className='mb-4 block break-all underline last-of-type:mb-0'
+                          href={post.url}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          {post.url}
+                        </a>
+                      )}
+                      {post?.url2 && (
+                        <a
+                          className='mb-4 block break-all underline last-of-type:mb-0'
+                          href={post.url2}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          {post.url2}
+                        </a>
                     )}
                   </WorksDetailInfo>
                 )}
@@ -136,12 +136,12 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                   <WorksDetailInfo title='クレジット'>
                     <ul>
                       {post.credit.map((v) => (
-                        <li key={v.value} className='mb-20px last-of-type:mb-0px'>
-                          <p className='mb-2px text-14px font-bold'>{v.label}</p>
-                          <p className='text-14px'>
+                        <li key={v.value} className='mb-5 last-of-type:mb-0'>
+                          <p className='mb-0.5 text-sm font-bold'>{v.label}</p>
+                          <p className='text-sm'>
                             {v.link ? (
                               <a
-                                className='mb-15px block break-all underline last-of-type:mb-0px'
+                                className='mb-4 block break-all underline last-of-type:mb-0'
                                 href={v.link}
                                 target='_blank'
                                 rel='noreferrer'
@@ -149,7 +149,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
                                 {v.value}
                               </a>
                             ) : (
-                              <a className='mb-15px block break-all last-of-type:mb-0px'>
+                              <a className='mb-4 block break-all last-of-type:mb-0'>
                                 {v.value}
                               </a>
                             )}
@@ -162,7 +162,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
               </ul>
             </div>
           </div>
-          <ul className='flex items-center justify-center gap-5 border-b border-border py-25px'>
+          <ul className='flex items-center justify-center gap-5 border-b border-border py-6'>
             <li className='text-[0px]'>
               <a
                 className='inline-block h-[35px] cursor-pointer'
@@ -184,11 +184,11 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
               </a>
             </li>
           </ul>
-          <div className='relative mb-40px mt-40px text-center'>
+          <div className='relative mb-10 mt-10 text-center'>
             <TextBtn title='WORKS' link='/works' />
             {next && (
               <Link
-                className='absolute bottom-0 left-0 top-0 m-auto flex h-[40px] w-[40px] items-center justify-center bg-black text-base'
+                className='absolute bottom-0 left-0 top-0 m-auto flex h-10 w-10 items-center justify-center bg-black text-base'
                 href={`/works/${next.slug}`}
               >
                 &lt;
@@ -196,7 +196,7 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
             )}
             {prev && (
               <Link
-                className='absolute bottom-0 right-0 top-0 m-auto flex h-[40px] w-[40px] items-center justify-center bg-black text-base'
+                className='absolute bottom-0 right-0 top-0 m-auto flex h-10 w-10 items-center justify-center bg-black text-base'
                 href={`/works/${prev.slug}`}
               >
                 &gt;

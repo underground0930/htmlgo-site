@@ -9,7 +9,7 @@ type Props = {
 
 export const PagerChild: React.FC<Props> = ({ page, loopIndex, children }) => {
   const linkClass = twMerge(
-    'w-[30px] h-[30px] block bg-main text-white leading-[30px] text-15px',
+    'w-[30px] h-[30px] block bg-main text-white leading-[30px] text-sm',
     loopIndex !== undefined &&
       loopIndex + 1 === page &&
       'bg-[#ddd] text-[#222] font-bold',
@@ -21,7 +21,7 @@ export const PagerChild: React.FC<Props> = ({ page, loopIndex, children }) => {
     return `/articles/page/${index}/`
   }
   return (
-    <li className='mx-6px inline-block h-[20px] w-[20px]'>
+    <li className='mx-1.5 inline-block h-[20px] w-[20px]'>
       <Link
         className={linkClass}
         href={setLink(loopIndex !== undefined ? loopIndex + 1 : page)}

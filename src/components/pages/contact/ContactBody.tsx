@@ -117,16 +117,16 @@ export const ContactBody: React.FC = () => {
           <LoadingSpinner />
         </div>
       )}
-      <main className='mx-20px max-w-[800px] pt-20px md:mx-auto' ref={parentRef}>
+      <main className='mx-5 max-w-[800px] pt-5 md:mx-auto' ref={parentRef}>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
-        {error && <div className='pb-30px text-16px font-bold text-[#f00]'>{error}</div>}
-        <div className='mb-40px'>
+        {error && <div className='pb-8 text-base font-bold text-[#f00]'>{error}</div>}
+        <div className='mb-10'>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <ul className='mb-40px'>
+            <ul className='mb-10'>
               {inputElements.map((elem, index) => {
                 const { name, textarea, row, label } = elem
                 return (
-                  <li key={index} className='mb-25px'>
+                  <li key={index} className='mb-6'>
                     <InputText
                       name={name}
                       textarea={textarea}
@@ -139,11 +139,11 @@ export const ContactBody: React.FC = () => {
                 )
               })}
             </ul>
-            <div className='flex items-center justify-center pb-40px'>
+            <div className='flex items-center justify-center pb-10'>
               <div ref={recaptchaRef} />
             </div>
             <button
-              className='mx-auto block w-[200px] bg-black p-8px font-bold text-white disabled:opacity-30'
+              className='mx-auto block w-[200px] bg-black p-2 font-bold text-white disabled:opacity-30'
               type='submit'
               disabled={!token}
             >
@@ -151,7 +151,7 @@ export const ContactBody: React.FC = () => {
             </button>
           </form>
         </div>
-        <div className='mt-40px border-t border-border pb-40px pt-40px text-center'>
+        <div className='mt-10 border-t border-border pb-10 pt-10 text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

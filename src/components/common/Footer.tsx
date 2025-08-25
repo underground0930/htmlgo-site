@@ -38,14 +38,14 @@ const links = [
 export const Footer: React.FC = () => {
   return (
     <>
-      <footer className='bg-main p-20px text-footerText'>
-        <dl className='mb-20px text-center text-14px'>
-          <dt className='mb-15px'>This website powered by</dt>
+      <footer className='bg-main p-5 text-footerText'>
+        <dl className='mb-5 text-center text-sm'>
+          <dt className='mb-4'>This website powered by</dt>
           <dd>
             <ul className='flex items-center justify-center'>
               {links.map((v) => {
                 return (
-                  <li className='mx-7px' key={v.key}>
+                  <li className='mx-2' key={v.key}>
                     <a
                       className='flex w-[30px] items-center justify-center [&>svg]:h-auto [&>svg]:w-full'
                       href={v.href}
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
             </ul>
           </dd>
         </dl>
-        <small className='text-10 block text-center'>
+        <small className='text-xs block text-center'>
           Copyright © 2025 htmlgo.site All rights reserved.
         </small>
       </footer>

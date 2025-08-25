@@ -26,26 +26,26 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-      <main className='mx-20px max-w-[800px] md:mx-auto'>
+      <main className='mx-5 max-w-[800px] md:mx-auto'>
         <Title title='About' text='このサイトや主について' />
-        <div className='mb-40px pb-30px'>
+        <div className='mb-10 pb-8'>
           <div className=''>
             <ImageWrapper
-              cls='mx-auto mb-40px rounded-full'
+              cls='mx-auto mb-10 rounded-full'
               src='/img/profile.jpg'
               width={210}
               height={210}
             />
           </div>
-          <div className='mb-45px'>
+          <div className='mb-11'>
             <AboutSnsBox />
           </div>
           <div className='cms-about-content'>
             <section>
-              <h3 className='mb-30px mt-40px border-b border-l-5 border-b-black/30 border-l-black pb-5px pl-5px text-18px font-bold'>
+              <h3 className='mb-8 mt-10 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-1 text-lg font-bold'>
                 プロフィール
               </h3>
-              <div className='text-15px'>
+              <div className='text-sm'>
                 <p>
                   <a
                     href='https://x.com/resistance_gowy'
@@ -72,10 +72,10 @@ export default function About() {
               </div>
             </section>
             <section>
-              <h3 className='mb-30px mt-40px border-b border-l-5 border-b-black/30 border-l-black pb-5px pl-5px text-18px font-bold'>
+              <h3 className='mb-8 mt-10 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-1 text-lg font-bold'>
                 経験した技術・ツール・サービス
               </h3>
-              <div className='text-15px'>
+              <div className='text-sm'>
                 <p>
                   React / TypeScript / Next.js / Tailwind CSS / Ruby on Rails / WordPress
                   / TanStack Query / microCMS
@@ -83,10 +83,10 @@ export default function About() {
               </div>
             </section>
             <section>
-              <h3 className='mb-30px mt-40px border-b border-l-5 border-b-black/30 border-l-black pb-5px pl-5px text-18px font-bold'>
+              <h3 className='mb-8 mt-10 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-1 text-lg font-bold'>
                 経歴
               </h3>
-              <div className='text-15px'>
+              <div className='text-sm'>
                 <ul>
                   <li>
                     <strong>2009年 ~ 2010年</strong> : あとらす二十一
@@ -108,7 +108,7 @@ export default function About() {
             </section>
           </div>
         </div>
-        <div className='mb-40px border-t border-border pt-40px text-center'>
+        <div className='mb-10 border-t border-border pt-10 text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

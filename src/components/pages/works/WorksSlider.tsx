@@ -92,7 +92,7 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
                 key={item.img.url}
               >
                 {item.loading && (
-                  <div className="transform-translate-z-[0] absolute bottom-0 left-0 right-0 top-0 m-auto h-[10em] w-[10em] animate-[load8_1.1s_linear_infinite] rounded-[50%] border-b-[1.1em] border-l-[1.1em] border-r-[1.1em] border-t-[1.1em] border-b-black/10 border-l-black/30 border-r-black/10 border-t-black/10 indent-[-9999em] text-10px after:block after:h-[10em] after:w-[10em] after:rounded-[50%] after:content-['']">
+                  <div className="transform-translate-z-[0] absolute bottom-0 left-0 right-0 top-0 m-auto h-[10em] w-[10em] animate-[load8_1.1s_linear_infinite] rounded-[50%] border-b-[1.1em] border-l-[1.1em] border-r-[1.1em] border-t-[1.1em] border-b-black/10 border-l-black/30 border-r-black/10 border-t-black/10 indent-[-9999em] text-xs after:block after:h-[10em] after:w-[10em] after:rounded-[50%] after:content-['']">
                     Loading...
                   </div>
                 )}
@@ -117,7 +117,7 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
       </Swiper>
       {!bothEnds.first && sliders.length > 1 && (
         <div
-          className='prevBtn absolute bottom-0 left-[-55px] top-0 z-1 m-auto hidden h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-btn text-base md:flex'
+          className='prevBtn absolute bottom-0 left-[-14px] top-0 z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-btn text-base md:flex'
           onClick={goPrev}
         >
           &lt;
@@ -125,14 +125,14 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
       )}
       {!bothEnds.last && sliders.length > 1 && (
         <div
-          className='nextBtn absolute bottom-0 right-[-55px] top-0 z-1 m-auto hidden h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-btn text-base md:flex'
+          className='nextBtn absolute bottom-0 right-[-14px] top-0 z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-btn text-base md:flex'
           onClick={goNext}
         >
           &gt;
         </div>
       )}
       {sliders.length > 1 && (
-        <div className='flex w-full items-center justify-center pt-20px text-16px font-bold'>
+        <div className='flex w-full items-center justify-center pt-5 text-base font-bold'>
           {index} / {sliders.length}
         </div>
       )}
