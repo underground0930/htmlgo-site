@@ -43,7 +43,11 @@ export const ContactBody: React.FC = () => {
   useEffect(() => {
     const { current } = parentRef
     if (!current) return
-    loading ? current.setAttribute('inert', '') : current.removeAttribute('inert')
+    if (loading) {
+      current.setAttribute('inert', '')
+    } else {
+      current.removeAttribute('inert')
+    }
   }, [loading])
 
   const frontInvalidErrors = useMemo(() => {
@@ -91,7 +95,10 @@ export const ContactBody: React.FC = () => {
         if (type === 'invalid') {
           const err: ErrorType = {}
           for (let i = 0; i < data.length; i++) {
-            err[data[i].path[0]] = data[i].message
+            const pathKey = data[i].path[0]
+            if (typeof pathKey === 'string') {
+              err[pathKey] = data[i].message
+            }
           }
           setServerInvalidErrors(err)
           return

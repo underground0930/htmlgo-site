@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
-import { Pagination, Navigation, Virtual } from 'swiper'
+import { Pagination, Navigation, Virtual } from 'swiper/modules'
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 
 import { ImageWrapper } from '@/components/common/ImageWrapper'
@@ -14,7 +14,7 @@ type Props = {
   sliders: WorksSlider[]
 }
 
-const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
+const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
   const [index, setIndex] = useState(1)
   const [bothEnds, setBothEnds] = useState({
     first: true,
@@ -140,4 +140,4 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
   )
 }
 
-export default WorksSlider
+export default WorksSliderComponent
