@@ -1,3 +1,5 @@
+import { Metadata } from 'next'
+
 import { ServiceList } from '@/components/pages/top/ServiceList'
 import { TextBtn } from '@/components/common/TextBtn'
 import { Title } from '@/components/common/Title'
@@ -9,7 +11,7 @@ import { fetchTopList } from '@/libs'
 
 const description = 'WEB技術を書き連ねるサイト'
 
-export const metadata = {
+export const metadata: Metadata = {
   ...setMetaData({
     meta: {
       openGraph: {

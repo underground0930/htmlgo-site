@@ -99,7 +99,7 @@ const WorksSlider: React.FC<Props> = ({ sliders }: Props) => {
                 <ImageWrapper
                   cls='object-cover'
                   src={item.img.url}
-                  onLoad={() => {
+                  onLoadAction={() => {
                     setSliderList((prev) => {
                       return prev.map((s, j) => {
                         if (i === j) {

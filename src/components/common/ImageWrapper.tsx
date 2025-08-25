@@ -11,7 +11,7 @@ type Props = {
   width?: number
   height?: number
   sizes?: string
-  onLoad?: () => void
+  onLoadAction?: () => void
 }
 
 export const ImageWrapper: React.FC<Props> = ({
@@ -23,7 +23,7 @@ export const ImageWrapper: React.FC<Props> = ({
   width,
   height,
   sizes = '',
-  onLoad,
+  onLoadAction,
 }) => {
   return (
     <Image
@@ -35,7 +35,7 @@ export const ImageWrapper: React.FC<Props> = ({
       width={width}
       height={height}
       sizes={sizes}
-      onLoad={() => onLoad?.()}
+      onLoad={() => onLoadAction?.()}
     />
   )
 }

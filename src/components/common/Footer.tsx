@@ -1,42 +1,37 @@
 'use client'
 
-import IconGithub from '@/svgs/IconGithub.svg'
-import IconMicrocms from '@/svgs/IconMicrocms.svg'
-import IconNextjs from '@/svgs/IconNextjs.svg'
-import IconRecaptcha from '@/svgs/IconRecaptcha.svg'
-import IconTailwindcss from '@/svgs/IconTailwindcss.svg'
-import IconVercel from '@/svgs/IconVercel.svg'
+import { ImageWrapper } from './ImageWrapper'
 
 const links = [
   {
     href: 'https://nextjs.org/',
     key: 'Nextjs',
-    icon: <IconNextjs />,
+    src: '/svgs/IconNextjs.svg',
   },
   {
     href: 'https://vercel.com/home',
     key: 'Vercel',
-    icon: <IconVercel />,
+    src: '/svgs/IconVercel.svg',
   },
   {
     href: 'https://tailwindcss.com/',
     key: 'Tailwind CSS',
-    icon: <IconTailwindcss />,
+    src: '/svgs/IconTailwindcss.svg',
   },
   {
     href: 'https://github.com/underground0930/htmlgo-site',
     key: 'github',
-    icon: <IconGithub />,
+    src: '/svgs/IconGithub.svg',
   },
   {
     href: 'https://microcms.io/',
     key: 'microcms',
-    icon: <IconMicrocms />,
+    src: '/svgs/IconMicrocms.svg',
   },
   {
     href: 'https://www.google.com/recaptcha/about/',
     key: 'recaptcha',
-    icon: <IconRecaptcha />,
+    src: '/svgs/IconRecaptcha.svg',
   },
 ]
 
@@ -57,7 +52,7 @@ export const Footer: React.FC = () => {
                       target='_blank'
                       rel='noreferrer'
                     >
-                      {v.icon}
+                      <ImageWrapper src={v.src} alt={v.key} />
                     </a>
                   </li>
                 )
@@ -66,7 +61,7 @@ export const Footer: React.FC = () => {
           </dd>
         </dl>
         <small className='text-10 block text-center'>
-          Copyright © 2016 htmlgo.site All rights reserved.
+          Copyright © 2025 htmlgo.site All rights reserved.
         </small>
       </footer>
     </>
