@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
 
 /* --------------------------------------------------------------
   カスタマイズ
@@ -18,8 +17,7 @@
   .cms-works-content a {
     @apply underline;
   }
-  .cms-about-content section {
-  }
+
 
   .cms-about-content section p {
     @apply leading-[1.8];
