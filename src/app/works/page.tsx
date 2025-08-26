@@ -1,8 +1,8 @@
 import {Metadata} from 'next'
 
 import { WorksList } from './components/works-list'
-import { TextBtn } from '@/features/ui/text-btn'
-import { Title } from '@/features/ui/title'
+import { TextBtn } from '@/components/ui/text-btn'
+import { Title } from '@/components/ui/title'
 
 import { fetchWorksIndex } from './libs/fetch-works-index'
 import { setMetaData } from '@/utils/set-metadata'

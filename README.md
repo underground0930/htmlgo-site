@@ -35,6 +35,3 @@ npm run build
 
 ---
 
-**Architecture**: Perfect Colocation + Zero Barrel Files  
-**Framework**: Next.js 15 + TypeScript + Tailwind CSS  
-**Documentation**: [CLAUDE.md](./CLAUDE.md)

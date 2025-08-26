@@ -1,5 +1,5 @@
-import { CategoryIcon } from '@/features/ui/category-icon'
-import { ImageWrapper } from '@/features/ui/image-wrapper'
+import { CategoryIcon } from '@/components/ui/category-icon'
+import { ImageWrapper } from '@/components/ui/image-wrapper'
 
 import { FeedObj } from '@/types/feed'
 
