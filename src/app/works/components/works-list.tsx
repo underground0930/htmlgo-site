@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 
-import { CategoryIcon } from '@/features/ui/category-icon'
-import { ImageWrapper } from '@/features/ui/image-wrapper'
+import { CategoryIcon } from '@/components/ui/category-icon'
+import { ImageWrapper } from '@/components/ui/image-wrapper'
 
 import { conversionDate } from '@/utils/conversion-date'
 import { WorkIndex } from '@/types/microcms'

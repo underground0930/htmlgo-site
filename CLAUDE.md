@@ -1,6 +1,7 @@
 # CLAUDE.md
 
-このファイルは、Claude Code (claude.ai/code) がこのリポジトリでコードを作業する際のガイダンスを提供します。
+- このファイルは、Claude Code (claude.ai/code) がこのリポジトリでコードを作業する際のガイダンスを提供します。
+- プロジェクト内の修正で、このファイルの内容を変更する必要がある時は、必ず修正すること。
 
 ## 開発コマンド
 
@@ -112,7 +113,7 @@ src/
 │   ├── loading.tsx               # グローバルローディング
 │   ├── error.tsx                 # グローバルエラー
 │   └── layout.tsx                # ルートレイアウト
-├── features/                     # 真の共通機能のみ
+├── components/                   # 共通コンポーネント
 │   └── ui/                       # 純粋な共通UIコンポーネント
 │       ├── category-icon.tsx
 │       ├── footer.tsx
@@ -123,6 +124,7 @@ src/
 │       ├── pager-child.tsx
 │       ├── text-btn.tsx
 │       └── title.tsx
+├── features/                     # 将来の機能別コンポーネント用（現在は空）
 ├── constants/                    # グローバル共通定数のみ
 │   └── microcms.ts              # MicroCMS設定（複数ページで使用）
 ├── libs/                        # グローバル共通ライブラリのみ
@@ -163,11 +165,11 @@ src/
 
 ```tsx
 // ✅ 正しい - 直接インポート
-import { Button } from '@/features/ui/button'
-import { Modal } from '@/features/ui/modal'
+import { Button } from '@/components/ui/button'
+import { Modal } from '@/components/ui/modal'
 
 // ❌ 間違い - バレルファイル経由（禁止）
-import { Button, Modal } from '@/features/ui'
+import { Button, Modal } from '@/components/ui'
 
 // ✅ 正しい - ページコンポーネント（相対）
 import { ContactForm } from './contact-form'
@@ -198,7 +200,7 @@ app/contact/
 
 #### 共通コンポーネント
 ```
-features/ui/            # 複数ページで使用される純粋なUIコンポーネント
+components/ui/          # 複数ページで使用される純粋なUIコンポーネント
 ├── button.tsx
 ├── modal.tsx
 └── input.tsx
@@ -222,7 +224,7 @@ import { useState } from 'react'
 import { NextPage } from 'next'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { Button } from '@/features/ui/button'
+import { Button } from '@/components/ui/button'
 import { fetchUser } from '@/libs/fetch-user'
 
 import { LocalComponent } from './local-component'

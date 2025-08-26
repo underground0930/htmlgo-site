@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 import { ServiceList } from './components/service-list'
-import { TextBtn } from '@/features/ui/text-btn'
-import { Title } from '@/features/ui/title'
+import { TextBtn } from '@/components/ui/text-btn'
+import { Title } from '@/components/ui/title'
 import { ArticlesList } from '../articles/components/articles-list'
 import { WorksList } from '../works/components/works-list'
 

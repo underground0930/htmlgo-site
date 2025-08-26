@@ -5,9 +5,9 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { TextBtn } from '@/features/ui/text-btn'
-import { Title } from '@/features/ui/title'
-import { LoadingSpinner } from '@/features/ui/loading-spinner'
+import { TextBtn } from '@/components/ui/text-btn'
+import { Title } from '@/components/ui/title'
+import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
 import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
