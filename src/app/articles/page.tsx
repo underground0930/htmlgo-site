@@ -22,6 +22,6 @@ export const metadata = {
 export default async function Articles() {
   const result = await fetchArticles({ params: { page: '1' } })
   return (
-    <ArticlesBody articles={result.articles} />
+    <ArticlesBody articles={result.articles} page={result.page} pages={result.pages} />
   )
 }

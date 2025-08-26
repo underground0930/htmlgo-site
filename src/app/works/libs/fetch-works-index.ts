@@ -8,12 +8,22 @@ import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/constants/microcms'
 
 import type { WorkIndex, WorksCategory } from '@/types/microcms'
 
-export async function fetchWorksIndex() {
+/**
+ * Works一覧データを取得
+ * @param params パラメータ
+ * @param params.page ページ番号（デフォルト: 1）
+ * @returns Works一覧とカテゴリ、技術情報
+ */
+export async function fetchWorksIndex({ params }: { params?: { page?: string } } = {}) {
+  const page = params?.page ? Number(params.page) : 1
+  const offset = (page - 1) * WORKS_PER_PAGE
+
   const result = await Promise.allSettled([
     microcmsClient.get<MicroCMSListResponse<WorkIndex>>({
       endpoint: 'works',
       queries: {
         limit: WORKS_PER_PAGE,
+        offset,
         fields:
           'id,title,slug,date,publishedAt2,participationAt,category,technology,slider',
       },
@@ -29,14 +39,20 @@ export async function fetchWorksIndex() {
   ]).then((results) => {
     const resultsVal = results.map((result) => {
       if (result.status === 'fulfilled') {
-        return result.value.contents
+        return result.value
       }
-      return []
+      return { contents: [], totalCount: 0 }
     })
+    
+    const worksResult = resultsVal[0] as MicroCMSListResponse<WorkIndex>
+    
     return {
-      works: resultsVal[0] as WorkIndex[],
-      categories: resultsVal[1] as WorksCategory[],
-      technologies: resultsVal[2] as WorksCategory[],
+      works: worksResult.contents,
+      totalCount: worksResult.totalCount,
+      page,
+      pages: Math.ceil(worksResult.totalCount / WORKS_PER_PAGE),
+      categories: resultsVal[1].contents as WorksCategory[],
+      technologies: resultsVal[2].contents as WorksCategory[],
     }
   })
 
