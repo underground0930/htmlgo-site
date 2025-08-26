@@ -45,7 +45,65 @@ This is a Next.js 14 portfolio/blog site using TypeScript and Tailwind CSS with 
 - SVG files are processed through @svgr/webpack for component imports
 
 ### File Structure Notes
-- Components organized by usage: `common/` for shared, `pages/` for page-specific
+- **Updated Structure (2025-01)**: Components now organized using Colocation + Feature-based approach
+- **Shared Components**: `features/ui/` for shared UI components (previously `common/`)
+- **Page Components**: `app/[page]/components/` for page-specific components
+- **Naming Convention**: All files use kebab-case (e.g., `user-profile.tsx`)
 - Utils contain pure functions for data transformation
 - Hooks directory for custom React hooks including debug mode and page view tracking
 - Constants are centralized in `src/const/` directory
+
+## Coding Guidelines (Updated 2025-01)
+
+### Directory Structure Rules
+```
+src/
+├── app/                          # Next.js App Router (routing only)
+│   ├── about/
+│   │   ├── page.tsx
+│   │   └── components/           # Page-specific components
+├── features/                     # Feature-based shared components
+│   ├── ui/                      # Shared UI components (Button, Modal, etc.)
+│   └── shared/                  # Other shared features
+├── hooks/                       # Custom React hooks
+├── libs/                        # API clients and utilities
+├── types/                       # TypeScript definitions
+├── utils/                       # Helper functions
+└── styles/                      # Global styles
+```
+
+### Critical Rules
+- **NO BARREL FILES**: Index.ts files are PROHIBITED due to circular dependency risks
+- **Direct Imports Only**: Always import specific files, never through index.ts
+- **kebab-case Files**: All file names must use kebab-case (not PascalCase/camelCase)
+- **Colocation**: Place components near where they're used
+
+### Import Patterns
+```tsx
+// ✅ Correct - Direct imports
+import { Button } from '@/features/ui/button'
+import { Modal } from '@/features/ui/modal'
+
+// ❌ Wrong - Barrel file imports (PROHIBITED)
+import { Button, Modal } from '@/features/ui'
+
+// ✅ Correct - Page components
+import { ContactForm } from './contact-form'
+
+// ✅ Correct - Cross-feature imports
+import { UserAPI } from '@/libs/api/user-api'
+```
+
+### Component Placement
+- **Page-specific**: Place in `app/[page]/components/`
+- **Shared UI**: Place in `features/ui/`
+- **Feature-specific**: Place in `features/[feature]/`
+- **Max nesting**: 3 levels deep maximum
+
+### File Naming
+- **Files**: kebab-case (`user-profile.tsx`)
+- **Components**: PascalCase (`UserProfile`)
+- **Functions**: camelCase (`fetchUserData`)
+- **Constants**: UPPER_SNAKE_CASE (`API_ENDPOINT`)
+
+For complete guidelines, see `CODING_GUIDELINES.md`
