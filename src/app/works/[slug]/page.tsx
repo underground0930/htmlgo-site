@@ -2,12 +2,13 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
-import { fetchWorksPaths } from '@/libs/fetch/fetchWorksPaths'
-import { fetchWorksDetail } from '@/libs/fetch/fetchWorksDetail'
+import { fetchWorksPaths } from './libs/fetch-works-paths'
+import { fetchWorksDetail } from './libs/fetch-works-detail'
 
-import { WorksDetailBody } from '@/components/pages/works/WorksDetailBody'
+import { WorksDetailBody } from './components/works-detail-body'
 
-import { removeHtml, setMetaData } from '@/utils'
+import { removeHtml } from '@/utils/remove-html'
+import { setMetaData } from '@/utils/set-metadata'
 
 type Props = {
   params: Promise<{

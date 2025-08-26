@@ -1,6 +1,6 @@
-import { ContactBody } from '@/components/pages/contact/ContactBody'
+import { ContactBody } from './components/contact-body'
 
-import { setMetaData } from '@/utils'
+import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'お仕事のお問い合わせはこちらから'
 

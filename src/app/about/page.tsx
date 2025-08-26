@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 
-import { ImageWrapper } from '@/components/common/ImageWrapper'
-import { TextBtn } from '@/components/common/TextBtn'
-import { Title } from '@/components/common/Title'
-import { AboutSnsBox } from '@/components/pages/about/AboutSnsBox'
+import { ImageWrapper } from '@/features/ui/image-wrapper'
+import { TextBtn } from '@/features/ui/text-btn'
+import { Title } from '@/features/ui/title'
+import { AboutSnsBox } from './components/about-sns-box'
 
-import { setMetaData } from '@/utils'
+import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'このサイトについて'
 
