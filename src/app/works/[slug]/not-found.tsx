@@ -1,5 +1,5 @@
-import { TextBtn } from '@/components/common/text-btn'
-import { Title } from '@/components/common/title'
+import { TextBtn } from '@/features/ui/text-btn'
+import { Title } from '@/features/ui/title'
 
 import { setMetaData } from '@/utils'
 

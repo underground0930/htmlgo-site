@@ -6,8 +6,8 @@ import { useMemo } from 'react'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 
-import { Title } from '@/components/common/title'
-import { TextBtn } from '@/components/common/text-btn'
+import { Title } from '@/features/ui/title'
+import { TextBtn } from '@/features/ui/text-btn'
 import { WorksDetailInfo } from './works-detail-info'
 
 import { WorkDetail } from '@/types'

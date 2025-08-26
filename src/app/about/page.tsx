@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
-import { ImageWrapper } from '@/components/common/image-wrapper'
-import { TextBtn } from '@/components/common/text-btn'
-import { Title } from '@/components/common/title'
+import { ImageWrapper } from '@/features/ui/image-wrapper'
+import { TextBtn } from '@/features/ui/text-btn'
+import { Title } from '@/features/ui/title'
 import { AboutSnsBox } from '@/components/pages/about/about-sns-box'
 
 import { setMetaData } from '@/utils'

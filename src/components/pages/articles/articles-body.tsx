@@ -1,5 +1,5 @@
-import { Title } from '@/components/common/title'
-import { TextBtn } from '@/components/common/text-btn'
+import { Title } from '@/features/ui/title'
+import { TextBtn } from '@/features/ui/text-btn'
 import { ArticlesList } from '@/components/pages/articles/articles-list'
 
 import { FeedObj } from '@/types'

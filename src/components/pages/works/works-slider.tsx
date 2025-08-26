@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Pagination, Navigation, Virtual } from 'swiper/modules'
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 
-import { ImageWrapper } from '@/components/common/image-wrapper'
+import { ImageWrapper } from '@/features/ui/image-wrapper'
 
 import { WorksSlider } from '@/types'
 import { NO_IMAGE } from '@/const'

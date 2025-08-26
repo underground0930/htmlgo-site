@@ -1,7 +1,7 @@
 // reference
 // url:https://zenn.dev/catnose99/articles/19a05103ab9ec7
 
-import { LoadingSpinner } from '@/components/common/loading-spinner'
+import { LoadingSpinner } from '@/features/ui/loading-spinner'
 
 export default function Loading() {
   return (
