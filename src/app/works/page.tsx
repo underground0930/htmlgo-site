@@ -1,6 +1,6 @@
 import {Metadata} from 'next'
 
-import { WorksList } from '@/components/pages/works/works-list'
+import { WorksList } from './components/works-list'
 import { TextBtn } from '@/features/ui/text-btn'
 import { Title } from '@/features/ui/title'
 

@@ -1,6 +1,6 @@
 import { Title } from '@/features/ui/title'
 import { TextBtn } from '@/features/ui/text-btn'
-import { ArticlesList } from '@/components/pages/articles/articles-list'
+import { ArticlesList } from './articles-list'
 
 import { FeedObj } from '@/types'
 

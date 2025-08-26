@@ -1,4 +1,4 @@
-import { ContactBody } from '@/components/pages/contact/contact-body'
+import { ContactBody } from './components/contact-body'
 
 import { setMetaData } from '@/utils'
 

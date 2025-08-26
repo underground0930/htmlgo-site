@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
 
-import { ServiceList } from '@/components/pages/top/service-list'
+import { ServiceList } from '@/features/top/components/service-list'
 import { TextBtn } from '@/features/ui/text-btn'
 import { Title } from '@/features/ui/title'
-import { ArticlesList } from '@/components/pages/articles/articles-list'
-import { WorksList } from '@/components/pages/works/works-list'
+import { ArticlesList } from './articles/components/articles-list'
+import { WorksList } from './works/components/works-list'
 
 import { setMetaData } from '@/utils'
 import { fetchTopList } from '@/libs'

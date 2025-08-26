@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 import { fetchWorksPaths } from '@/libs/fetch/fetch-works-paths'
 import { fetchWorksDetail } from '@/libs/fetch/fetch-works-detail'
 
-import { WorksDetailBody } from '@/components/pages/works/works-detail-body'
+import { WorksDetailBody } from './components/works-detail-body'
 
 import { removeHtml, setMetaData } from '@/utils'
 

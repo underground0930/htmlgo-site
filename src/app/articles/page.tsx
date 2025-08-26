@@ -1,4 +1,4 @@
-import { ArticlesBody } from '@/components/pages/articles/articles-body'
+import { ArticlesBody } from './components/articles-body'
 
 import { setMetaData } from '@/utils'
 import { fetchArticles } from '@/libs'
