@@ -11,10 +11,14 @@ const description = '色々なブログの記事のフィードをまとめた�
  * @param params ページパラメータ
  * @returns JSX要素
  */
-export default async function ArticlesPage({ params }: { params: Promise<{ page: string }> }) {
+export default async function ArticlesPage({
+  params,
+}: {
+  params: Promise<{ page: string }>
+}) {
   const resolvedParams = await params
   const result = await fetchArticles({ params: resolvedParams })
-  
+
   return (
     <ArticlesBody articles={result.articles} page={result.page} pages={result.pages} />
   )
@@ -25,7 +29,11 @@ export default async function ArticlesPage({ params }: { params: Promise<{ page:
  * @param params ページパラメータ
  * @returns メタデータ
  */
-export async function generateMetadata({ params }: { params: Promise<{ page: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ page: string }>
+}): Promise<Metadata> {
   const resolvedParams = await params
   const page = Number(resolvedParams.page)
   return {
