@@ -1,2 +1,2 @@
-export { sendMail } from './sendMail'
-export { verifyRecaptcha } from './verifyRecaptcha'
+export { sendMail } from './send-mail'
+export { verifyRecaptcha } from './verify-recaptcha'

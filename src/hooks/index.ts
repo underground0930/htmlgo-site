@@ -1,2 +1,2 @@
-export * from './useDebugMode'
-export * from './usePageView'
+export * from './use-debug-mode'
+export * from './use-page-view'

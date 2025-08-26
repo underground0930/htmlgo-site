@@ -1,4 +1,4 @@
-import { PagerChild } from './PagerChild'
+import { PagerChild } from './pager-child'
 
 type Props = {
   pages: number

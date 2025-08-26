@@ -5,15 +5,15 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { TextBtn } from '@/components/common/TextBtn'
-import { Title } from '@/components/common/Title'
-import { LoadingSpinner } from '@/components/common/LoadingSpinner'
+import { TextBtn } from '@/components/common/text-btn'
+import { Title } from '@/components/common/title'
+import { LoadingSpinner } from '@/components/common/loading-spinner'
 
 import { useDebugMode } from '@/hooks'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types'
 import { errorText, inputElements } from '@/const'
 
-import { InputText } from './InputText'
+import { InputText } from './input-text'
 
 type FormDataType = FormBodyData & FieldValues
 

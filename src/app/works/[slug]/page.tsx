@@ -2,10 +2,10 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
-import { fetchWorksPaths } from '@/libs/fetch/fetchWorksPaths'
-import { fetchWorksDetail } from '@/libs/fetch/fetchWorksDetail'
+import { fetchWorksPaths } from '@/libs/fetch/fetch-works-paths'
+import { fetchWorksDetail } from '@/libs/fetch/fetch-works-detail'
 
-import { WorksDetailBody } from '@/components/pages/works/WorksDetailBody'
+import { WorksDetailBody } from '@/components/pages/works/works-detail-body'
 
 import { removeHtml, setMetaData } from '@/utils'
 

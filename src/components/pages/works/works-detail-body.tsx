@@ -6,14 +6,14 @@ import { useMemo } from 'react'
 import { FaFacebookSquare } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 
-import { Title } from '@/components/common/Title'
-import { TextBtn } from '@/components/common/TextBtn'
-import { WorksDetailInfo } from '@/components/pages/works/WorksDetailInfo'
+import { Title } from '@/components/common/title'
+import { TextBtn } from '@/components/common/text-btn'
+import { WorksDetailInfo } from './works-detail-info'
 
 import { WorkDetail } from '@/types'
 import { conversionDate } from '@/utils'
 
-const WorksSlider = dynamic(() => import('@/components/pages/works/WorksSlider'), {
+const WorksSlider = dynamic(() => import('./works-slider'), {
   ssr: false,
 })
 

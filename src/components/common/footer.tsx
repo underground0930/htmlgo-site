@@ -1,6 +1,6 @@
 'use client'
 
-import { ImageWrapper } from './ImageWrapper'
+import { ImageWrapper } from './image-wrapper'
 
 const links = [
   {

@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
 
-import { ServiceList } from '@/components/pages/top/ServiceList'
-import { TextBtn } from '@/components/common/TextBtn'
-import { Title } from '@/components/common/Title'
-import { ArticlesList } from '@/components/pages/articles/ArticlesList'
-import { WorksList } from '@/components/pages/works/WorksList'
+import { ServiceList } from '@/components/pages/top/service-list'
+import { TextBtn } from '@/components/common/text-btn'
+import { Title } from '@/components/common/title'
+import { ArticlesList } from '@/components/pages/articles/articles-list'
+import { WorksList } from '@/components/pages/works/works-list'
 
 import { setMetaData } from '@/utils'
 import { fetchTopList } from '@/libs'
