@@ -1,7 +1,7 @@
-import { Title } from '@/components/common/Title'
-import { TextBtn } from '@/components/common/TextBtn'
+import { Title } from '@/features/ui/title'
+import { TextBtn } from '@/features/ui/text-btn'
 
-import { setMetaData } from '@/utils'
+import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'お問い合わせ頂きありがとうございました'
 

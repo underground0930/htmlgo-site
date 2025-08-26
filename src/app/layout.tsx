@@ -1,8 +1,8 @@
 import '../styles/globals.css'
 import { Metadata } from 'next'
 
-import { Header } from '@/components/common/Header'
-import { Footer } from '@/components/common/Footer'
+import { Header } from '@/features/ui/header'
+import { Footer } from '@/features/ui/footer'
 
 const title = 'HTMLGO'
 

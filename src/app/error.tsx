@@ -1,7 +1,7 @@
 'use client'
 import { useEffect } from 'react'
 
-import { setMetaData } from '@/utils'
+import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'ページでエラーが発生しました'
 
@@ -14,7 +14,7 @@ export const metadata = {
     },
     title: 'ERROR',
     description,
-    url: '/works',
+    url: '/',
     images: '/img/ogp_new.png',
   }),
 }
