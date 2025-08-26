@@ -11,7 +11,7 @@ import { FeedObj } from '@/types/feed'
  * @param params.page ページ番号
  * @returns Articles一覧とページ情報
  */
-export async function fetchArticles({ params }) {
+export async function fetchArticles({ params }: { params: { page?: string } }) {
   const page = params?.page ? Number(params.page) : 1
 
   // 全記事を取得

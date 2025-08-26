@@ -15,9 +15,9 @@ const description = '最新の実績や、自主制作'
  * @param params ページパラメータ
  * @returns メタデータ
  */
-export async function generateMetadata({ params }: { params: { page: string } }): Promise<Metadata> {
-
-  const page = params.page
+export async function generateMetadata({ params }: { params: Promise<{ page: string }> }): Promise<Metadata> {
+  const resolvedParams = await params
+  const page = Number(resolvedParams.page)
   return {
     ...setMetaData({
       meta: {
@@ -38,12 +38,16 @@ export async function generateMetadata({ params }: { params: { page: string } })
  * @param params ページパラメータ
  * @returns JSX要素
  */
-export default async function WorksPage({ params }: { params: { page: string } }) {
-  const { works, page, pages } = await fetchWorksIndex({ params })
+export default async function WorksPage({ params }: { params: Promise<{ page: string }> }) {
+  const resolvedParams = await params
+  const { works, page, pages } = await fetchWorksIndex({ params: resolvedParams })
 
   return (
     <main className='mx-5 max-w-[800px] md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
+      {pages > 1 && (
+        <Pager pages={pages} page={page} basePath='/works' />
+      )}
       <WorksList works={works} />
       {pages > 1 && (
         <Pager pages={pages} page={page} basePath='/works' />

@@ -17,7 +17,7 @@ type Props = {
  */
 export const PagerChild: React.FC<Props> = ({ page, basePath, isActive, children }) => {
   const linkClass = twMerge(
-    'w-7 h-7 block bg-main text-white leading-7 text-sm',
+    'w-7 h-7 flex items-center justify-center bg-main text-white text-sm hover:bg-[#ddd] hover:text-[#222]',
     isActive && 'bg-[#ddd] text-[#222] font-bold',
   )
   
@@ -34,7 +34,7 @@ export const PagerChild: React.FC<Props> = ({ page, basePath, isActive, children
   }
 
   return (
-    <li className='mx-1.5 inline-block h-5 w-5'>
+    <li className=''>
       <Link className={linkClass} href={generateLink(page)}>
         {children}
       </Link>

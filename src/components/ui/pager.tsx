@@ -58,7 +58,7 @@ export const Pager: React.FC<Props> = ({ pages, page, basePath, range = 1 }) => 
 
   return (
     <>
-      <ul className='border-y border-border py-5 text-center align-top'>
+      <ul className='border-y border-border py-5 flex justify-center items-center gap-2'>
         {page > 1 && (
           <PagerChild page={page - 1} basePath={basePath}>
             &lt;
@@ -67,7 +67,7 @@ export const Pager: React.FC<Props> = ({ pages, page, basePath, range = 1 }) => 
         {pageNumbers.map((pageNum, index) => {
           if (pageNum === 'ellipsis') {
             return (
-              <li key={`ellipsis-${index}`} className='mx-1.5 inline-block h-5 w-5'>
+              <li key={`ellipsis-${index}`} className='mx-1.5 h-5 w-5'>
                 <span className='w-7 h-7 block text-[#222] leading-7 text-sm'>...</span>
               </li>
             )

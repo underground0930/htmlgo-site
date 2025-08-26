@@ -22,10 +22,11 @@ export const ArticlesBody: React.FC<Props> = ({ articles = [], page, pages }) =>
     <>
       <main className='mx-5 max-w-[800px] md:mx-auto'>
         <Title title='Articles' text='技術系やそれ以外の記事' />
-        <ArticlesList articles={articles} />
-        {pages > 1 && (
+        <div className='mb-10'>
           <Pager pages={pages} page={page} basePath='/articles' />
-        )}
+        </div>
+        <ArticlesList articles={articles} />
+        <Pager pages={pages} page={page} basePath='/articles' />
         <div className='mb-10 mt-10 text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
