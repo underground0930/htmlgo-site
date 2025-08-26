@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
-import { fetchWorksPaths } from '@/libs/fetch/fetch-works-paths'
-import { fetchWorksDetail } from '@/libs/fetch/fetch-works-detail'
+import { fetchWorksPaths } from './libs/fetch-works-paths'
+import { fetchWorksDetail } from './libs/fetch-works-detail'
 
 import { WorksDetailBody } from './components/works-detail-body'
 

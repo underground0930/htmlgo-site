@@ -1,7 +1,7 @@
 import { ArticlesBody } from './components/articles-body'
 
 import { setMetaData } from '@/utils/set-metadata'
-import { fetchArticles } from '@/libs/fetch/fetch-articles'
+import { fetchArticles } from './libs/fetch-articles'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 

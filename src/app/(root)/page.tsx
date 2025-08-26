@@ -3,11 +3,11 @@ import { Metadata } from 'next'
 import { ServiceList } from './components/service-list'
 import { TextBtn } from '@/features/ui/text-btn'
 import { Title } from '@/features/ui/title'
-import { ArticlesList } from './articles/components/articles-list'
-import { WorksList } from './works/components/works-list'
+import { ArticlesList } from '../articles/components/articles-list'
+import { WorksList } from '../works/components/works-list'
 
 import { setMetaData } from '@/utils/set-metadata'
-import { fetchTopList } from '@/libs/fetch/fetch-top-list'
+import { fetchTopList } from './libs/fetch-top-list'
 
 const description = 'WEB技術を書き連ねるサイト'
 

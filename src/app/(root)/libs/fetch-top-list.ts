@@ -3,13 +3,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 
-import { microcmsClient } from './microcms-client'
+import { microcmsClient } from '@/libs/microcms-client'
 import { WorkIndex } from '@/types/microcms'
 import { FeedObj } from '@/types/feed'
 
 export async function fetchTopList() {
   const articles = (
-    (await import('../../../public/feed.json')) as { default: FeedObj[] }
+    (await import('../../../../public/feed.json')) as { default: FeedObj[] }
   ).default.slice(0, 8)
 
   const works = await microcmsClient

@@ -14,7 +14,7 @@ export const metadata = {
     },
     title: 'ERROR',
     description,
-    url: '/works',
+    url: '/',
     images: '/img/ogp_new.png',
   }),
 }

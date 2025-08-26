@@ -3,8 +3,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 
-import { microcmsClient } from './microcms-client'
-import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/const/microcms'
+import { microcmsClient } from '@/libs/microcms-client'
+import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/constants/microcms'
 
 import type { WorkIndex, WorksCategory } from '@/types/microcms'
 

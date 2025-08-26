@@ -2,7 +2,7 @@
 // works slug List
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import { microcmsClient } from './microcms-client'
+import { microcmsClient } from '@/libs/microcms-client'
 
 export async function fetchWorksPaths() {
   const result = await microcmsClient.getList<{ slug: string }>({

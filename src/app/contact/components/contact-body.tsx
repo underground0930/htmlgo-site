@@ -11,7 +11,7 @@ import { LoadingSpinner } from '@/features/ui/loading-spinner'
 
 import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
-import { errorText, inputElements } from '@/const/contact'
+import { errorText, inputElements } from '../constants/contact'
 
 import { InputText } from './input-text'
 
