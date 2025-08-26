@@ -9,20 +9,6 @@ import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'このサイトについて'
 
-export const metadata: Metadata = {
-  ...setMetaData({
-    meta: {
-      openGraph: {
-        type: 'article',
-      },
-    },
-    title: 'ABOUT',
-    description,
-    url: '/about',
-    images: '/img/ogp_new.png',
-  }),
-}
-
 export default function About() {
   return (
     <>
@@ -115,4 +101,19 @@ export default function About() {
       </main>
     </>
   )
+}
+
+
+export const metadata: Metadata = {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'article',
+      },
+    },
+    title: 'ABOUT',
+    description,
+    url: '/about',
+    images: '/img/ogp_new.png',
+  }),
 }

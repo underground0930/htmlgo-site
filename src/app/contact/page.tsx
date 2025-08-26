@@ -1,10 +1,16 @@
+import { Metadata } from 'next'
+
 import { ContactBody } from './components/contact-body'
 
 import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'お仕事のお問い合わせはこちらから'
 
-export const metadata = {
+export default function Contact() {
+  return <ContactBody />
+}
+
+export const metadata: Metadata = {
   ...setMetaData({
     meta: {
       openGraph: {
@@ -16,8 +22,4 @@ export const metadata = {
     url: '/contact',
     images: '/img/ogp_new.png',
   }),
-}
-
-export default function Contact() {
-  return <ContactBody />
 }

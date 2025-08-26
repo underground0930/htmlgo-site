@@ -11,20 +11,6 @@ import { fetchTopList } from './libs/fetch-top-list'
 
 const description = 'WEB技術を書き連ねるサイト'
 
-export const metadata: Metadata = {
-  ...setMetaData({
-    meta: {
-      openGraph: {
-        type: 'website',
-      },
-    },
-    title: 'TOP',
-    url: '',
-    description,
-    images: '/img/ogp_new.png',
-  }),
-}
-
 export default async function Home() {
   const { works, articles } = await fetchTopList()
   return (
@@ -55,4 +41,18 @@ export default async function Home() {
       </section>
     </main>
   )
+}
+
+export const metadata: Metadata = {
+  ...setMetaData({
+    meta: {
+      openGraph: {
+        type: 'website',
+      },
+    },
+    title: 'TOP',
+    url: '',
+    description,
+    images: '/img/ogp_new.png',
+  }),
 }

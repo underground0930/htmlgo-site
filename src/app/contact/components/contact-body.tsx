@@ -119,7 +119,7 @@ export const ContactBody: React.FC = () => {
       )}
       <main className='mx-5 max-w-[800px] pt-5 md:mx-auto' ref={parentRef}>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
-        {error && <div className='pb-8 text-base font-bold text-[#f00]'>{error}</div>}
+        {error && <div className='pb-8 font-bold text-[#f00]'>{error}</div>}
         <div className='mb-10'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <ul className='mb-10'>
