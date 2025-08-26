@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { ServiceList } from '@/features/top/components/service-list'
+import { ServiceList } from './components/service-list'
 import { TextBtn } from '@/features/ui/text-btn'
 import { Title } from '@/features/ui/title'
 import { ArticlesList } from './articles/components/articles-list'

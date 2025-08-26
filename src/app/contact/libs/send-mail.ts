@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-import { FormBodyData } from '@/types'
+import { FormBodyData } from '../types/contact'
 
 const setText = (args: FormBodyData): string => {
   const text = `

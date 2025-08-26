@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
-import { verifyRecaptcha, sendMail } from '@/libs'
-import { FormBodyDataSchema, PostFormBodyData } from '@/types'
+import { verifyRecaptcha, sendMail } from '../libs'
+import { FormBodyDataSchema, PostFormBodyData } from '../types/contact'
 
 export async function POST(request: Request) {
   const requestBodyText = await request.text()

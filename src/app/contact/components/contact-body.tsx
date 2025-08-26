@@ -10,7 +10,7 @@ import { Title } from '@/features/ui/title'
 import { LoadingSpinner } from '@/features/ui/loading-spinner'
 
 import { useDebugMode } from '@/hooks'
-import { FormBodyData, FormBodyDataSchema, ResultType } from '@/types'
+import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
 import { errorText, inputElements } from '@/const'
 
 import { InputText } from './input-text'

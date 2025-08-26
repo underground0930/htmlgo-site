@@ -1,7 +1,7 @@
 import React from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-import { FormBodyData } from '@/types'
+import { FormBodyData } from '../types/contact'
 
 type Props = {
   name: string
