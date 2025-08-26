@@ -2,8 +2,8 @@
 // articles
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import { ARTICLE_PER_PAGE } from '@/const'
-import { FeedObj } from '@/types'
+import { ARTICLE_PER_PAGE } from '@/const/articles'
+import { FeedObj } from '@/types/feed'
 
 export async function fetchArticles({ params }: { params: { page?: string } }) {
   const page = params?.page ? Number(params.page) : 1

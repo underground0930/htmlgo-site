@@ -1,4 +1,4 @@
-import { snsList } from '@/const'
+import { snsList } from '@/const/about'
 
 export const AboutSnsBox: React.FC = () => {
   return (

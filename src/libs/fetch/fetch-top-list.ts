@@ -3,8 +3,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 
-import { microcmsClient } from '@/libs'
-import { WorkIndex, FeedObj } from '@/types'
+import { microcmsClient } from './microcms-client'
+import { WorkIndex } from '@/types/microcms'
+import { FeedObj } from '@/types/feed'
 
 export async function fetchTopList() {
   const articles = (

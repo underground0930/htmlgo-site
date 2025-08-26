@@ -9,9 +9,9 @@ import { TextBtn } from '@/features/ui/text-btn'
 import { Title } from '@/features/ui/title'
 import { LoadingSpinner } from '@/features/ui/loading-spinner'
 
-import { useDebugMode } from '@/hooks'
+import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
-import { errorText, inputElements } from '@/const'
+import { errorText, inputElements } from '@/const/contact'
 
 import { InputText } from './input-text'
 

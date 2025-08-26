@@ -10,8 +10,8 @@ import { Title } from '@/features/ui/title'
 import { TextBtn } from '@/features/ui/text-btn'
 import { WorksDetailInfo } from './works-detail-info'
 
-import { WorkDetail } from '@/types'
-import { conversionDate } from '@/utils'
+import { WorkDetail } from '@/types/microcms'
+import { conversionDate } from '@/utils/conversion-date'
 
 const WorksSlider = dynamic(() => import('./works-slider'), {
   ssr: false,

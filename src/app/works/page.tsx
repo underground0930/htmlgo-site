@@ -4,8 +4,8 @@ import { WorksList } from './components/works-list'
 import { TextBtn } from '@/features/ui/text-btn'
 import { Title } from '@/features/ui/title'
 
-import { fetchWorksIndex } from '@/libs'
-import { setMetaData } from '@/utils'
+import { fetchWorksIndex } from '@/libs/fetch/fetch-works-index'
+import { setMetaData } from '@/utils/set-metadata'
 
 const description = '最新の実績や、自主制作'
 

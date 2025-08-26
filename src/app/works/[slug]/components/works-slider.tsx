@@ -5,8 +5,8 @@ import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 
 import { ImageWrapper } from '@/features/ui/image-wrapper'
 
-import { WorksSlider } from '@/types'
-import { NO_IMAGE } from '@/const'
+import { WorksSlider } from '@/types/microcms'
+import { NO_IMAGE } from '@/const/works'
 
 type NewSlider = WorksSlider & { loading: boolean }
 

@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { CategoryIcon } from '@/features/ui/category-icon'
 import { ImageWrapper } from '@/features/ui/image-wrapper'
 
-import { conversionDate } from '@/utils'
-import { WorkIndex } from '@/types'
-import { NO_IMAGE } from '@/const'
+import { conversionDate } from '@/utils/conversion-date'
+import { WorkIndex } from '@/types/microcms'
+import { NO_IMAGE } from '@/const/works'
 
 type Props = {
   works: WorkIndex[]

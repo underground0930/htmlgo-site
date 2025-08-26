@@ -6,8 +6,8 @@ import { Title } from '@/features/ui/title'
 import { ArticlesList } from './articles/components/articles-list'
 import { WorksList } from './works/components/works-list'
 
-import { setMetaData } from '@/utils'
-import { fetchTopList } from '@/libs'
+import { setMetaData } from '@/utils/set-metadata'
+import { fetchTopList } from '@/libs/fetch/fetch-top-list'
 
 const description = 'WEB技術を書き連ねるサイト'
 

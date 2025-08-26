@@ -1,5 +1,0 @@
-export * from './articles'
-export * from './contact'
-export * from './about'
-export * from './works'
-export * from './microcms'

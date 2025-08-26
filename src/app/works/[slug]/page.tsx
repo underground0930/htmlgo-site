@@ -7,7 +7,8 @@ import { fetchWorksDetail } from '@/libs/fetch/fetch-works-detail'
 
 import { WorksDetailBody } from './components/works-detail-body'
 
-import { removeHtml, setMetaData } from '@/utils'
+import { removeHtml } from '@/utils/remove-html'
+import { setMetaData } from '@/utils/set-metadata'
 
 type Props = {
   params: Promise<{

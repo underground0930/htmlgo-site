@@ -1,7 +1,7 @@
 import { TextBtn } from '@/features/ui/text-btn'
 import { Title } from '@/features/ui/title'
 
-import { setMetaData } from '@/utils'
+import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'お探しのページは見つかりませんでした'
 
