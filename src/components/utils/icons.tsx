@@ -4,6 +4,7 @@ import { SiNextdotjs, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/
 import { Image } from '@/components/utils/image'
 import { FaReact } from 'react-icons/fa'
 import { RxHome } from 'react-icons/rx'
+import { FaWordpress } from 'react-icons/fa'
 
 /**
  * ローカルSVGアイコンのプロパティ型定義
@@ -36,6 +37,9 @@ export const Icons = {
   ),
   github: ({ className }: IconProps) => (
     <VscGithub className={className} width={24} height={24} />
+  ),
+  wordpress: ({ className, width = 24, height = 24 }: IconProps) => (
+    <FaWordpress className={className} width={width} height={height} />
   ),
   home: ({ className, width = 24, height = 24 }: IconProps) => (
     <RxHome className={className} width={width} height={height} />

@@ -10,7 +10,7 @@ import { FeedObj } from '@/types/feed'
 export async function fetchTopList() {
   const articles = (
     (await import('../../../../public/feed.json')) as { default: FeedObj[] }
-  ).default.slice(0, 8)
+  ).default.slice(0, 4)
 
   const works = await microcmsClient
     .get<MicroCMSListResponse<WorkIndex>>({

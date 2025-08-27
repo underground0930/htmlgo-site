@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
+import { Icons } from '@/components/utils/icons'
 
 import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
@@ -111,13 +112,12 @@ export const ContactBody: React.FC = () => {
 
   return (
     <>
-      <DebugModal />
       {loading && (
         <div className='bg-opacity-50 fixed inset-0 z-10 m-auto flex items-center justify-center bg-black'>
           <LoadingSpinner />
         </div>
       )}
-      <main className='mx-5 max-w-[800px] pt-5 md:mx-auto' ref={parentRef}>
+      <main className='mx-5 max-w-[800px] md:mx-auto' ref={parentRef}>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
         {error && <div className='pb-8 font-bold text-[#f00]'>{error}</div>}
         <div className='mb-10'>
@@ -150,7 +150,7 @@ export const ContactBody: React.FC = () => {
           </form>
         </div>
         <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
-          <Button component='link' href='/'>
+          <Button component='link' href='/' icon={<Icons.home />}>
             HOME
           </Button>
         </div>

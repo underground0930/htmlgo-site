@@ -103,7 +103,6 @@ export function Button(props: Props) {
       {loading && <ButtonLoadingSpinner />}
       {!loading && icon}
       {children}
-      {!loading && iconRight}
     </button>
   )
 }

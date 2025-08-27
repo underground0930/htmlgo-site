@@ -69,8 +69,8 @@ export default function About() {
               </h3>
               <div className='text-sm'>
                 <p className='leading-[1.8]'>
-                  React / TypeScript / Next.js / Tailwind CSS / Ruby on Rails / WordPress
-                  / TanStack Query / microCMS
+                  React / TypeScript / Next.js / Tailwind CSS / WordPress / TanStack Query
+                  / microCMS
                 </p>
               </div>
             </section>

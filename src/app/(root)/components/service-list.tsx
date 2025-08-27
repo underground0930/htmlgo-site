@@ -9,7 +9,7 @@ import { Icons, type IconsName } from '@/components/utils/icons'
 /**
  * 表示するサービス技術のアイコンリスト
  */
-const iconList: IconsName[] = ['react', 'typescript', 'nextjs']
+const iconList: IconsName[] = ['react', 'typescript', 'nextjs', 'wordpress']
 
 export const ServiceList: React.FC = () => {
   return (
@@ -27,7 +27,7 @@ export const ServiceList: React.FC = () => {
             <br />
           </dt>
           <dd className='text text-base leading-7'>
-            <b>React,TypeScript,Next.js</b>
+            <b>React,TypeScript,Next.js,WordPress</b>
             <br />
             を用いたWeb開発を行います。
             <br />
@@ -37,13 +37,6 @@ export const ServiceList: React.FC = () => {
             プロジェクトを進めることを
             <br />
             心がけています。
-            <br />
-            <br />
-            <b>ビジネスパートナーとして</b>
-            <br />
-            プロジェクトが円滑に進むように
-            <br />
-            ご協力させていただきます。
           </dd>
         </dl>
       </div>
