@@ -15,14 +15,14 @@ export const metadata = {
     title: '404 | WORKS',
     description,
     url: '/404',
-    images: '/img/ogp_new.png',
+    images: '/img/ogp-new.png',
   }),
 }
 
 export default function NotFound() {
   return (
     <main className='mx-5 max-w-[800px] md:mx-auto'>
-      <section className='mb-10 border-b border-border pb-5 md:mb-20 md:pb-10'>
+      <section className='border-border mb-10 border-b pb-5 md:mb-20 md:pb-10'>
         <Title title='Not Found' text='お探しのページは見つかりませんでした' />
         <div className='mb-8 py-5 text-center'>
           お探しのページは見つかりませんでした。

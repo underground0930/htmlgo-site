@@ -24,7 +24,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   if (result.post) {
     const { title, body: description, slider } = result.post
     const ogp =
-      slider?.length && slider[0]?.img?.url ? slider[0].img.url : '/img/ogp_new.png'
+      slider?.length && slider[0]?.img?.url ? slider[0].img.url : '/img/ogp-new.png'
     const maxLength = 120
     const parsedDescription = removeHtml(description ?? '')
     const slicedDescription =

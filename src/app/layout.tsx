@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       template: `%s | ${title}`,
     },
     siteName: title,
-    images: '/img/ogp_new.png',
+    images: '/img/ogp-new.png',
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       template: `%s | ${title}`,
     },
     creator: '@resistance_gowy',
-    images: '/img/ogp_new.png',
+    images: '/img/ogp-new.png',
   },
 }
 

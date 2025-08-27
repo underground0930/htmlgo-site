@@ -18,7 +18,7 @@ export default function About() {
           <div className=''>
             <ImageWrapper
               cls='mx-auto mb-10 rounded-full'
-              src='/img/profile.jpg'
+              src='/img/about/profile.jpg'
               width={210}
               height={210}
             />
@@ -28,7 +28,7 @@ export default function About() {
           </div>
           <div>
             <section>
-              <h3 className='mb-8 mt-10 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+              <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
                 プロフィール
               </h3>
               <div className='text-sm'>
@@ -37,13 +37,15 @@ export default function About() {
                     href='https://x.com/resistance_gowy'
                     rel='noopener noreferrer'
                     target='_blank'
-                    className='underline hover:text-link-active'
+                    className='hover:text-link-active underline'
                   >
                     <strong>@resistance_gowy</strong>
                   </a>
                   (フロントエンドエンジニア)
                 </p>
-                <p className='leading-[1.8]'>東京都→埼玉県でフリーランスとして活動しています。</p>
+                <p className='leading-[1.8]'>
+                  東京都→埼玉県でフリーランスとして活動しています。
+                </p>
                 <p className='leading-[1.8]'>
                   最近は<strong>React</strong>、<strong>TypeScript</strong>、
                   <strong>Next.js</strong>
@@ -55,11 +57,13 @@ export default function About() {
                 <p className='leading-[1.8]'>
                   お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
                 </p>
-                <p className='leading-[1.8]'>業務効率化のツールを作るのが最近の趣味です。</p>
+                <p className='leading-[1.8]'>
+                  業務効率化のツールを作るのが最近の趣味です。
+                </p>
               </div>
             </section>
             <section>
-              <h3 className='mb-8 mt-10 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+              <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
                 経験した技術・ツール・サービス
               </h3>
               <div className='text-sm'>
@@ -70,7 +74,7 @@ export default function About() {
               </div>
             </section>
             <section>
-              <h3 className='mb-8 mt-10 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+              <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
                 経歴
               </h3>
               <div className='text-sm'>
@@ -95,14 +99,13 @@ export default function About() {
             </section>
           </div>
         </div>
-        <div className='mb-10 border-t border-border pt-10 text-center'>
+        <div className='border-border mb-10 border-t pt-10 text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>
     </>
   )
 }
-
 
 export const metadata: Metadata = {
   ...setMetaData({
@@ -114,6 +117,6 @@ export const metadata: Metadata = {
     title: 'ABOUT',
     description,
     url: '/about',
-    images: '/img/ogp_new.png',
+    images: '/img/ogp-new.png',
   }),
 }

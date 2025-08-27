@@ -7,7 +7,6 @@ import { fetchArticles } from './libs/fetch-articles'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
-
 export default async function Articles() {
   const result = await fetchArticles({ params: { page: '1' } })
   return (
@@ -25,6 +24,6 @@ export const metadata: Metadata = {
     title: 'ARTICLES',
     description,
     url: '/articles',
-    images: '/img/ogp_new.png',
+    images: '/img/ogp-new.png',
   }),
 }

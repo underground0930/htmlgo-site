@@ -15,7 +15,7 @@ export const metadata = {
     title: 'CONTACT',
     description,
     url: '/contact/thanks',
-    images: '/img/ogp_new.png',
+    images: '/img/ogp-new.png',
   }),
 }
 
@@ -33,7 +33,7 @@ export default function Thanks() {
             今しばらくおまちください。
           </div>
         </div>
-        <div className='mt-10 border-t border-border pb-10 pt-10 text-center'>
+        <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
           <TextBtn title='HOME' link='/' />
         </div>
       </main>

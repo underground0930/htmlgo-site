@@ -6,32 +6,32 @@ const links = [
   {
     href: 'https://nextjs.org/',
     key: 'Nextjs',
-    src: '/svgs/IconNextjs.svg',
+    src: '/img/footer/icon-nextjs.svg',
   },
   {
     href: 'https://vercel.com/home',
     key: 'Vercel',
-    src: '/svgs/IconVercel.svg',
+    src: '/img/footer/icon-vercel.svg',
   },
   {
     href: 'https://tailwindcss.com/',
     key: 'Tailwind CSS',
-    src: '/svgs/IconTailwindcss.svg',
+    src: '/img/footer/icon-tailwindcss.svg',
   },
   {
     href: 'https://github.com/underground0930/htmlgo-site',
     key: 'github',
-    src: '/svgs/IconGithub.svg',
+    src: '/img/footer/icon-github.svg',
   },
   {
     href: 'https://microcms.io/',
     key: 'microcms',
-    src: '/svgs/IconMicrocms.svg',
+    src: '/img/footer/icon-microcms.svg',
   },
   {
     href: 'https://www.google.com/recaptcha/about/',
     key: 'recaptcha',
-    src: '/svgs/IconRecaptcha.svg',
+    src: '/img/footer/icon-recaptcha.svg',
   },
 ]
 
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
             </ul>
           </dd>
         </dl>
-        <small className='text-xs block text-center'>
+        <small className='block text-center text-xs'>
           Copyright © 2025 htmlgo.site All rights reserved.
         </small>
       </footer>

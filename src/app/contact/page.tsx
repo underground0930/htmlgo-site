@@ -20,6 +20,6 @@ export const metadata: Metadata = {
     title: 'CONTACT',
     description,
     url: '/contact',
-    images: '/img/ogp_new.png',
+    images: '/img/ogp-new.png',
   }),
 }

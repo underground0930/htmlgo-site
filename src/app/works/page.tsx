@@ -1,4 +1,4 @@
-import {Metadata} from 'next'
+import { Metadata } from 'next'
 
 import { WorksList } from './components/works-list'
 import { TextBtn } from '@/components/ui/text-btn'
@@ -21,7 +21,7 @@ export default async function Works() {
       </div>
       <WorksList works={works} />
       <Pager pages={pages} page={page} basePath='/works' />
-      <footer className='mt-10 border-t border-border pb-10 pt-10'>
+      <footer className='border-border mt-10 border-t pt-10 pb-10'>
         <div className='text-center'>
           <TextBtn title='Home' link='/' />
         </div>
@@ -40,6 +40,6 @@ export const metadata: Metadata = {
     title: 'WORKS',
     description,
     url: '/works',
-    images: '/img/ogp_new.png',
+    images: '/img/ogp-new.png',
   }),
 }
