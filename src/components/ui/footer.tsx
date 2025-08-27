@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { ImageWrapper } from './image-wrapper'
 
 const links = [
@@ -35,7 +36,9 @@ const links = [
   },
 ]
 
-export const Footer: React.FC = () => {
+type Props = React.HTMLAttributes<HTMLElement>
+
+export const Footer: React.FC<Props> = () => {
   return (
     <>
       <footer className='bg-main p-5 text-white'>

@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 import type { VariantProps } from 'tailwind-variants'
 import { buttonVariants } from './variants'
 
@@ -10,10 +10,11 @@ export type ButtonVariants = VariantProps<typeof buttonVariants>
 /**
  * Buttonコンポーネントのプロパティ型定義
  *
- * @description button要素を拡張したプロパティ定義
+ * @description React 19対応版 - ComponentPropsを使用してrefを含む
+ * button要素を拡張したプロパティ定義
  * フォーム送信やクリックイベントで使用
  */
-export type ButtonProps = ComponentPropsWithoutRef<'button'> &
+export type ButtonProps = ComponentProps<'button'> &
   ButtonVariants & {
     /** ボタン内に表示するアイコン（左側） */
     icon?: ReactNode
