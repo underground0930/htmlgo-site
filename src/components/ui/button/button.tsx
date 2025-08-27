@@ -8,18 +8,14 @@ import { ButtonLoadingSpinner } from './loading-spinner'
 /**
  * Buttonコンポーネントのプロパティ型定義
  */
-export type ButtonProps = ComponentProps<'button'> &
+export type ButtonProps = Omit<ComponentProps<'button'>, 'className'> &
   VariantProps<typeof buttonVariants> & {
-    /** ボタン内に表示するアイコン（左側） */
     icon?: ReactNode
-    /** ボタン内に表示するアイコン（右側） */
     iconRight?: ReactNode
-    /** ローディング状態 */
     loading?: boolean
   }
 
 export function Button({
-  className,
   variant,
   size,
   icon,
@@ -31,9 +27,9 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={buttonVariants({ variant, size, className })}
-      disabled={disabled || loading}
       {...props}
+      className={buttonVariants({ variant, size })}
+      disabled={disabled || loading}
     >
       {loading && <ButtonLoadingSpinner />}
       {!loading && icon}
