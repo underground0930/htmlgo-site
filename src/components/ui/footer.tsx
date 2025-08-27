@@ -1,41 +1,41 @@
 'use client'
 
-import { ImageWrapper } from './image-wrapper'
+import React from 'react'
+import { Icons, type IconsName } from '@/components/utils/icons'
 
-const links = [
+type Props = React.ComponentPropsWithoutRef<'footer'>
+
+const links: {
+  href: string
+  key: IconsName
+}[] = [
   {
     href: 'https://nextjs.org/',
-    key: 'Nextjs',
-    src: '/img/footer/icon-nextjs.svg',
+    key: 'nextjs',
   },
   {
     href: 'https://vercel.com/home',
-    key: 'Vercel',
-    src: '/img/footer/icon-vercel.svg',
+    key: 'vercel',
   },
   {
     href: 'https://tailwindcss.com/',
-    key: 'Tailwind CSS',
-    src: '/img/footer/icon-tailwindcss.svg',
+    key: 'tailwindcss',
   },
   {
     href: 'https://github.com/underground0930/htmlgo-site',
     key: 'github',
-    src: '/img/footer/icon-github.svg',
   },
   {
     href: 'https://microcms.io/',
     key: 'microcms',
-    src: '/img/footer/icon-microcms.svg',
   },
   {
     href: 'https://www.google.com/recaptcha/about/',
     key: 'recaptcha',
-    src: '/img/footer/icon-recaptcha.svg',
   },
 ]
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<Props> = () => {
   return (
     <>
       <footer className='bg-main p-5 text-white'>
@@ -43,16 +43,17 @@ export const Footer: React.FC = () => {
           <dt className='mb-4'>This website powered by</dt>
           <dd>
             <ul className='flex items-center justify-center'>
-              {links.map((v) => {
+              {links.map((link) => {
+                const IconComponent = Icons[link.key]
                 return (
-                  <li className='mx-2' key={v.key}>
+                  <li className='mx-2' key={link.key}>
                     <a
-                      className='flex w-7 items-center justify-center [&>svg]:h-auto [&>svg]:w-full'
-                      href={v.href}
+                      className='relative flex w-7 items-center justify-center [&>svg]:h-auto [&>svg]:w-full'
+                      href={link.href}
                       target='_blank'
                       rel='noreferrer'
                     >
-                      <ImageWrapper src={v.src} alt={v.key} />
+                      <IconComponent width={28} height={28} alt={link.key} />
                     </a>
                   </li>
                 )

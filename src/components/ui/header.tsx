@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 
+type Props = React.ComponentPropsWithoutRef<'header'>
+
 const navList = [
   {
     label: 'Top',
@@ -32,13 +34,13 @@ const navList = [
   },
 ]
 
-export const Header: React.FC = () => {
+export const Header: React.FC<Props> = () => {
   const pathname = usePathname()
   return (
     <>
-      <header className='relative z-1 mx-5 mb-8 border-b border-border'>
+      <header className='border-border relative z-1 mx-5 mb-8 border-b'>
         <div className='mx-auto max-w-[800px] items-center justify-between md:flex'>
-          <h1 className='pb-4 pt-6 text-center text-2xl font-bold leading-none md:w-[210px] md:py-5 md:text-left'>
+          <h1 className='pt-6 pb-4 text-center text-2xl leading-none font-bold md:w-[210px] md:py-5 md:text-left'>
             <Link href='/' className='no-underline'>
               HTMLGO
             </Link>
@@ -52,7 +54,7 @@ export const Header: React.FC = () => {
                       prefetch={false}
                       href={item.href}
                       className={twMerge(
-                        'text-lg font-bold hover:text-link-active',
+                        'hover:text-link-active text-lg font-bold',
                         item.active(pathname) && 'text-link-active',
                       )}
                     >

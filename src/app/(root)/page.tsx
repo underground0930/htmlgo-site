@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { ServiceList } from './components/service-list'
-import { TextBtn } from '@/components/ui/text-btn'
+import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { ArticlesList } from '../articles/components/articles-list'
 import { WorksList } from '../works/components/works-list'
@@ -20,7 +20,9 @@ export default async function Home() {
         <Title title='Services' text='事業内容' />
         <ServiceList />
         <div className='text-center'>
-          <TextBtn title='to About' link='/about/' />
+          <Button component='link' href='/about/'>
+            to About
+          </Button>
         </div>
       </section>
       {/* works */}
@@ -28,7 +30,9 @@ export default async function Home() {
         <Title title='Works' text='最新の実績や、自主制作' />
         <WorksList works={works} />
         <div className='text-center'>
-          <TextBtn title='More Works' link='/works/' />
+          <Button component='link' href='/works/'>
+            More Works
+          </Button>
         </div>
       </section>
       {/* articles */}
@@ -36,7 +40,9 @@ export default async function Home() {
         <Title title='Articles' text='最新の記事' />
         <ArticlesList articles={articles} />
         <div className='text-center'>
-          <TextBtn title='More Articles' link='/articles/' />
+          <Button component='link' href='/articles/'>
+            More Articles
+          </Button>
         </div>
       </section>
     </main>

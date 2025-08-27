@@ -1,17 +1,24 @@
-import React from 'react'
-import { IconType } from 'react-icons'
-import { FaReact } from 'react-icons/fa'
-import { SiTypescript, SiNextdotjs } from 'react-icons/si'
+/**
+ * サービス一覧コンポーネント
+ * 使用技術のアイコンを表示し、サービス内容を紹介します。
+ */
 
-const List: IconType[] = [FaReact, SiTypescript, SiNextdotjs]
+import React from 'react'
+import { Icons, type IconsName } from '@/components/utils/icons'
+
+/**
+ * 表示するサービス技術のアイコンリスト
+ */
+const iconList: IconsName[] = ['react', 'typescript', 'nextjs']
 
 export const ServiceList: React.FC = () => {
   return (
     <>
-      <div className='mb-4 ml-auto mr-auto flex max-w-[680px] flex-wrap justify-center'>
-        {List.map((Icon, index) => (
-          <Icon className='m-3 h-auto w-12.5' key={index} />
-        ))}
+      <div className='mr-auto mb-4 ml-auto flex max-w-[680px] flex-wrap justify-center'>
+        {iconList.map((iconName) => {
+          const IconComponent = Icons[iconName]
+          return <IconComponent className='m-3 h-auto w-12.5' key={iconName} />
+        })}
       </div>
       <div className='max-w-[400px mx-auto mb-5 w-full text-center'>
         <dl className='p-4'>

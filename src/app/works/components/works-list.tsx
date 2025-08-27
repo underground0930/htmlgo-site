@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 import { CategoryIcon } from '@/components/ui/category-icon'
-import { ImageWrapper } from '@/components/ui/image-wrapper'
+import { Image } from '@/components/utils/image'
 
 import { conversionDate } from '@/utils/conversion-date'
 import { WorkIndex } from '@/types/microcms'
@@ -21,12 +21,12 @@ export const WorksList: React.FC<Props> = ({ works = [] }) => {
           const thumb = work?.slider?.[0]?.img?.url
           const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE
           return (
-            <li key={work.id} className='mb-5 border border-border md:mb-0'>
+            <li key={work.id} className='border-border mb-5 border md:mb-0'>
               <Link className='block' href={`/works/${work.slug}`} prefetch={false}>
                 <dl>
-                  <dt className='relative mb-2.5 aspect-video border-b border-border'>
-                    <ImageWrapper
-                      cls='object-cover '
+                  <dt className='border-border relative mb-2.5 aspect-video border-b'>
+                    <Image
+                      className='object-cover'
                       src={thumbnail}
                       priority={i < 6}
                       sizes='(max-width: 768px) 100vw, 33vw'
@@ -51,7 +51,7 @@ export const WorksList: React.FC<Props> = ({ works = [] }) => {
                         改修日:{conversionDate(work.publishedAt2)}
                       </time>
                     )}
-                    <h3 className='mb-2.5 mt-2.5 break-all text-base font-bold leading-5'>
+                    <h3 className='mt-2.5 mb-2.5 text-base leading-5 font-bold break-all'>
                       {work.title}
                     </h3>
                     <p>
