@@ -48,68 +48,29 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 // 基本的なバリアント
-export const Default: Story = {
+export const _Button: Story = {
   args: {
-    variant: 'default',
-    children: 'デフォルト',
+    children: 'ボタン',
+    onClick: fn(),
   },
 }
 
-export const Primary: Story = {
+export const NextLink: Story = {
   args: {
     variant: 'primary',
-    children: 'プライマリ',
+    children: 'Next.js リンク',
+    as: 'link',
+    href: '/?hoge=1',
   },
 }
 
 // サイズバリエーション
-export const Medium: Story = {
+export const ExternalLink: Story = {
   args: {
     size: 'md',
     variant: 'primary',
-    children: '中サイズ',
-  },
-}
-
-export const Large: Story = {
-  args: {
-    size: 'lg',
-    variant: 'primary',
-    children: '大サイズ',
-  },
-}
-
-// アイコン付きバリエーション
-export const WithIcon: Story = {
-  args: {
-    variant: 'primary',
-    icon: createElement(FaUser),
-    children: 'ユーザー登録',
-  },
-}
-
-export const WithRightIcon: Story = {
-  args: {
-    variant: 'primary',
-    iconRight: createElement(FaArrowRight),
-    children: '次へ進む',
-  },
-}
-
-// ローディング状態
-export const Loading: Story = {
-  args: {
-    variant: 'primary',
-    loading: true,
-    children: '送信中...',
-  },
-}
-
-// 無効状態
-export const Disabled: Story = {
-  args: {
-    variant: 'primary',
-    disabled: true,
-    children: '無効状態',
+    children: '外部リンク',
+    as: 'a',
+    href: 'https://www.google.com',
   },
 }
