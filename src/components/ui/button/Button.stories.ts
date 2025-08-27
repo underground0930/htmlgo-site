@@ -3,7 +3,7 @@ import { fn } from 'storybook/test'
 import { createElement } from 'react'
 import { FaUser, FaArrowRight } from 'react-icons/fa'
 
-import { Button } from './button'
+import { Button } from './'
 
 const meta = {
   title: 'UI/Button',
