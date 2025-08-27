@@ -20,7 +20,7 @@ export const PagerChild: React.FC<Props> = ({ page, basePath, isActive, children
     'w-7 h-7 flex items-center justify-center bg-main text-white text-sm hover:bg-[#ddd] hover:text-[#222]',
     isActive && 'bg-[#ddd] text-[#222] font-bold',
   )
-  
+
   /**
    * ページ番号に応じたリンクを生成
    * @param pageNum ページ番号
