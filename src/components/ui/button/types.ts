@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import type { VariantProps } from 'tailwind-variants'
-import type { buttonVariants } from './variants'
+import { buttonVariants } from './variants'
 
 /**
  * ボタンコンポーネントのバリアント型定義
