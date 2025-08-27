@@ -1,18 +1,23 @@
 'use client'
 
+import type { ComponentProps, ReactNode } from 'react'
+import type { VariantProps } from 'tailwind-variants'
 import { buttonVariants } from './variants'
-import type { ButtonProps } from './types'
 import { ButtonLoadingSpinner } from './loading-spinner'
 
 /**
- * ボタンコンポーネント
- *
- * @description React 19対応版 - forwardRefを使用せずrefを直接受け取る
- * フォーム送信やクリックイベントで使用するボタンコンポーネント
- *
- * @param props ボタンのプロパティ
- * @returns JSX.Element
+ * Buttonコンポーネントのプロパティ型定義
  */
+export type ButtonProps = ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants> & {
+    /** ボタン内に表示するアイコン（左側） */
+    icon?: ReactNode
+    /** ボタン内に表示するアイコン（右側） */
+    iconRight?: ReactNode
+    /** ローディング状態 */
+    loading?: boolean
+  }
+
 export function Button({
   className,
   variant,

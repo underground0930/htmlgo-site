@@ -1,47 +1,31 @@
 'use client'
 
+import type { ReactNode } from 'react'
+import type { VariantProps } from 'tailwind-variants'
 import Link from 'next/link'
 import { buttonVariants } from './variants'
-import type { LinkButtonProps } from './types'
 
 /**
- * リンクボタンコンポーネント（Next.js Link版）
- *
- * @description
- * ページ遷移が必要な場合に使用
- * Next.jsのLinkコンポーネントまたは外部リンク用のa要素を内部で使い分け
- *
- * @example
- * ```tsx
- * import { LinkButton } from '@/components/ui/button'
- * import { FaExternalLinkAlt, FaArrowLeft, FaHome } from 'react-icons/fa'
- *
- * // 基本的な内部リンク
- * <LinkButton href="/about" variant="primary">
- *   詳細を見る
- * </LinkButton>
- *
- * // 外部リンクでアイコン付き
- * <LinkButton
- *   href="https://example.com"
- *   external
- *   variant="outline"
- *   iconRight={<FaExternalLinkAlt />}
- * >
- *   外部サイト
- * </LinkButton>
- *
- * // ナビゲーション用（戻るボタン）
- * <LinkButton href="/back" variant="ghost" icon={<FaArrowLeft />}>
- *   戻る
- * </LinkButton>
- *
- * // ホームボタン
- * <LinkButton href="/" variant="default" icon={<FaHome />}>
- *   ホーム
- * </LinkButton>
- * ```
+ * LinkButtonコンポーネントのプロパティ型定義
  */
+export type LinkButtonProps = {
+  /** リンク先URL */
+  href: string
+  /** 外部リンクの場合true */
+  external?: boolean
+  /** リンクのプリフェッチを無効にする */
+  prefetch?: boolean
+} & Omit<VariantProps<typeof buttonVariants>, 'disabled'> & {
+    /** ボタンに表示するテキスト */
+    children: ReactNode
+    /** ボタン内に表示するアイコン（左側） */
+    icon?: ReactNode
+    /** ボタン内に表示するアイコン（右側） */
+    iconRight?: ReactNode
+    /** 追加のクラス名 */
+    className?: string
+  }
+
 export const LinkButton: React.FC<LinkButtonProps> = ({
   href,
   external = false,
