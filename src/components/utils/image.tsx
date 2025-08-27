@@ -26,9 +26,11 @@ export const Image: React.FC<Props> = ({
   height,
   sizes = '',
   onLoadAction,
+  ...props
 }) => {
   return (
     <DefaultImage
+      {...props}
       className={twMerge('relative!', className)}
       src={src}
       alt={alt}

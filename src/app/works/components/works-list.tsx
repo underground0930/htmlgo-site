@@ -9,7 +9,7 @@ import { conversionDate } from '@/utils/conversion-date'
 import { WorkIndex } from '@/types/microcms'
 import { NO_IMAGE } from '../constants/works'
 
-type Props = {
+type Props = React.ComponentPropsWithoutRef<'ul'> & {
   works: WorkIndex[]
 }
 

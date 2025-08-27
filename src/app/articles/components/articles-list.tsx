@@ -33,8 +33,8 @@ export const ArticlesList: React.FC<Props> = ({ articles }) => {
                   </h3>
                   <p className='block empty:hidden'>
                     <CategoryIcon text={article.category} />
-                    {article.tags.map((tag, index) => (
-                      <CategoryIcon text={tag} key={index} />
+                    {article.tags.map((tag) => (
+                      <CategoryIcon text={tag} key={tag} />
                     ))}
                   </p>
                 </dd>

@@ -4,6 +4,7 @@ import { Image } from '@/components/utils/image'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { AboutSnsBox } from './components/about-sns-box'
+import { Icons } from '@/components/utils/icons'
 
 import { setMetaData } from '@/utils/set-metadata'
 
@@ -68,8 +69,8 @@ export default function About() {
               </h3>
               <div className='text-sm'>
                 <p className='leading-[1.8]'>
-                  React / TypeScript / Next.js / Tailwind CSS / Ruby on Rails / WordPress
-                  / TanStack Query / microCMS
+                  React / TypeScript / Next.js / Tailwind CSS / WordPress / TanStack Query
+                  / microCMS
                 </p>
               </div>
             </section>
@@ -100,7 +101,7 @@ export default function About() {
           </div>
         </div>
         <div className='border-border mb-10 border-t pt-10 text-center'>
-          <Button component='link' href='/'>
+          <Button component='link' href='/' icon={<Icons.home />}>
             HOME
           </Button>
         </div>

@@ -4,10 +4,7 @@
  * @description ボタン内で使用するローディング表示用コンポーネント
  * SVGベースのスピナーでカスタマイズ可能
  */
-export interface ButtonLoadingSpinnerProps {
-  /** カスタムクラス名 */
-  className?: string
-}
+type Props = React.ComponentPropsWithoutRef<'svg'>
 
 /**
  * ボタン用ローディングスピナーコンポーネント
@@ -15,9 +12,7 @@ export interface ButtonLoadingSpinnerProps {
  * @param props スピナーのプロパティ
  * @returns JSX.Element
  */
-export function ButtonLoadingSpinner({
-  className = 'h-4 w-4',
-}: ButtonLoadingSpinnerProps) {
+export function ButtonLoadingSpinner({ className = 'h-4 w-4' }: Props) {
   return (
     <svg className={`animate-spin ${className}`} fill='none' viewBox='0 0 24 24'>
       <circle
