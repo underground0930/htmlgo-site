@@ -62,10 +62,10 @@ type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
 } & CommonVariantProps
 
 // エクスポート用の統合型
-export type ButtonProps = ButtonElementProps | AnchorElementProps | LinkElementProps
+export type Props = ButtonElementProps | AnchorElementProps | LinkElementProps
 
-export function Button(props: ButtonProps) {
-  const { component = 'button', variant, size, icon, iconRight, children } = props
+export function Button(props: Props) {
+  const { component = 'button', variant, size, icon, children } = props
   const className = buttonVariants({ variant, size })
 
   // a要素でレンダリング（外部リンク）
@@ -79,9 +79,8 @@ export function Button(props: ButtonProps) {
         target='_blank'
         rel='noopener noreferrer'
       >
-        {icon}
         {children}
-        {iconRight}
+        {icon}
       </a>
     )
   }
@@ -91,9 +90,8 @@ export function Button(props: ButtonProps) {
     const { href, prefetch = false, ...rest } = props as LinkElementProps
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>
-        {icon}
         {children}
-        {iconRight}
+        {icon}
       </Link>
     )
   }

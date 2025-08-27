@@ -9,25 +9,13 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { Pager } from '@/components/ui/pager'
 import { fetchWorksIndex } from '../libs/fetch-works-index'
+import { Icons } from '@/components/utils/icons'
 
-/**
- * Works共通ページのプロパティ型定義
- */
-type WorksPageProps = {
-  /**
-   * ページパラメータ（オプショナル）
-   * 指定されない場合は1ページ目を表示
-   */
+type Props = React.ComponentPropsWithoutRef<'main'> & {
   params?: { page: string }
 }
 
-/**
- * Works共通ページコンポーネント
- *
- * @param params - ページパラメータ
- * @returns Works一覧ページのJSX
- */
-export async function WorksPageComponent({ params }: WorksPageProps) {
+export async function WorksPageComponent({ params }: Props) {
   const { works, page, pages } = await fetchWorksIndex({ params })
 
   return (
@@ -42,8 +30,8 @@ export async function WorksPageComponent({ params }: WorksPageProps) {
       </div>
       <footer className='border-border mt-10 border-t pt-10 pb-10'>
         <div className='text-center'>
-          <Button component='link' href='/'>
-            Home
+          <Button component='link' href='/' icon={<Icons.home />}>
+            HOME
           </Button>
         </div>
       </footer>

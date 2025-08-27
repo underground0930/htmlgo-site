@@ -14,7 +14,13 @@ type Props = React.ComponentPropsWithoutRef<'ul'> & {
  * @param basePath ベースパス（例: '/works', '/articles'）
  * @param range 表示範囲（デフォルト: 1）
  */
-export const Pager: React.FC<Props> = ({ pages, page, basePath, range = 1 }) => {
+export const Pager: React.FC<Props> = ({
+  pages,
+  page,
+  basePath,
+  range = 1,
+  ...props
+}) => {
   // ページ番号の配列を生成する関数
   const generatePageNumbers = (): (number | 'ellipsis')[] => {
     const pageNumbers: (number | 'ellipsis')[] = []
@@ -57,7 +63,10 @@ export const Pager: React.FC<Props> = ({ pages, page, basePath, range = 1 }) => 
   const pageNumbers = generatePageNumbers()
 
   return (
-    <ul className='border-border flex items-center justify-center gap-2 border-y py-5'>
+    <ul
+      {...props}
+      className='border-border flex items-center justify-center gap-2 border-y py-5'
+    >
       {page > 1 && (
         <PagerChild page={page - 1} basePath={basePath}>
           &lt;

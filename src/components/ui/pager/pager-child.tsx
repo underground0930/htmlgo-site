@@ -15,9 +15,15 @@ type Props = {
  * @param isActive 現在のページかどうか
  * @param children 表示内容
  */
-export const PagerChild: React.FC<Props> = ({ page, basePath, isActive, children }) => {
+export const PagerChild: React.FC<Props> = ({
+  page,
+  basePath,
+  isActive,
+  children,
+  ...props
+}) => {
   const linkClass = twMerge(
-    'w-7 h-7 flex items-center justify-center bg-main text-white text-sm hover:bg-[#ddd] hover:text-[#222] rounded-full',
+    'flex h-7 w-7 items-center justify-center rounded-full bg-main text-sm text-white hover:bg-[#ddd] hover:text-[#222]',
     isActive && 'bg-[#ddd] text-[#222] font-bold',
   )
 
@@ -34,7 +40,7 @@ export const PagerChild: React.FC<Props> = ({ page, basePath, isActive, children
   }
 
   return (
-    <li>
+    <li {...props}>
       <Link className={linkClass} href={generateLink(page)}>
         {children}
       </Link>

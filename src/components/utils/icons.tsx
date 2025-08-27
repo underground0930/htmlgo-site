@@ -3,6 +3,7 @@ import { VscGithub } from 'react-icons/vsc'
 import { SiNextdotjs, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si'
 import { Image } from '@/components/utils/image'
 import { FaReact } from 'react-icons/fa'
+import { RxHome } from 'react-icons/rx'
 
 /**
  * ローカルSVGアイコンのプロパティ型定義
@@ -35,6 +36,9 @@ export const Icons = {
   ),
   github: ({ className }: IconProps) => (
     <VscGithub className={className} width={24} height={24} />
+  ),
+  home: ({ className, width = 24, height = 24 }: IconProps) => (
+    <RxHome className={className} width={width} height={height} />
   ),
   microcms: ({ className, width = 24, height = 24, alt = 'microCMS' }: IconProps) => (
     <Image
