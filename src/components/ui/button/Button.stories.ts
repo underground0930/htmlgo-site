@@ -52,10 +52,21 @@ export const _Button = {
   },
 }
 
+// ボタン(別の色)
 export const _ButtonPrimary = {
   args: {
     variant: 'primary',
     children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+  },
+}
+
+// ボタン(別の色)
+export const _ButtonPrimaryDisabled = {
+  args: {
+    variant: 'primary',
+    children: 'ボタン',
+    disabled: true,
     onClick: () => window.alert('ボタンがクリックされました'),
   },
 }
