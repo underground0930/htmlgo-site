@@ -17,7 +17,6 @@ export function Button({
   className,
   variant,
   size,
-  rounded,
   icon,
   iconRight,
   loading,
@@ -27,7 +26,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={buttonVariants({ variant, size, rounded, className })}
+      className={buttonVariants({ variant, size, className })}
       disabled={disabled || loading}
       {...props}
     >

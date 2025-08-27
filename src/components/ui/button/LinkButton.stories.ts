@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { createElement } from 'react'
-import {
-  FaHome,
-  FaExternalLinkAlt,
-  FaArrowLeft,
-  FaArrowRight,
-  FaInfo,
-} from 'react-icons/fa'
+import { FaArrowLeft, FaHome, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa'
 
 import { LinkButton } from './link-button'
 
@@ -26,18 +20,13 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'primary', 'secondary', 'outline', 'ghost'],
+      options: ['default', 'primary'],
       description: 'ボタンの色バリアント',
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['md', 'lg'],
       description: 'ボタンのサイズ（アイコンサイズも連動）',
-    },
-    rounded: {
-      control: 'select',
-      options: ['none', 'sm', 'md', 'lg', 'full'],
-      description: '角丸のサイズ',
     },
     external: {
       control: 'boolean',
@@ -53,7 +42,7 @@ const meta = {
     },
   },
   args: {
-    href: '#',
+    href: '/example',
     children: 'リンクボタン',
   },
 } satisfies Meta<typeof LinkButton>
@@ -73,50 +62,17 @@ export const Default: Story = {
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    href: '/about',
+    href: '/example',
     children: 'プライマリ',
   },
 }
 
-export const Secondary: Story = {
-  args: {
-    variant: 'secondary',
-    href: '/contact',
-    children: 'セカンダリ',
-  },
-}
-
-export const Outline: Story = {
-  args: {
-    variant: 'outline',
-    href: '/works',
-    children: 'アウトライン',
-  },
-}
-
-export const Ghost: Story = {
-  args: {
-    variant: 'ghost',
-    href: '/articles',
-    children: 'ゴースト',
-  },
-}
-
 // サイズバリエーション
-export const Small: Story = {
-  args: {
-    size: 'sm',
-    variant: 'primary',
-    href: '/small',
-    children: '小サイズ',
-  },
-}
-
 export const Medium: Story = {
   args: {
     size: 'md',
     variant: 'primary',
-    href: '/medium',
+    href: '/example',
     children: '中サイズ',
   },
 }
@@ -125,37 +81,38 @@ export const Large: Story = {
   args: {
     size: 'lg',
     variant: 'primary',
-    href: '/large',
+    href: '/example',
     children: '大サイズ',
   },
 }
 
-// 角丸バリエーション
-export const RoundedNone: Story = {
+// 内部リンク（Next.js Link使用）
+export const InternalLink: Story = {
   args: {
-    rounded: 'none',
     variant: 'primary',
-    href: '/rounded-none',
-    children: '角丸なし',
+    href: '/about',
+    children: 'アバウトページ',
   },
 }
 
-export const RoundedFull: Story = {
+// 外部リンク（a要素使用）
+export const ExternalLink: Story = {
   args: {
-    rounded: 'full',
     variant: 'primary',
-    href: '/rounded-full',
-    children: '完全な角丸',
+    href: 'https://example.com',
+    external: true,
+    icon: createElement(FaExternalLinkAlt),
+    children: '外部サイト',
   },
 }
 
 // アイコン付きバリエーション
-export const WithIcon: Story = {
+export const WithLeftIcon: Story = {
   args: {
     variant: 'primary',
-    href: '/',
-    icon: createElement(FaHome),
-    children: 'ホーム',
+    href: '/back',
+    icon: createElement(FaArrowLeft),
+    children: '戻る',
   },
 }
 
@@ -164,86 +121,15 @@ export const WithRightIcon: Story = {
     variant: 'primary',
     href: '/next',
     iconRight: createElement(FaArrowRight),
-    children: '次のページ',
+    children: '次へ',
   },
 }
 
-export const WithBothIcons: Story = {
-  args: {
-    variant: 'secondary',
-    href: '/info',
-    icon: createElement(FaInfo),
-    iconRight: createElement(FaArrowRight),
-    children: '詳細を見る',
-  },
-}
-
-// 外部リンク
-export const ExternalLink: Story = {
-  args: {
-    variant: 'outline',
-    href: 'https://example.com',
-    external: true,
-    iconRight: createElement(FaExternalLinkAlt),
-    children: '外部サイト',
-  },
-}
-
-export const ExternalLinkPrimary: Story = {
-  args: {
-    variant: 'primary',
-    href: 'https://github.com',
-    external: true,
-    iconRight: createElement(FaExternalLinkAlt),
-    children: 'GitHub',
-  },
-}
-
-// ナビゲーション用
-export const BackButton: Story = {
-  name: '実例: 戻るボタン',
-  args: {
-    variant: 'ghost',
-    href: '/back',
-    icon: createElement(FaArrowLeft),
-    children: '戻る',
-  },
-}
-
-export const HomeButton: Story = {
-  name: '実例: ホームボタン',
+export const HomeLink: Story = {
   args: {
     variant: 'default',
     href: '/',
     icon: createElement(FaHome),
     children: 'ホーム',
-  },
-}
-
-export const DetailButton: Story = {
-  name: '実例: 詳細ページ',
-  args: {
-    variant: 'primary',
-    href: '/detail/123',
-    iconRight: createElement(FaArrowRight),
-    children: '詳細を見る',
-  },
-}
-
-// プリフェッチ有効
-export const WithPrefetch: Story = {
-  name: 'プリフェッチ有効',
-  args: {
-    variant: 'primary',
-    href: '/prefetch',
-    prefetch: true,
-    children: 'プリフェッチあり',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Next.jsのLinkコンポーネントでプリフェッチを有効にした例',
-      },
-    },
   },
 }

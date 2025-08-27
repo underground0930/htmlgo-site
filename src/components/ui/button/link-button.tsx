@@ -48,14 +48,13 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
   prefetch = false,
   variant,
   size,
-  rounded,
   icon,
   iconRight,
   className,
   children,
   ...props
 }) => {
-  const buttonClass = buttonVariants({ variant, size, rounded, className })
+  const buttonClass = buttonVariants({ variant, size, className })
 
   if (external) {
     return (
