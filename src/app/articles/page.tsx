@@ -1,17 +1,16 @@
+/**
+ * Articles一覧ページ（1ページ目）
+ * 共通コンポーネントを使用してレンダリング
+ */
+
 import { Metadata } from 'next'
-
-import { ArticlesBody } from './components/articles-body'
-
+import { ArticlesPageComponent } from './components/articles-page'
 import { setMetaData } from '@/utils/set-metadata'
-import { fetchArticles } from './libs/fetch-articles'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
 export default async function Articles() {
-  const result = await fetchArticles({ params: { page: '1' } })
-  return (
-    <ArticlesBody articles={result.articles} page={result.page} pages={result.pages} />
-  )
+  return <ArticlesPageComponent />
 }
 
 export const metadata: Metadata = {
