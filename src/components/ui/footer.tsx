@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ImageWrapper } from './image-wrapper'
+import { Image } from '@/components/utils/image'
 
 const links = [
   {
@@ -50,12 +50,12 @@ export const Footer: React.FC<Props> = () => {
                 return (
                   <li className='mx-2' key={v.key}>
                     <a
-                      className='flex w-7 items-center justify-center [&>svg]:h-auto [&>svg]:w-full'
+                      className='relative flex w-7 items-center justify-center [&>svg]:h-auto [&>svg]:w-full'
                       href={v.href}
                       target='_blank'
                       rel='noreferrer'
                     >
-                      <ImageWrapper src={v.src} alt={v.key} />
+                      <Image src={v.src} alt={v.key} />
                     </a>
                   </li>
                 )

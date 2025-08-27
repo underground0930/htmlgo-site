@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Pagination, Navigation, Virtual } from 'swiper/modules'
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 
-import { ImageWrapper } from '@/components/ui/image-wrapper'
+import { Image } from '@/components/utils/image'
 
 import { WorksSlider } from '@/types/microcms'
 import { NO_IMAGE } from '../../constants/works'
@@ -78,7 +78,7 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
     <>
       <Swiper
         modules={[Pagination, Navigation, Virtual]}
-        className='w-full border border-border'
+        className='border-border w-full border'
         virtual
         onSlideChange={() => sliderChangeHandle()}
         ref={swiperRef}
@@ -92,12 +92,12 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
                 key={item.img.url}
               >
                 {item.loading && (
-                  <div className="transform-translate-z-[0] absolute bottom-0 left-0 right-0 top-0 m-auto h-[10em] w-[10em] animate-[load8_1.1s_linear_infinite] rounded-[50%] border-b-[1.1em] border-l-[1.1em] border-r-[1.1em] border-t-[1.1em] border-b-black/10 border-l-black/30 border-r-black/10 border-t-black/10 indent-[-9999em] text-xs after:block after:h-[10em] after:w-[10em] after:rounded-[50%] after:content-['']">
+                  <div className="transform-translate-z-[0] absolute top-0 right-0 bottom-0 left-0 m-auto h-[10em] w-[10em] animate-[load8_1.1s_linear_infinite] rounded-[50%] border-t-[1.1em] border-r-[1.1em] border-b-[1.1em] border-l-[1.1em] border-t-black/10 border-r-black/10 border-b-black/10 border-l-black/30 indent-[-9999em] text-xs after:block after:h-[10em] after:w-[10em] after:rounded-[50%] after:content-['']">
                     Loading...
                   </div>
                 )}
-                <ImageWrapper
-                  cls='object-cover'
+                <Image
+                  className='object-cover'
                   src={item.img.url}
                   onLoadAction={() => {
                     setSliderList((prev) => {
@@ -117,7 +117,7 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
       </Swiper>
       {!bothEnds.first && sliders.length > 1 && (
         <div
-          className='prevBtn absolute bottom-0 left-[-14px] top-0 z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-base text-base md:flex'
+          className='prevBtn bg-base absolute top-0 bottom-0 left-[-14px] z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full text-base md:flex'
           onClick={goPrev}
         >
           &lt;
@@ -125,7 +125,7 @@ const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
       )}
       {!bothEnds.last && sliders.length > 1 && (
         <div
-          className='nextBtn absolute bottom-0 right-[-14px] top-0 z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-base text-base md:flex'
+          className='nextBtn bg-base absolute top-0 right-[-14px] bottom-0 z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full text-base md:flex'
           onClick={goNext}
         >
           &gt;

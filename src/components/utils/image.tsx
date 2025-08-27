@@ -1,10 +1,12 @@
 'use client'
 
-import Image from 'next/image'
+import DefaultImage from 'next/image'
+
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   src: string
-  cls?: string
+  className?: string
   alt?: string
   priority?: boolean
   fill?: boolean
@@ -14,9 +16,9 @@ type Props = {
   onLoadAction?: () => void
 }
 
-export const ImageWrapper: React.FC<Props> = ({
+export const Image: React.FC<Props> = ({
   src,
-  cls = '',
+  className = '',
   alt = '',
   priority = false,
   fill = true,
@@ -26,8 +28,8 @@ export const ImageWrapper: React.FC<Props> = ({
   onLoadAction,
 }) => {
   return (
-    <Image
-      className={'relative! ' + cls}
+    <DefaultImage
+      className={twMerge('relative!', className)}
       src={src}
       alt={alt}
       priority={priority}

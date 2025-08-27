@@ -5,7 +5,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { Button, Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
 

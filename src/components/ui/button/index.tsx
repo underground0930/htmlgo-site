@@ -16,7 +16,6 @@ export const buttonVariants = tv({
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
     'disabled:pointer-events-none disabled:opacity-50',
     'rounded-md',
-    // アイコンのスタイル
     '[&>svg]:flex-shrink-0',
   ],
   variants: {
