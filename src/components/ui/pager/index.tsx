@@ -18,39 +18,39 @@ export const Pager: React.FC<Props> = ({ pages, page, basePath, range = 1 }) => 
   // ページ番号の配列を生成する関数
   const generatePageNumbers = (): (number | 'ellipsis')[] => {
     const pageNumbers: (number | 'ellipsis')[] = []
-    
+
     // 総ページ数が少ない場合は全て表示
     if (pages <= range * 2 + 3) {
       return Array.from({ length: pages }, (_, i) => i + 1)
     }
-    
+
     // 最初のページ
     pageNumbers.push(1)
-    
+
     // 現在のページ周辺の計算
     const startRange = Math.max(2, page - range)
     const endRange = Math.min(pages - 1, page + range)
-    
+
     // 最初のページと表示範囲の間に省略記号が必要か
     if (startRange > 2) {
       pageNumbers.push('ellipsis')
     }
-    
+
     // 現在のページ周辺を追加
     for (let i = startRange; i <= endRange; i++) {
       pageNumbers.push(i)
     }
-    
+
     // 表示範囲と最後のページの間に省略記号が必要か
     if (endRange < pages - 1) {
       pageNumbers.push('ellipsis')
     }
-    
+
     // 最後のページ（総ページ数が1以上の場合）
     if (pages > 1) {
       pageNumbers.push(pages)
     }
-    
+
     return pageNumbers
   }
 
@@ -58,7 +58,7 @@ export const Pager: React.FC<Props> = ({ pages, page, basePath, range = 1 }) => 
 
   return (
     <>
-      <ul className='border-y border-border py-5 flex justify-center items-center gap-2'>
+      <ul className='border-border flex items-center justify-center gap-2 border-y py-5'>
         {page > 1 && (
           <PagerChild page={page - 1} basePath={basePath}>
             &lt;
@@ -68,7 +68,7 @@ export const Pager: React.FC<Props> = ({ pages, page, basePath, range = 1 }) => 
           if (pageNum === 'ellipsis') {
             return (
               <li key={`ellipsis-${index}`} className='mx-1.5 h-5 w-5'>
-                <span className='w-7 h-7 block text-[#222] leading-7 text-sm'>...</span>
+                <span className='block h-7 w-7 text-sm leading-7 text-[#222]'>...</span>
               </li>
             )
           }
