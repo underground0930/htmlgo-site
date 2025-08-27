@@ -44,7 +44,7 @@ const meta = {
 
 export default meta
 
-// 基本的なバリアント
+// ボタン
 export const _Button = {
   args: {
     children: 'ボタン',
@@ -52,20 +52,26 @@ export const _Button = {
   },
 }
 
-export const NextLink = {
+export const _ButtonPrimary = {
   args: {
     variant: 'primary',
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+  },
+}
+
+// Next.js リンク
+export const NextLink = {
+  args: {
     children: 'Next.js リンク',
     component: 'link',
     href: '/?hoge=1',
   },
 }
 
-// サイズバリエーション
+// 外部リンク
 export const ExternalLink = {
   args: {
-    size: 'md',
-    variant: 'primary',
     children: '外部リンク',
     component: 'a',
     href: 'https://www.google.com',
