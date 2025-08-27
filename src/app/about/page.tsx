@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
-import { ImageWrapper } from '@/components/ui/image-wrapper'
-import { TextBtn } from '@/components/ui/text-btn'
+import { Image } from '@/components/utils/image'
+import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { AboutSnsBox } from './components/about-sns-box'
 
@@ -16,8 +16,8 @@ export default function About() {
         <Title title='About' text='このサイトや主について' />
         <div className='mb-10 pb-8'>
           <div className=''>
-            <ImageWrapper
-              cls='mx-auto mb-10 rounded-full'
+            <Image
+              className='mx-auto mb-10 rounded-full'
               src='/img/about/profile.jpg'
               width={210}
               height={210}
@@ -100,7 +100,9 @@ export default function About() {
           </div>
         </div>
         <div className='border-border mb-10 border-t pt-10 text-center'>
-          <TextBtn title='HOME' link='/' />
+          <Button component='link' href='/'>
+            HOME
+          </Button>
         </div>
       </main>
     </>

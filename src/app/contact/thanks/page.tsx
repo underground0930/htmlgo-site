@@ -1,11 +1,13 @@
+import { Metadata } from 'next'
+
 import { Title } from '@/components/ui/title'
-import { TextBtn } from '@/components/ui/text-btn'
+import { Button } from '@/components/ui/button'
 
 import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'お問い合わせ頂きありがとうございました'
 
-export const metadata = {
+export const metadata: Metadata = {
   ...setMetaData({
     meta: {
       openGraph: {
@@ -34,7 +36,9 @@ export default function Thanks() {
           </div>
         </div>
         <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
-          <TextBtn title='HOME' link='/' />
+          <Button component='link' href='/'>
+            HOME
+          </Button>
         </div>
       </main>
     </>

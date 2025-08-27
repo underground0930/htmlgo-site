@@ -30,3 +30,6 @@ bin/
 obj/
 out/
 .next/
+
+*storybook.log
+storybook-static

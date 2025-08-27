@@ -1,5 +1,5 @@
 import { CategoryIcon } from '@/components/ui/category-icon'
-import { ImageWrapper } from '@/components/ui/image-wrapper'
+import { Image } from '@/components/utils/image'
 
 import { FeedObj } from '@/types/feed'
 
@@ -18,9 +18,9 @@ export const ArticlesList: React.FC<Props> = ({ articles }) => {
           >
             <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>
-                <dt className='relative h-[140px] border-b border-border bg-main'>
-                  <ImageWrapper
-                    cls='object-cover'
+                <dt className='border-border bg-main relative h-[140px] border-b'>
+                  <Image
+                    className='object-cover'
                     src={article.img}
                     priority={i < 8 ? true : false}
                     sizes='(max-width: 768px) 100vw, 33vw'
@@ -28,7 +28,7 @@ export const ArticlesList: React.FC<Props> = ({ articles }) => {
                 </dt>
                 <dd className='p-3'>
                   <time className='mb-1 block text-xs'>{article.published}</time>
-                  <h3 className='relative mb-1 break-all text-xs font-bold leading-5'>
+                  <h3 className='relative mb-1 text-xs leading-5 font-bold break-all'>
                     {article.title}
                   </h3>
                   <p className='block empty:hidden'>

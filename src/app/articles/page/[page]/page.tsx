@@ -1,34 +1,14 @@
-import { Metadata } from 'next'
+/**
+ * Articles一覧ページ（ページネーション対応）
+ * 共通コンポーネントを使用してレンダリング
+ */
 
-import { ArticlesBody } from '../../components/articles-body'
+import { Metadata } from 'next'
+import { ArticlesPageComponent } from '../../components/articles-page'
 import { setMetaData } from '@/utils/set-metadata'
-import { fetchArticles } from '../../libs/fetch-articles'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
-/**
- * Articlesページ（ページネーション対応）
- * @param params ページパラメータ
- * @returns JSX要素
- */
-export default async function ArticlesPage({
-  params,
-}: {
-  params: Promise<{ page: string }>
-}) {
-  const resolvedParams = await params
-  const result = await fetchArticles({ params: resolvedParams })
-
-  return (
-    <ArticlesBody articles={result.articles} page={result.page} pages={result.pages} />
-  )
-}
-
-/**
- * 動的にメタデータを生成
- * @param params ページパラメータ
- * @returns メタデータ
- */
 export async function generateMetadata({
   params,
 }: {
@@ -49,4 +29,13 @@ export async function generateMetadata({
       images: '/img/ogp-new.png',
     }),
   }
+}
+
+export default async function ArticlesPage({
+  params,
+}: {
+  params: Promise<{ page: string }>
+}) {
+  const resolvedParams = await params
+  return <ArticlesPageComponent params={resolvedParams} />
 }
