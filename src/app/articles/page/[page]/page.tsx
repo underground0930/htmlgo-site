@@ -46,7 +46,7 @@ export async function generateMetadata({
       title: `ARTICLES - Page ${page}`,
       description,
       url: `/articles/page/${page}/`,
-      images: '/img/ogp_new.png',
+      images: '/img/ogp-new.png',
     }),
   }
 }

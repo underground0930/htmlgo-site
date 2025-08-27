@@ -15,7 +15,11 @@ const description = '最新の実績や、自主制作'
  * @param params ページパラメータ
  * @returns メタデータ
  */
-export async function generateMetadata({ params }: { params: Promise<{ page: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ page: string }>
+}): Promise<Metadata> {
   const resolvedParams = await params
   const page = Number(resolvedParams.page)
   return {
@@ -28,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ page: str
       title: `WORKS - Page ${page}`,
       description,
       url: `/works/page/${page}/`,
-      images: '/img/ogp_new.png',
+      images: '/img/ogp-new.png',
     }),
   }
 }
@@ -38,21 +42,21 @@ export async function generateMetadata({ params }: { params: Promise<{ page: str
  * @param params ページパラメータ
  * @returns JSX要素
  */
-export default async function WorksPage({ params }: { params: Promise<{ page: string }> }) {
+export default async function WorksPage({
+  params,
+}: {
+  params: Promise<{ page: string }>
+}) {
   const resolvedParams = await params
   const { works, page, pages } = await fetchWorksIndex({ params: resolvedParams })
 
   return (
     <main className='mx-5 max-w-[800px] md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
-      {pages > 1 && (
-        <Pager pages={pages} page={page} basePath='/works' />
-      )}
+      {pages > 1 && <Pager pages={pages} page={page} basePath='/works' />}
       <WorksList works={works} />
-      {pages > 1 && (
-        <Pager pages={pages} page={page} basePath='/works' />
-      )}
-      <footer className='mt-10 border-t border-border pb-10 pt-10'>
+      {pages > 1 && <Pager pages={pages} page={page} basePath='/works' />}
+      <footer className='border-border mt-10 border-t pt-10 pb-10'>
         <div className='text-center'>
           <TextBtn title='Home' link='/' />
         </div>

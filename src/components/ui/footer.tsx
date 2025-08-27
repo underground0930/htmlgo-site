@@ -6,32 +6,32 @@ const links = [
   {
     href: 'https://nextjs.org/',
     key: 'Nextjs',
-    src: '/svgs/icon-nextjs.svg',
+    src: '/img/footer/icon-nextjs.svg',
   },
   {
     href: 'https://vercel.com/home',
     key: 'Vercel',
-    src: '/svgs/icon-vercel.svg',
+    src: '/img/footer/icon-vercel.svg',
   },
   {
     href: 'https://tailwindcss.com/',
     key: 'Tailwind CSS',
-    src: '/svgs/icon-tailwindcss.svg',
+    src: '/img/footer/icon-tailwindcss.svg',
   },
   {
     href: 'https://github.com/underground0930/htmlgo-site',
     key: 'github',
-    src: '/svgs/icon-github.svg',
+    src: '/img/footer/icon-github.svg',
   },
   {
     href: 'https://microcms.io/',
     key: 'microcms',
-    src: '/svgs/icon-microcms.svg',
+    src: '/img/footer/icon-microcms.svg',
   },
   {
     href: 'https://www.google.com/recaptcha/about/',
     key: 'recaptcha',
-    src: '/svgs/icon-recaptcha.svg',
+    src: '/img/footer/icon-recaptcha.svg',
   },
 ]
 

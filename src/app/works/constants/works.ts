@@ -1,1 +1,1 @@
-export const NO_IMAGE = '/img/noImage.png'
+export const NO_IMAGE = '/img/works/no-image.png'

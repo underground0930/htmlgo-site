@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "predev": "node ./scripts/generateFeedJson.js && rm -rf .next",
+    "predev": "node ./scripts/generate-feed-json.js && rm -rf .next",
     "dev": "next dev --turbopack",
-    "prebuild": "node ./scripts/generateFeedJson.js",
+    "prebuild": "node ./scripts/generate-feed-json.js",
     "build": "next build",
     "start": "next start",
     "export": "next export",

@@ -5,9 +5,9 @@ const fs = require('fs')
 
 const filePath = path.join(__dirname, '../public/feed.json')
 
-const getQiitaFeed = require('./getQiitaFeed')
-// const getNoteFeed = require('./getNoteFeed')
-const getZennFeed = require('./getZennFeed')
+const getQiitaFeed = require('./get-qiita-feed')
+// const getNoteFeed = require('./get-note-feed')
+const getZennFeed = require('./get-zenn-feed')
 
 async function generateFeedJson() {
   const promises = [getQiitaFeed(), getZennFeed()]
