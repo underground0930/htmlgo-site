@@ -53,9 +53,13 @@ export default async function WorksPage({
   return (
     <main className='mx-5 max-w-[800px] md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
-      {pages > 1 && <Pager pages={pages} page={page} basePath='/works' />}
+      <div className='mb-10'>
+        <Pager pages={pages} page={page} basePath='/works' />
+      </div>
       <WorksList works={works} />
-      {pages > 1 && <Pager pages={pages} page={page} basePath='/works' />}
+      <div className='mb-10'>
+        <Pager pages={pages} page={page} basePath='/works' />
+      </div>
       <footer className='border-border mt-10 border-t pt-10 pb-10'>
         <div className='text-center'>
           <Button component='link' href='/'>

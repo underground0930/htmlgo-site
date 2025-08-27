@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-type Props = React.PropsWithChildren<{
+type Props = React.ComponentPropsWithoutRef<'span'> & {
   text: string
-}>
+}
 
 export const CategoryIcon: React.FC<Props> = ({ text }) => {
   return (

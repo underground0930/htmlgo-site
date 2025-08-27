@@ -1,6 +1,6 @@
 import { PagerChild } from './pager-child'
 
-type Props = {
+type Props = React.ComponentPropsWithoutRef<'ul'> & {
   pages: number
   page: number
   basePath: string
@@ -57,38 +57,36 @@ export const Pager: React.FC<Props> = ({ pages, page, basePath, range = 1 }) => 
   const pageNumbers = generatePageNumbers()
 
   return (
-    <>
-      <ul className='border-border flex items-center justify-center gap-2 border-y py-5'>
-        {page > 1 && (
-          <PagerChild page={page - 1} basePath={basePath}>
-            &lt;
-          </PagerChild>
-        )}
-        {pageNumbers.map((pageNum, index) => {
-          if (pageNum === 'ellipsis') {
-            return (
-              <li key={`ellipsis-${index}`} className='mx-1.5 h-5 w-5'>
-                <span className='block h-7 w-7 text-sm leading-7 text-[#222]'>...</span>
-              </li>
-            )
-          }
+    <ul className='border-border flex items-center justify-center gap-2 border-y py-5'>
+      {page > 1 && (
+        <PagerChild page={page - 1} basePath={basePath}>
+          &lt;
+        </PagerChild>
+      )}
+      {pageNumbers.map((pageNum, index) => {
+        if (pageNum === 'ellipsis') {
           return (
-            <PagerChild
-              page={pageNum}
-              basePath={basePath}
-              key={pageNum}
-              isActive={pageNum === page}
-            >
-              {pageNum}
-            </PagerChild>
+            <li key={`ellipsis-${index}`} className='mx-1.5 h-5 w-5'>
+              <span className='block h-7 w-7 text-sm leading-7 text-[#222]'>...</span>
+            </li>
           )
-        })}
-        {page < pages && (
-          <PagerChild page={page + 1} basePath={basePath}>
-            &gt;
+        }
+        return (
+          <PagerChild
+            page={pageNum}
+            basePath={basePath}
+            key={pageNum}
+            isActive={pageNum === page}
+          >
+            {pageNum}
           </PagerChild>
-        )}
-      </ul>
-    </>
+        )
+      })}
+      {page < pages && (
+        <PagerChild page={page + 1} basePath={basePath}>
+          &gt;
+        </PagerChild>
+      )}
+    </ul>
   )
 }

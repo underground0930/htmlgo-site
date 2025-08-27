@@ -1,12 +1,9 @@
-/**
- * フッターコンポーネント
- * サイトで使用している技術・サービスのリンクとコピーライトを表示します。
- */
-
 'use client'
 
 import React from 'react'
 import { Icons, type IconsName } from '@/components/utils/icons'
+
+type Props = React.ComponentPropsWithoutRef<'footer'>
 
 const links: {
   href: string
@@ -37,8 +34,6 @@ const links: {
     key: 'recaptcha',
   },
 ]
-
-type Props = React.HTMLAttributes<HTMLElement>
 
 export const Footer: React.FC<Props> = () => {
   return (
