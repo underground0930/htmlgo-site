@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { ImageWrapper } from '@/components/ui/image-wrapper'
-import { TextBtn } from '@/components/ui/text-btn'
+import { LinkButton } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { AboutSnsBox } from './components/about-sns-box'
 
@@ -100,7 +100,7 @@ export default function About() {
           </div>
         </div>
         <div className='border-border mb-10 border-t pt-10 text-center'>
-          <TextBtn title='HOME' link='/' />
+          <LinkButton href='/'>HOME</LinkButton>
         </div>
       </main>
     </>

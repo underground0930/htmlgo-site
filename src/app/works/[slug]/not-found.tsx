@@ -1,4 +1,4 @@
-import { TextBtn } from '@/components/ui/text-btn'
+import { LinkButton } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 
 import { setMetaData } from '@/utils/set-metadata'
@@ -30,7 +30,7 @@ export default function NotFound() {
           URLが間違っているか、削除されている可能性があります。
         </div>
         <div className='text-center'>
-          <TextBtn title='TOP' link='/' />
+          <LinkButton href='/'>TOP</LinkButton>
         </div>
       </section>
     </main>

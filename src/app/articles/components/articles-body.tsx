@@ -1,5 +1,5 @@
 import { Title } from '@/components/ui/title'
-import { TextBtn } from '@/components/ui/text-btn'
+import { LinkButton } from '@/components/ui/button'
 import { Pager } from '@/components/ui/pager'
 import { ArticlesList } from './articles-list'
 
@@ -27,8 +27,8 @@ export const ArticlesBody: React.FC<Props> = ({ articles = [], page, pages }) =>
         </div>
         <ArticlesList articles={articles} />
         <Pager pages={pages} page={page} basePath='/articles' />
-        <div className='mb-10 mt-10 text-center'>
-          <TextBtn title='HOME' link='/' />
+        <div className='mt-10 mb-10 text-center'>
+          <LinkButton href='/'>HOME</LinkButton>
         </div>
       </main>
     </>

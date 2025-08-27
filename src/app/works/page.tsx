@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { WorksList } from './components/works-list'
-import { TextBtn } from '@/components/ui/text-btn'
+import { LinkButton } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { Pager } from '@/components/ui/pager'
 
@@ -23,7 +23,7 @@ export default async function Works() {
       <Pager pages={pages} page={page} basePath='/works' />
       <footer className='border-border mt-10 border-t pt-10 pb-10'>
         <div className='text-center'>
-          <TextBtn title='Home' link='/' />
+          <LinkButton href='/'>Home</LinkButton>
         </div>
       </footer>
     </main>

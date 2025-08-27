@@ -5,7 +5,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { TextBtn } from '@/components/ui/text-btn'
+import { LinkButton, Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
@@ -113,7 +113,7 @@ export const ContactBody: React.FC = () => {
     <>
       <DebugModal />
       {loading && (
-        <div className='fixed inset-0 z-10 m-auto flex items-center justify-center bg-black bg-opacity-50'>
+        <div className='bg-opacity-50 fixed inset-0 z-10 m-auto flex items-center justify-center bg-black'>
           <LoadingSpinner />
         </div>
       )}
@@ -142,17 +142,15 @@ export const ContactBody: React.FC = () => {
             <div className='flex items-center justify-center pb-10'>
               <div ref={recaptchaRef} />
             </div>
-            <button
-              className='mx-auto block w-[200px] bg-black p-2 font-bold text-white disabled:opacity-30'
-              type='submit'
-              disabled={!token}
-            >
-              送信
-            </button>
+            <div className='flex items-center justify-center'>
+              <Button variant='primary' size='lg' disabled={!token} type='submit'>
+                送信
+              </Button>
+            </div>
           </form>
         </div>
-        <div className='mt-10 border-t border-border pb-10 pt-10 text-center'>
-          <TextBtn title='HOME' link='/' />
+        <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
+          <LinkButton href='/'>HOME</LinkButton>
         </div>
       </main>
     </>
