@@ -5,7 +5,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { LinkButton, Button } from '@/components/ui/button'
+import { Button, Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
@@ -150,7 +150,9 @@ export const ContactBody: React.FC = () => {
           </form>
         </div>
         <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
-          <LinkButton href='/'>HOME</LinkButton>
+          <Button component='link' href='/'>
+            HOME
+          </Button>
         </div>
       </main>
     </>

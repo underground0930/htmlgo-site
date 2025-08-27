@@ -7,7 +7,7 @@ import { FaFacebookSquare } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 
 import { Title } from '@/components/ui/title'
-import { LinkButton } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import { WorksDetailInfo } from './works-detail-info'
 
 import { WorkDetail } from '@/types/microcms'
@@ -185,7 +185,9 @@ export const WorksDetailBody: React.FC<Props> = ({ post, prev, next }) => {
             </li>
           </ul>
           <div className='relative mt-10 mb-10 text-center'>
-            <LinkButton href='/works'>WORKS</LinkButton>
+            <Button component='link' href='/works'>
+              WORKS
+            </Button>
             {next && (
               <Link
                 className='absolute top-0 bottom-0 left-0 m-auto flex h-10 w-10 items-center justify-center bg-black text-base'

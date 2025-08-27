@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { Title } from '@/components/ui/title'
-import { LinkButton } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
 import { setMetaData } from '@/utils/set-metadata'
 
@@ -36,7 +36,9 @@ export default function Thanks() {
           </div>
         </div>
         <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
-          <LinkButton href='/'>HOME</LinkButton>
+          <Button component='link' href='/'>
+            HOME
+          </Button>
         </div>
       </main>
     </>

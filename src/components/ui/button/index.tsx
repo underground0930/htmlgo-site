@@ -48,29 +48,29 @@ type CommonVariantProps = VariantProps<typeof buttonVariants> & {
 
 // button要素用プロパティ
 type ButtonElementProps = Omit<ComponentProps<'button'>, 'className'> & {
-  as?: 'button'
+  component?: 'button'
   loading?: boolean
 } & CommonVariantProps
 
 // a要素用プロパティ
 type AnchorElementProps = Omit<ComponentProps<'a'>, 'className'> & {
-  as: 'a'
+  component: 'a'
 } & CommonVariantProps
 
 // Next.js Link用プロパティ
 type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
-  as: 'link'
+  component: 'link'
 } & CommonVariantProps
 
 // エクスポート用の統合型
 export type ButtonProps = ButtonElementProps | AnchorElementProps | LinkElementProps
 
 export function Button(props: ButtonProps) {
-  const { as = 'button', variant, size, icon, iconRight, children } = props
+  const { component = 'button', variant, size, icon, iconRight, children } = props
   const className = buttonVariants({ variant, size })
 
   // a要素でレンダリング（外部リンク）
-  if (as === 'a') {
+  if (component === 'a') {
     const { href, ...rest } = props as AnchorElementProps
     return (
       <a
@@ -88,7 +88,7 @@ export function Button(props: ButtonProps) {
   }
 
   // Next.js Linkでレンダリング（内部リンク）
-  if (as === 'link') {
+  if (component === 'link') {
     const { href, prefetch = false, ...rest } = props as LinkElementProps
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>

@@ -1,7 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import type { Meta } from '@storybook/nextjs-vite'
 import { fn } from 'storybook/test'
-import { createElement } from 'react'
-import { FaUser, FaArrowRight } from 'react-icons/fa'
 
 import { Button } from './'
 
@@ -45,32 +43,31 @@ const meta = {
 } satisfies Meta<typeof Button>
 
 export default meta
-type Story = StoryObj<typeof meta>
 
 // 基本的なバリアント
-export const _Button: Story = {
+export const _Button = {
   args: {
     children: 'ボタン',
-    onClick: fn(),
+    onClick: () => window.alert('ボタンがクリックされました'),
   },
 }
 
-export const NextLink: Story = {
+export const NextLink = {
   args: {
     variant: 'primary',
     children: 'Next.js リンク',
-    as: 'link',
+    component: 'link',
     href: '/?hoge=1',
   },
 }
 
 // サイズバリエーション
-export const ExternalLink: Story = {
+export const ExternalLink = {
   args: {
     size: 'md',
     variant: 'primary',
     children: '外部リンク',
-    as: 'a',
+    component: 'a',
     href: 'https://www.google.com',
   },
 }
