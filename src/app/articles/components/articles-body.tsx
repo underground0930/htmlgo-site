@@ -5,34 +5,26 @@ import { ArticlesList } from './articles-list'
 import { Icons } from '@/components/utils/icons'
 import { FeedObj } from '@/types/feed'
 
-type Props = {
+type Props = React.ComponentPropsWithoutRef<'main'> & {
   articles: FeedObj[]
   page: number
   pages: number
 }
 
-/**
- * Articles本体コンポーネント
- * @param articles 記事リスト
- * @param page 現在のページ
- * @param pages 総ページ数
- */
-export const ArticlesBody: React.FC<Props> = ({ articles = [], page, pages }) => {
+export const ArticlesBody = ({ articles = [], page, pages, ...props }: Props) => {
   return (
-    <>
-      <main className='mx-5 max-w-[800px] md:mx-auto'>
-        <Title title='Articles' text='技術系やそれ以外の記事' />
-        <div className='mb-10'>
-          <Pager pages={pages} page={page} basePath='/articles' />
-        </div>
-        <ArticlesList articles={articles} />
+    <main {...props} className='mx-5 max-w-[800px] md:mx-auto'>
+      <Title title='Articles' text='技術系やそれ以外の記事' />
+      <div className='mb-10'>
         <Pager pages={pages} page={page} basePath='/articles' />
-        <div className='mt-10 mb-10 text-center'>
-          <Button component='link' href='/' icon={<Icons.home />}>
-            HOME
-          </Button>
-        </div>
-      </main>
-    </>
+      </div>
+      <ArticlesList articles={articles} />
+      <Pager pages={pages} page={page} basePath='/articles' />
+      <div className='mt-10 mb-10 text-center'>
+        <Button component='link' href='/' icon={<Icons.home />}>
+          HOME
+        </Button>
+      </div>
+    </main>
   )
 }

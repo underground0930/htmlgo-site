@@ -13,10 +13,10 @@ type Props = React.ComponentPropsWithoutRef<'ul'> & {
   works: WorkIndex[]
 }
 
-export const WorksList: React.FC<Props> = ({ works = [] }) => {
+export const WorksList = ({ works = [], ...props }: Props) => {
   return (
     <>
-      <ul className='mb-5 md:mb-10 md:grid md:grid-cols-3 md:gap-6'>
+      <ul {...props} className='mb-5 md:mb-10 md:grid md:grid-cols-3 md:gap-6'>
         {works.map((work, i) => {
           const thumb = work?.slider?.[0]?.img?.url
           const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE

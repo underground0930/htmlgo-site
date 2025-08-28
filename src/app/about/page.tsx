@@ -10,103 +10,101 @@ import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'このサイトについて'
 
-export default function About() {
+export default function Page() {
   return (
-    <>
-      <main className='mx-5 max-w-[800px] md:mx-auto'>
-        <Title title='About' text='このサイトや主について' />
-        <div className='mb-10 pb-8'>
-          <div className=''>
-            <Image
-              className='mx-auto mb-10 rounded-full'
-              src='/img/about/profile.jpg'
-              width={210}
-              height={210}
-            />
-          </div>
-          <div className='mb-11'>
-            <AboutSnsBox />
-          </div>
-          <div>
-            <section>
-              <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
-                プロフィール
-              </h3>
-              <div className='text-sm'>
-                <p className='leading-[1.8]'>
-                  <a
-                    href='https://x.com/resistance_gowy'
-                    rel='noopener noreferrer'
-                    target='_blank'
-                    className='hover:text-link-active underline'
-                  >
-                    <strong>@resistance_gowy</strong>
-                  </a>
-                  (フロントエンドエンジニア)
-                </p>
-                <p className='leading-[1.8]'>
-                  東京都→埼玉県でフリーランスとして活動しています。
-                </p>
-                <p className='leading-[1.8]'>
-                  最近は<strong>React</strong>、<strong>TypeScript</strong>、
-                  <strong>Next.js</strong>
-                  のお仕事をやっています。
-                </p>
-                <p className='leading-[1.8]'>
-                  ギークというよりかは、周りと協調してプロジェクトを円滑に進めることが得意なタイプ。
-                </p>
-                <p className='leading-[1.8]'>
-                  お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
-                </p>
-                <p className='leading-[1.8]'>
-                  業務効率化のツールを作るのが最近の趣味です。
-                </p>
-              </div>
-            </section>
-            <section>
-              <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
-                経験した技術・ツール・サービス
-              </h3>
-              <div className='text-sm'>
-                <p className='leading-[1.8]'>
-                  React / TypeScript / Next.js / Tailwind CSS / WordPress / TanStack Query
-                  / microCMS
-                </p>
-              </div>
-            </section>
-            <section>
-              <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
-                経歴
-              </h3>
-              <div className='text-sm'>
-                <ul>
-                  <li className='mb-3'>
-                    <strong>2009年 ~ 2010年</strong> : あとらす二十一
-                  </li>
-                  <li className='mb-3'>
-                    <strong>2010年 ~ 2016年</strong> : SONICJAM Inc.
-                  </li>
-                  <li className='mb-3'>
-                    <strong>2016年 ~ 2022年6月</strong> : フリーランス
-                  </li>
-                  <li className='mb-3'>
-                    <strong>2022年7月 ~ 9月</strong>: ちょっと株式会社
-                  </li>
-                  <li className='mb-3'>
-                    <strong>2022年9月</strong> ~ : フリーランス
-                  </li>
-                </ul>
-              </div>
-            </section>
-          </div>
+    <main className='mx-5 max-w-[800px] md:mx-auto'>
+      <Title title='About' text='このサイトや主について' />
+      <div className='mb-10 pb-8'>
+        <div className=''>
+          <Image
+            className='mx-auto mb-10 rounded-full'
+            src='/img/about/profile.jpg'
+            width={210}
+            height={210}
+          />
         </div>
-        <div className='border-border mb-10 border-t pt-10 text-center'>
-          <Button component='link' href='/' icon={<Icons.home />}>
-            HOME
-          </Button>
+        <div className='mb-11'>
+          <AboutSnsBox />
         </div>
-      </main>
-    </>
+        <div>
+          <section>
+            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+              プロフィール
+            </h3>
+            <div className='text-sm'>
+              <p className='leading-[1.8]'>
+                <a
+                  href='https://x.com/resistance_gowy'
+                  rel='noopener noreferrer'
+                  target='_blank'
+                  className='hover:text-link-active underline'
+                >
+                  <strong>@resistance_gowy</strong>
+                </a>
+                (フロントエンドエンジニア)
+              </p>
+              <p className='leading-[1.8]'>
+                東京都→埼玉県でフリーランスとして活動しています。
+              </p>
+              <p className='leading-[1.8]'>
+                最近は<strong>React</strong>、<strong>TypeScript</strong>、
+                <strong>Next.js</strong>
+                のお仕事をやっています。
+              </p>
+              <p className='leading-[1.8]'>
+                ギークというよりかは、周りと協調してプロジェクトを円滑に進めることが得意なタイプ。
+              </p>
+              <p className='leading-[1.8]'>
+                お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
+              </p>
+              <p className='leading-[1.8]'>
+                業務効率化のツールを作るのが最近の趣味です。
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+              経験した技術・ツール・サービス
+            </h3>
+            <div className='text-sm'>
+              <p className='leading-[1.8]'>
+                React / TypeScript / Next.js / Tailwind CSS / WordPress / TanStack Query /
+                microCMS
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+              経歴
+            </h3>
+            <div className='text-sm'>
+              <ul>
+                <li className='mb-3'>
+                  <strong>2009年 ~ 2010年</strong> : あとらす二十一
+                </li>
+                <li className='mb-3'>
+                  <strong>2010年 ~ 2016年</strong> : SONICJAM Inc.
+                </li>
+                <li className='mb-3'>
+                  <strong>2016年 ~ 2022年6月</strong> : フリーランス
+                </li>
+                <li className='mb-3'>
+                  <strong>2022年7月 ~ 9月</strong>: ちょっと株式会社
+                </li>
+                <li className='mb-3'>
+                  <strong>2022年9月</strong> ~ : フリーランス
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div className='border-border mb-10 border-t pt-10 text-center'>
+        <Button component='link' href='/' icon={<Icons.home />}>
+          HOME
+        </Button>
+      </div>
+    </main>
   )
 }
 

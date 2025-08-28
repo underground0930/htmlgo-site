@@ -11,9 +11,11 @@ import { Icons, type IconsName } from '@/components/utils/icons'
  */
 const iconList: IconsName[] = ['react', 'typescript', 'nextjs', 'wordpress']
 
-export const ServiceList: React.FC = () => {
+type Props = React.ComponentPropsWithoutRef<'div'>
+
+export const ServiceList = (props: Props) => {
   return (
-    <>
+    <div {...props}>
       <div className='mr-auto mb-4 ml-auto flex max-w-[680px] flex-wrap justify-center'>
         {iconList.map((iconName) => {
           const IconComponent = Icons[iconName]
@@ -40,6 +42,6 @@ export const ServiceList: React.FC = () => {
           </dd>
         </dl>
       </div>
-    </>
+    </div>
   )
 }

@@ -9,6 +9,11 @@ import { setMetaData } from '@/utils/set-metadata'
 
 const description = '最新の実績や、自主制作'
 
+export default async function Page({ params }: { params: Promise<{ page: string }> }) {
+  const resolvedParams = await params
+  return <WorksPageComponent params={resolvedParams} />
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -29,13 +34,4 @@ export async function generateMetadata({
       images: '/img/ogp-new.png',
     }),
   }
-}
-
-export default async function WorksPage({
-  params,
-}: {
-  params: Promise<{ page: string }>
-}) {
-  const resolvedParams = await params
-  return <WorksPageComponent params={resolvedParams} />
 }
