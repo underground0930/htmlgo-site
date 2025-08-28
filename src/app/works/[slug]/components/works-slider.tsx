@@ -14,7 +14,7 @@ type Props = {
   sliders: WorksSlider[]
 }
 
-const WorksSliderComponent: React.FC<Props> = ({ sliders }: Props) => {
+const WorksSliderComponent = ({ sliders }: Props) => {
   const [index, setIndex] = useState(1)
   const [bothEnds, setBothEnds] = useState({
     first: true,

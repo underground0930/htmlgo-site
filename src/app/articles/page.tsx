@@ -9,7 +9,7 @@ import { setMetaData } from '@/utils/set-metadata'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
-export default async function Articles() {
+export default async function Page() {
   return <ArticlesPageComponent />
 }
 

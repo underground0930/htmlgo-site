@@ -6,7 +6,7 @@ import { setMetaData } from '@/utils/set-metadata'
 
 const description = 'お仕事のお問い合わせはこちらから'
 
-export default function Contact() {
+export default function Page() {
   return <ContactBody />
 }
 

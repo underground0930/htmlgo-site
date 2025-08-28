@@ -64,7 +64,7 @@ type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
 // エクスポート用の統合型
 export type Props = ButtonElementProps | AnchorElementProps | LinkElementProps
 
-export function Button(props: Props) {
+export const Button = (props: Props) => {
   const { component = 'button', variant, size, icon, children } = props
   const className = buttonVariants({ variant, size })
 

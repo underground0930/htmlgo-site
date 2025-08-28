@@ -16,7 +16,33 @@ type Props = {
   }>
 }
 
-export async function generateMetadata(props: Props): Promise<Metadata> {
+export default async function Page(props: Props) {
+  const params = await props.params
+  const result = await fetchWorksDetail({ slug: params.slug })
+  const { post, prev, next } = result
+
+  if (!post) {
+    notFound()
+  }
+
+  return (
+    <Suspense
+      fallback={
+        <div className='relative flex h-10 w-full items-center justify-center'>
+          <div>Loading...</div>
+        </div>
+      }
+    >
+      <WorksDetailBody post={post} prev={prev} next={next} />
+    </Suspense>
+  )
+}
+
+export async function generateMetadata(props: {
+  params: Promise<{
+    slug: string
+  }>
+}): Promise<Metadata> {
   const params = await props.params
   const result = await fetchWorksDetail({ slug: params.slug })
 
@@ -55,26 +81,4 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export async function generateStaticParams() {
   const paths = await fetchWorksPaths()
   return paths.map((path) => ({ slug: path.slug }))
-}
-
-export default async function WorksDetail(props: Props) {
-  const params = await props.params
-  const result = await fetchWorksDetail({ slug: params.slug })
-  const { post, prev, next } = result
-
-  if (!post) {
-    notFound()
-  }
-
-  return (
-    <Suspense
-      fallback={
-        <div className='relative flex h-10 w-full items-center justify-center'>
-          <div>Loading...</div>
-        </div>
-      }
-    >
-      <WorksDetailBody post={post} prev={prev} next={next} />
-    </Suspense>
-  )
 }

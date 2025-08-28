@@ -12,14 +12,14 @@ type Props = {
   register: UseFormRegister<FormBodyData & FieldValues>
 }
 
-export const InputText: React.FC<Props> = ({
+export const InputText = ({
   name,
   label,
   textarea = false,
   row,
   getError,
   register,
-}) => {
+}: Props) => {
   const error = getError(name)
   return (
     <>
@@ -31,7 +31,7 @@ export const InputText: React.FC<Props> = ({
       </label>
       {textarea ? (
         <textarea
-          className='block w-full resize-none border border-border p-2 text-base'
+          className='border-border block w-full resize-none border p-2 text-base'
           id={name}
           rows={row ?? 10}
           {...register(name)}
@@ -39,7 +39,7 @@ export const InputText: React.FC<Props> = ({
       ) : (
         <input
           type='text'
-          className='block w-full border border-border p-2 text-base'
+          className='border-border block w-full border p-2 text-base'
           id={name}
           {...register(name)}
         />

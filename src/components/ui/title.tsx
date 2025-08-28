@@ -2,12 +2,12 @@
 
 import { ComponentPropsWithoutRef } from 'react'
 
-type Props = ComponentPropsWithoutRef<'h2'> & {
+type Props = Omit<ComponentPropsWithoutRef<'h2'>, 'className'> & {
   title?: string
   text?: string
 }
 
-export const Title: React.FC<Props> = ({ title, text, ...props }) => {
+export const Title = ({ title, text, ...props }: Props) => {
   return (
     <h2 {...props} className='mb-6 text-center leading-5 md:mb-10'>
       {title && <span className='mb-1 block text-xl font-bold md:text-3xl'>{title}</span>}

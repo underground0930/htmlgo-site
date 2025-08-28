@@ -11,7 +11,7 @@ import { fetchTopList } from './libs/fetch-top-list'
 
 const description = 'WEB技術を書き連ねるサイト'
 
-export default async function Home() {
+export default async function Page() {
   const { works, articles } = await fetchTopList()
   return (
     <main className='mx-5 max-w-[800px] md:mx-auto'>

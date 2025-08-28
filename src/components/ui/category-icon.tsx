@@ -6,7 +6,7 @@ type Props = React.ComponentPropsWithoutRef<'span'> & {
   text: string
 }
 
-export const CategoryIcon: React.FC<Props> = ({ text, ...props }) => {
+export const CategoryIcon = ({ text, ...props }: Props) => {
   return (
     <span
       {...props}

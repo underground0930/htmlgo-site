@@ -22,7 +22,7 @@ type ErrorType = { [key: string]: string }
 
 const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
 
-export const ContactBody: React.FC = () => {
+export const ContactBody = () => {
   const { debug } = useDebugMode({ debug: false })
   const [token, setToken] = useState<string | null>(null)
   const parentRef = useRef<HTMLDivElement>(null)
