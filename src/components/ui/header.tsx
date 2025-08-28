@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 
-type Props = React.ComponentPropsWithoutRef<'header'>
+type Props = Omit<React.ComponentPropsWithoutRef<'header'>, 'className'>
 
 const navList = [
   {
@@ -34,7 +34,7 @@ const navList = [
   },
 ]
 
-export const Header: React.FC<Props> = (props) => {
+export const Header = (props: Props) => {
   const pathname = usePathname()
   return (
     <header {...props} className='border-border relative z-1 mx-5 mb-8 border-b'>

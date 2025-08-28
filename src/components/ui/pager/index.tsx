@@ -1,26 +1,13 @@
 import { PagerChild } from './pager-child'
 
-type Props = React.ComponentPropsWithoutRef<'ul'> & {
+type Props = Omit<React.ComponentPropsWithoutRef<'ul'>, 'className'> & {
   pages: number
   page: number
   basePath: string
   range?: number
 }
 
-/**
- * ページャーコンポーネント
- * @param pages 総ページ数
- * @param page 現在のページ
- * @param basePath ベースパス（例: '/works', '/articles'）
- * @param range 表示範囲（デフォルト: 1）
- */
-export const Pager: React.FC<Props> = ({
-  pages,
-  page,
-  basePath,
-  range = 1,
-  ...props
-}) => {
+export const Pager = ({ pages, page, basePath, range = 1, ...props }: Props) => {
   // ページ番号の配列を生成する関数
   const generatePageNumbers = (): (number | 'ellipsis')[] => {
     const pageNumbers: (number | 'ellipsis')[] = []

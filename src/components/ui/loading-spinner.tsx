@@ -1,8 +1,8 @@
 import React from 'react'
 
-type Props = React.ComponentPropsWithoutRef<'div'>
+type Props = Omit<React.ComponentPropsWithoutRef<'div'>, 'className'>
 
-export const LoadingSpinner: React.FC<Props> = ({ ...props }) => {
+export const LoadingSpinner = (props: Props) => {
   return (
     <div
       {...props}
