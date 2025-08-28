@@ -11,15 +11,15 @@ import { Pager } from '@/components/ui/pager'
 import { fetchWorksIndex } from '../libs/fetch-works-index'
 import { Icons } from '@/components/utils/icons'
 
-type Props = React.ComponentPropsWithoutRef<'main'> & {
+type Props = {
   params?: { page: string }
 }
 
-export const WorksPageComponent = async ({ params, ...props }: Props) => {
+export const WorksPageComponent = async ({ params }: Props) => {
   const { works, page, pages } = await fetchWorksIndex({ params })
 
   return (
-    <main {...props} className='mx-5 max-w-[800px] md:mx-auto'>
+    <main className='mx-5 max-w-[800px] md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
       <div className='mb-10'>
         <Pager pages={pages} page={page} basePath='/works' />

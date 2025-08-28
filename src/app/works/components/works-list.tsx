@@ -9,14 +9,14 @@ import { conversionDate } from '@/utils/conversion-date'
 import { WorkIndex } from '@/types/microcms'
 import { NO_IMAGE } from '../constants/works'
 
-type Props = React.ComponentPropsWithoutRef<'ul'> & {
+type Props = {
   works: WorkIndex[]
 }
 
-export const WorksList = ({ works = [], ...props }: Props) => {
+export const WorksList = ({ works = [] }: Props) => {
   return (
     <>
-      <ul {...props} className='mb-5 md:mb-10 md:grid md:grid-cols-3 md:gap-6'>
+      <ul className='mb-5 md:mb-10 md:grid md:grid-cols-3 md:gap-6'>
         {works.map((work, i) => {
           const thumb = work?.slider?.[0]?.img?.url
           const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE

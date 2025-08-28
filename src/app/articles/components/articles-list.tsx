@@ -3,13 +3,13 @@ import { Image } from '@/components/utils/image'
 
 import { FeedObj } from '@/types/feed'
 
-type Props = React.ComponentPropsWithoutRef<'div'> & {
+type Props = {
   articles: FeedObj[]
 }
 
-export const ArticlesList = ({ articles, ...props }: Props) => {
+export const ArticlesList = ({ articles }: Props) => {
   return (
-    <div {...props} className='mb-5 md:mb-10 md:grid md:grid-cols-4 md:gap-4'>
+    <div className='mb-5 md:mb-10 md:grid md:grid-cols-4 md:gap-4'>
       {articles.map((article, i) => {
         return (
           <article

@@ -17,13 +17,13 @@ const WorksSlider = dynamic(() => import('./works-slider'), {
   ssr: false,
 })
 
-type Props = React.ComponentPropsWithoutRef<'main'> & {
+type Props = {
   post: WorkDetail
   prev: { slug: string } | null
   next: { slug: string } | null
 }
 
-export const WorksDetailBody = ({ post, prev, next, ...props }: Props) => {
+export const WorksDetailBody = ({ post, prev, next }: Props) => {
   const shareTwitterUrl = (slug: string) =>
     `https://x.com/share?url=https://htmlgo.site/works/${slug}`
   const shareFacebookUrl = (slug: string) =>
@@ -36,7 +36,7 @@ export const WorksDetailBody = ({ post, prev, next, ...props }: Props) => {
 
   return (
     <>
-      <main {...props} className='mx-5 max-w-[800px] md:mx-auto'>
+      <main className='mx-5 max-w-[800px] md:mx-auto'>
         <Title title={post.title} text='WORKS NAME' />
         <article>
           <div className='relative mb-10'>

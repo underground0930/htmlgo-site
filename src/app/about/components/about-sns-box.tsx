@@ -1,8 +1,6 @@
-type Props = React.ComponentPropsWithoutRef<'ul'>
-
-export const AboutSnsBox = (props: Props) => {
+export const AboutSnsBox = () => {
   return (
-    <ul {...props} className='flex flex-wrap justify-center gap-3'>
+    <ul className='flex flex-wrap justify-center gap-3'>
       {snsList.map((v, i) => {
         return (
           <li key={i}>
