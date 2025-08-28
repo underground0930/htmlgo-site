@@ -11,11 +11,9 @@ import { Icons, type IconsName } from '@/components/utils/icons'
  */
 const iconList: IconsName[] = ['react', 'typescript', 'nextjs', 'wordpress']
 
-type Props = React.ComponentPropsWithoutRef<'div'>
-
-export const ServiceList = (props: Props) => {
+export const ServiceList = () => {
   return (
-    <div {...props}>
+    <div>
       <div className='mr-auto mb-4 ml-auto flex max-w-[680px] flex-wrap justify-center'>
         {iconList.map((iconName) => {
           const IconComponent = Icons[iconName]
