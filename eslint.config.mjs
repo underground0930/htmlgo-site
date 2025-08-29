@@ -7,32 +7,18 @@ import tsParser from '@typescript-eslint/parser'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 
 export default defineConfig([
-  // Node.js CommonJS環境のファイル用の設定
-  {
-    files: ['.lintstagedrc.js'],
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'commonjs',
-      globals: {
-        // Node.js環境のグローバル変数
-        console: 'readonly',
-        process: 'readonly',
-        require: 'readonly',
-        module: 'readonly',
-        __dirname: 'readonly',
-        __filename: 'readonly',
-        global: 'readonly',
-        Buffer: 'readonly',
-        exports: 'writable',
-      },
-    },
-    rules: {
-      'no-undef': 'error',
-    },
-  },
+  globalIgnores([
+    '**/tsconfig.json',
+    '**/build/',
+    '**/bin/',
+    '**/obj/',
+    '**/out/',
+    '**/.next/',
+    '**/scripts/',
+  ]),
   // ES Modules設定ファイル用の設定
   {
-    files: ['**/*.config.mjs', 'prettier.config.mjs'],
+    files: ['*.config.mjs', 'prettier.config.mjs', '.lintstagedrc.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -127,18 +113,4 @@ export default defineConfig([
     files: ['src/**/*.stories.{js,ts,tsx}'],
     ...storybook.configs['flat/recommended'][0],
   },
-  globalIgnores([
-    '**/prettier.config.js',
-    '**/next.config.js',
-    '**/tsconfig.json',
-    '**/postcss.config.js',
-    '**/postcss.config.mjs',
-    '**/build/',
-    '**/bin/',
-    '**/obj/',
-    '**/out/',
-    '**/.next/',
-    '**/scripts/',
-    'eslint.config.mjs',
-  ]),
 ])
