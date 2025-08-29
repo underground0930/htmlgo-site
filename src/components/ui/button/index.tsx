@@ -1,8 +1,7 @@
 'use client'
 
 import type { ComponentProps, ReactNode } from 'react'
-import type { VariantProps } from 'tailwind-variants'
-import { tv } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 import Link from 'next/link'
 
 // components
@@ -10,7 +9,7 @@ import { ButtonLoadingSpinner } from './button-loading-spinner'
 
 export const buttonVariants = tv({
   base: [
-    'inline-flex items-center justify-center gap-2',
+    'inline-flex items-center justify-center gap-2 cursor-pointer',
     'font-medium text-center',
     'transition-all duration-200',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
@@ -54,11 +53,13 @@ type ButtonElementProps = Omit<ComponentProps<'button'>, 'className'> & {
 // a要素用プロパティ
 type AnchorElementProps = Omit<ComponentProps<'a'>, 'className'> & {
   component: 'a'
+  disabled?: boolean
 } & CommonVariantProps
 
 // Next.js Link用プロパティ
 type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
   component: 'link'
+  disabled?: boolean
 } & CommonVariantProps
 
 // エクスポート用の統合型
@@ -80,7 +81,7 @@ export const Button = (props: Props) => {
         rel='noopener noreferrer'
       >
         {children}
-        {icon}
+        {icon && <span className='flex-shrink-0'>{icon}</span>}
       </a>
     )
   }
@@ -91,7 +92,7 @@ export const Button = (props: Props) => {
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>
         {children}
-        {icon}
+        {icon && <span className='flex-shrink-0'>{icon}</span>}
       </Link>
     )
   }
@@ -100,9 +101,9 @@ export const Button = (props: Props) => {
   const { loading, disabled, ...rest } = props as ButtonElementProps
   return (
     <button {...rest} className={className} disabled={disabled || loading}>
-      {loading && <ButtonLoadingSpinner />}
-      {!loading && icon}
       {children}
+      {loading && <ButtonLoadingSpinner />}
+      {!loading && icon && <span className='flex-shrink-0'>{icon}</span>}
     </button>
   )
 }

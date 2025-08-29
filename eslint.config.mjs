@@ -7,11 +7,53 @@ import tsParser from '@typescript-eslint/parser'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 
 export default defineConfig([
-  // 基本的なJavaScript/TypeScriptファイル用の設定
+  // Node.js CommonJS環境のファイル用の設定
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['.lintstagedrc.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'commonjs',
+      globals: {
+        // Node.js環境のグローバル変数
+        console: 'readonly',
+        process: 'readonly',
+        require: 'readonly',
+        module: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        global: 'readonly',
+        Buffer: 'readonly',
+        exports: 'writable',
+      },
+    },
+    rules: {
+      'no-undef': 'error',
+    },
+  },
+  // ES Modules設定ファイル用の設定
+  {
+    files: ['**/*.config.mjs', 'prettier.config.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        // Node.js環境のグローバル変数
+        console: 'readonly',
+        process: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        global: 'readonly',
+        Buffer: 'readonly',
+      },
+    },
+  },
+  // ブラウザ環境のJavaScript/TypeScriptファイル用の設定
+  {
+    files: ['src/**/*.{js,jsx,ts,tsx}'],
     extends: [js.configs.recommended],
     languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       globals: {
         // ブラウザ環境のグローバル変数
         console: 'readonly',
@@ -29,9 +71,9 @@ export default defineConfig([
       'no-empty-pattern': 1,
     },
   },
-  // TypeScriptファイル専用の設定
+  // TypeScriptファイル専用の設定（srcディレクトリ内のみ）
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -53,7 +95,37 @@ export default defineConfig([
       ],
       '@typescript-eslint/no-unused-vars': 1,
     },
-    ...storybook.configs['flat/recommended'],
+  },
+  // TypeScript宣言ファイル用の設定
+  {
+    files: ['next-env.d.ts'],
+    rules: {
+      '@typescript-eslint/triple-slash-reference': 'off',
+    },
+  },
+  // Storybookファイル用の設定
+  {
+    files: ['.storybook/**/*.{js,ts}'],
+    languageOptions: {
+      parser: tsParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+      },
+    },
+    plugins: {
+      '@typescript-eslint': typescriptEslint,
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
+  // Storybook専用の設定 - Storiesファイルのみに適用
+  {
+    files: ['src/**/*.stories.{js,ts,tsx}'],
+    ...storybook.configs['flat/recommended'][0],
   },
   globalIgnores([
     '**/prettier.config.js',
