@@ -1,7 +1,9 @@
 ---
-root: false
+root: true
 targets:
-  - claudecode
+  - cursor
+features:
+  - rules
 description: Main Claude Code configuration
 globs:
   - '**/*'

@@ -1,3 +1,9 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
 # CLAUDE.md
 
 - このファイルは、Claude Code (claude.ai/code) がこのリポジトリでコードを作業する際のガイダンスを提供します。
@@ -327,4 +333,3 @@ src/components/ui/
 - **チーム効率**: 迷わずに決定できる
 
 ---
-
