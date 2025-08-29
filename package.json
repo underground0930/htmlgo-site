@@ -15,7 +15,8 @@
     "prepare": "husky install",
     "diff": "npx difit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "rule": "npx rulesync generate --targets cursor --features rules"
   },
   "dependencies": {
     "@eslint/compat": "^1.3.2",
