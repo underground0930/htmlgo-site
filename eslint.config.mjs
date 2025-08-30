@@ -12,14 +12,17 @@
  * @see https://typescript-eslint.io/getting-started
  */
 
-import js from '@eslint/js'
+import eslint from '@eslint/js'
 import nextPlugin from '@next/eslint-plugin-next'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import eslintConfigPrettier from 'eslint-config-prettier'
-import storybook from 'eslint-plugin-storybook'
+import storybookPlugin from 'eslint-plugin-storybook'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
+
+// console.log(typescriptEslint.configs['flat/recommended'])
+// console.log(typescriptEslint.configs['flat/recommended-type-checked'])
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -45,7 +48,7 @@ export default [
 
   // JavaScript推奨設定
   {
-    ...js.configs.recommended,
+    ...eslint.configs.recommended,
     languageOptions: {
       globals: {
         console: 'readonly',
@@ -58,6 +61,7 @@ export default [
   },
 
   // TypeScript推奨設定
+
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -119,16 +123,7 @@ export default [
   },
 
   // Storybook推奨設定
-  {
-    files: ['**/*.stories.{js,jsx,ts,tsx}', '**/.storybook/**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      storybook,
-    },
-    rules: {
-      // Storybook推奨設定をそのまま使用
-      ...storybook.configs.recommended.rules,
-    },
-  },
+  ...storybookPlugin.configs['flat/recommended'],
 
   // 全体の最小限カスタマイズ
   {
