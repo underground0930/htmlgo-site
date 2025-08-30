@@ -121,7 +121,12 @@ export const ContactBody = () => {
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
         {error && <div className='pb-8 font-bold text-[#f00]'>{error}</div>}
         <div className='mb-10'>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              void handleSubmit(onSubmit)()
+            }}
+          >
             <ul className='mb-10'>
               {inputElements.map((elem, index) => {
                 const { name, textarea, row, label } = elem

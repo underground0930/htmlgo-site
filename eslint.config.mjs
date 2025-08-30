@@ -15,15 +15,12 @@
 import globals from 'globals'
 import eslint from '@eslint/js'
 import nextPlugin from '@next/eslint-plugin-next'
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
+import tseslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import storybookPlugin from 'eslint-plugin-storybook'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
-
-// console.log(typescriptEslint.configs['flat/recommended'])
-// console.log(typescriptEslint.configs['flat/recommended-type-checked'])
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -40,6 +37,7 @@ export default [
       '**/scripts/',
       '**/*.min.js',
       '**/coverage/',
+      '*.config.{mjs,mts}',
       '.lintstagedrc.mjs',
       '**/.storybook/main.ts',
       '**/.storybook/preview.ts',
@@ -88,23 +86,14 @@ export default [
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {
-      '@typescript-eslint': typescriptEslint,
+      '@typescript-eslint': tseslint,
     },
     rules: {
       // TypeScript推奨設定をベースに使用
-      ...typescriptEslint.configs.recommended.rules,
-
-      // 軽微なカスタマイズのみ
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-        },
-      ],
-      '@typescript-eslint/no-explicit-any': 'warn',
+      ...tseslint.configs.recommended.rules,
     },
   },
+  ...tseslint.configs['flat/recommended-type-checked'],
   ...storybookPlugin.configs['flat/recommended'],
   {
     files: ['**/*.{test,spec}.{js,jsx,ts,tsx}', '**/__tests__/**/*.{js,jsx,ts,tsx}'],

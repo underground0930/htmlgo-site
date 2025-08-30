@@ -9,7 +9,7 @@ import { setMetaData } from '@/utils/set-metadata'
 
 const description = '最新の実績や、自主制作'
 
-export default async function Page() {
+export default function Page() {
   return <WorksPageComponent />
 }
 
