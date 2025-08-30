@@ -16,7 +16,8 @@
     "diff": "npx difit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "rule": "npx rulesync generate --targets cursor --features rules"
+    "rule": "npx rulesync generate --targets cursor --features rules",
+    "inspect": "npx @eslint/config-inspector"
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.1",
@@ -43,6 +44,7 @@
     "@chromatic-com/storybook": "4.1.1",
     "@eslint/compat": "1.3.2",
     "@eslint/config-array": "0.21.0",
+    "@eslint/config-inspector": "^1.2.0",
     "@eslint/eslintrc": "3.3.1",
     "@eslint/object-schema": "2.1.6",
     "@next/eslint-plugin-next": "15.5.0",
