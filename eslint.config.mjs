@@ -46,7 +46,7 @@ export default [
     ],
   },
 
-  // JavaScript推奨設定
+  // eslint推奨設定
   {
     ...eslint.configs.recommended,
     languageOptions: {
@@ -109,16 +109,16 @@ export default [
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     plugins: {
-      ...nextPlugin.flatConfig.recommended.plugins,
-      ...nextPlugin.flatConfig.coreWebVitals.plugins,
       ...reactPlugin.configs.flat.recommended.plugins,
       ...reactHooksPlugin.configs['recommended-latest'].plugins,
+      ...nextPlugin.flatConfig.recommended.plugins,
+      ...nextPlugin.flatConfig.coreWebVitals.plugins,
     },
     rules: {
-      ...nextPlugin.flatConfig.recommended.rules,
-      ...nextPlugin.flatConfig.coreWebVitals.rules,
       ...reactPlugin.configs.flat.recommended.rules,
       ...reactHooksPlugin.configs['recommended-latest'].rules,
+      ...nextPlugin.flatConfig.recommended.rules,
+      ...nextPlugin.flatConfig.coreWebVitals.rules,
     },
   },
 
