@@ -1,10 +1,11 @@
 'use client'
 
+import { ComponentPropsWithoutRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 
-type Props = Omit<React.ComponentPropsWithoutRef<'header'>, 'className'>
+type Props = Omit<ComponentPropsWithoutRef<'header'>, 'className'>
 
 const navList = [
   {

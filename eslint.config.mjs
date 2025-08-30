@@ -12,6 +12,7 @@
  * @see https://typescript-eslint.io/getting-started
  */
 
+import globals from 'globals'
 import eslint from '@eslint/js'
 import nextPlugin from '@next/eslint-plugin-next'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
@@ -45,26 +46,13 @@ export default [
       '**/.storybook/vitest.setup.ts',
     ],
   },
-
-  // eslint推奨設定
   {
-    ...eslint.configs.recommended,
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       globals: {
-        console: 'readonly',
-        process: 'readonly',
-        document: 'readonly',
-        fetch: 'readonly',
-        location: 'readonly',
+        ...globals.browser,
+        ...globals.node,
       },
-    },
-  },
-
-  // TypeScript推奨設定
-
-  {
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
       parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
@@ -75,16 +63,30 @@ export default [
         project: ['./tsconfig.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      globals: {
-        React: 'readonly',
-        process: 'readonly',
-        console: 'readonly',
-        window: 'readonly',
-        document: 'readonly',
-        fetch: 'readonly',
-        location: 'readonly',
+    },
+    plugins: {
+      ...eslint.configs.recommended.plugins,
+      ...reactPlugin.configs.flat.recommended.plugins,
+      ...reactHooksPlugin.configs['recommended-latest'].plugins,
+      ...nextPlugin.flatConfig.recommended.plugins,
+      ...nextPlugin.flatConfig.coreWebVitals.plugins,
+    },
+    rules: {
+      ...eslint.configs.recommended.rules,
+      ...reactPlugin.configs.flat.recommended.rules,
+      ...reactPlugin.configs.flat['jsx-runtime'].rules, // これがないとReactのimportが必要
+      ...reactHooksPlugin.configs['recommended-latest'].rules,
+      ...nextPlugin.flatConfig.recommended.rules,
+      ...nextPlugin.flatConfig.coreWebVitals.rules,
+    },
+    settings: {
+      react: {
+        version: 'detect', // jsx-runtimeで必要
       },
     },
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
     plugins: {
       '@typescript-eslint': typescriptEslint,
     },
@@ -103,46 +105,7 @@ export default [
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
-
-  // Next.js推奨設定（flatConfig形式使用）
-
-  {
-    files: ['src/**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      ...reactPlugin.configs.flat.recommended.plugins,
-      ...reactHooksPlugin.configs['recommended-latest'].plugins,
-      ...nextPlugin.flatConfig.recommended.plugins,
-      ...nextPlugin.flatConfig.coreWebVitals.plugins,
-    },
-    rules: {
-      ...reactPlugin.configs.flat.recommended.rules,
-      ...reactHooksPlugin.configs['recommended-latest'].rules,
-      ...nextPlugin.flatConfig.recommended.rules,
-      ...nextPlugin.flatConfig.coreWebVitals.rules,
-    },
-  },
-
-  // Storybook推奨設定
   ...storybookPlugin.configs['flat/recommended'],
-
-  // 全体の最小限カスタマイズ
-  {
-    files: ['**/*.{js,jsx,ts,tsx}'],
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-    rules: {
-      // 基本的なルールのみ
-      'no-console': ['warn', { allow: ['warn', 'error', 'log'] }],
-      'no-debugger': 'error',
-      'prefer-const': 'error',
-      'react/prop-types': 'off',
-    },
-  },
-
-  // テストファイル用の緩和設定
   {
     files: ['**/*.{test,spec}.{js,jsx,ts,tsx}', '**/__tests__/**/*.{js,jsx,ts,tsx}'],
     rules: {
@@ -150,7 +113,5 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
-
-  // Prettier統合（最後に配置）
   eslintConfigPrettier,
 ]

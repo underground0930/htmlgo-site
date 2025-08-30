@@ -1,5 +1,4 @@
 'use client'
-
 import DefaultImage from 'next/image'
 
 import { twMerge } from 'tailwind-merge'
@@ -16,7 +15,7 @@ type Props = {
   onLoadAction?: () => void
 }
 
-export const Image: React.FC<Props> = ({
+export const Image = ({
   src,
   className = '',
   alt = '',
@@ -27,7 +26,7 @@ export const Image: React.FC<Props> = ({
   sizes = '',
   onLoadAction,
   ...props
-}) => {
+}: Props) => {
   return (
     <DefaultImage
       {...props}

@@ -1,6 +1,8 @@
+import { ComponentPropsWithoutRef } from 'react'
+
 import { PagerChild } from './pager-child'
 
-type Props = Omit<React.ComponentPropsWithoutRef<'ul'>, 'className'> & {
+type Props = Omit<ComponentPropsWithoutRef<'ul'>, 'className'> & {
   pages: number
   page: number
   basePath: string

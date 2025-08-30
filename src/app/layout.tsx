@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { Metadata } from 'next'
+import { ReactNode } from 'react'
 
 import { Header } from '@/components/ui/header'
 import { Footer } from '@/components/ui/footer'
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <html lang='ja'>
