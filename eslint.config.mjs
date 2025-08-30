@@ -1,15 +1,5 @@
 /**
- * ESLint設定ファイル - Next.js 15 & ESLint 9対応 (Recommended Configuration)
- *
- * @description 推奨設定をベースにしたNext.js 15とESLint 9の安全で確実な設定
- * @features
- *   - TypeScript推奨設定
- *   - Next.js推奨設定
- *   - Storybook推奨設定
- *   - Prettier統合
- *
- * @see https://nextjs.org/docs/app/building-your-application/configuring/eslint
- * @see https://typescript-eslint.io/getting-started
+ * ESLint設定ファイル - Next.js 15 & ESLint 9対応
  */
 
 import globals from 'globals'
@@ -31,7 +21,6 @@ export default [
       '**/dist/',
       '**/build/',
       '**/out/',
-      '**/node_modules/',
       '**/tsconfig.json',
       '**/next-env.d.ts',
       '**/scripts/',
@@ -83,18 +72,14 @@ export default [
       },
     },
   },
-  {
-    files: ['**/*.{ts,tsx}'],
-    plugins: {
-      '@typescript-eslint': tseslint,
-    },
-    rules: {
-      // TypeScript推奨設定をベースに使用
-      ...tseslint.configs.recommended.rules,
-    },
-  },
   ...tseslint.configs['flat/recommended-type-checked'],
   ...storybookPlugin.configs['flat/recommended'],
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'warn',
+    },
+  },
   {
     files: ['**/*.{test,spec}.{js,jsx,ts,tsx}', '**/__tests__/**/*.{js,jsx,ts,tsx}'],
     rules: {
