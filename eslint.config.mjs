@@ -12,9 +12,8 @@
  * @see https://typescript-eslint.io/getting-started
  */
 
-import { fixupConfigRules } from '@eslint/compat'
 import js from '@eslint/js'
-import nextPlugin from '@next/eslint-plugin-next'
+import { flatConfig as nextPlugin } from '@next/eslint-plugin-next'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import eslintConfigPrettier from 'eslint-config-prettier'
@@ -99,16 +98,16 @@ export default [
     },
   },
 
-  // Next.js推奨設定
+  // Next.js推奨設定（flatConfig形式使用）
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     plugins: {
       '@next/next': nextPlugin,
     },
     rules: {
-      // Next.js推奨設定をそのまま使用
-      ...fixupConfigRules(nextPlugin.configs.recommended).rules,
-      ...fixupConfigRules(nextPlugin.configs['core-web-vitals']).rules,
+      // 新しいflatConfig形式を使用（fixupConfigRules不要）
+      ...nextPlugin.recommended.rules,
+      ...nextPlugin.coreWebVitals.rules,
     },
   },
 
