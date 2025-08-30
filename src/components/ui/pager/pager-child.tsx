@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
+import { ComponentPropsWithoutRef } from 'react'
 
-type Props = React.ComponentPropsWithoutRef<'li'> & {
+type Props = ComponentPropsWithoutRef<'li'> & {
   page: number
   basePath: string
   isActive?: boolean
