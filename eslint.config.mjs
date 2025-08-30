@@ -13,7 +13,8 @@
  */
 
 import js from '@eslint/js'
-import { flatConfig as nextPlugin } from '@next/eslint-plugin-next'
+import nextPluginBase from '@next/eslint-plugin-next'
+const { flatConfig } = nextPluginBase
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import eslintConfigPrettier from 'eslint-config-prettier'
@@ -101,13 +102,11 @@ export default [
   // Next.js推奨設定（flatConfig形式使用）
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      '@next/next': nextPlugin,
-    },
+    plugins: flatConfig.recommended.plugins,
     rules: {
       // 新しいflatConfig形式を使用（fixupConfigRules不要）
-      ...nextPlugin.recommended.rules,
-      ...nextPlugin.coreWebVitals.rules,
+      ...flatConfig.recommended.rules,
+      ...flatConfig.coreWebVitals.rules,
     },
   },
 
