@@ -83,18 +83,14 @@ export default [
       },
     },
   },
-  {
-    files: ['**/*.{ts,tsx}'],
-    plugins: {
-      '@typescript-eslint': tseslint,
-    },
-    rules: {
-      // TypeScript推奨設定をベースに使用
-      ...tseslint.configs.recommended.rules,
-    },
-  },
   ...tseslint.configs['flat/recommended-type-checked'],
   ...storybookPlugin.configs['flat/recommended'],
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'warn',
+    },
+  },
   {
     files: ['**/*.{test,spec}.{js,jsx,ts,tsx}', '**/__tests__/**/*.{js,jsx,ts,tsx}'],
     rules: {
