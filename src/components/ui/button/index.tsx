@@ -9,31 +9,42 @@ import { ButtonLoadingSpinner } from './button-loading-spinner'
 
 export const buttonVariants = tv({
   base: [
-    'inline-flex items-center justify-center gap-2 cursor-pointer',
+    'inline-flex items-center justify-center gap-2',
     'font-medium text-center',
     'transition-all duration-200',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-    'disabled:pointer-events-none disabled:opacity-50',
     'rounded-md',
-    '[&>svg]:flex-shrink-0',
+    'cursor-pointer',
   ],
   variants: {
     variant: {
-      default: ['bg-base text-white', 'hover:bg-base/90', 'focus-visible:ring-base'],
-      primary: [
-        'bg-blue-600 text-white',
-        'hover:bg-blue-700',
-        'focus-visible:ring-blue-600',
-      ],
+      default: ['bg-base text-white', 'hover:bg-base/90'],
+      primary: ['bg-blue-600 text-white', 'hover:bg-blue-700'],
     },
     size: {
       md: 'text-sm px-4 py-2.5 min-w-[120px] [&>svg]:w-4 [&>svg]:h-4',
       lg: 'text-base px-6 py-3 min-w-[140px] [&>svg]:w-5 [&>svg]:h-5',
     },
+    disabled: {
+      true: 'pointer-events-none cursor-default',
+    },
   },
+  compoundVariants: [
+    {
+      variant: 'default',
+      disabled: true,
+      class: 'bg-gray-300 text-gray-500 hover:bg-gray-300',
+    },
+    {
+      variant: 'primary',
+      disabled: true,
+      class: 'bg-blue-200 text-blue-400 hover:bg-blue-200',
+    },
+  ],
   defaultVariants: {
     variant: 'default',
     size: 'md',
+    disabled: false,
   },
 })
 
@@ -66,8 +77,8 @@ type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
 export type Props = ButtonElementProps | AnchorElementProps | LinkElementProps
 
 export const Button = (props: Props) => {
-  const { component = 'button', variant, size, icon, children } = props
-  const className = buttonVariants({ variant, size })
+  const { component = 'button', variant, size, icon, disabled, children } = props
+  const className = buttonVariants({ variant, size, disabled })
 
   // a要素でレンダリング（外部リンク）
   if (component === 'a') {
@@ -98,7 +109,7 @@ export const Button = (props: Props) => {
   }
 
   // button要素でレンダリング（デフォルト）
-  const { loading, disabled, ...rest } = props as ButtonElementProps
+  const { loading, ...rest } = props as ButtonElementProps
   return (
     <button {...rest} className={className} disabled={disabled || loading}>
       {children}

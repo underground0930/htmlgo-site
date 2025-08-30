@@ -76,6 +76,17 @@ export const NextLink = {
   args: {
     children: 'Next.js リンク',
     component: 'link',
+    disabled: false,
+    href: '/?hoge=1',
+  },
+}
+
+// Next.js リンク(無効)
+export const NextLinkDisabled = {
+  args: {
+    children: 'Next.js リンク (無効)',
+    component: 'link',
+    disabled: true,
     href: '/?hoge=1',
   },
 }
