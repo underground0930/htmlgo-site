@@ -13,12 +13,13 @@
  */
 
 import js from '@eslint/js'
-import nextPluginBase from '@next/eslint-plugin-next'
-const { flatConfig } = nextPluginBase
+import nextPlugin from '@next/eslint-plugin-next'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import storybook from 'eslint-plugin-storybook'
+import reactPlugin from 'eslint-plugin-react'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -100,13 +101,20 @@ export default [
   },
 
   // Next.js推奨設定（flatConfig形式使用）
+
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
-    plugins: flatConfig.recommended.plugins,
+    plugins: {
+      ...nextPlugin.flatConfig.recommended.plugins,
+      ...nextPlugin.flatConfig.coreWebVitals.plugins,
+      ...reactPlugin.configs.flat.recommended.plugins,
+      ...reactHooksPlugin.configs['recommended-latest'].plugins,
+    },
     rules: {
-      // 新しいflatConfig形式を使用（fixupConfigRules不要）
-      ...flatConfig.recommended.rules,
-      ...flatConfig.coreWebVitals.rules,
+      ...nextPlugin.flatConfig.recommended.rules,
+      ...nextPlugin.flatConfig.coreWebVitals.rules,
+      ...reactPlugin.configs.flat.recommended.rules,
+      ...reactHooksPlugin.configs['recommended-latest'].rules,
     },
   },
 
@@ -125,11 +133,17 @@ export default [
   // 全体の最小限カスタマイズ
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
       // 基本的なルールのみ
       'no-console': ['warn', { allow: ['warn', 'error', 'log'] }],
       'no-debugger': 'error',
       'prefer-const': 'error',
+      'react/prop-types': 'off',
     },
   },
 
