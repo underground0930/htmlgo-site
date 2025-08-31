@@ -1,3 +1,8 @@
+/**
+ * ボタンコンポーネント
+ * aタグ、Linkタグ、button要素でレンダリング出来る
+ */
+
 'use client'
 
 import type { ComponentProps } from 'react'
@@ -109,10 +114,9 @@ export const Button = (props: Props) => {
       <a
         {...rest}
         className={className}
-        target='_blank'
-        rel='noopener noreferrer'
-        data-disabled={disabled}
-        onClick={disabled ? (e) => e.preventDefault() : rest.onClick}
+        target='_blank' // 外部リンクなので_blankを指定
+        rel='noopener noreferrer' // 外部リンクなのでnoopener noreferrerを指定
+        data-disabled={disabled} // a要素のdisabled時のstyleを当てるのに必要
       >
         {children}
         {icon && (
@@ -137,9 +141,8 @@ export const Button = (props: Props) => {
       <Link
         {...rest}
         className={className}
-        prefetch={prefetch}
-        data-disabled={disabled}
-        onClick={disabled ? (e) => e.preventDefault() : rest.onClick}
+        prefetch={prefetch} // Link要素のprefetchを指定
+        data-disabled={disabled} // Link要素のdisabled時のstyleを当てるのに必要
       >
         {children}
         {icon && (
