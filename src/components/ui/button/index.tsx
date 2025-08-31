@@ -24,6 +24,7 @@ export const buttonVariants = tv({
   ],
   variants: {
     variant: {
+      // ボタンの種類（default, primary）
       default: [
         'bg-base text-white',
         'hover:bg-base/80',
@@ -40,6 +41,7 @@ export const buttonVariants = tv({
       ],
     },
     size: {
+      // ボタンのサイズ（md, lg）
       md: 'text-sm px-4 py-2.5 min-w-[120px]',
       lg: 'text-base px-6 py-3 min-w-[140px]',
     },
