@@ -13,7 +13,7 @@ export const buttonVariants = tv({
   base: [
     'group inline-flex items-center justify-center gap-2',
     'font-medium text-center',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2', // キーボードフォーカス時のみ
     'rounded-md',
     'cursor-pointer',
   ],
@@ -22,12 +22,14 @@ export const buttonVariants = tv({
       default: [
         'bg-base text-white',
         'hover:bg-base/80',
+        'focus-visible:ring-base/50', // default用のfocus-ring色
         'disabled:bg-gray-400', // button要素のdisabled時
         'data-[disabled=true]:bg-gray-400', // a要素のdisabled時
       ],
       primary: [
         'bg-blue-700 text-white',
         'hover:bg-blue-700/80',
+        'focus-visible:ring-blue-300', // primary用のfocus-ring色
         'disabled:bg-gray-400', // button要素のdisabled時
         'data-[disabled=true]:bg-gray-400', // a要素のdisabled時
       ],
@@ -37,13 +39,16 @@ export const buttonVariants = tv({
       lg: 'text-base px-6 py-3 min-w-[140px]',
     },
     loading: {
-      true: 'pointer-events-none',
+      // ローディング時はクリックイベントを無効化し、focus-ringを削除
+      true: 'pointer-events-none focus-visible:ring-0',
     },
     disabled: {
-      true: 'pointer-events-none',
+      // 無効時はクリックイベントを無効化し、focus-ringを削除
+      true: 'pointer-events-none focus-visible:ring-0',
     },
   },
   defaultVariants: {
+    // デフォルトのバリアント
     variant: 'default',
     size: 'md',
     disabled: false,
@@ -96,6 +101,7 @@ export const Button = (props: Props) => {
   } = props
 
   // a要素でレンダリング（外部リンク）
+  // aタグだけどdisabledも出来るようにする
   if (component === 'a') {
     const { ...rest } = props as AnchorElementProps
     const className = buttonVariants({ variant, size, disabled })
@@ -123,6 +129,7 @@ export const Button = (props: Props) => {
   }
 
   // Next.js Linkでレンダリング（内部リンク）
+  // Linkタグだけどdisabledも出来るようにする
   if (component === 'link') {
     const { prefetch = false, ...rest } = props as LinkElementProps
     const className = buttonVariants({ variant, size, disabled })

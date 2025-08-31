@@ -1,5 +1,4 @@
-// ref
-// https://zenn.dev/aiq_dev/articles/c6191746560398
+// アイコン管理、こちらのラッパーを一度通して使用するようにする
 
 import React from 'react'
 import { VscGithub } from 'react-icons/vsc'
@@ -13,6 +12,7 @@ import { IconRecapcha } from './icon-recapcha'
 /**
  * アイコンの色
  */
+// アイコンの色はこちらで管理する、直接色を指定するのは禁止
 export const colorVariants = {
   white: '#fff',
   red: '#ef4444',
@@ -48,6 +48,10 @@ const setColor = (color?: ColorVariants, defaultColor?: ColorVariants) => {
 /**
  * アイコン管理
  */
+
+// ライブラリから取得するアイコンと、ローカルのsvgアイコンを管理する
+// ローカルのsvgアイコンはreactコンポーネントにする（色を変更出来るようにするため）
+
 export const Icon = {
   react: ({ size = 24, color, ...props }: IconProps) => (
     <FaReact {...props} size={size} color={setColor(color)} />

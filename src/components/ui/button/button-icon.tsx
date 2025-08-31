@@ -20,7 +20,8 @@ export const ButtonIcon = ({
 }) => {
   // 通常時のアイコン（hover時に隠す）
   const IconComponent = Icon[icon]
-  //  hover時のアイコン
+  // hover時のアイコン
+  // svgを変更出来る / svgの色を変更出来る
   const HoverIconComponent = hoverIcon ? Icon[hoverIcon] : hoverIconColor ? IconComponent : null
   return (
     <>
