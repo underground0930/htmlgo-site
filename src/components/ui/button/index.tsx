@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 // components
 import { ButtonIcon } from './button-icon'
-import { type IconName } from '@/components/utils/icon'
+import { ColorVariants, type IconName } from '@/components/utils/icon'
 import { ButtonLoadingSpinner } from './button-loading-spinner'
 
 export const buttonVariants = tv({
@@ -53,7 +53,9 @@ export const buttonVariants = tv({
 type CommonVariantProps = VariantProps<typeof buttonVariants> & {
   icon?: IconName
   iconSize?: number
+  iconColor?: ColorVariants
   hoverIcon?: IconName
+  hoverIconColor?: ColorVariants
   children: ReactNode
 }
 
@@ -80,7 +82,17 @@ export type Props = ButtonElementProps | AnchorElementProps | LinkElementProps
 
 // ボタンコンポーネント
 export const Button = (props: Props) => {
-  const { component = 'button', variant, size, icon, iconSize, hoverIcon, disabled } = props
+  const {
+    component = 'button',
+    variant,
+    size,
+    icon,
+    iconColor,
+    iconSize,
+    hoverIcon,
+    hoverIconColor,
+    disabled,
+  } = props
   const className = buttonVariants({ variant, size, disabled })
 
   // a要素でレンダリング（外部リンク）
@@ -89,7 +101,15 @@ export const Button = (props: Props) => {
     return (
       <a {...rest} href={href} className={className} target='_blank' rel='noopener noreferrer'>
         {children}
-        {icon && <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />}
+        {icon && (
+          <ButtonIcon
+            icon={icon}
+            iconColor={iconColor}
+            iconSize={iconSize}
+            hoverIcon={hoverIcon}
+            hoverIconColor={hoverIconColor}
+          />
+        )}
       </a>
     )
   }
@@ -100,7 +120,15 @@ export const Button = (props: Props) => {
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>
         {children}
-        {icon && <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />}
+        {icon && (
+          <ButtonIcon
+            icon={icon}
+            iconSize={iconSize}
+            iconColor={iconColor}
+            hoverIcon={hoverIcon}
+            hoverIconColor={hoverIconColor}
+          />
+        )}
       </Link>
     )
   }
@@ -111,7 +139,15 @@ export const Button = (props: Props) => {
     <button {...rest} className={className} disabled={disabled || loading}>
       {children}
       {loading && <ButtonLoadingSpinner />}
-      {!loading && icon && <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />}
+      {!loading && icon && (
+        <ButtonIcon
+          icon={icon}
+          iconSize={iconSize}
+          iconColor={iconColor}
+          hoverIcon={hoverIcon}
+          hoverIconColor={hoverIconColor}
+        />
+      )}
     </button>
   )
 }

@@ -10,8 +10,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          'フォーム送信やクリックイベント用のボタンコンポーネント。React 19対応版。',
+        component: 'フォーム送信やクリックイベント用のボタンコンポーネント。React 19対応版。',
       },
     },
   },
@@ -79,6 +78,28 @@ export const _ButtonWithIcon = {
   },
 }
 
+// ボタン(アイコンをhoverで切り替え)
+export const _ButtonWithIcon2 = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    icon: 'home',
+    hoverIcon: 'github',
+    iconSize: 20,
+  },
+}
+
+// ボタン(アイコンをhoverで別の色)
+export const _ButtonWithIcon3 = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    icon: 'home',
+    iconSize: 20,
+    hoverIconColor: 'red',
+  },
+}
+
 // ボタン(別の色)
 export const _ButtonPrimary = {
   args: {
@@ -88,7 +109,7 @@ export const _ButtonPrimary = {
   },
 }
 
-// ボタン(別の色)
+// ボタン(別の色,無効)
 export const _ButtonPrimaryDisabled = {
   args: {
     variant: 'primary',

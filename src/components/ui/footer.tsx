@@ -52,7 +52,7 @@ export const Footer = (props: Props) => {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <IconComponent width={28} height={28} alt={link.key} />
+                    <IconComponent size={28} alt={link.key} />
                   </a>
                 </li>
               )
@@ -60,7 +60,9 @@ export const Footer = (props: Props) => {
           </ul>
         </dd>
       </dl>
-      <small className='block text-center text-xs'>Copyright © 2025 htmlgo.site All rights reserved.</small>
+      <small className='block text-center text-xs'>
+        Copyright © 2025 htmlgo.site All rights reserved.
+      </small>
     </footer>
   )
 }

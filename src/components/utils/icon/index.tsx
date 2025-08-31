@@ -13,24 +13,23 @@ import { IconRecapcha } from './icon-recapcha'
 /**
  * アイコンの色
  */
-const colorVariants = {
+export const colorVariants = {
   white: '#fff',
+  red: '#ef4444',
   none: undefined,
 }
 
 /**
  * アイコンの色の型定義
  */
-type ColorVariants = keyof typeof colorVariants
+export type ColorVariants = keyof typeof colorVariants
 
 /**
  * ローカルSVGアイコンのプロパティ型定義
  */
-type IconProps = {
+export type IconProps = {
   className?: string
   size?: number
-  width?: number
-  height?: number
   alt?: string
   color?: ColorVariants
 }
