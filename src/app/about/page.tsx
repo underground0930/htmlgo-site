@@ -4,7 +4,6 @@ import { Image } from '@/components/utils/image'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { AboutSnsBox } from './components/about-sns-box'
-import { Icons } from '@/components/utils/icons'
 
 import { setMetaData } from '@/utils/set-metadata'
 
@@ -100,7 +99,7 @@ export default function Page() {
         </div>
       </div>
       <div className='border-border mb-10 border-t pt-10 text-center'>
-        <Button component='link' href='/' icon={<Icons.home />}>
+        <Button component='link' href='/' icon='home'>
           HOME
         </Button>
       </div>

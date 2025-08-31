@@ -10,8 +10,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          'フォーム送信やクリックイベント用のボタンコンポーネント。React 19対応版。',
+        component: 'フォーム送信やクリックイベント用のボタンコンポーネント。React 19対応版。',
       },
     },
   },
@@ -52,6 +51,55 @@ export const _Button = {
   },
 }
 
+// ボタン(無効)
+export const _ButtonBig = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    size: 'lg',
+  },
+}
+
+// ボタン(ローディング)
+export const _ButtonLoading = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    loading: true,
+  },
+}
+
+// ボタン(アイコン)
+export const _ButtonWithIcon = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    icon: 'home',
+  },
+}
+
+// ボタン(アイコンをhoverで切り替え)
+export const _ButtonWithIcon2 = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    icon: 'home',
+    hoverIcon: 'github',
+    iconSize: 20,
+  },
+}
+
+// ボタン(アイコンをhoverで別の色)
+export const _ButtonWithIcon3 = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    icon: 'home',
+    iconSize: 20,
+    hoverIconColor: 'red',
+  },
+}
+
 // ボタン(別の色)
 export const _ButtonPrimary = {
   args: {
@@ -61,7 +109,7 @@ export const _ButtonPrimary = {
   },
 }
 
-// ボタン(別の色)
+// ボタン(別の色,無効)
 export const _ButtonPrimaryDisabled = {
   args: {
     variant: 'primary',
@@ -76,6 +124,17 @@ export const NextLink = {
   args: {
     children: 'Next.js リンク',
     component: 'link',
+    disabled: false,
+    href: '/?hoge=1',
+  },
+}
+
+// Next.js リンク(無効)
+export const NextLinkDisabled = {
+  args: {
+    children: 'Next.js リンク (無効)',
+    component: 'link',
+    disabled: true,
     href: '/?hoge=1',
   },
 }
@@ -85,6 +144,16 @@ export const ExternalLink = {
   args: {
     children: '外部リンク',
     component: 'a',
+    href: 'https://www.google.com',
+  },
+}
+
+// 外部リンク(無効)
+export const ExternalLinkDisabled = {
+  args: {
+    children: '外部リンク (無効)',
+    component: 'a',
+    disabled: true,
     href: 'https://www.google.com',
   },
 }

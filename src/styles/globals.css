@@ -22,19 +22,28 @@
 
   /* animation */
   @keyframes load8 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
+
+/* ホバー時のクラス */
+/* @custom-variant hover {
+  &:not(.disabled, :disabled):hover {
+    @slot;
+  }
+} */
 
 /* --------------------------------------------------------------
   CSS変数の定義
 -------------------------------------------------------------- */
 
-:root {
-
-}
-
+/* :root {
+} */
 
 /* --------------------------------------------------------------
   全体の設定
@@ -45,4 +54,3 @@ body {
   font-feature-settings: 'palt';
   letter-spacing: 1px;
 }
-

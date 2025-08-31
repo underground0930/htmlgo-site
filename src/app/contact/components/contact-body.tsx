@@ -8,7 +8,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
-import { Icons } from '@/components/utils/icons'
 
 import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
@@ -60,8 +59,7 @@ export const ContactBody = () => {
   }, [errors])
 
   const getError = useCallback(
-    (key: string): string | undefined =>
-      frontInvalidErrors[key] || serverInvalidErrors[key],
+    (key: string): string | undefined => frontInvalidErrors[key] || serverInvalidErrors[key],
     [frontInvalidErrors, serverInvalidErrors],
   )
 
@@ -155,7 +153,7 @@ export const ContactBody = () => {
           </form>
         </div>
         <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
-          <Button component='link' href='/' icon={<Icons.home />}>
+          <Button component='link' href='/' icon='home'>
             HOME
           </Button>
         </div>

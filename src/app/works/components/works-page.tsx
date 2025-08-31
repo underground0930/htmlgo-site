@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { Pager } from '@/components/ui/pager'
 import { fetchWorksIndex } from '../libs/fetch-works-index'
-import { Icons } from '@/components/utils/icons'
 
 type Props = {
   params?: { page: string }
@@ -30,7 +29,7 @@ export const WorksPageComponent = async ({ params }: Props) => {
       </div>
       <footer className='mt-10 pb-10'>
         <div className='text-center'>
-          <Button component='link' href='/' icon={<Icons.home />}>
+          <Button component='link' href='/' icon='home'>
             HOME
           </Button>
         </div>

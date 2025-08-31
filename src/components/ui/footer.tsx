@@ -1,13 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Icons, type IconsName } from '@/components/utils/icons'
+import { Icon, type IconName } from '@/components/utils/icon'
 
 type Props = Omit<React.ComponentPropsWithoutRef<'footer'>, 'className'>
 
 const links: {
   href: string
-  key: IconsName
+  key: IconName
 }[] = [
   {
     href: 'https://nextjs.org/',
@@ -43,7 +43,7 @@ export const Footer = (props: Props) => {
         <dd>
           <ul className='flex items-center justify-center'>
             {links.map((link) => {
-              const IconComponent = Icons[link.key]
+              const IconComponent = Icon[link.key]
               return (
                 <li className='mx-2' key={link.key}>
                   <a
@@ -52,7 +52,7 @@ export const Footer = (props: Props) => {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <IconComponent width={28} height={28} alt={link.key} />
+                    <IconComponent size={28} alt={link.key} />
                   </a>
                 </li>
               )

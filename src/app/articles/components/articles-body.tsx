@@ -2,7 +2,6 @@ import { Title } from '@/components/ui/title'
 import { Button } from '@/components/ui/button'
 import { Pager } from '@/components/ui/pager'
 import { ArticlesList } from './articles-list'
-import { Icons } from '@/components/utils/icons'
 import { FeedObj } from '@/types/feed'
 
 type Props = {
@@ -21,7 +20,7 @@ export const ArticlesBody = ({ articles = [], page, pages }: Props) => {
       <ArticlesList articles={articles} />
       <Pager pages={pages} page={page} basePath='/articles' />
       <div className='mt-10 mb-10 text-center'>
-        <Button component='link' href='/' icon={<Icons.home />}>
+        <Button component='link' href='/' icon='home'>
           HOME
         </Button>
       </div>
