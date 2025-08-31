@@ -2,7 +2,6 @@ import { Title } from '@/components/ui/title'
 import { Button } from '@/components/ui/button'
 import { Pager } from '@/components/ui/pager'
 import { ArticlesList } from './articles-list'
-import { Icons } from '@/components/utils/icons'
 import { FeedObj } from '@/types/feed'
 
 type Props = {

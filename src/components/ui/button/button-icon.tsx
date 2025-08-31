@@ -1,4 +1,4 @@
-import { Icons, type IconsName } from '@/components/utils/icons'
+import { Icon, type IconName } from '@/components/utils/icon'
 
 /**
  * ボタン内アイコンコンポーネント
@@ -11,32 +11,22 @@ export const ButtonIcon = ({
   height,
   hoverIcon,
 }: {
-  icon: IconsName
+  icon: IconName
   iconSize?: number
   width?: number
   height?: number
-  hoverIcon?: IconsName
+  hoverIcon?: IconName
 }) => {
-  const IconComponent = Icons[icon]
-  const HoverIconComponent = hoverIcon ? Icons[hoverIcon] : null
+  const IconComponent = Icon[icon]
+  const HoverIconComponent = hoverIcon ? Icon[hoverIcon] : null
 
   return (
     <>
       {/* 通常時のアイコン（hover時に隠す） */}
-      <IconComponent
-        className={hoverIcon ? 'group-hover:hidden' : ''}
-        size={iconSize}
-        width={width}
-        height={height}
-      />
+      <IconComponent className={hoverIcon ? 'group-hover:hidden' : ''} size={iconSize} width={width} height={height} />
       {/* hover時のアイコン */}
       {HoverIconComponent && (
-        <HoverIconComponent
-          className='hidden group-hover:inline'
-          size={iconSize}
-          width={width}
-          height={height}
-        />
+        <HoverIconComponent className='hidden group-hover:inline' size={iconSize} width={width} height={height} />
       )}
     </>
   )

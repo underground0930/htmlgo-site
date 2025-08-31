@@ -4,19 +4,19 @@
  */
 
 import React from 'react'
-import { Icons, type IconsName } from '@/components/utils/icons'
+import { Icon, type IconName } from '@/components/utils/icon'
 
 /**
  * 表示するサービス技術のアイコンリスト
  */
-const iconList: IconsName[] = ['react', 'typescript', 'nextjs', 'wordpress']
+const iconList: IconName[] = ['react', 'typescript', 'nextjs', 'wordpress']
 
 export const ServiceList = () => {
   return (
     <div>
       <div className='mr-auto mb-4 ml-auto flex max-w-[680px] flex-wrap justify-center'>
         {iconList.map((iconName) => {
-          const IconComponent = Icons[iconName]
+          const IconComponent = Icon[iconName]
           return <IconComponent className='m-3 h-auto w-12.5' key={iconName} />
         })}
       </div>

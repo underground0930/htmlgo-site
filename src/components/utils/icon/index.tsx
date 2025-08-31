@@ -38,7 +38,7 @@ type IconProps = {
 /**
  * アイコン管理
  */
-export const Icons = {
+export const Icon = {
   react: ({ size = 24, color, ...props }: IconProps) => (
     <FaReact {...props} size={size} color={colorVariants[color ?? 'none']} />
   ),
@@ -70,4 +70,4 @@ export const Icons = {
 /**
  * 型定義
  */
-export type IconsName = keyof typeof Icons
+export type IconName = keyof typeof Icon

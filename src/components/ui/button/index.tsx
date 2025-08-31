@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 // components
 import { ButtonIcon } from './button-icon'
-import { type IconsName } from '@/components/utils/icons'
+import { type IconName } from '@/components/utils/icon'
 import { ButtonLoadingSpinner } from './button-loading-spinner'
 
 export const buttonVariants = tv({
@@ -51,9 +51,9 @@ export const buttonVariants = tv({
 
 // 共通プロパティ
 type CommonVariantProps = VariantProps<typeof buttonVariants> & {
-  icon?: IconsName
+  icon?: IconName
   iconSize?: number
-  hoverIcon?: IconsName
+  hoverIcon?: IconName
   children: ReactNode
 }
 
@@ -80,28 +80,14 @@ export type Props = ButtonElementProps | AnchorElementProps | LinkElementProps
 
 // ボタンコンポーネント
 export const Button = (props: Props) => {
-  const {
-    component = 'button',
-    variant,
-    size,
-    icon,
-    iconSize,
-    hoverIcon,
-    disabled,
-  } = props
+  const { component = 'button', variant, size, icon, iconSize, hoverIcon, disabled } = props
   const className = buttonVariants({ variant, size, disabled })
 
   // a要素でレンダリング（外部リンク）
   if (component === 'a') {
     const { href, children, ...rest } = props as AnchorElementProps
     return (
-      <a
-        {...rest}
-        href={href}
-        className={className}
-        target='_blank'
-        rel='noopener noreferrer'
-      >
+      <a {...rest} href={href} className={className} target='_blank' rel='noopener noreferrer'>
         {children}
         {icon && <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />}
       </a>
@@ -125,9 +111,7 @@ export const Button = (props: Props) => {
     <button {...rest} className={className} disabled={disabled || loading}>
       {children}
       {loading && <ButtonLoadingSpinner />}
-      {!loading && icon && (
-        <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />
-      )}
+      {!loading && icon && <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />}
     </button>
   )
 }
