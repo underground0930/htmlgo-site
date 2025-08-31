@@ -59,7 +59,6 @@ type CommonVariantProps = VariantProps<typeof buttonVariants> & {
   iconColor?: ColorVariants
   hoverIcon?: IconName
   hoverIconColor?: ColorVariants
-  children: ReactNode
 }
 
 // button要素用プロパティ
