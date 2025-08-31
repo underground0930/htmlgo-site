@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 // components
 import { ButtonIcon } from './button-icon'
-import { ColorVariants, type IconName } from '@/components/utils/icon'
+import { type ColorVariants, type IconName } from '@/components/utils/icon'
 import { ButtonLoadingSpinner } from './button-loading-spinner'
 
 export const buttonVariants = tv({

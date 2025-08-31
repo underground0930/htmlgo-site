@@ -16,7 +16,6 @@ import { IconRecapcha } from './icon-recapcha'
 export const colorVariants = {
   white: '#fff',
   red: '#ef4444',
-  none: undefined,
 }
 
 /**
@@ -35,32 +34,44 @@ export type IconProps = {
 }
 
 /**
+ * アイコンの色を設定
+ */
+const setColor = (color?: ColorVariants, defaultColor?: ColorVariants) => {
+  if (defaultColor) {
+    // 未入力の場合はデフォルトの色を設定したい場合に使用
+    return colorVariants[color ?? defaultColor]
+  }
+  // 未入力の場合はデフォルトの色を設定しない
+  return color ?? undefined
+}
+
+/**
  * アイコン管理
  */
 export const Icon = {
   react: ({ size = 24, color, ...props }: IconProps) => (
-    <FaReact {...props} size={size} color={colorVariants[color ?? 'none']} />
+    <FaReact {...props} size={size} color={setColor(color)} />
   ),
   typescript: ({ size = 24, color, ...props }: IconProps) => (
-    <SiTypescript {...props} size={size} color={colorVariants[color ?? 'none']} />
+    <SiTypescript {...props} size={size} color={setColor(color)} />
   ),
   nextjs: ({ size = 24, color, ...props }: IconProps) => (
-    <SiNextdotjs {...props} size={size} color={colorVariants[color ?? 'none']} />
+    <SiNextdotjs {...props} size={size} color={setColor(color)} />
   ),
   vercel: ({ size = 24, color, ...props }: IconProps) => (
-    <SiVercel {...props} size={size} color={colorVariants[color ?? 'none']} />
+    <SiVercel {...props} size={size} color={setColor(color)} />
   ),
   tailwindcss: ({ size = 24, color, ...props }: IconProps) => (
-    <SiTailwindcss {...props} size={size} color={colorVariants[color ?? 'none']} />
+    <SiTailwindcss {...props} size={size} color={setColor(color)} />
   ),
   github: ({ size = 24, color, ...props }: IconProps) => (
-    <VscGithub {...props} size={size} color={colorVariants[color ?? 'none']} />
+    <VscGithub {...props} size={size} color={setColor(color)} />
   ),
   wordpress: ({ size = 24, color, ...props }: IconProps) => (
-    <FaWordpress {...props} size={size} color={colorVariants[color ?? 'none']} />
+    <FaWordpress {...props} size={size} color={setColor(color)} />
   ),
   home: ({ size = 18, color, ...props }: IconProps) => (
-    <RxHome {...props} size={size} color={colorVariants[color ?? 'white']} />
+    <RxHome {...props} size={size} color={setColor(color, 'white')} />
   ),
   microcms: () => <IconMicrocms />,
   recaptcha: () => <IconRecapcha />,
