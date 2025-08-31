@@ -26,6 +26,9 @@ export const buttonVariants = tv({
       md: 'text-sm px-4 py-2.5 min-w-[120px]',
       lg: 'text-base px-6 py-3 min-w-[140px]',
     },
+    loading: {
+      true: 'pointer-events-none',
+    },
     disabled: {
       true: 'pointer-events-none',
     },
@@ -93,13 +96,13 @@ export const Button = (props: Props) => {
     hoverIconColor,
     disabled,
   } = props
-  const className = buttonVariants({ variant, size, disabled })
 
   // a要素でレンダリング（外部リンク）
   if (component === 'a') {
-    const { href, children, ...rest } = props as AnchorElementProps
+    const { children, ...rest } = props as AnchorElementProps
+    const className = buttonVariants({ variant, size, disabled })
     return (
-      <a {...rest} href={href} className={className} target='_blank' rel='noopener noreferrer'>
+      <a {...rest} className={className} target='_blank' rel='noopener noreferrer'>
         {children}
         {icon && (
           <ButtonIcon
@@ -116,9 +119,10 @@ export const Button = (props: Props) => {
 
   // Next.js Linkでレンダリング（内部リンク）
   if (component === 'link') {
-    const { href, prefetch = false, children, ...rest } = props as LinkElementProps
+    const { prefetch = false, children, ...rest } = props as LinkElementProps
+    const className = buttonVariants({ variant, size, disabled })
     return (
-      <Link {...rest} href={href} className={className} prefetch={prefetch}>
+      <Link {...rest} className={className} prefetch={prefetch}>
         {children}
         {icon && (
           <ButtonIcon
@@ -135,6 +139,7 @@ export const Button = (props: Props) => {
 
   // button要素でレンダリング（デフォルト）
   const { loading, children, ...rest } = props as ButtonElementProps
+  const className = buttonVariants({ variant, size, disabled, loading })
   return (
     <button {...rest} className={className} disabled={disabled || loading}>
       {children}
