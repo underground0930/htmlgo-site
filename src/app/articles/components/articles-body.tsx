@@ -21,7 +21,7 @@ export const ArticlesBody = ({ articles = [], page, pages }: Props) => {
       <ArticlesList articles={articles} />
       <Pager pages={pages} page={page} basePath='/articles' />
       <div className='mt-10 mb-10 text-center'>
-        <Button component='link' href='/' icon={<Icons.home />}>
+        <Button component='link' href='/' iconName='home'>
           HOME
         </Button>
       </div>

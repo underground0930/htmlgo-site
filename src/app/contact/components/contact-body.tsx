@@ -155,7 +155,7 @@ export const ContactBody = () => {
           </form>
         </div>
         <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
-          <Button component='link' href='/' icon={<Icons.home />}>
+          <Button component='link' href='/' iconName='home'>
             HOME
           </Button>
         </div>

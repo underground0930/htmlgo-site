@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 // components
 import { ButtonLoadingSpinner } from './button-loading-spinner'
+import { Icons, type IconsName } from '@/components/utils/icons'
 
 export const buttonVariants = tv({
   base: [
@@ -18,8 +19,8 @@ export const buttonVariants = tv({
   ],
   variants: {
     variant: {
-      default: ['bg-base text-white', 'hover:bg-base/90'],
-      primary: ['bg-blue-700 text-white', 'hover:bg-blue-700/90'],
+      default: ['bg-base text-white', 'hover:bg-base/80'],
+      primary: ['bg-blue-700 text-white', 'hover:bg-blue-700/80'],
     },
     size: {
       md: 'text-sm px-4 py-2.5 min-w-[120px]',
@@ -33,12 +34,12 @@ export const buttonVariants = tv({
     {
       variant: 'default',
       disabled: true,
-      class: 'bg-base/70',
+      class: 'bg-gray-400',
     },
     {
       variant: 'primary',
       disabled: true,
-      class: 'bg-blue-700/70',
+      class: 'bg-gray-400',
     },
   ],
   defaultVariants: {
@@ -51,6 +52,8 @@ export const buttonVariants = tv({
 // 共通プロパティ
 type CommonVariantProps = VariantProps<typeof buttonVariants> & {
   icon?: ReactNode
+  iconName?: IconsName
+  iconSize?: number
   iconRight?: ReactNode
   children: ReactNode
 }
@@ -78,12 +81,31 @@ export type Props = ButtonElementProps | AnchorElementProps | LinkElementProps
 
 // ボタンコンポーネント
 export const Button = (props: Props) => {
-  const { component = 'button', variant, size, icon, disabled, children } = props
+  const {
+    component = 'button',
+    variant,
+    size,
+    icon,
+    iconName,
+    iconSize = 18,
+    disabled,
+    children,
+  } = props
+  const className = buttonVariants({ variant, size, disabled })
 
+  // アイコンレンダリング関数
+  const renderIcon = () => {
+    if (icon) return icon
+    if (iconName) {
+      const IconComponent = Icons[iconName]
+      return <IconComponent size={iconSize} />
+    }
+    return null
+  }
   // a要素でレンダリング（外部リンク）
   if (component === 'a') {
     const { href, ...rest } = props as AnchorElementProps
-    const className = buttonVariants({ variant, size, disabled })
+
     return (
       <a
         {...rest}
@@ -93,7 +115,7 @@ export const Button = (props: Props) => {
         rel='noopener noreferrer'
       >
         {children}
-        {icon && <span className='flex-shrink-0'>{children}</span>}
+        {(icon || iconName) && <span className='flex-shrink-0'>{renderIcon()}</span>}
       </a>
     )
   }
@@ -101,11 +123,10 @@ export const Button = (props: Props) => {
   // Next.js Linkでレンダリング（内部リンク）
   if (component === 'link') {
     const { href, prefetch = false, ...rest } = props as LinkElementProps
-    const className = buttonVariants({ variant, size, disabled })
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>
         {children}
-        {icon && <span className='flex-shrink-0'>{children}</span>}
+        {(icon || iconName) && <span className='flex-shrink-0'>{renderIcon()}</span>}
       </Link>
     )
   }
@@ -113,12 +134,13 @@ export const Button = (props: Props) => {
   // button要素でレンダリング（デフォルト）
   const { loading, ...rest } = props as ButtonElementProps
   const disabledValue = disabled || loading
-  const className = buttonVariants({ variant, size, disabled })
   return (
     <button {...rest} className={className} disabled={disabledValue}>
       {children}
       {loading && <ButtonLoadingSpinner />}
-      {!loading && icon && <span className='flex-shrink-0'>{icon}</span>}
+      {!loading && (icon || iconName) && (
+        <span className='flex-shrink-0'>{renderIcon()}</span>
+      )}
     </button>
   )
 }

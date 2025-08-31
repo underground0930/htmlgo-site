@@ -30,8 +30,8 @@ export default function NotFound() {
           URLが間違っているか、削除されている可能性があります。
         </div>
         <div className='text-center'>
-          <Button component='link' href='/'>
-            TOP
+          <Button component='link' href='/' iconName='home'>
+            HOME
           </Button>
         </div>
       </section>

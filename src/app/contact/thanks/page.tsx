@@ -36,7 +36,7 @@ export default function Thanks() {
           </div>
         </div>
         <div className='border-border mt-10 border-t pt-10 pb-10 text-center'>
-          <Button component='link' href='/'>
+          <Button component='link' href='/' iconName='home'>
             HOME
           </Button>
         </div>
