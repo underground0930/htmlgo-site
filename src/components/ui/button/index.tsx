@@ -1,3 +1,8 @@
+/**
+ * ボタンコンポーネント
+ * aタグ、Linkタグ、button要素でレンダリング出来る
+ */
+
 'use client'
 
 import type { ComponentProps } from 'react'
