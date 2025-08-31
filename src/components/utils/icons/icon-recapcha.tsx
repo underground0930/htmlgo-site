@@ -1,74 +1,5 @@
-// ref
-// https://zenn.dev/aiq_dev/articles/c6191746560398
-
-import React from 'react'
-import { VscGithub } from 'react-icons/vsc'
-import { SiNextdotjs, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si'
-import { FaReact } from 'react-icons/fa'
-import { RxHome } from 'react-icons/rx'
-import { FaWordpress } from 'react-icons/fa'
-
-/**
- * アイコンの色
- */
-const colorVariants = {
-  white: '#fff',
-}
-
-/**
- * アイコンの色の型定義
- */
-type ColorVariants = keyof typeof colorVariants
-
-/**
- * ローカルSVGアイコンのプロパティ型定義
- */
-type IconProps = {
-  className?: string
-  size?: number
-  width?: number
-  height?: number
-  alt?: string
-  color?: ColorVariants
-}
-
-/**
- * アイコン管理
- */
-export const Icons = {
-  react: ({ size = 24, color = 'white', ...props }: IconProps) => (
-    <FaReact {...props} size={size} color={colorVariants[color]} />
-  ),
-  typescript: ({ size = 24, color = 'white', ...props }: IconProps) => (
-    <SiTypescript {...props} size={size} color={colorVariants[color]} />
-  ),
-  nextjs: ({ size = 24, color = 'white', ...props }: IconProps) => (
-    <SiNextdotjs {...props} size={size} color={colorVariants[color]} />
-  ),
-  vercel: ({ size = 24, color = 'white', ...props }: IconProps) => (
-    <SiVercel {...props} size={size} color={colorVariants[color]} />
-  ),
-  tailwindcss: ({ size = 24, color = 'white', ...props }: IconProps) => (
-    <SiTailwindcss {...props} size={size} color={colorVariants[color]} />
-  ),
-  github: ({ size = 24, color = 'white', ...props }: IconProps) => (
-    <VscGithub {...props} size={size} color={colorVariants[color]} />
-  ),
-  wordpress: ({ size = 24, color = 'white', ...props }: IconProps) => (
-    <FaWordpress {...props} size={size} color={colorVariants[color]} />
-  ),
-  home: ({ size = 18, color = 'white', ...props }: IconProps) => (
-    <RxHome {...props} size={size} color={colorVariants[color]} />
-  ),
-  microcms: (_: IconProps) => (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80.48 80.48' width='26' height='26'>
-      <path
-        fill='#fff'
-        d='M70.48,0a10,10,0,0,1,10,10V70a10,10,0,0,1-10,10C-15.07,78.56,1.94,95.47.48,10h0c0-5,5-10,10-10ZM65.23,36.46a5,5,0,0,0-7.07,0h0L39.07,55.56l-2.83-2.83-5.66,5.65c2.9,2.8,7.69,9.45,12,4.95h0L61.69,44.24l2.83,2.83,5.66-5.66ZM53.91,25.15a5,5,0,0,0-7.07,0h0L22.09,49.9l5.66,5.66L50.38,32.93l2.83,2.83,5.65-5.66ZM42.6,13.84a5,5,0,0,0-7.07,0h0L14.32,35.05a5,5,0,0,0,0,7.07h0l4.95,5,5.65-5.66-2.83-2.82,17-17,2.82,2.82,5.66-5.65Z'
-      />
-    </svg>
-  ),
-  recaptcha: (_: IconProps) => (
+export const IconRecapcha = () => {
+  return (
     <svg width={42} height={42} viewBox='0 0 150 150' version='1.1' xmlns='http://www.w3.org/2000/svg'>
       <path
         d='m117 62.063c-2e-3 -0.60232-0.0159-1.2014-0.0429-1.7976v-33.991l-9.3971 9.3971c-7.691-9.4141-19.391-15.427-32.496-15.427-13.638 0-25.754 6.5097-33.413 16.591l15.403 15.565c1.5095-2.7917 3.6539-5.1895 6.2395-7.0005 2.6891-2.0985 6.4993-3.8143 11.77-3.8143 0.63674 0 1.1282 0.0744 1.4893 0.21458 6.5304 0.51543 12.191 4.1194 15.524 9.3503l-10.903 10.903c13.81-0.0542 29.411-0.086 35.825 7e-3'
@@ -87,10 +18,5 @@ export const Icons = {
         style={{ fill: '#a6a6a6' }}
       />
     </svg>
-  ),
+  )
 }
-
-/**
- * 型定義
- */
-export type IconsName = keyof typeof Icons
