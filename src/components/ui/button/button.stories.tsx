@@ -75,7 +75,7 @@ export const _ButtonWithIcon = {
   args: {
     children: 'ボタン',
     onClick: () => window.alert('ボタンがクリックされました'),
-    iconName: 'home',
+    icon: 'home',
   },
 }
 

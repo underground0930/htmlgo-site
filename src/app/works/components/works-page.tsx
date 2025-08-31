@@ -30,7 +30,7 @@ export const WorksPageComponent = async ({ params }: Props) => {
       </div>
       <footer className='mt-10 pb-10'>
         <div className='text-center'>
-          <Button component='link' href='/' iconName='home'>
+          <Button component='link' href='/' icon='home'>
             HOME
           </Button>
         </div>

@@ -99,7 +99,7 @@ export default function Page() {
         </div>
       </div>
       <div className='border-border mb-10 border-t pt-10 text-center'>
-        <Button component='link' href='/' iconName='home'>
+        <Button component='link' href='/' icon='home'>
           HOME
         </Button>
       </div>

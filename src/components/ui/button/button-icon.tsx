@@ -5,41 +5,39 @@ import { Icons, type IconsName } from '@/components/utils/icons'
  * hover時の簡単なアイコン切り替えに対応
  */
 export const ButtonIcon = ({
-  iconName,
+  icon,
   iconSize,
   width,
   height,
-  hoverIconName,
+  hoverIcon,
 }: {
-  /** 通常時のアイコン名 */
-  iconName?: IconsName
-  /** アイコンサイズ */
+  icon: IconsName
   iconSize?: number
-  /** アイコン幅 */
   width?: number
-  /** アイコン高さ */
   height?: number
-  /** hover時に変更するアイコン名（オプション） */
-  hoverIconName?: IconsName
+  hoverIcon?: IconsName
 }) => {
-  if (!iconName) return null
-
-  const IconComponent = Icons[iconName]
-  const HoverIconComponent = hoverIconName ? Icons[hoverIconName] : null
+  const IconComponent = Icons[icon]
+  const HoverIconComponent = hoverIcon ? Icons[hoverIcon] : null
 
   return (
-    <span className='flex-shrink-0'>
+    <>
       {/* 通常時のアイコン（hover時に隠す） */}
-      <span className={hoverIconName ? 'group-hover:hidden' : ''}>
-        <IconComponent size={iconSize} width={width} height={height} />
-      </span>
-
+      <IconComponent
+        className={hoverIcon ? 'group-hover:hidden' : ''}
+        size={iconSize}
+        width={width}
+        height={height}
+      />
       {/* hover時のアイコン */}
       {HoverIconComponent && (
-        <span className='hidden group-hover:inline'>
-          <HoverIconComponent size={iconSize} width={width} height={height} />
-        </span>
+        <HoverIconComponent
+          className='hidden group-hover:inline'
+          size={iconSize}
+          width={width}
+          height={height}
+        />
       )}
-    </span>
+    </>
   )
 }

@@ -6,8 +6,8 @@ import Link from 'next/link'
 
 // components
 import { ButtonIcon } from './button-icon'
-import { ButtonLoadingSpinner } from './button-loading-spinner'
 import { type IconsName } from '@/components/utils/icons'
+import { ButtonLoadingSpinner } from './button-loading-spinner'
 
 export const buttonVariants = tv({
   base: [
@@ -51,11 +51,9 @@ export const buttonVariants = tv({
 
 // 共通プロパティ
 type CommonVariantProps = VariantProps<typeof buttonVariants> & {
-  icon?: ReactNode
-  iconName?: IconsName
+  icon?: IconsName
   iconSize?: number
-  hoverIconName?: IconsName
-  iconRight?: ReactNode
+  hoverIcon?: IconsName
   children: ReactNode
 }
 
@@ -86,9 +84,9 @@ export const Button = (props: Props) => {
     component = 'button',
     variant,
     size,
-    iconName,
-    iconSize = 18,
-    hoverIconName,
+    icon,
+    iconSize,
+    hoverIcon,
     disabled,
   } = props
   const className = buttonVariants({ variant, size, disabled })
@@ -105,13 +103,7 @@ export const Button = (props: Props) => {
         rel='noopener noreferrer'
       >
         {children}
-        {iconName && (
-          <ButtonIcon
-            iconName={iconName}
-            iconSize={iconSize}
-            hoverIconName={hoverIconName}
-          />
-        )}
+        {icon && <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />}
       </a>
     )
   }
@@ -122,25 +114,20 @@ export const Button = (props: Props) => {
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>
         {children}
-        {iconName && (
-          <ButtonIcon
-            iconName={iconName}
-            iconSize={iconSize}
-            hoverIconName={hoverIconName}
-          />
-        )}
+        {icon && <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />}
       </Link>
     )
   }
 
   // button要素でレンダリング（デフォルト）
   const { loading, children, ...rest } = props as ButtonElementProps
-  const disabledValue = disabled || loading
   return (
-    <button {...rest} className={className} disabled={disabledValue}>
+    <button {...rest} className={className} disabled={disabled || loading}>
       {children}
       {loading && <ButtonLoadingSpinner />}
-      {!loading && iconName && <ButtonIcon iconName={iconName} iconSize={iconSize} />}
+      {!loading && icon && (
+        <ButtonIcon icon={icon} iconSize={iconSize} hoverIcon={hoverIcon} />
+      )}
     </button>
   )
 }
