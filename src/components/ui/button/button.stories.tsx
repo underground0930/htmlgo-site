@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/nextjs-vite'
 import { fn } from 'storybook/test'
 
 import { Button } from './'
-import { Icons } from '@/components/utils/icons'
 
 const meta = {
   title: 'UI/Button',
@@ -76,7 +75,7 @@ export const _ButtonWithIcon = {
   args: {
     children: 'ボタン',
     onClick: () => window.alert('ボタンがクリックされました'),
-    icon: <Icons.home />,
+    iconName: 'home',
   },
 }
 

@@ -11,9 +11,8 @@ import { type IconsName } from '@/components/utils/icons'
 
 export const buttonVariants = tv({
   base: [
-    'inline-flex items-center justify-center gap-2',
+    'group inline-flex items-center justify-center gap-2',
     'font-medium text-center',
-    'transition-all duration-200',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
     'rounded-md',
     'cursor-pointer',
@@ -55,6 +54,7 @@ type CommonVariantProps = VariantProps<typeof buttonVariants> & {
   icon?: ReactNode
   iconName?: IconsName
   iconSize?: number
+  hoverIconName?: IconsName
   iconRight?: ReactNode
   children: ReactNode
 }
@@ -88,15 +88,14 @@ export const Button = (props: Props) => {
     size,
     iconName,
     iconSize = 18,
+    hoverIconName,
     disabled,
-    children,
   } = props
   const className = buttonVariants({ variant, size, disabled })
 
   // a要素でレンダリング（外部リンク）
   if (component === 'a') {
-    const { href, ...rest } = props as AnchorElementProps
-
+    const { href, children, ...rest } = props as AnchorElementProps
     return (
       <a
         {...rest}
@@ -106,24 +105,36 @@ export const Button = (props: Props) => {
         rel='noopener noreferrer'
       >
         {children}
-        {iconName && <ButtonIcon iconName={iconName} iconSize={iconSize} />}
+        {iconName && (
+          <ButtonIcon
+            iconName={iconName}
+            iconSize={iconSize}
+            hoverIconName={hoverIconName}
+          />
+        )}
       </a>
     )
   }
 
   // Next.js Linkでレンダリング（内部リンク）
   if (component === 'link') {
-    const { href, prefetch = false, ...rest } = props as LinkElementProps
+    const { href, prefetch = false, children, ...rest } = props as LinkElementProps
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>
         {children}
-        {iconName && <ButtonIcon iconName={iconName} iconSize={iconSize} />}
+        {iconName && (
+          <ButtonIcon
+            iconName={iconName}
+            iconSize={iconSize}
+            hoverIconName={hoverIconName}
+          />
+        )}
       </Link>
     )
   }
 
   // button要素でレンダリング（デフォルト）
-  const { loading, ...rest } = props as ButtonElementProps
+  const { loading, children, ...rest } = props as ButtonElementProps
   const disabledValue = disabled || loading
   return (
     <button {...rest} className={className} disabled={disabledValue}>
