@@ -70,18 +70,21 @@ type CommonVariantProps = VariantProps<typeof buttonVariants> & {
 }
 
 // button要素用プロパティ
+// classNameはtailwind-variantsで管理するので渡さない
 type ButtonElementProps = Omit<ComponentProps<'button'>, 'className'> & {
   component?: 'button'
   loading?: boolean
 } & CommonVariantProps
 
 // a要素用プロパティ
+// classNameはtailwind-variantsで管理するので渡さない
 type AnchorElementProps = Omit<ComponentProps<'a'>, 'className'> & {
   component: 'a'
   disabled?: boolean
 } & CommonVariantProps
 
 // Next.js Link用プロパティ
+// classNameはtailwind-variantsで管理するので渡さない
 type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
   component: 'link'
   disabled?: boolean
@@ -159,6 +162,7 @@ export const Button = (props: Props) => {
   }
 
   // button要素でレンダリング（デフォルト）
+  // buttonのみloadingも出来るようにする
   const { loading, ...rest } = props as ButtonElementProps
   const className = buttonVariants({ variant, size, disabled, loading })
   return (
