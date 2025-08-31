@@ -24,6 +24,7 @@ export const buttonVariants = tv({
   ],
   variants: {
     variant: {
+      // ボタンの種類（default, primary）
       default: [
         'bg-base text-white',
         'hover:bg-base/80',
@@ -40,6 +41,7 @@ export const buttonVariants = tv({
       ],
     },
     size: {
+      // ボタンのサイズ（md, lg）
       md: 'text-sm px-4 py-2.5 min-w-[120px]',
       lg: 'text-base px-6 py-3 min-w-[140px]',
     },
@@ -70,18 +72,21 @@ type CommonVariantProps = VariantProps<typeof buttonVariants> & {
 }
 
 // button要素用プロパティ
+// classNameはtailwind-variantsで管理するので渡さない
 type ButtonElementProps = Omit<ComponentProps<'button'>, 'className'> & {
   component?: 'button'
   loading?: boolean
 } & CommonVariantProps
 
 // a要素用プロパティ
+// classNameはtailwind-variantsで管理するので渡さない
 type AnchorElementProps = Omit<ComponentProps<'a'>, 'className'> & {
   component: 'a'
   disabled?: boolean
 } & CommonVariantProps
 
 // Next.js Link用プロパティ
+// classNameはtailwind-variantsで管理するので渡さない
 type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
   component: 'link'
   disabled?: boolean
@@ -159,6 +164,7 @@ export const Button = (props: Props) => {
   }
 
   // button要素でレンダリング（デフォルト）
+  // buttonのみloadingも出来るようにする
   const { loading, ...rest } = props as ButtonElementProps
   const className = buttonVariants({ variant, size, disabled, loading })
   return (
