@@ -5,8 +5,9 @@ import { tv, type VariantProps } from 'tailwind-variants'
 import Link from 'next/link'
 
 // components
+import { ButtonIcon } from './button-icon'
 import { ButtonLoadingSpinner } from './button-loading-spinner'
-import { Icons, type IconsName } from '@/components/utils/icons'
+import { type IconsName } from '@/components/utils/icons'
 
 export const buttonVariants = tv({
   base: [
@@ -85,7 +86,6 @@ export const Button = (props: Props) => {
     component = 'button',
     variant,
     size,
-    icon,
     iconName,
     iconSize = 18,
     disabled,
@@ -93,15 +93,6 @@ export const Button = (props: Props) => {
   } = props
   const className = buttonVariants({ variant, size, disabled })
 
-  // アイコンレンダリング関数
-  const renderIcon = () => {
-    if (icon) return icon
-    if (iconName) {
-      const IconComponent = Icons[iconName]
-      return <IconComponent size={iconSize} />
-    }
-    return null
-  }
   // a要素でレンダリング（外部リンク）
   if (component === 'a') {
     const { href, ...rest } = props as AnchorElementProps
@@ -115,7 +106,7 @@ export const Button = (props: Props) => {
         rel='noopener noreferrer'
       >
         {children}
-        {(icon || iconName) && <span className='flex-shrink-0'>{renderIcon()}</span>}
+        {iconName && <ButtonIcon iconName={iconName} iconSize={iconSize} />}
       </a>
     )
   }
@@ -126,7 +117,7 @@ export const Button = (props: Props) => {
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>
         {children}
-        {(icon || iconName) && <span className='flex-shrink-0'>{renderIcon()}</span>}
+        {iconName && <ButtonIcon iconName={iconName} iconSize={iconSize} />}
       </Link>
     )
   }
@@ -138,9 +129,7 @@ export const Button = (props: Props) => {
     <button {...rest} className={className} disabled={disabledValue}>
       {children}
       {loading && <ButtonLoadingSpinner />}
-      {!loading && (icon || iconName) && (
-        <span className='flex-shrink-0'>{renderIcon()}</span>
-      )}
+      {!loading && iconName && <ButtonIcon iconName={iconName} iconSize={iconSize} />}
     </button>
   )
 }
