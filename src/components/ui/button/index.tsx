@@ -1,6 +1,6 @@
 'use client'
 
-import type { ComponentProps, ReactNode } from 'react'
+import type { ComponentProps } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
 import Link from 'next/link'
 
@@ -19,8 +19,18 @@ export const buttonVariants = tv({
   ],
   variants: {
     variant: {
-      default: ['bg-base text-white', 'hover:bg-base/80'],
-      primary: ['bg-blue-700 text-white', 'hover:bg-blue-700/80'],
+      default: [
+        'bg-base text-white',
+        'hover:bg-base/80',
+        'disabled:bg-gray-400', // button要素のdisabled時
+        'data-[disabled=true]:bg-gray-400', // a要素のdisabled時
+      ],
+      primary: [
+        'bg-blue-700 text-white',
+        'hover:bg-blue-700/80',
+        'disabled:bg-gray-400', // button要素のdisabled時
+        'data-[disabled=true]:bg-gray-400', // a要素のdisabled時
+      ],
     },
     size: {
       md: 'text-sm px-4 py-2.5 min-w-[120px]',
@@ -33,18 +43,6 @@ export const buttonVariants = tv({
       true: 'pointer-events-none',
     },
   },
-  compoundVariants: [
-    {
-      variant: 'default',
-      disabled: true,
-      class: 'bg-gray-400',
-    },
-    {
-      variant: 'primary',
-      disabled: true,
-      class: 'bg-gray-400',
-    },
-  ],
   defaultVariants: {
     variant: 'default',
     size: 'md',
@@ -102,7 +100,14 @@ export const Button = (props: Props) => {
     const { ...rest } = props as AnchorElementProps
     const className = buttonVariants({ variant, size, disabled })
     return (
-      <a {...rest} className={className} target='_blank' rel='noopener noreferrer'>
+      <a
+        {...rest}
+        className={className}
+        target='_blank'
+        rel='noopener noreferrer'
+        data-disabled={disabled}
+        onClick={disabled ? (e) => e.preventDefault() : rest.onClick}
+      >
         {children}
         {icon && (
           <ButtonIcon
@@ -122,7 +127,13 @@ export const Button = (props: Props) => {
     const { prefetch = false, ...rest } = props as LinkElementProps
     const className = buttonVariants({ variant, size, disabled })
     return (
-      <Link {...rest} className={className} prefetch={prefetch}>
+      <Link
+        {...rest}
+        className={className}
+        prefetch={prefetch}
+        data-disabled={disabled}
+        onClick={disabled ? (e) => e.preventDefault() : rest.onClick}
+      >
         {children}
         {icon && (
           <ButtonIcon
