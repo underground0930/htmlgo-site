@@ -11,6 +11,7 @@ import { FaWordpress } from 'react-icons/fa'
  */
 type IconProps = {
   className?: string
+  size?: number
   width?: number
   height?: number
   alt?: string
@@ -20,20 +21,20 @@ type IconProps = {
  * アイコン管理
  */
 export const Icons = {
-  react: ({ className, width = 24, height = 24 }: IconProps) => (
-    <FaReact className={className} width={width} height={height} />
+  react: ({ className, size = 24 }: IconProps) => (
+    <FaReact className={className} size={size} />
   ),
-  typescript: ({ className, width = 24, height = 24 }: IconProps) => (
-    <SiTypescript className={className} width={width} height={height} />
+  typescript: ({ className, size = 24 }: IconProps) => (
+    <SiTypescript className={className} size={size} />
   ),
-  nextjs: ({ className, width = 24, height = 24 }: IconProps) => (
-    <SiNextdotjs className={className} width={width} height={height} />
+  nextjs: ({ className, size = 24 }: IconProps) => (
+    <SiNextdotjs className={className} size={size} />
   ),
-  vercel: ({ className, width = 24, height = 24 }: IconProps) => (
-    <SiVercel className={className} width={width} height={height} />
+  vercel: ({ className, size = 24 }: IconProps) => (
+    <SiVercel className={className} size={size} />
   ),
-  tailwindcss: ({ className, width = 24, height = 24 }: IconProps) => (
-    <SiTailwindcss className={className} width={width} height={height} />
+  tailwindcss: ({ className, size = 24 }: IconProps) => (
+    <SiTailwindcss className={className} size={size} />
   ),
   github: ({ className }: IconProps) => (
     <VscGithub className={className} width={24} height={24} />
@@ -41,8 +42,8 @@ export const Icons = {
   wordpress: ({ className, width = 24, height = 24 }: IconProps) => (
     <FaWordpress className={className} width={width} height={height} />
   ),
-  home: ({ className, width = 24, height = 24 }: IconProps) => (
-    <RxHome className={className} width={width} height={height} />
+  home: ({ className, size = 18 }: IconProps) => (
+    <RxHome className={className} size={size} />
   ),
   microcms: ({ className, width = 24, height = 24, alt = 'microCMS' }: IconProps) => (
     <Image

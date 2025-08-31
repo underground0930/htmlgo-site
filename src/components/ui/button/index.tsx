@@ -19,26 +19,26 @@ export const buttonVariants = tv({
   variants: {
     variant: {
       default: ['bg-base text-white', 'hover:bg-base/90'],
-      primary: ['bg-blue-600 text-white', 'hover:bg-blue-700'],
+      primary: ['bg-blue-700 text-white', 'hover:bg-blue-700/90'],
     },
     size: {
-      md: 'text-sm px-4 py-2.5 min-w-[120px] [&>svg]:w-4 [&>svg]:h-4',
-      lg: 'text-base px-6 py-3 min-w-[140px] [&>svg]:w-5 [&>svg]:h-5',
+      md: 'text-sm px-4 py-2.5 min-w-[120px]',
+      lg: 'text-base px-6 py-3 min-w-[140px]',
     },
     disabled: {
-      true: 'pointer-events-none cursor-default',
+      true: 'pointer-events-none',
     },
   },
   compoundVariants: [
     {
       variant: 'default',
       disabled: true,
-      class: 'bg-gray-300 text-gray-500 hover:bg-gray-300',
+      class: 'bg-base/70',
     },
     {
       variant: 'primary',
       disabled: true,
-      class: 'bg-blue-200 text-blue-400 hover:bg-blue-200',
+      class: 'bg-blue-700/70',
     },
   ],
   defaultVariants: {
@@ -76,13 +76,14 @@ type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
 // エクスポート用の統合型
 export type Props = ButtonElementProps | AnchorElementProps | LinkElementProps
 
+// ボタンコンポーネント
 export const Button = (props: Props) => {
   const { component = 'button', variant, size, icon, disabled, children } = props
-  const className = buttonVariants({ variant, size, disabled })
 
   // a要素でレンダリング（外部リンク）
   if (component === 'a') {
     const { href, ...rest } = props as AnchorElementProps
+    const className = buttonVariants({ variant, size, disabled })
     return (
       <a
         {...rest}
@@ -92,7 +93,7 @@ export const Button = (props: Props) => {
         rel='noopener noreferrer'
       >
         {children}
-        {icon && <span className='flex-shrink-0'>{icon}</span>}
+        {icon && <span className='flex-shrink-0'>{children}</span>}
       </a>
     )
   }
@@ -100,18 +101,21 @@ export const Button = (props: Props) => {
   // Next.js Linkでレンダリング（内部リンク）
   if (component === 'link') {
     const { href, prefetch = false, ...rest } = props as LinkElementProps
+    const className = buttonVariants({ variant, size, disabled })
     return (
       <Link {...rest} href={href} className={className} prefetch={prefetch}>
         {children}
-        {icon && <span className='flex-shrink-0'>{icon}</span>}
+        {icon && <span className='flex-shrink-0'>{children}</span>}
       </Link>
     )
   }
 
   // button要素でレンダリング（デフォルト）
   const { loading, ...rest } = props as ButtonElementProps
+  const disabledValue = disabled || loading
+  const className = buttonVariants({ variant, size, disabled })
   return (
-    <button {...rest} className={className} disabled={disabled || loading}>
+    <button {...rest} className={className} disabled={disabledValue}>
       {children}
       {loading && <ButtonLoadingSpinner />}
       {!loading && icon && <span className='flex-shrink-0'>{icon}</span>}

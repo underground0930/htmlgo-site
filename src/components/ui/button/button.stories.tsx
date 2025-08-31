@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/nextjs-vite'
 import { fn } from 'storybook/test'
 
 import { Button } from './'
+import { Icons } from '@/components/utils/icons'
 
 const meta = {
   title: 'UI/Button',
@@ -52,6 +53,33 @@ export const _Button = {
   },
 }
 
+// ボタン(無効)
+export const _ButtonBig = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    size: 'lg',
+  },
+}
+
+// ボタン(ローディング)
+export const _ButtonLoading = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    loading: true,
+  },
+}
+
+// ボタン(アイコン)
+export const _ButtonWithIcon = {
+  args: {
+    children: 'ボタン',
+    onClick: () => window.alert('ボタンがクリックされました'),
+    icon: <Icons.home />,
+  },
+}
+
 // ボタン(別の色)
 export const _ButtonPrimary = {
   args: {
@@ -96,6 +124,16 @@ export const ExternalLink = {
   args: {
     children: '外部リンク',
     component: 'a',
+    href: 'https://www.google.com',
+  },
+}
+
+// 外部リンク(無効)
+export const ExternalLinkDisabled = {
+  args: {
+    children: '外部リンク (無効)',
+    component: 'a',
+    disabled: true,
     href: 'https://www.google.com',
   },
 }
