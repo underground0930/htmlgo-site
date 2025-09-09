@@ -25,11 +25,14 @@ export const ButtonIcon = ({
   const HoverIconComponent = hoverIcon ? Icon[hoverIcon] : hoverIconColor ? IconComponent : null
   return (
     <>
+      {/* 通常時のアイコン（hover時に隠す） */}
+      {/* ホバーアイコンがある時だけ、hover時に隠す */}
       <IconComponent
         className={HoverIconComponent ? 'group-hover:hidden' : ''}
         size={iconSize}
         color={iconColor}
       />
+      {/* ホバーアイコン（hover時に表示） */}
       {HoverIconComponent && (
         <HoverIconComponent
           className='hidden group-hover:inline'
