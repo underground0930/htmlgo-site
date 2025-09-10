@@ -117,7 +117,7 @@ const WorksSliderComponent = ({ sliders }: Props) => {
       </Swiper>
       {!bothEnds.first && sliders.length > 1 && (
         <div
-          className='prevBtn bg-base absolute top-0 bottom-0 left-[-14px] z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full text-base md:flex'
+          className='prevBtn bg-base absolute top-0 bottom-0 left-[-14px] z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full text-white md:flex'
           onClick={goPrev}
         >
           &lt;
@@ -125,7 +125,7 @@ const WorksSliderComponent = ({ sliders }: Props) => {
       )}
       {!bothEnds.last && sliders.length > 1 && (
         <div
-          className='nextBtn bg-base absolute top-0 right-[-14px] bottom-0 z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full text-base md:flex'
+          className='nextBtn bg-base absolute top-0 right-[-14px] bottom-0 z-1 m-auto hidden h-10 w-10 cursor-pointer items-center justify-center rounded-full text-white md:flex'
           onClick={goNext}
         >
           &gt;
