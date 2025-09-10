@@ -40,9 +40,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
         <Title title={post.title} text='WORKS NAME' />
         <article>
           <div className='relative mb-10'>
-            <div className='relative'>
-              {post?.slider && <WorksSlider sliders={sliderList} />}
-            </div>
+            <div className='relative'>{post?.slider && <WorksSlider sliders={sliderList} />}</div>
           </div>
           {post.body && (
             <div
@@ -104,9 +102,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
                   </WorksDetailInfo>
                 )}
                 {post?.production_period && (
-                  <WorksDetailInfo title='制作期間'>
-                    {post.production_period}
-                  </WorksDetailInfo>
+                  <WorksDetailInfo title='制作期間'>{post.production_period}</WorksDetailInfo>
                 )}
                 {(post?.url || post?.url2) && (
                   <WorksDetailInfo title='URL'>
@@ -149,9 +145,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
                                 {v.value}
                               </a>
                             ) : (
-                              <a className='mb-4 block break-all last-of-type:mb-0'>
-                                {v.value}
-                              </a>
+                              <a className='mb-4 block break-all last-of-type:mb-0'>{v.value}</a>
                             )}
                           </p>
                         </li>
@@ -190,7 +184,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
             </Button>
             {next && (
               <Link
-                className='absolute top-0 bottom-0 left-0 m-auto flex h-10 w-10 items-center justify-center bg-black text-base'
+                className='absolute top-0 bottom-0 left-0 m-auto flex h-10 w-10 items-center justify-center bg-black text-white hover:bg-gray-500'
                 href={`/works/${next.slug}`}
               >
                 &lt;
@@ -198,7 +192,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
             )}
             {prev && (
               <Link
-                className='absolute top-0 right-0 bottom-0 m-auto flex h-10 w-10 items-center justify-center bg-black text-base'
+                className='absolute top-0 right-0 bottom-0 m-auto flex h-10 w-10 items-center justify-center bg-black text-white hover:bg-gray-500'
                 href={`/works/${prev.slug}`}
               >
                 &gt;
