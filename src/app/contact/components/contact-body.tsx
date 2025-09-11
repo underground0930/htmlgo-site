@@ -8,12 +8,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
+import { InputWithRHF } from '@/components/ui/form/input'
+import { Label } from '@/components/ui/form/label'
+import { ErrorText } from '@/components/ui/form/error-text'
 
 import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
-import { errorText } from '../constants/contact'
-
-import { InputWithRHF } from '@/components/ui/form/input'
+import { errorText, inputElements } from '../constants/contact'
 
 type FormDataType = FormBodyData & FieldValues
 
@@ -117,28 +118,66 @@ export const ContactBody = () => {
               void handleSubmit(onSubmit)()
             }}
           >
-            <ul className='mb-10'>
-              <li className='mb-6'>
-                <label htmlFor='name'>お名前 [必須]</label>
-                <InputWithRHF name={'name'} register={register} error={!!getError('name')} />
-              </li>
-              <li className='mb-6'>
-                <label htmlFor='company'>会社名</label>
-                <InputWithRHF name={'company'} register={register} error={!!getError('company')} />
-              </li>
-              <li className='mb-6'>
-                <label htmlFor='email'>メールアドレス [必須]</label>
-                <InputWithRHF name={'email'} register={register} error={!!getError('email')} />
-              </li>
-              {/* <li className='mb-6'>
-                <InputText
-                  name={'detail'}
-                  label={'お名前 [必須]'}
+            <div className='mb-10 space-y-6'>
+              {/* お名前 */}
+              <div>
+                <Label htmlFor='username' required>
+                  お名前
+                </Label>
+                <InputWithRHF<FormDataType>
+                  id='username'
+                  name='username'
                   register={register}
-                  error={getError('name')}
+                  error={!!getError('username')}
+                  placeholder='お名前を入力してください'
                 />
-              </li> */}
-            </ul>
+                <ErrorText error={getError('username')} />
+              </div>
+
+              {/* 会社名 */}
+              <div>
+                <Label htmlFor='company'>会社名</Label>
+                <InputWithRHF<FormDataType>
+                  id='company'
+                  name='company'
+                  register={register}
+                  error={!!getError('company')}
+                  placeholder='会社名を入力してください（任意）'
+                />
+                <ErrorText error={getError('company')} />
+              </div>
+
+              {/* メールアドレス */}
+              <div>
+                <Label htmlFor='email' required>
+                  メールアドレス
+                </Label>
+                <InputWithRHF<FormDataType>
+                  id='email'
+                  name='email'
+                  type='email'
+                  register={register}
+                  error={!!getError('email')}
+                  placeholder='example@example.com'
+                />
+                <ErrorText error={getError('email')} />
+              </div>
+
+              {/* お問い合わせ内容 */}
+              <div>
+                <Label htmlFor='detail' required>
+                  お問い合わせ内容
+                </Label>
+                <textarea
+                  id='detail'
+                  rows={15}
+                  className='border-border block w-full resize-none rounded-[4px] border p-2 text-base outline-[#EAC7C8] focus:bg-[#FBF6F5]'
+                  placeholder='お問い合わせ内容を詳しくお聞かせください'
+                  {...register('detail')}
+                />
+                <ErrorText error={getError('detail')} />
+              </div>
+            </div>
             <div className='flex items-center justify-center pb-10'>
               <div ref={recaptchaRef} />
             </div>
