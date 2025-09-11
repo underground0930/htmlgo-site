@@ -3,22 +3,22 @@
  *
  * text, password, emailの3つのinput typeに対応し、
  * React Hook Formとの統合も型安全に実装しています。
- *
- * @features
- * - 型安全なinput type対応（text/password/email）
- * - React Hook Form統合
- * - エラー状態、背景色、無効化状態のサポート
- * - React 19対応（forwardRef不要でref props直接サポート）
+ */
+
+/**
+ * 参考
+ * https://zenn.dev/yuitosato/articles/292f13816993ef
+ * https://hireroo.io/journal/tech/react-hook-form-within-mono-repo
  */
 
 'use client'
 
 import { type ComponentProps } from 'react'
 import { type FieldValues, type UseFormRegister, type Path } from 'react-hook-form'
-import { tv } from 'tailwind-variants'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 // スタイル定義
-const input = tv({
+const inputVariants = tv({
   base: 'border-border block h-[42px] w-full rounded-[4px] border px-2 text-[14px] outline-[#EAC7C8] focus:bg-[#FBF6F5]',
   variants: {
     error: {
@@ -37,20 +37,18 @@ const input = tv({
   },
 })
 
+type CommonVariantProps = VariantProps<typeof inputVariants>
+
 // サポートするinput typeの定義
 type InputType = 'text' | 'password' | 'email'
 
 // 基本的なInputProps（React 19対応 - refを含む）
-type InputProps = Omit<ComponentProps<'input'>, 'type'> & {
+type Props = Omit<ComponentProps<'input'>, 'type'> & {
   /** input要素のtype属性 */
   type?: InputType
-  /** エラー状態 */
-  error?: boolean
-  /** 背景色のバリエーション */
-  background?: 'white' | 'gray'
   /** テスト用のdata-testid */
   dataTestId?: string
-}
+} & CommonVariantProps
 
 /**
  * 汎用Inputコンポーネント（React 19対応）
@@ -67,7 +65,8 @@ export function Input({
   dataTestId,
   ref,
   ...props
-}: InputProps) {
+}: Props) {
+  const className = inputVariants({ error: !!error, disabled, background })
   return (
     <input
       {...props}
@@ -76,7 +75,7 @@ export function Input({
       data-testid={dataTestId}
       type={type}
       disabled={disabled}
-      className={input({ error: !!error, disabled, background })}
+      className={className}
     />
   )
 }
@@ -87,22 +86,23 @@ type InputWithRHFProps<T extends FieldValues> = {
   name: Path<T>
   /** React Hook Formのregister関数 */
   register: UseFormRegister<T>
-} & Omit<InputProps, 'name' | 'onChange' | 'onBlur' | 'ref'>
+} & Omit<Props, 'name' | 'onChange' | 'onBlur' | 'ref'>
 
 /**
  * React Hook Form統合版Inputコンポーネント
  *
- * @template T - フォームデータの型
+ * @template T - フォームデータの型（例: { username: string, email: string }）
  * @param props - InputWithRHFPropsに基づくプロパティ
  * @returns registerが適用されたInputコンポーネント
+ *
+ * @example
+ * type FormData = { username: string, email: string }
+ * <InputWithRHF<FormData> name="username" register={register} />
  */
 export function InputWithRHF<T extends FieldValues>({
   name,
   register,
   ...props
 }: InputWithRHFProps<T>) {
-  return <Input {...register(name)} {...props} />
+  return <Input {...props} {...register(name)} />
 }
-
-// 型のエクスポート（必要に応じて外部で使用）
-export type { InputProps, InputWithRHFProps, InputType }
