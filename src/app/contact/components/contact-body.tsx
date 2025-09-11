@@ -11,9 +11,9 @@ import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
 import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
-import { errorText, inputElements } from '../constants/contact'
+import { errorText } from '../constants/contact'
 
-import { InputText } from './input-text'
+import { InputWithRHF } from '@/components/ui/form/input'
 
 type FormDataType = FormBodyData & FieldValues
 
@@ -40,15 +40,6 @@ export const ContactBody = () => {
   } = useForm<FormDataType>({
     resolver: debug ? undefined : zodResolver(FormBodyDataSchema),
   })
-  useEffect(() => {
-    const { current } = parentRef
-    if (!current) return
-    if (loading) {
-      current.setAttribute('inert', '')
-    } else {
-      current.removeAttribute('inert')
-    }
-  }, [loading])
 
   const frontInvalidErrors = useMemo(() => {
     const newErrors: ErrorType = {}
@@ -120,27 +111,33 @@ export const ContactBody = () => {
         {error && <div className='pb-8 font-bold text-[#f00]'>{error}</div>}
         <div className='mb-10'>
           <form
+            inert={loading}
             onSubmit={(e) => {
               e.preventDefault()
               void handleSubmit(onSubmit)()
             }}
           >
             <ul className='mb-10'>
-              {inputElements.map((elem, index) => {
-                const { name, textarea, row, label } = elem
-                return (
-                  <li key={index} className='mb-6'>
-                    <InputText
-                      name={name}
-                      textarea={textarea}
-                      label={label}
-                      {...(row ? { row } : {})}
-                      register={register}
-                      getError={getError}
-                    />
-                  </li>
-                )
-              })}
+              <li className='mb-6'>
+                <label htmlFor='name'>お名前 [必須]</label>
+                <InputWithRHF name={'name'} register={register} error={!!getError('name')} />
+              </li>
+              <li className='mb-6'>
+                <label htmlFor='company'>会社名</label>
+                <InputWithRHF name={'company'} register={register} error={!!getError('company')} />
+              </li>
+              <li className='mb-6'>
+                <label htmlFor='email'>メールアドレス [必須]</label>
+                <InputWithRHF name={'email'} register={register} error={!!getError('email')} />
+              </li>
+              {/* <li className='mb-6'>
+                <InputText
+                  name={'detail'}
+                  label={'お名前 [必須]'}
+                  register={register}
+                  error={getError('name')}
+                />
+              </li> */}
             </ul>
             <div className='flex items-center justify-center pb-10'>
               <div ref={recaptchaRef} />

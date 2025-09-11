@@ -44,34 +44,22 @@ type InputType = 'text' | 'password' | 'email'
 
 // 基本的なInputProps（React 19対応 - refを含む）
 type Props = Omit<ComponentProps<'input'>, 'type'> & {
-  /** input要素のtype属性 */
   type?: InputType
-  /** テスト用のdata-testid */
   dataTestId?: string
 } & CommonVariantProps
 
-/**
- * 汎用Inputコンポーネント（React 19対応）
- *
- * @param props - InputPropsに基づくプロパティ（refを含む）
- * @returns input要素
- */
 export function Input({
   error,
   disabled = false,
-  name,
   type = 'text',
   background,
   dataTestId,
-  ref,
   ...props
 }: Props) {
   const className = inputVariants({ error: !!error, disabled, background })
   return (
     <input
       {...props}
-      ref={ref}
-      name={name}
       data-testid={dataTestId}
       type={type}
       disabled={disabled}
@@ -82,23 +70,10 @@ export function Input({
 
 // React Hook Form統合用の型定義（React 19対応）
 type InputWithRHFProps<T extends FieldValues> = {
-  /** フィールド名（フォームデータの型に基づく） */
   name: Path<T>
-  /** React Hook Formのregister関数 */
   register: UseFormRegister<T>
 } & Omit<Props, 'name' | 'onChange' | 'onBlur' | 'ref'>
 
-/**
- * React Hook Form統合版Inputコンポーネント
- *
- * @template T - フォームデータの型（例: { username: string, email: string }）
- * @param props - InputWithRHFPropsに基づくプロパティ
- * @returns registerが適用されたInputコンポーネント
- *
- * @example
- * type FormData = { username: string, email: string }
- * <InputWithRHF<FormData> name="username" register={register} />
- */
 export function InputWithRHF<T extends FieldValues>({
   name,
   register,
