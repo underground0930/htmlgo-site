@@ -12,17 +12,20 @@ alwaysApply: true
 ## 開発コマンド
 
 ### コア開発
+
 - `npm run dev` - 開発サーバーを起動（feed.jsonを自動生成し、.nextキャッシュをクリア）
 - `npm run build` - 本番版をビルド（feed.jsonを自動生成）
 - `npm start` - 本番サーバーを起動
 - `npm run export` - 静的サイトをエクスポート
 
 ### コード品質
+
 - `npm run lint` - ESLintを実行
 - `npm run lint:fix` - ESLintを自動修正付きで実行
 - `npm run format` - Prettierでコードを整形
 
 ### データ生成
+
 - `node ./scripts/generateFeedJson.js` - 外部API（Qiita、Zenn）からfeed.jsonを生成
 
 ## プロジェクトアーキテクチャ
@@ -30,29 +33,33 @@ alwaysApply: true
 これは Next.js 15 を使用したポートフォリオ/ブログサイトで、TypeScript と Tailwind CSS、App Router を使用しています。
 
 ### コンテンツ管理
+
 - **MicroCMS**: 作品/ポートフォリオコンテンツとaboutページデータのメインCMS
 - **外部フィード**: ビルド時スクリプトでQiita・ZennのAPIから記事を集約
 
 ### 主要なアーキテクチャパターン
+
 - **Server Components**: データ取得は全てサーバーコンポーネントで実行
 - **パスエイリアス**: `@/*` は `src/*` にマップされ、よりクリーンなインポートを実現
 - **完全なColocation構造**: ページ専用機能は該当ページ内に配置
 - **型安全性**: 全ての外部APIに対して包括的なTypeScript型定義
 
 ### データフロー
+
 1. ビルド/開発開始時に `generateFeedJson.js` で外部記事フィードを取得
 2. MicroCMSクライアントでサーバー専用実行のCMSデータを処理
 3. 分単位パラメータを使用したMicroCMSリクエストのカスタムキャッシュバスティング
 4. コンタクトフォームはnodemailerとreCAPTCHA認証を使用したAPIルート
 
 ### 環境設定
+
 - `MICROCMS_API_KEY` を含む `.env` ファイルが必要
 - git hooks用のHuskyとpre-commit linting用のlint-stagedを使用
-
 
 ## 🎯 現在のディレクトリ構成 (2025年最適化版)
 
 ### 基本方針
+
 - **Perfect Colocation**: 関連ファイルを可能な限り近くに配置
 - **Zero Barrel Files**: 循環参照リスクを排除し、Tree Shakingを最適化
 - **Feature-based + Page-based Hybrid**: 機能別とページ別のハイブリッド構成
@@ -90,12 +97,14 @@ src/
 ## 🔥 重要なコーディング規則
 
 ### ❌ 絶対禁止事項
+
 1. **バレルファイル（index.ts）の作成・使用** - 循環参照リスクと Tree Shaking阻害
 2. **PascalCase/camelCaseでのファイル命名** - kebab-case必須
 3. **深すぎるネスト構造**（3階層まで）
 4. **ページ間での不適切な依存関係**
 
 ### ✅ 必須事項
+
 1. **直接インポートのみ使用**
 2. **Colocation原則の徹底** - 機能は使用箇所の近くに配置
 3. **kebab-case ファイル命名**
@@ -118,12 +127,13 @@ import { ContactForm } from './contact-form'
 import { errorText } from '../constants/contact'
 
 // ✅ 正しい - クロス機能インポート（絶対）
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 ```
 
 ### コンポーネント配置規則
 
 #### ページ専用コンポーネント
+
 ```
 app/contact/
 ├── page.tsx
@@ -139,6 +149,7 @@ app/contact/
 ```
 
 #### 共通コンポーネント
+
 ```
 components/ui/          # 複数ページで使用される純粋なUIコンポーネント
 ├── button.tsx
@@ -147,12 +158,14 @@ components/ui/          # 複数ページで使用される純粋なUIコンポ�
 ```
 
 ### ファイル命名規則
+
 - **ファイル名**: kebab-case (`user-profile.tsx`)
 - **コンポーネント名**: PascalCase (`UserProfile`)
 - **関数名**: camelCase (`fetchUserData`)
 - **定数名**: UPPER_SNAKE_CASE (`API_ENDPOINT`)
 
 ### インポート順序
+
 1. React関連
 2. Next.js関連
 3. サードパーティライブラリ
@@ -173,10 +186,12 @@ import { LocalComponent } from './local-component'
 ## パフォーマンス最適化
 
 ### Tree Shaking最適化
+
 - バレルファイル禁止により完全なTree Shakingを実現
 - 未使用コードの自動削除
 
 ### 動的インポート
+
 ```tsx
 // 大きなコンポーネントの遅延読み込み
 const HeavyComponent = dynamic(() => import('./heavy-component'), {
@@ -185,20 +200,24 @@ const HeavyComponent = dynamic(() => import('./heavy-component'), {
 ```
 
 ### バンドル最適化
+
 - 直接インポートによりバンドルサイズを最小化
 - ページ専用機能の完全分離
 
 ## デバッグとメンテナンス
 
 ### デバッグ支援
+
 - 明確な依存関係により問題箇所の特定が容易
 - 循環参照エラーの完全排除
 
 ### 拡張性
+
 - 新機能追加時は該当ページ内に配置
 - 機能削除時はページディレクトリごと削除可能
 
 ### チーム開発
+
 - 機能の場所が明確で迷いがない
 - コードレビューが効率的
 
@@ -237,13 +256,18 @@ const UserCard = ({ user, showEdit, showDelete, adminMode, guestMode }) => {
 }
 
 // ✅ 推奨：責務が明確な小さなコンポーネント
-const UserProfile = ({ user }) => { /* ユーザー情報表示のみ */ }
-const UserActions = ({ user }) => { /* アクション操作のみ */ }
+const UserProfile = ({ user }) => {
+  /* ユーザー情報表示のみ */
+}
+const UserActions = ({ user }) => {
+  /* アクション操作のみ */
+}
 ```
 
 **1つのモジュールで if が多すぎる場合は分割を検討**
 
 #### 📚 参考資料
+
 - [再利用目的で小さく作るわけではない](https://scrapbox.io/mrsekut-p/%E5%86%8D%E5%88%A9%E7%94%A8%E7%9B%AE%E7%9A%84%E3%81%A7%E5%B0%8F%E3%81%95%E3%81%8F%E4%BD%9C%E3%82%8B%E3%82%8F%E3%81%91%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84)
 
 ## 📁 コンポーネントのディレクトリ構成判断基準
@@ -255,12 +279,14 @@ const UserActions = ({ user }) => { /* アクション操作のみ */ }
 ### 🔴 単一ファイルで良い場合（推奨）
 
 **条件:**
+
 - **50行以下** のシンプルなコンポーネント
 - **単一責任** - 1つの明確な役割
 - **依存関係なし** - 他のコンポーネントに依存しない
 - **プリミティブ** - ボタン、アイコン、スピナーなど
 
 **例:**
+
 ```
 src/components/ui/
 ├── button.tsx              # シンプルなボタン
@@ -273,6 +299,7 @@ src/components/ui/
 ### 🟢 ディレクトリを作るべき場合
 
 **条件（以下の1つ以上を満たす場合）:**
+
 - **複数の関連コンポーネント** - メインコンポーネント + 子コンポーネント
 - **100行以上** - 大きなコンポーネント
 - **サブコンポーネントがある** - `Header` + `HeaderMenu` + `HeaderLogo`など
@@ -280,6 +307,7 @@ src/components/ui/
 - **テストファイルが複数** - 複雑なテストケース
 
 **例:**
+
 ```
 src/components/ui/
 ├── pager/                 # 複合コンポーネント
@@ -310,6 +338,7 @@ src/components/ui/
 ### ⚖️ グレーゾーンの場合
 
 **50-100行のコンポーネント:**
+
 - 内部の複雑さを確認
 - 将来的な拡張予定を考慮
 - チーム内で相談して決定
@@ -317,11 +346,13 @@ src/components/ui/
 ### 🔄 リファクタリングのタイミング
 
 **単一ファイル → ディレクトリ化:**
+
 - 子コンポーネントが必要になった時
 - 100行を超えた時
 - 専用のロジックが必要になった時
 
 **ディレクトリ → 単一ファイル:**
+
 - 子コンポーネントが不要になった時
 - シンプルになりすぎた時（稀）
 

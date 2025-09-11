@@ -1,12 +1,12 @@
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = 'お探しのページは見つかりませんでした'
 
 export const metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'article',

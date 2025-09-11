@@ -123,7 +123,7 @@ import { ContactForm } from './contact-form'
 import { errorText } from '../constants/contact'
 
 // ✅ 正しい - クロス機能インポート（絶対）
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 ```
 
 ### コンポーネント配置規則

@@ -6,7 +6,7 @@ import { Title } from '@/components/ui/title'
 import { ArticlesList } from '../articles/components/articles-list'
 import { WorksList } from '../works/components/works-list'
 
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 import { fetchTopList } from './libs/fetch-top-list'
 
 const description = 'WEB技術を書き連ねるサイト'
@@ -50,7 +50,7 @@ export default async function Page() {
 }
 
 export const metadata: Metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'website',

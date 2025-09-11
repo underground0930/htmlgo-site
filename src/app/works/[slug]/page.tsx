@@ -8,7 +8,7 @@ import { fetchWorksDetail } from './libs/fetch-works-detail'
 import { WorksDetailBody } from './components/works-detail-body'
 
 import { removeHtml } from '@/utils/remove-html'
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 type Props = {
   params: Promise<{
@@ -49,8 +49,7 @@ export async function generateMetadata(props: {
   let meta = {}
   if (result.post) {
     const { title, body: description, slider } = result.post
-    const ogp =
-      slider?.length && slider[0]?.img?.url ? slider[0].img.url : '/img/ogp-new.png'
+    const ogp = slider?.length && slider[0]?.img?.url ? slider[0].img.url : '/img/ogp-new.png'
     const maxLength = 120
     const parsedDescription = removeHtml(description ?? '')
     const slicedDescription =
@@ -59,7 +58,7 @@ export async function generateMetadata(props: {
         : parsedDescription
 
     meta = {
-      ...setMetaData({
+      ...nextMetaData({
         meta: {
           openGraph: {
             type: 'article',

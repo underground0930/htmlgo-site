@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import { ContactBody } from './components/contact-body'
 
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = 'お仕事のお問い合わせはこちらから'
 
@@ -11,7 +11,7 @@ export default function Page() {
 }
 
 export const metadata: Metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'article',

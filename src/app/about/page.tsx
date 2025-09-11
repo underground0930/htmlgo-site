@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { AboutSnsBox } from './components/about-sns-box'
 
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = 'このサイトについて'
 
@@ -42,12 +42,9 @@ export default function Page() {
                 </a>
                 (フロントエンドエンジニア)
               </p>
+              <p className='leading-[1.8]'>東京都→埼玉県でフリーランスとして活動しています。</p>
               <p className='leading-[1.8]'>
-                東京都→埼玉県でフリーランスとして活動しています。
-              </p>
-              <p className='leading-[1.8]'>
-                最近は<strong>React</strong>、<strong>TypeScript</strong>、
-                <strong>Next.js</strong>
+                最近は<strong>React</strong>、<strong>TypeScript</strong>、<strong>Next.js</strong>
                 のお仕事をやっています。
               </p>
               <p className='leading-[1.8]'>
@@ -56,9 +53,7 @@ export default function Page() {
               <p className='leading-[1.8]'>
                 お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
               </p>
-              <p className='leading-[1.8]'>
-                業務効率化のツールを作るのが最近の趣味です。
-              </p>
+              <p className='leading-[1.8]'>業務効率化のツールを作るのが最近の趣味です。</p>
             </div>
           </section>
           <section>
@@ -67,8 +62,7 @@ export default function Page() {
             </h3>
             <div className='text-sm'>
               <p className='leading-[1.8]'>
-                React / TypeScript / Next.js / Tailwind CSS / WordPress / TanStack Query /
-                microCMS
+                React / TypeScript / Next.js / Tailwind CSS / WordPress / TanStack Query / microCMS
               </p>
             </div>
           </section>
@@ -108,7 +102,7 @@ export default function Page() {
 }
 
 export const metadata: Metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'article',
