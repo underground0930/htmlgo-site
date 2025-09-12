@@ -11,9 +11,7 @@ import { CategoryIcon } from '@/components/ui/category-icon'
 import { Image } from '@/components/utils/image'
 import { conversionDate } from '@/utils/conversion-date'
 import type { WorkIndex } from '../types'
-
-/** デフォルト画像パス */
-export const NO_IMAGE = '/img/works/no-image.png'
+import { NO_IMAGE } from '../constants'
 
 type Props = {
   works: WorkIndex[]
