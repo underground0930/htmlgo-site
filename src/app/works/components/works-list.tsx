@@ -18,8 +18,7 @@ export const WorksList = ({ works = [] }: Props) => {
     <>
       <ul className='mb-5 md:mb-10 md:grid md:grid-cols-4 md:gap-3'>
         {works.map((work) => {
-          const thumb = work?.slider?.[0]?.img?.url
-          const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE
+          const thumbnail = work?.slider?.[0]?.img?.url ?? NO_IMAGE
           return (
             <li key={work.id} className='border-border mb-5 border md:mb-0'>
               <Link className='block h-full' href={`/works/${work.slug}`} prefetch={false}>
