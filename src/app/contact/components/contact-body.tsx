@@ -101,7 +101,7 @@ export const ContactBody = () => {
   return (
     <>
       {loading && (
-        <div className='bg-opacity-50 fixed inset-0 z-10 m-auto flex items-center justify-center bg-black'>
+        <div className='fixed inset-0 z-10 m-auto flex items-center justify-center bg-white'>
           <LoadingSpinner />
         </div>
       )}

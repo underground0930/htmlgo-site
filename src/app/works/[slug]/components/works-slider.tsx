@@ -43,13 +43,14 @@ const WorksSliderComponent = ({ sliders }: Props) => {
       return
     }
 
-    const newSliders = sliders.map((item) => {
-      return {
-        ...item,
-        loading: true,
-      }
-    })
-    setSliderList(newSliders)
+    setSliderList(
+      sliders.map((item) => {
+        return {
+          ...item,
+          loading: true,
+        }
+      }),
+    )
   }, [sliders])
 
   const sliderChangeHandle = (): void => {
@@ -87,7 +88,7 @@ const WorksSliderComponent = ({ sliders }: Props) => {
           {sliderList.map((item, i) => {
             return (
               <SwiperSlide
-                className="object-fit-cover relative block aspect-video h-full before:content-['']"
+                className="relative block aspect-video h-full object-cover before:content-['']"
                 virtualIndex={i}
                 key={item.img.url}
               >
