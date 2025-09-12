@@ -5,12 +5,12 @@
  * エラーがない場合は何も表示されません。
  */
 
-import { type ComponentProps } from 'react'
+import { type ComponentPropsWithRef } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 // スタイル定義
 const errorTextVariants = tv({
-  base: 'pt-1 text-sm font-bold text-[#f00]',
+  base: 'pt-1 text-sm font-bold text-error',
   variants: {
     size: {
       sm: 'text-xs',
@@ -24,7 +24,7 @@ const errorTextVariants = tv({
 
 type CommonVariantProps = VariantProps<typeof errorTextVariants>
 
-type Props = ComponentProps<'div'> & {
+type Props = ComponentPropsWithRef<'div'> & {
   /** エラーメッセージ（空の場合は何も表示されない） */
   error?: string
   /** テスト用のdata-testid */

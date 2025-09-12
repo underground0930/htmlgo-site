@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { twMerge } from 'tailwind-merge'
-import { ComponentPropsWithoutRef } from 'react'
+import { type ComponentPropsWithoutRef } from 'react'
+import { tv } from 'tailwind-variants'
 
 type Props = ComponentPropsWithoutRef<'li'> & {
   page: number
@@ -8,22 +8,21 @@ type Props = ComponentPropsWithoutRef<'li'> & {
   isActive?: boolean
 }
 
-export const PagerChild = ({ page, basePath, isActive, children, ...props }: Props) => {
-  const linkClass = twMerge(
-    'flex h-7 w-7 items-center justify-center rounded-full bg-main text-sm text-white hover:bg-[#ddd] hover:text-[#222]',
-    isActive && 'bg-[#ddd] text-[#222] font-bold',
-  )
+const pagerChildVariants = tv({
+  base: 'flex h-7 w-7 items-center justify-center rounded-full bg-main text-sm text-white hover:bg-[#ddd] hover:text-[#222]',
+  variants: {
+    isActive: {
+      true: 'bg-[#ddd] text-[#222] font-bold',
+    },
+  },
+})
 
-  const generateLink = (pageNum: number): string => {
-    if (pageNum === 1) {
-      return basePath === '/articles' ? '/articles/' : basePath
-    }
-    return `${basePath}/page/${pageNum}/`
-  }
+export const PagerChild = ({ page, basePath, isActive, children, ...props }: Props) => {
+  const className = pagerChildVariants({ isActive })
 
   return (
     <li {...props}>
-      <Link className={linkClass} href={generateLink(page)}>
+      <Link className={className} href={page === 1 ? basePath : `${basePath}/page/${page}`}>
         {children}
       </Link>
     </li>

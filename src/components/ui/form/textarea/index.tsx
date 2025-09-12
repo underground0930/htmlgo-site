@@ -1,15 +1,15 @@
-import { type ComponentProps } from 'react'
+import { type ComponentPropsWithRef } from 'react'
 import { type FieldValues, type UseFormRegister, type Path } from 'react-hook-form'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const textareaVariants = tv({
-  base: 'border-border block w-full resize-none rounded-[4px] border p-2 text-base',
+  base: 'border-border block w-full resize-none rounded-sm border p-2 text-base',
   variants: {
     error: {
-      true: 'border-2 border-[#DA3333] bg-[#FFEFE9] outline-[#DA3333] focus:bg-[#FFEFE9]',
+      true: 'border-2 border-error outline-error',
     },
     disabled: {
-      true: 'bg-[#F8F8F8] text-[#A8A8A8]',
+      true: 'bg-disabled-bg text-disabled-font',
     },
     background: {
       white: 'bg-white',
@@ -23,14 +23,13 @@ const textareaVariants = tv({
 
 type CommonVariantProps = VariantProps<typeof textareaVariants>
 
-type Props = ComponentProps<'textarea'> & {
+type Props = ComponentPropsWithRef<'textarea'> & {
   error?: boolean
   dataTestId?: string
 } & CommonVariantProps
 
 export const Textarea = ({ error, disabled = false, background, dataTestId, ...props }: Props) => {
   const className = textareaVariants({ error: !!error, disabled, background })
-
   return <textarea {...props} data-testid={dataTestId} className={className} />
 }
 
@@ -40,10 +39,10 @@ type InputWithRHFProps<T extends FieldValues> = {
   register: UseFormRegister<T>
 } & Omit<Props, 'name' | 'onChange' | 'onBlur' | 'ref'>
 
-export function TextareaWithRHF<T extends FieldValues>({
+export const TextareaWithRHF = <T extends FieldValues>({
   name,
   register,
   ...props
-}: InputWithRHFProps<T>) {
+}: InputWithRHFProps<T>) => {
   return <Textarea {...props} {...register(name)} />
 }

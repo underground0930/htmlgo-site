@@ -113,6 +113,7 @@ export const ContactBody = () => {
         {error && <div className='pb-8 font-bold text-[#f00]'>{error}</div>}
         <div className='mb-10'>
           <form
+            noValidate // ブラウザのバリデーションを無効化（ZodとReact Hook Formで制御）
             inert={loading}
             onSubmit={(e) => {
               e.preventDefault()
@@ -125,7 +126,7 @@ export const ContactBody = () => {
                 <Label htmlFor='username' required>
                   お名前
                 </Label>
-                <InputWithRHF<FormDataType>
+                <InputWithRHF
                   id='username'
                   name='username'
                   register={register}
@@ -137,7 +138,7 @@ export const ContactBody = () => {
               {/* 会社名 */}
               <div>
                 <Label htmlFor='company'>会社名</Label>
-                <InputWithRHF<FormDataType>
+                <InputWithRHF
                   id='company'
                   name='company'
                   register={register}
@@ -152,7 +153,7 @@ export const ContactBody = () => {
                 <Label htmlFor='email' required>
                   メールアドレス
                 </Label>
-                <InputWithRHF<FormDataType>
+                <InputWithRHF
                   id='email'
                   name='email'
                   type='email'
@@ -168,7 +169,7 @@ export const ContactBody = () => {
                 <Label htmlFor='detail' required>
                   お問い合わせ内容
                 </Label>
-                <TextareaWithRHF<FormDataType>
+                <TextareaWithRHF
                   id='detail'
                   name='detail'
                   register={register}

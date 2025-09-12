@@ -97,9 +97,9 @@ const WorksSliderComponent = ({ sliders }: Props) => {
                   </div>
                 )}
                 <Image
-                  className='object-cover'
+                  cover
                   src={item.img.url}
-                  onLoadAction={() => {
+                  onLoad={() => {
                     setSliderList((prev) => {
                       return prev.map((s, j) => {
                         if (i === j) {

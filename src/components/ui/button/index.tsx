@@ -5,7 +5,7 @@
 
 'use client'
 
-import type { ComponentProps } from 'react'
+import type { ComponentPropsWithRef } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
 import Link from 'next/link'
 
@@ -73,21 +73,21 @@ type CommonVariantProps = VariantProps<typeof buttonVariants> & {
 
 // button要素用プロパティ
 // classNameはtailwind-variantsで管理するので渡さない
-type ButtonElementProps = Omit<ComponentProps<'button'>, 'className'> & {
+type ButtonElementProps = Omit<ComponentPropsWithRef<'button'>, 'className'> & {
   component?: 'button'
   loading?: boolean
 } & CommonVariantProps
 
 // a要素用プロパティ
 // classNameはtailwind-variantsで管理するので渡さない
-type AnchorElementProps = Omit<ComponentProps<'a'>, 'className'> & {
+type AnchorElementProps = Omit<ComponentPropsWithRef<'a'>, 'className'> & {
   component: 'a'
   disabled?: boolean
 } & CommonVariantProps
 
 // Next.js Link用プロパティ
 // classNameはtailwind-variantsで管理するので渡さない
-type LinkElementProps = Omit<ComponentProps<typeof Link>, 'className'> & {
+type LinkElementProps = Omit<ComponentPropsWithRef<typeof Link>, 'className'> & {
   component: 'link'
   disabled?: boolean
 } & CommonVariantProps

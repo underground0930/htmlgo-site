@@ -19,6 +19,9 @@
   --color-font: #000;
   --color-loader: #333333;
   --color-border: #dddddd;
+  --color-disabled-bg: #a8a8a8;
+  --color-disabled-font: #f8f8f8;
+  --color-error: #da3333;
 
   /* animation */
   @keyframes load8 {

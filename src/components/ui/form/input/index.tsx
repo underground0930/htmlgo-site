@@ -13,7 +13,7 @@
 
 'use client'
 
-import { type ComponentProps } from 'react'
+import { type ComponentPropsWithRef } from 'react'
 import { type FieldValues, type UseFormRegister, type Path } from 'react-hook-form'
 import { tv, type VariantProps } from 'tailwind-variants'
 
@@ -22,10 +22,10 @@ const inputVariants = tv({
   base: 'border-border block h-[42px] w-full rounded-[4px] border px-2 text-[14px]',
   variants: {
     error: {
-      true: 'border-2 border-[#DA3333] bg-[#FFEFE9] outline-[#DA3333] focus:bg-[#FFEFE9]',
+      true: 'border-2 border-error outline-error',
     },
     disabled: {
-      true: 'bg-[#F8F8F8] text-[#A8A8A8]',
+      true: 'bg-disabled-bg text-disabled-font',
     },
     background: {
       white: 'bg-white',
@@ -43,19 +43,19 @@ type CommonVariantProps = VariantProps<typeof inputVariants>
 type InputType = 'text' | 'password' | 'email'
 
 // 基本的なInputProps（React 19対応 - refを含む）
-type Props = Omit<ComponentProps<'input'>, 'type'> & {
+type Props = Omit<ComponentPropsWithRef<'input'>, 'type'> & {
   type?: InputType
   dataTestId?: string
 } & CommonVariantProps
 
-export function Input({
+export const Input = ({
   error,
   disabled = false,
   type = 'text',
   background,
   dataTestId,
   ...props
-}: Props) {
+}: Props) => {
   const className = inputVariants({ error: !!error, disabled, background })
   return (
     <input
@@ -74,10 +74,17 @@ type InputWithRHFProps<T extends FieldValues> = {
   register: UseFormRegister<T>
 } & Omit<Props, 'name' | 'onChange' | 'onBlur' | 'ref'>
 
-export function InputWithRHF<T extends FieldValues>({
+export const InputWithRHF = <T extends FieldValues>({
   name,
   register,
   ...props
-}: InputWithRHFProps<T>) {
+}: InputWithRHFProps<T>) => {
   return <Input {...props} {...register(name)} />
+}
+
+// 型推論を活用したヘルパー関数
+export const createTypedInput = <T extends FieldValues>() => {
+  return function TypedInput(props: InputWithRHFProps<T>) {
+    return <InputWithRHF<T> {...props} />
+  }
 }

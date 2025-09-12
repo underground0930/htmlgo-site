@@ -14,13 +14,8 @@ export default function Page() {
     <main className='mx-5 max-w-[800px] md:mx-auto'>
       <Title title='About' text='このサイトや主について' />
       <div className='mb-10 pb-8'>
-        <div className=''>
-          <Image
-            className='mx-auto mb-10 rounded-full'
-            src='/img/about/profile.jpg'
-            width={210}
-            height={210}
-          />
+        <div className='mb-10 flex justify-center'>
+          <Image circle src='/img/about/profile.jpg' width={210} height={210} />
         </div>
         <div className='mb-11'>
           <AboutSnsBox />

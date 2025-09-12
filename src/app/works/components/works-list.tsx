@@ -22,27 +22,18 @@ export const WorksList = ({ works = [] }: Props) => {
           const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE
           return (
             <li key={work.id} className='border-border mb-5 border md:mb-0'>
-              <Link className='block' href={`/works/${work.slug}`} prefetch={false}>
+              <Link className='block h-full' href={`/works/${work.slug}`} prefetch={false}>
                 <dl>
                   <dt className='border-border relative mb-2.5 aspect-video border-b'>
-                    <Image
-                      className='object-cover'
-                      src={thumbnail}
-                      priority={i < 6}
-                      sizes='(max-width: 768px) 100vw, 33vw'
-                    />
+                    <Image cover src={thumbnail} priority={i < 6} />
                   </dt>
                   <dd className='px-4 pb-4'>
                     {work.participationAt ? (
-                      <time className='mb-2 block text-xs'>
-                        参加期間:{work.participationAt}
-                      </time>
+                      <time className='mb-2 block text-xs'>参加期間:{work.participationAt}</time>
                     ) : (
                       <>
                         {work.date && (
-                          <time className='block text-xs'>
-                            公開日:{conversionDate(work.date)}
-                          </time>
+                          <time className='block text-xs'>公開日:{conversionDate(work.date)}</time>
                         )}
                       </>
                     )}

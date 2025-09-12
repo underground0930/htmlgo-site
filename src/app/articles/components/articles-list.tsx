@@ -19,12 +19,7 @@ export const ArticlesList = ({ articles }: Props) => {
             <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>
                 <dt className='border-border bg-main relative h-[140px] border-b'>
-                  <Image
-                    className='object-cover'
-                    src={article.img}
-                    priority={i < 8 ? true : false}
-                    sizes='(max-width: 768px) 100vw, 33vw'
-                  />
+                  <Image cover src={article.img} priority={i < 8} />
                 </dt>
                 <dd className='p-3'>
                   <time className='mb-1 block text-xs'>{article.published}</time>
