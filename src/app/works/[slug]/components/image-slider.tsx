@@ -14,7 +14,7 @@ type Props = {
   sliders: WorksSlider[]
 }
 
-const WorksSliderComponent = ({ sliders }: Props) => {
+export const ImageSlider = ({ sliders }: Props) => {
   const [index, setIndex] = useState(1)
   const [bothEnds, setBothEnds] = useState({
     first: true,
@@ -140,5 +140,3 @@ const WorksSliderComponent = ({ sliders }: Props) => {
     </>
   )
 }
-
-export default WorksSliderComponent
