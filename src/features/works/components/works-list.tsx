@@ -12,7 +12,8 @@ import { Image } from '@/components/utils/image'
 import { conversionDate } from '@/utils/conversion-date'
 import type { WorkIndex } from '../types'
 
-const NO_IMAGE = '/img/works/no-image.png'
+/** デフォルト画像パス */
+export const NO_IMAGE = '/img/works/no-image.png'
 
 type Props = {
   works: WorkIndex[]
