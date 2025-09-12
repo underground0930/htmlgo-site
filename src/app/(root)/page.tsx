@@ -30,7 +30,7 @@ export default async function Page() {
         <Title title='Works' text='最新の実績や、自主制作' />
         <WorksList works={works} />
         <div className='text-center'>
-          <Button component='link' href='/works/'>
+          <Button component='link' href='/works'>
             More Works
           </Button>
         </div>
@@ -40,7 +40,7 @@ export default async function Page() {
         <Title title='Articles' text='最新の記事' />
         <ArticlesList articles={articles} />
         <div className='text-center'>
-          <Button component='link' href='/articles/'>
+          <Button component='link' href='/articles'>
             More Articles
           </Button>
         </div>
