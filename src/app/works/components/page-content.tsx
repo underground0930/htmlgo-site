@@ -8,9 +8,8 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { Pager } from '@/components/ui/pager'
 
-import { WorksList } from './works-list'
-
-import { WorkIndex } from '@/types/microcms'
+import { WorksList } from '@/features/works/components/works-list'
+import type { WorkIndex } from '@/features/works/types'
 
 type Props = {
   works: WorkIndex[]
@@ -18,7 +17,7 @@ type Props = {
   pages: number
 }
 
-export const PageChild = ({ works, page, pages }: Props) => {
+export const PageContent = ({ works, page, pages }: Props) => {
   return (
     <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />

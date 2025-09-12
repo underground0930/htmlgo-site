@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 
-import { ContactBody } from './components/contact-body'
+import { PageContent } from './components/page-content'
 
 import { nextMetaData } from '@/libs/next-metadata'
 
 const description = 'お仕事のお問い合わせはこちらから'
 
 export default function Page() {
-  return <ContactBody />
+  return <PageContent />
 }
 
 export const metadata: Metadata = {

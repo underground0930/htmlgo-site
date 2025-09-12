@@ -1,12 +1,12 @@
 import { Metadata } from 'next'
 
 import { nextMetaData } from '@/libs/next-metadata'
-import { PageChild } from './components/page-child'
+import { PageContent } from './components/page-content'
 
 const description = 'このサイトについて'
 
 export default function Page() {
-  return <PageChild />
+  return <PageContent />
 }
 
 export const metadata: Metadata = {

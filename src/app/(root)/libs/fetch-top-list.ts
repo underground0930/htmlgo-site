@@ -1,27 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// top
-////////////////////////////////////////////////////////////////////////////////////////////////////
-import { MicroCMSListResponse } from 'microcms-js-sdk'
+/**
+ * トップページデータ取得
+ * 最新の記事と作品を取得します
+ */
 
-import { microcmsClient } from '@/libs/microcms-client'
-import { WorkIndex } from '@/types/microcms'
-import { FeedObj } from '@/types/feed'
+import { fetchLatestArticles } from '@/features/articles/api/fetch-articles'
+import { fetchLatestWorks } from '@/features/works/api/fetch-works'
 
 export async function fetchTopList() {
-  const articles = (
-    (await import('../../../../public/feed.json')) as { default: FeedObj[] }
-  ).default.slice(0, 4)
-
-  const works = await microcmsClient
-    .get<MicroCMSListResponse<WorkIndex>>({
-      endpoint: 'works',
-      queries: {
-        limit: 4,
-        fields: 'id,title,slug,date,participationAt,publishedAt2,category,technology,slider,url',
-      },
-    })
-    .then((result) => result.contents)
-    .catch(() => [] as WorkIndex[])
+  const [articles, works] = await Promise.all([fetchLatestArticles(4), fetchLatestWorks(4)])
 
   return {
     works,

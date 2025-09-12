@@ -1,13 +1,17 @@
+/**
+ * 作品一覧表示コンポーネント
+ * MicroCMSから取得した作品データを表示します
+ */
+
 'use client'
 
 import Link from 'next/link'
 
 import { CategoryIcon } from '@/components/ui/category-icon'
 import { Image } from '@/components/utils/image'
-
 import { conversionDate } from '@/utils/conversion-date'
-import { WorkIndex } from '@/types/microcms'
-import { NO_IMAGE } from '../constants/works'
+import type { WorkIndex } from '../types'
+import { NO_IMAGE } from '../constants'
 
 type Props = {
   works: WorkIndex[]

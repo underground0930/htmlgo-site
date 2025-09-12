@@ -1,25 +1,4 @@
-export const SnsList = () => {
-  return (
-    <ul className='flex flex-wrap justify-center gap-3'>
-      {snsList.map((v, i) => {
-        return (
-          <li key={i}>
-            <a
-              className='hover:text-link-active px-2 text-xl font-bold'
-              rel={v.rel}
-              href={v.href}
-              target={v.target}
-            >
-              {v.label}
-            </a>
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
-
-export const snsList = [
+const snsList = [
   {
     href: 'https://github.com/underground0930',
     target: '_blank',
@@ -45,3 +24,24 @@ export const snsList = [
     label: 'Qiita',
   },
 ]
+
+export const SnsList = () => {
+  return (
+    <ul className='flex flex-wrap justify-center gap-3'>
+      {snsList.map((v, i) => {
+        return (
+          <li key={i}>
+            <a
+              className='hover:text-link-active px-2 text-xl font-bold'
+              rel={v.rel}
+              href={v.href}
+              target={v.target}
+            >
+              {v.label}
+            </a>
+          </li>
+        )
+      })}
+    </ul>
+  )
+}

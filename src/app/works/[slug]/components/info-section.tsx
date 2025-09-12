@@ -5,7 +5,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export const WorksDetailInfo = ({ title, children }: Props) => {
+export const InfoSection = ({ title, children }: Props) => {
   return (
     <li className='mb-4 last-of-type:mb-0'>
       <dl className='block border border-[#e5e5e5]'>

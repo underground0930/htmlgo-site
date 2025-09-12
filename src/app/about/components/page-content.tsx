@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { SnsList } from '../components/sns-list'
 
-export const PageChild = () => {
+export const PageContent = () => {
   return (
     <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='About' text='このサイトや主について' />

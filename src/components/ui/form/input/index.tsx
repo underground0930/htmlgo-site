@@ -54,12 +54,15 @@ export const Input = ({
   type = 'text',
   background,
   dataTestId,
+  name,
+  id,
   ...props
 }: Props) => {
   const className = inputVariants({ error: !!error, disabled, background })
   return (
     <input
       {...props}
+      id={`htmlFor-${id ?? name}`}
       data-testid={dataTestId}
       type={type}
       disabled={disabled}

@@ -5,8 +5,8 @@ import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 
 import { Image } from '@/components/utils/image'
 
-import { WorksSlider } from '@/types/microcms'
-import { NO_IMAGE } from '../../constants/works'
+import type { WorksSlider } from '@/features/works/types'
+import { NO_IMAGE } from '@/features/works/constants'
 
 type NewSlider = WorksSlider & { loading: boolean }
 
@@ -14,7 +14,7 @@ type Props = {
   sliders: WorksSlider[]
 }
 
-const WorksSliderComponent = ({ sliders }: Props) => {
+export const ImageSlider = ({ sliders }: Props) => {
   const [index, setIndex] = useState(1)
   const [bothEnds, setBothEnds] = useState({
     first: true,
@@ -140,5 +140,3 @@ const WorksSliderComponent = ({ sliders }: Props) => {
     </>
   )
 }
-
-export default WorksSliderComponent

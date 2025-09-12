@@ -1,7 +1,11 @@
+/**
+ * 記事一覧表示コンポーネント
+ * 外部フィード（Qiita、Zenn）から取得した記事を表示します
+ */
+
 import { CategoryIcon } from '@/components/ui/category-icon'
 import { Image } from '@/components/utils/image'
-
-import { FeedObj } from '@/types/feed'
+import type { FeedObj } from '../types'
 
 type Props = {
   articles: FeedObj[]

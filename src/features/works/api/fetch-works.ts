@@ -1,12 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// works List
-////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * 作品データ取得API
+ * MicroCMSから作品データを取得し、ページネーション処理を行います
+ */
+
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 
 import { microcmsClient } from '@/libs/microcms-client'
-import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/constants/microcms'
 
-import type { WorkIndex, WorksCategory } from '@/types/microcms'
+import type { WorkIndex, WorksCategory } from '../types'
 
 /**
  * Works一覧データを取得
@@ -15,6 +16,8 @@ import type { WorkIndex, WorksCategory } from '@/types/microcms'
  * @returns Works一覧とカテゴリ、技術情報
  */
 export async function fetchWorksIndex({ params }: { params?: { page?: string } } = {}) {
+  const WORKS_PER_PAGE = 12
+  const CATEGORY_RIMIT = 20
   const page = params?.page ? Number(params.page) : 1
   const offset = (page - 1) * WORKS_PER_PAGE
 
@@ -24,8 +27,7 @@ export async function fetchWorksIndex({ params }: { params?: { page?: string } }
       queries: {
         limit: WORKS_PER_PAGE,
         offset,
-        fields:
-          'id,title,slug,date,publishedAt2,participationAt,category,technology,slider',
+        fields: 'id,title,slug,date,publishedAt2,participationAt,category,technology,slider',
       },
     }),
     microcmsClient.get<MicroCMSListResponse<WorksCategory>>({
@@ -43,9 +45,9 @@ export async function fetchWorksIndex({ params }: { params?: { page?: string } }
       }
       return { contents: [], totalCount: 0 }
     })
-    
+
     const worksResult = resultsVal[0] as MicroCMSListResponse<WorkIndex>
-    
+
     return {
       works: worksResult.contents,
       totalCount: worksResult.totalCount,
@@ -57,4 +59,21 @@ export async function fetchWorksIndex({ params }: { params?: { page?: string } }
   })
 
   return result
+}
+
+/**
+ * トップページ用の最新作品を取得
+ * @param limit 取得件数（デフォルト: 4）
+ * @returns 最新作品一覧
+ */
+export async function fetchLatestWorks(limit = 4): Promise<WorkIndex[]> {
+  const result = await microcmsClient.get<MicroCMSListResponse<WorkIndex>>({
+    endpoint: 'works',
+    queries: {
+      limit,
+      fields: 'id,title,slug,date,publishedAt2,participationAt,category,technology,slider',
+    },
+  })
+
+  return result.contents
 }

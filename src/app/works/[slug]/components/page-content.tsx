@@ -1,6 +1,5 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useMemo } from 'react'
 
@@ -8,14 +7,11 @@ import { Title } from '@/components/ui/title'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/utils/icon'
 
-import { WorksDetailInfo } from './works-detail-info'
+import { InfoSection } from './info-section'
+import { ImageSlider } from './image-slider'
 
-import { WorkDetail } from '@/types/microcms'
+import type { WorkDetail } from '@/features/works/types'
 import { conversionDate } from '@/utils/conversion-date'
-
-const WorksSlider = dynamic(() => import('./works-slider'), {
-  ssr: false,
-})
 
 type Props = {
   post: WorkDetail
@@ -28,7 +24,7 @@ const shareTwitterUrl = (slug: string) =>
 const shareFacebookUrl = (slug: string) =>
   `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
 
-export const WorksDetailBody = ({ post, prev, next }: Props) => {
+export const PageContent = ({ post, prev, next }: Props) => {
   const sliderList = useMemo(() => {
     return post?.slider ? post?.slider?.filter((item) => item?.img?.url) : []
   }, [post.slider])
@@ -39,7 +35,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
         <Title title={post.title} text='WORKS NAME' />
         <article>
           <div className='relative mb-10'>
-            {post?.slider && <WorksSlider sliders={sliderList} />}
+            {post?.slider && <ImageSlider sliders={sliderList} />}
           </div>
           {post.body && (
             <div
@@ -53,31 +49,31 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
             <div>
               <ul>
                 {post?.participationAt ? (
-                  <WorksDetailInfo title='参加期間'>
+                  <InfoSection title='参加期間'>
                     <time dateTime={conversionDate(post.participationAt)}>
                       {post.participationAt}
                     </time>
-                  </WorksDetailInfo>
+                  </InfoSection>
                 ) : (
                   <>
                     {post?.date && (
-                      <WorksDetailInfo title='公開日'>
+                      <InfoSection title='公開日'>
                         <time dateTime={conversionDate(post.date)}>
                           {conversionDate(post.date)}
                         </time>
-                      </WorksDetailInfo>
+                      </InfoSection>
                     )}
                   </>
                 )}
                 {post?.publishedAt2 && (
-                  <WorksDetailInfo title='改修日'>
+                  <InfoSection title='改修日'>
                     <time dateTime={conversionDate(post.date)}>
                       {conversionDate(post.publishedAt2)}
                     </time>
-                  </WorksDetailInfo>
+                  </InfoSection>
                 )}
                 {post?.category?.length > 0 && (
-                  <WorksDetailInfo title='カテゴリー'>
+                  <InfoSection title='カテゴリー'>
                     {post.category.map((v) => (
                       <span
                         className="relative inline-block pr-4 after:absolute after:top-0 after:right-[5px] after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
@@ -86,10 +82,10 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
                         {v.category_label}
                       </span>
                     ))}
-                  </WorksDetailInfo>
+                  </InfoSection>
                 )}
                 {post?.technology?.length > 0 && (
-                  <WorksDetailInfo title='テクノロジー'>
+                  <InfoSection title='テクノロジー'>
                     {post.technology.map((v) => (
                       <span
                         className="relative inline-block pr-4 after:absolute after:top-0 after:right-1.25 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
@@ -98,13 +94,13 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
                         {v.technology_label}
                       </span>
                     ))}
-                  </WorksDetailInfo>
+                  </InfoSection>
                 )}
                 {post?.production_period && (
-                  <WorksDetailInfo title='制作期間'>{post.production_period}</WorksDetailInfo>
+                  <InfoSection title='制作期間'>{post.production_period}</InfoSection>
                 )}
                 {(post?.url || post?.url2) && (
-                  <WorksDetailInfo title='URL'>
+                  <InfoSection title='URL'>
                     {post?.url && (
                       <a
                         className='mb-4 block break-all underline last-of-type:mb-0'
@@ -125,10 +121,10 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
                         {post.url2}
                       </a>
                     )}
-                  </WorksDetailInfo>
+                  </InfoSection>
                 )}
                 {post?.credit?.length > 0 && (
-                  <WorksDetailInfo title='クレジット'>
+                  <InfoSection title='クレジット'>
                     <ul>
                       {post.credit.map((v) => (
                         <li key={v.value} className='mb-5 last-of-type:mb-0'>
@@ -150,7 +146,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
                         </li>
                       ))}
                     </ul>
-                  </WorksDetailInfo>
+                  </InfoSection>
                 )}
               </ul>
             </div>

@@ -4,25 +4,24 @@
  */
 
 import { Metadata } from 'next'
-import { PageChild } from '../../components/page-child'
+import { PageContent } from '../../components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
-import { fetchArticles } from '../../libs/fetch-articles'
+import { fetchArticles } from '@/features/articles/api/fetch-articles'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
-export default async function Page({ params }: { params: Promise<{ page: string }> }) {
-  const resolvedParams = await params
-  const result = await fetchArticles({ params: { page: resolvedParams.page } })
-  return <PageChild {...result} />
+type Props = {
+  params: Promise<{ page: string }>
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ page: string }>
-}): Promise<Metadata> {
-  const resolvedParams = await params
-  const page = Number(resolvedParams.page)
+export default async function Page(props: Props) {
+  const params = await props.params
+  const result = await fetchArticles({ params: { page: params.page } })
+  return <PageContent {...result} />
+}
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params
   return {
     ...nextMetaData({
       meta: {
@@ -30,9 +29,9 @@ export async function generateMetadata({
           type: 'article',
         },
       },
-      title: `ARTICLES - Page ${page}`,
+      title: `ARTICLES - Page ${params.page}`,
       description,
-      url: `/articles/page/${page}/`,
+      url: `/articles/page/${params.page}`,
       images: '/img/ogp-new.png',
     }),
   }

@@ -3,12 +3,12 @@ import { Title } from '@/components/ui/title'
 
 import { ServiceList } from '../components/service-list'
 
-import { ArticlesList } from '../../articles/components/articles-list'
-import { WorksList } from '../../works/components/works-list'
-import { WorkIndex } from '@/types/microcms'
-import { FeedObj } from '@/types/feed'
+import { ArticlesList } from '@/features/articles/components/articles-list'
+import type { FeedObj } from '@/features/articles/types'
+import { WorksList } from '@/features/works/components/works-list'
+import type { WorkIndex } from '@/features/works/types'
 
-export const PageChild = ({ works, articles }: { works: WorkIndex[]; articles: FeedObj[] }) => {
+export const PageContent = ({ works, articles }: { works: WorkIndex[]; articles: FeedObj[] }) => {
   return (
     <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       {/* services */}
