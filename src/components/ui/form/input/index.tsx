@@ -19,7 +19,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 // スタイル定義
 const inputVariants = tv({
-  base: 'border-border block h-[42px] w-full rounded-[4px] border px-2 text-[14px] outline-[#EAC7C8] focus:bg-[#FBF6F5]',
+  base: 'border-border block h-[42px] w-full rounded-[4px] border px-2 text-[14px]',
   variants: {
     error: {
       true: 'border-2 border-[#DA3333] bg-[#FFEFE9] outline-[#DA3333] focus:bg-[#FFEFE9]',
