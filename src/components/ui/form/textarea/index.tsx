@@ -3,7 +3,7 @@ import { type FieldValues, type UseFormRegister, type Path } from 'react-hook-fo
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const textareaVariants = tv({
-  base: 'border-border block w-full resize-none rounded-[4px] border p-2 text-base outline-[#EAC7C8] focus:bg-[#FBF6F5]',
+  base: 'border-border block w-full resize-none rounded-[4px] border p-2 text-base',
   variants: {
     error: {
       true: 'border-2 border-[#DA3333] bg-[#FFEFE9] outline-[#DA3333] focus:bg-[#FFEFE9]',
@@ -24,7 +24,7 @@ const textareaVariants = tv({
 type CommonVariantProps = VariantProps<typeof textareaVariants>
 
 type Props = ComponentProps<'textarea'> & {
-  error?: string
+  error?: boolean
   dataTestId?: string
 } & CommonVariantProps
 
@@ -40,7 +40,7 @@ type InputWithRHFProps<T extends FieldValues> = {
   register: UseFormRegister<T>
 } & Omit<Props, 'name' | 'onChange' | 'onBlur' | 'ref'>
 
-export function InputWithRHF<T extends FieldValues>({
+export function TextareaWithRHF<T extends FieldValues>({
   name,
   register,
   ...props

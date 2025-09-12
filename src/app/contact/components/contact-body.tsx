@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -9,12 +9,13 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
 import { InputWithRHF } from '@/components/ui/form/input'
+import { TextareaWithRHF } from '@/components/ui/form/textarea'
 import { Label } from '@/components/ui/form/label'
 import { ErrorText } from '@/components/ui/form/error-text'
 
 import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
-import { errorText, inputElements } from '../constants/contact'
+import { errorText } from '../constants/contact'
 
 type FormDataType = FormBodyData & FieldValues
 
@@ -133,7 +134,6 @@ export const ContactBody = () => {
                 />
                 <ErrorText error={getError('username')} />
               </div>
-
               {/* 会社名 */}
               <div>
                 <Label htmlFor='company'>会社名</Label>
@@ -168,12 +168,13 @@ export const ContactBody = () => {
                 <Label htmlFor='detail' required>
                   お問い合わせ内容
                 </Label>
-                <textarea
+                <TextareaWithRHF<FormDataType>
                   id='detail'
-                  rows={15}
-                  className='border-border block w-full resize-none rounded-[4px] border p-2 text-base outline-[#EAC7C8] focus:bg-[#FBF6F5]'
+                  name='detail'
+                  register={register}
+                  error={!!getError('detail')}
+                  rows={10}
                   placeholder='お問い合わせ内容を詳しくお聞かせください'
-                  {...register('detail')}
                 />
                 <ErrorText error={getError('detail')} />
               </div>
