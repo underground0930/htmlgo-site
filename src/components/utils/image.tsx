@@ -1,5 +1,4 @@
 'use client'
-import DefaultNextImage, { type ImageProps } from 'next/image'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const imageVariants = tv({
@@ -9,7 +8,7 @@ const imageVariants = tv({
       true: 'rounded-full',
     },
     cover: {
-      true: 'object-cover',
+      true: 'w-full h-full object-cover',
     },
   },
   defaultVariants: {
@@ -23,26 +22,9 @@ type CommonVariantProps = VariantProps<typeof imageVariants>
 type Props = {
   alt?: string
 } & CommonVariantProps &
-  Omit<ImageProps, 'className' | 'alt'>
+  Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'className' | 'alt'>
 
-export const Image = ({
-  circle = false,
-  cover = false,
-  fill = true,
-  alt = '',
-  width,
-  height,
-  ...props
-}: Props) => {
+export const Image = ({ circle = false, cover = false, alt = '', ...props }: Props) => {
   const className = imageVariants({ circle, cover })
-  return (
-    <DefaultNextImage
-      {...props}
-      className={className}
-      alt={alt}
-      fill={width && height ? false : fill}
-      width={width}
-      height={height}
-    />
-  )
+  return <img {...props} className={className} alt={alt} />
 }

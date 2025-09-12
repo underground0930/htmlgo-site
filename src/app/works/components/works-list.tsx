@@ -17,17 +17,17 @@ export const WorksList = ({ works = [] }: Props) => {
   return (
     <>
       <ul className='mb-5 md:mb-10 md:grid md:grid-cols-4 md:gap-3'>
-        {works.map((work, i) => {
+        {works.map((work) => {
           const thumb = work?.slider?.[0]?.img?.url
           const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE
           return (
             <li key={work.id} className='border-border mb-5 border md:mb-0'>
               <Link className='block h-full' href={`/works/${work.slug}`} prefetch={false}>
                 <dl>
-                  <dt className='border-border relative mb-2.5 aspect-video border-b'>
-                    <Image cover src={thumbnail} priority={i < 6} />
+                  <dt className='border-border relative aspect-video border-b'>
+                    <Image cover src={thumbnail} />
                   </dt>
-                  <dd className='px-4 pb-4'>
+                  <dd className='p-3'>
                     {work.participationAt ? (
                       <time className='mb-2 block text-xs'>参加期間:{work.participationAt}</time>
                     ) : (
