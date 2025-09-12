@@ -20,13 +20,13 @@ export const sendMail = async ({
   company,
   email,
   detail,
-  debug,
+  debug = false,
 }: {
   username: string
   company?: string
   email: string
   detail: string
-  debug: boolean
+  debug?: boolean
 }) => {
   const gmail = process.env.MAIL_ACCOUNT
   const pass = process.env.MAIL_PASSWORD

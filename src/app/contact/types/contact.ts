@@ -7,9 +7,8 @@ export type FormBodyData = {
   detail: string
 }
 
-export type PostFormBodyData = FormBodyData & {
+export type TokenData = {
   token: string
-  debug: boolean
 }
 
 const errorMessages = {
