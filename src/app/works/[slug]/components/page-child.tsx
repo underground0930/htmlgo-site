@@ -28,7 +28,7 @@ const shareTwitterUrl = (slug: string) =>
 const shareFacebookUrl = (slug: string) =>
   `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
 
-export const WorksDetailBody = ({ post, prev, next }: Props) => {
+export const PageChild = ({ post, prev, next }: Props) => {
   const sliderList = useMemo(() => {
     return post?.slider ? post?.slider?.filter((item) => item?.img?.url) : []
   }, [post.slider])
