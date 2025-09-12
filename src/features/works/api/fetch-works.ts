@@ -6,7 +6,6 @@
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 
 import { microcmsClient } from '@/libs/microcms-client'
-import { WORKS_PER_PAGE, CATEGORY_RIMIT } from '@/constants/microcms'
 
 import type { WorkIndex, WorksCategory } from '../types'
 
@@ -17,6 +16,8 @@ import type { WorkIndex, WorksCategory } from '../types'
  * @returns Works一覧とカテゴリ、技術情報
  */
 export async function fetchWorksIndex({ params }: { params?: { page?: string } } = {}) {
+  const WORKS_PER_PAGE = 12
+  const CATEGORY_RIMIT = 20
   const page = params?.page ? Number(params.page) : 1
   const offset = (page - 1) * WORKS_PER_PAGE
 
