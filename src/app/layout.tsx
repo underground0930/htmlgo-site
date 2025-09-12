@@ -33,26 +33,20 @@ export const metadata: Metadata = {
 }
 
 export default function Layout({ children }: { children: ReactNode }) {
-  console.log('Layout')
   return (
-    <>
-      <html lang='ja'>
-        <head>
-          <link
-            rel='stylesheet'
-            href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'
-          />
-        </head>
-        <body>
-          <Header />
-          <div className='min-h-[500px]'>
-            <div className=''>
-              <div>{children}</div>
-            </div>
+    <html lang='ja'>
+      <head>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css' />
+      </head>
+      <body>
+        <Header />
+        <div className='min-h-[500px]'>
+          <div className=''>
+            <div>{children}</div>
           </div>
-          <Footer />
-        </body>
-      </html>
-    </>
+        </div>
+        <Footer />
+      </body>
+    </html>
   )
 }

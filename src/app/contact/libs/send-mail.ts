@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-import { FormBodyData } from '../types/contact'
+import { FormBodyData } from '../schema'
 
 const setText = (args: FormBodyData): string => {
   const text = `
@@ -20,13 +20,13 @@ export const sendMail = async ({
   company,
   email,
   detail,
-  debug,
+  debug = false,
 }: {
   username: string
   company?: string
   email: string
   detail: string
-  debug: boolean
+  debug?: boolean
 }) => {
   const gmail = process.env.MAIL_ACCOUNT
   const pass = process.env.MAIL_PASSWORD

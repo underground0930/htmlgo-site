@@ -13,8 +13,7 @@ import { TextareaWithRHF } from '@/components/ui/form/textarea'
 import { Label } from '@/components/ui/form/label'
 import { ErrorText } from '@/components/ui/form/error-text'
 
-import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
-import { errorText } from '../constants/contact'
+import { FormBodyData, FormBodyDataSchema, ResultType } from '../schema'
 
 type FormDataType = FormBodyData & FieldValues
 
@@ -25,8 +24,8 @@ const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
 export const ContactBody = () => {
   const [token, setToken] = useState<string | null>(null)
   const parentRef = useRef<HTMLDivElement>(null)
-  const [error, setError] = useState<string>('')
   const [loading, setLoading] = useState(false)
+  const [commonError, setCommonError] = useState<string>('')
   const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
   const { recaptchaRef } = useRecaptchaV2({
     sitekey,
@@ -57,7 +56,7 @@ export const ContactBody = () => {
   const onSubmit: SubmitHandler<FormDataType> = async (data) => {
     if (!token) return
     setLoading(true)
-    setError('')
+    setCommonError('')
 
     parentRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -92,22 +91,22 @@ export const ContactBody = () => {
           setServerInvalidErrors(err)
           return
         }
-        setError(errorText[type])
+        setCommonError(data)
       })
-      .catch(() => setError(errorText['server']))
+      .catch(() => setCommonError('予期せぬエラーが発生しました。'))
       .finally(() => setLoading(false))
   }
 
   return (
     <>
       {loading && (
-        <div className='bg-opacity-50 fixed inset-0 z-10 m-auto flex items-center justify-center bg-black'>
+        <div className='fixed inset-0 z-10 m-auto flex items-center justify-center bg-white'>
           <LoadingSpinner />
         </div>
       )}
       <main className='mx-5 max-w-(--content-width) md:mx-auto' ref={parentRef}>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
-        {error && <div className='pb-8 font-bold text-[#f00]'>{error}</div>}
+        {commonError && <div className='text-error pb-8 font-bold'>{commonError}</div>}
         <div className='mb-10'>
           <form
             noValidate // ブラウザのバリデーションを無効化（ZodとReact Hook Formで制御）

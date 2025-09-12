@@ -1,4 +1,13 @@
-export const verifyRecaptcha = async (recaptchaValue: string): Promise<0 | 1 | 2> => {
+/**
+ * reCAPTCHAの検証を行う
+ * @param recaptchaValue - reCAPTCHAトークン（undefined/null可）
+ * @returns 検証結果: 'recapcha_valid' | 'recapcha_invalid' | 'recapcha_error'
+ */
+export const verifyRecaptcha = async (
+  recaptchaValue: string | undefined | null,
+): Promise<'recapcha_valid' | 'recapcha_invalid' | 'recapcha_error'> => {
+  // トークンが存在しない場合は即座に無効として返す
+  if (!recaptchaValue) return 'recapcha_invalid'
   return await fetch(
     `https://www.google.com/recaptcha/api/siteverify?secret=${
       process.env.RECAPTCHA_SECRET_KEY ?? ''
@@ -14,9 +23,12 @@ export const verifyRecaptcha = async (recaptchaValue: string): Promise<0 | 1 | 2
       throw new Error('response')
     })
     .then((result: { success: boolean }) => {
-      return result.success ? 1 : 2 // reCAPTCHA 検証成功 or 検証失敗
+      return result.success ? 'recapcha_valid' : 'recapcha_invalid' // reCAPTCHA 検証成功 or 検証失敗
     })
     .catch(
-      () => 0, // reCAPTCHA 検証中にエラーが発生
+      (e) => {
+        console.error(e)
+        return 'recapcha_error'
+      }, // reCAPTCHA 検証中にエラーが発生
     )
 }

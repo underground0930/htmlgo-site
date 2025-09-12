@@ -1,7 +1,10 @@
+import React from 'react'
+
 import { Title } from '@/components/ui/title'
 import { Button } from '@/components/ui/button'
 import { Pager } from '@/components/ui/pager'
 import { ArticlesList } from './articles-list'
+
 import { FeedObj } from '@/types/feed'
 
 type Props = {
@@ -10,7 +13,7 @@ type Props = {
   pages: number
 }
 
-export const ArticlesBody = ({ articles = [], page, pages }: Props) => {
+export const PageChild = ({ articles, page, pages }: Props) => {
   return (
     <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='Articles' text='技術系やそれ以外の記事' />

@@ -10,15 +10,15 @@ import { Pager } from '@/components/ui/pager'
 
 import { WorksList } from './works-list'
 
-import { fetchWorksIndex } from '../libs/fetch-works-index'
+import { WorkIndex } from '@/types/microcms'
 
 type Props = {
-  params?: { page: string }
+  works: WorkIndex[]
+  page: number
+  pages: number
 }
 
-export const WorksPageComponent = async ({ params }: Props) => {
-  const { works, page, pages } = await fetchWorksIndex({ params })
-
+export const PageChild = ({ works, page, pages }: Props) => {
   return (
     <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
