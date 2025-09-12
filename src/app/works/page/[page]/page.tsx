@@ -6,7 +6,7 @@
 import { Metadata } from 'next'
 import { PageContent } from '../../components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
-import { fetchWorksIndex } from '../../libs/fetch-works-index'
+import { fetchWorksIndex } from '@/features/works/api/fetch-works'
 
 const description = '最新の実績や、自主制作'
 

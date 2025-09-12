@@ -6,7 +6,7 @@
 import { Metadata } from 'next'
 import { PageContent } from './components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
-import { fetchArticles } from './libs/fetch-articles'
+import { fetchArticles } from '@/features/articles/api/fetch-articles'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
