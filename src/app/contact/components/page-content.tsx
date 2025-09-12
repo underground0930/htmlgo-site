@@ -1,10 +1,5 @@
 'use client'
 
-import { useCallback, useMemo, useRef, useState } from 'react'
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
-import { zodResolver } from '@hookform/resolvers/zod'
-
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
@@ -13,88 +8,19 @@ import { TextareaWithRHF } from '@/components/ui/form/textarea'
 import { Label } from '@/components/ui/form/label'
 import { ErrorText } from '@/components/ui/form/error-text'
 
-import { FormBodyData, FormBodyDataSchema, ResultType } from '../schema'
-
-type FormDataType = FormBodyData & FieldValues
-
-type ErrorType = { [key: string]: string }
-
-const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
+import { useContactForm } from '../hooks/use-contact-form'
+import { useRecaptcha } from '../hooks/use-recaptcha'
+import { useScrollToTop } from '../hooks/use-scroll-to-top'
+import type { FormBodyData } from '../schema'
 
 export const PageContent = () => {
-  const [token, setToken] = useState<string | null>(null)
-  const parentRef = useRef<HTMLDivElement>(null)
-  const [loading, setLoading] = useState(false)
-  const [commonError, setCommonError] = useState<string>('')
-  const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
-  const { recaptchaRef } = useRecaptchaV2({
-    sitekey,
-    callback: (token) => setToken(token),
-  })
+  const { register, handleSubmit, loading, commonError, getError, submitForm } = useContactForm()
+  const { token, recaptchaRef } = useRecaptcha()
+  const { parentRef, scrollToTop } = useScrollToTop()
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormDataType>({
-    resolver: zodResolver(FormBodyDataSchema),
-  })
-
-  const frontInvalidErrors = useMemo(() => {
-    const newErrors: ErrorType = {}
-    for (const key in errors) {
-      newErrors[key] = errors[key]?.message as string
-    }
-    return newErrors
-  }, [errors])
-
-  const getError = useCallback(
-    (key: string): string | undefined => frontInvalidErrors[key] || serverInvalidErrors[key],
-    [frontInvalidErrors, serverInvalidErrors],
-  )
-
-  const onSubmit: SubmitHandler<FormDataType> = async (data) => {
-    if (!token) return
-    setLoading(true)
-    setCommonError('')
-
-    parentRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
-    await fetch('/contact/api', {
-      method: 'post',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({
-        ...data,
-        token,
-      }),
-    })
-      .then((response) => {
-        if (response.ok || response.status === 304) {
-          return response.json()
-        }
-        throw Error('response')
-      })
-      .then((result: ResultType) => {
-        if (result.success) {
-          location.href = '/contact/thanks'
-          return
-        }
-        const { type, data } = result.error
-        if (type === 'invalid') {
-          const err: ErrorType = {}
-          for (let i = 0; i < data.length; i++) {
-            const pathKey = data[i].path[0]
-            if (typeof pathKey === 'string') {
-              err[pathKey] = data[i].message
-            }
-          }
-          setServerInvalidErrors(err)
-          return
-        }
-        setCommonError(data)
-      })
-      .catch(() => setCommonError('予期せぬエラーが発生しました。'))
-      .finally(() => setLoading(false))
+  const onSubmit = (data: FormBodyData) => {
+    scrollToTop()
+    void submitForm(data, token)
   }
 
   return (
@@ -113,7 +39,7 @@ export const PageContent = () => {
             inert={loading}
             onSubmit={(e) => {
               e.preventDefault()
-              void handleSubmit(onSubmit)()
+              void handleSubmit(onSubmit)(e)
             }}
           >
             <div className='mb-10 space-y-6'>
@@ -123,7 +49,6 @@ export const PageContent = () => {
                   お名前
                 </Label>
                 <InputWithRHF
-                  id='username'
                   name='username'
                   register={register}
                   error={!!getError('username')}
@@ -135,7 +60,6 @@ export const PageContent = () => {
               <div>
                 <Label htmlFor='company'>会社名</Label>
                 <InputWithRHF
-                  id='company'
                   name='company'
                   register={register}
                   error={!!getError('company')}
@@ -150,7 +74,6 @@ export const PageContent = () => {
                   メールアドレス
                 </Label>
                 <InputWithRHF
-                  id='email'
                   name='email'
                   type='email'
                   register={register}
@@ -166,7 +89,6 @@ export const PageContent = () => {
                   お問い合わせ内容
                 </Label>
                 <TextareaWithRHF
-                  id='detail'
                   name='detail'
                   register={register}
                   error={!!getError('detail')}

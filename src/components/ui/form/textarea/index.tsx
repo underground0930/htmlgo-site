@@ -28,9 +28,25 @@ type Props = ComponentPropsWithRef<'textarea'> & {
   dataTestId?: string
 } & CommonVariantProps
 
-export const Textarea = ({ error, disabled = false, background, dataTestId, ...props }: Props) => {
+export const Textarea = ({
+  error,
+  disabled = false,
+  background,
+  dataTestId,
+  name,
+  id,
+  ...props
+}: Props) => {
   const className = textareaVariants({ error: !!error, disabled, background })
-  return <textarea {...props} data-testid={dataTestId} className={className} />
+  return (
+    <textarea
+      {...props}
+      name={name}
+      id={`htmlFor-${id ?? name}`}
+      data-testid={dataTestId}
+      className={className}
+    />
+  )
 }
 
 // React Hook Form統合用の型定義（React 19対応）
