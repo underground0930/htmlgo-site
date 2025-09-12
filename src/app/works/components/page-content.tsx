@@ -8,9 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { Pager } from '@/components/ui/pager'
 
-import { WorksList } from './works-list'
-
-import { WorkIndex } from '@/types/microcms'
+import { WorksList, type WorkIndex } from '@/features/works'
 
 type Props = {
   works: WorkIndex[]

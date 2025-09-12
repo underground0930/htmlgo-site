@@ -10,7 +10,7 @@ import { Icon } from '@/components/utils/icon'
 
 import { WorksDetailInfo } from './works-detail-info'
 
-import { WorkDetail } from '@/types/microcms'
+import type { WorkDetail } from '@/features/works'
 import { conversionDate } from '@/utils/conversion-date'
 
 const WorksSlider = dynamic(() => import('./works-slider'), {

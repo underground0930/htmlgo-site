@@ -1,1 +1,1 @@
-export const ARTICLE_PER_PAGE = 12
+export { ARTICLE_PER_PAGE } from '@/features/articles/constants'

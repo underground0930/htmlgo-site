@@ -3,10 +3,8 @@ import { Title } from '@/components/ui/title'
 
 import { ServiceList } from '../components/service-list'
 
-import { ArticlesList } from '../../articles/components/articles-list'
-import { WorksList } from '../../works/components/works-list'
-import { WorkIndex } from '@/types/microcms'
-import { FeedObj } from '@/types/feed'
+import { ArticlesList, type FeedObj } from '@/features/articles'
+import { WorksList, type WorkIndex } from '@/features/works'
 
 export const PageContent = ({ works, articles }: { works: WorkIndex[]; articles: FeedObj[] }) => {
   return (
