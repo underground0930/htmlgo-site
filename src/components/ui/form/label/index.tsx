@@ -34,16 +34,16 @@ type Props = ComponentPropsWithRef<'label'> & {
   /** 必須項目かどうか */
   required?: boolean
   /** テスト用のdata-testid */
-  dataTestId?: string
+  testId?: string
 } & CommonVariantProps
 
-export const Label = ({ children, required, size, dataTestId, htmlFor, ...props }: Props) => {
+export const Label = ({ children, required, size, testId, htmlFor, ...props }: Props) => {
   const labelClassName = labelVariants({ size, required })
   return (
     <label
       {...props}
       htmlFor={`htmlFor-${htmlFor}`}
-      data-testid={dataTestId}
+      data-testid={testId}
       className={labelClassName}
     >
       {children}
