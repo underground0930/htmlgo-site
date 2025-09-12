@@ -45,7 +45,7 @@ type InputType = 'text' | 'password' | 'email'
 // 基本的なInputProps（React 19対応 - refを含む）
 type Props = Omit<ComponentPropsWithRef<'input'>, 'type'> & {
   type?: InputType
-  dataTestId?: string
+  testId?: string
 } & CommonVariantProps
 
 export const Input = ({
@@ -53,7 +53,7 @@ export const Input = ({
   disabled = false,
   type = 'text',
   background,
-  dataTestId,
+  testId,
   name,
   id,
   ...props
@@ -63,7 +63,7 @@ export const Input = ({
     <input
       {...props}
       id={`htmlFor-${id ?? name}`}
-      data-testid={dataTestId}
+      data-testid={testId}
       type={type}
       disabled={disabled}
       className={className}

@@ -28,21 +28,17 @@ type Props = ComponentPropsWithRef<'div'> & {
   /** エラーメッセージ（空の場合は何も表示されない） */
   error?: string
   /** テスト用のdata-testid */
-  dataTestId?: string
+  testId?: string
 } & CommonVariantProps
 
-export function ErrorText({ error, size, dataTestId, className, ...props }: Props) {
+export function ErrorText({ error, size, testId, ...props }: Props) {
   // エラーがない場合は何も表示しない
   if (!error) return null
 
-  const errorClassName = errorTextVariants({ size })
+  const className = errorTextVariants({ size })
 
   return (
-    <div
-      {...props}
-      data-testid={dataTestId}
-      className={className ? `${errorClassName} ${className}` : errorClassName}
-    >
+    <div {...props} data-testid={testId} className={className}>
       {error}
     </div>
   )

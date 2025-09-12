@@ -25,14 +25,14 @@ type CommonVariantProps = VariantProps<typeof textareaVariants>
 
 type Props = ComponentPropsWithRef<'textarea'> & {
   error?: boolean
-  dataTestId?: string
+  testId?: string
 } & CommonVariantProps
 
 export const Textarea = ({
   error,
   disabled = false,
   background,
-  dataTestId,
+  testId,
   name,
   id,
   ...props
@@ -43,7 +43,7 @@ export const Textarea = ({
       {...props}
       name={name}
       id={`htmlFor-${id ?? name}`}
-      data-testid={dataTestId}
+      data-testid={testId}
       className={className}
     />
   )
