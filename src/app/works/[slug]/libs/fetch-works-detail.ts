@@ -47,10 +47,7 @@ export const fetchWorksDetail = async ({ slug }: { slug: string }) => {
         .then((v) => (v.contents.length ? v.contents[0] : null)),
     ]).then((results) =>
       results.map((r) => {
-        if (r.status === 'fulfilled') {
-          return r.value
-        }
-        return null
+        return r.status === 'fulfilled' ? r.value : null
       }),
     )
   }

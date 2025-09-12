@@ -44,7 +44,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
           </div>
           {post.body && (
             <div
-              className='border-border mx-auto border-y px-2.5 py-5 text-base leading-[1.8] break-words md:mx-6 md:py-10 [&>a]:underline [&>li]:text-sm [&>li]:md:text-lg [&>p]:mb-6 [&>p]:text-sm [&>p]:md:text-lg'
+              className='border-border leading-default mx-auto border-y px-2.5 py-5 text-base break-words md:mx-6 md:py-10 [&>a]:underline [&>li]:text-sm [&>li]:md:text-lg [&>p]:mb-6 [&>p]:text-sm [&>p]:md:text-lg'
               dangerouslySetInnerHTML={{
                 __html: `${post.body}`,
               }}

@@ -23,6 +23,9 @@
   --color-disabled-font: #f8f8f8;
   --color-error: #da3333;
 
+  /* font */
+  --leading-default: 1.8;
+
   /* animation */
   @keyframes load8 {
     0% {

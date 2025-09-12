@@ -1,4 +1,4 @@
-export const AboutSnsBox = () => {
+export const SnsList = () => {
   return (
     <ul className='flex flex-wrap justify-center gap-3'>
       {snsList.map((v, i) => {
