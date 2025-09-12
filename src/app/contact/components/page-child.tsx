@@ -21,7 +21,7 @@ type ErrorType = { [key: string]: string }
 
 const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
 
-export const ContactBody = () => {
+export const PageChild = () => {
   const [token, setToken] = useState<string | null>(null)
   const parentRef = useRef<HTMLDivElement>(null)
   const [loading, setLoading] = useState(false)
