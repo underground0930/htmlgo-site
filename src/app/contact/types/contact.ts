@@ -14,20 +14,31 @@ export type PostFormBodyData = FormBodyData & {
 
 const errorMessages = {
   min: '必須項目です',
-  max: (max: number) => `最大${max}文字までにしてください`,
+  max: (max: number): [number, string] => [max, `最大${max}文字までにしてください`],
   email: 'メールアドレスの値が不正です',
 }
 
 export const FormBodyDataSchema = z.object({
-  username: z.string().trim().min(1, errorMessages.min).max(100, errorMessages.max(100)),
-  company: z.string().trim().max(150, errorMessages.max(150)).optional(),
-  email: z
+  username: z
     .string()
+    .trim()
+    .min(1, errorMessages.min)
+    .max(...errorMessages.max(100)),
+  company: z
+    .string()
+    .trim()
+    .max(...errorMessages.max(100))
+    .optional(),
+  email: z
     .email(errorMessages.email)
     .trim()
     .min(1, errorMessages.min)
-    .max(150, errorMessages.max(150)),
-  detail: z.string().trim().min(1, errorMessages.min).max(3000, errorMessages.max(3000)),
+    .max(...errorMessages.max(100)),
+  detail: z
+    .string()
+    .trim()
+    .min(1, errorMessages.min)
+    .max(...errorMessages.max(3000)),
 }) satisfies z.ZodType<FormBodyData>
 
 export type ResultType =

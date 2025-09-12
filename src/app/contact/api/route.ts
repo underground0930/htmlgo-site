@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   const requestBody = JSON.parse(requestBodyText) as PostFormBodyData
   const { username, email, company, detail, token, debug } = requestBody
 
-  // フォームの入力値のバリデート ////////////////////////////////////
+  // フォームの入力値のバリデート
   const validateResult = FormBodyDataSchema.safeParse({
     username,
     email,
@@ -27,11 +27,11 @@ export async function POST(request: Request) {
     })
   }
 
-  // recapchaのテスト ////////////////////////////////////
+  // recapchaのテスト
 
   const recaptchaResult = await verifyRecaptcha(token)
 
-  if (recaptchaResult === 0) {
+  if (recaptchaResult === 'error') {
     // 検証中にエラーが発生
     return NextResponse.json({
       success: false,
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
         data: null,
       },
     })
-  } else if (recaptchaResult === 2) {
+  } else if (recaptchaResult === 'invalid') {
     // botとして検出
     return NextResponse.json({
       success: false,
@@ -51,17 +51,21 @@ export async function POST(request: Request) {
     })
   }
 
-  // メール送信処理  ////////////////////////////////////
+  // メール送信処理
   const sendMailResult = await sendMail({ debug, ...validateResult.data })
 
-  const result = sendMailResult
-    ? { success: true, error: null }
-    : {
-        success: false,
-        error: {
-          type: 'mail_failed',
-          data: null,
-        },
-      }
-  return NextResponse.json(result)
+  if (sendMailResult) {
+    return NextResponse.json({
+      success: true,
+      error: null,
+    })
+  } else {
+    return NextResponse.json({
+      success: false,
+      error: {
+        type: 'mail_failed',
+        data: null,
+      },
+    })
+  }
 }
