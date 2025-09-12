@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 import { verifyRecaptcha } from '../libs/verify-recaptcha'
 import { sendMail } from '../libs/send-mail'
-import { FormBodyData, FormBodyDataSchema, TokenData } from '../types/contact'
+import { FormBodyData, FormBodyDataSchema, TokenData } from '../schema'
 
 type RequestBodyData = Partial<FormBodyData & TokenData>
 
@@ -32,21 +32,12 @@ export async function POST(request: Request) {
   // reCAPTCHA検証
   const recaptchaResult = await verifyRecaptcha(token)
 
-  if (recaptchaResult === 'error') {
-    // 検証中にエラーが発生
+  if (recaptchaResult !== 'recapcha_valid') {
+    // 検証失敗 or エラーが発生
     return NextResponse.json({
       success: false,
       error: {
-        type: 'recapcha_error',
-        data: null,
-      },
-    })
-  } else if (recaptchaResult === 'invalid') {
-    // botとして検出
-    return NextResponse.json({
-      success: false,
-      error: {
-        type: 'recapcha_failed',
+        type: recaptchaResult,
         data: null,
       },
     })
@@ -55,12 +46,7 @@ export async function POST(request: Request) {
   // メール送信処理
   const sendMailResult = await sendMail(validateResult.data)
 
-  if (sendMailResult) {
-    return NextResponse.json({
-      success: true,
-      error: null,
-    })
-  } else {
+  if (!sendMailResult) {
     return NextResponse.json({
       success: false,
       error: {
@@ -69,4 +55,10 @@ export async function POST(request: Request) {
       },
     })
   }
+
+  // メール送信成功
+  return NextResponse.json({
+    success: true,
+    error: null,
+  })
 }

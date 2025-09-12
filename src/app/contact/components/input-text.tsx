@@ -1,7 +1,7 @@
 import React from 'react'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-import { FormBodyData } from '../types/contact'
+import { FormBodyData } from '../schema'
 
 type Props = {
   name: string
@@ -12,21 +12,11 @@ type Props = {
   register: UseFormRegister<FormBodyData & FieldValues>
 }
 
-export const InputText = ({
-  name,
-  label,
-  textarea = false,
-  row,
-  getError,
-  register,
-}: Props) => {
+export const InputText = ({ name, label, textarea = false, row, getError, register }: Props) => {
   const error = getError(name)
   return (
     <>
-      <label
-        className='mb-2.5 block border-l-5 pl-2.5 text-base font-bold'
-        htmlFor={name}
-      >
+      <label className='mb-2.5 block border-l-5 pl-2.5 text-base font-bold' htmlFor={name}>
         {label}
       </label>
       {textarea ? (

@@ -13,7 +13,7 @@ import { TextareaWithRHF } from '@/components/ui/form/textarea'
 import { Label } from '@/components/ui/form/label'
 import { ErrorText } from '@/components/ui/form/error-text'
 
-import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
+import { FormBodyData, FormBodyDataSchema, ResultType } from '../schema'
 import { errorText } from '../constants/contact'
 
 type FormDataType = FormBodyData & FieldValues
