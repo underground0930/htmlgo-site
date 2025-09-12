@@ -5,23 +5,11 @@ import { VscGithub } from 'react-icons/vsc'
 import { SiNextdotjs, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si'
 import { FaReact } from 'react-icons/fa'
 import { RxHome } from 'react-icons/rx'
-import { FaWordpress } from 'react-icons/fa'
+import { FaWordpress, FaFacebookSquare } from 'react-icons/fa'
+import { FaSquareXTwitter } from 'react-icons/fa6'
+
 import { IconMicrocms } from './icon-microcms'
 import { IconRecapcha } from './icon-recapcha'
-
-/**
- * アイコンの色
- */
-// アイコンの色はこちらで管理する、直接色を指定するのは禁止
-export const colorVariants = {
-  white: '#fff',
-  red: '#ef4444',
-}
-
-/**
- * アイコンの色の型定義
- */
-export type ColorVariants = keyof typeof colorVariants
 
 /**
  * ローカルSVGアイコンのプロパティ型定義
@@ -30,19 +18,14 @@ export type IconProps = {
   className?: string
   size?: number
   alt?: string
-  color?: ColorVariants
+  color?: string
 }
 
 /**
  * アイコンの色を設定
  */
-const setColor = (color?: ColorVariants, defaultColor?: ColorVariants) => {
-  if (defaultColor) {
-    // 未入力の場合はデフォルトの色を設定したい場合に使用
-    return colorVariants[color ?? defaultColor]
-  }
-  // 未入力の場合はデフォルトの色を設定しない
-  return color ?? undefined
+const setColor = (color?: string, defaultColor?: string) => {
+  return color ? color : defaultColor ? defaultColor : undefined
 }
 
 /**
@@ -53,6 +36,12 @@ const setColor = (color?: ColorVariants, defaultColor?: ColorVariants) => {
 // ローカルのsvgアイコンはreactコンポーネントにする（色を変更出来るようにするため）
 
 export const Icon = {
+  facebook: ({ size = 24, color, ...props }: IconProps) => (
+    <FaFacebookSquare {...props} size={size} color={setColor(color, '#4267b2')} />
+  ),
+  twitter: ({ size = 24, color, ...props }: IconProps) => (
+    <FaSquareXTwitter {...props} size={size} color={setColor(color)} />
+  ),
   react: ({ size = 24, color, ...props }: IconProps) => (
     <FaReact {...props} size={size} color={setColor(color)} />
   ),

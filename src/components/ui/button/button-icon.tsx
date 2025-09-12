@@ -3,7 +3,7 @@
  * hover時の簡単なアイコン切り替えに対応
  */
 
-import { Icon, type IconName, type ColorVariants } from '@/components/utils/icon'
+import { Icon, type IconName } from '@/components/utils/icon'
 
 export const ButtonIcon = ({
   icon,
@@ -14,9 +14,9 @@ export const ButtonIcon = ({
 }: {
   icon: IconName
   iconSize?: number
-  iconColor?: ColorVariants
+  iconColor?: string
   hoverIcon?: IconName
-  hoverIconColor?: ColorVariants
+  hoverIconColor?: string
 }) => {
   // 通常時のアイコン（hover時に隠す）
   const IconComponent = Icon[icon]

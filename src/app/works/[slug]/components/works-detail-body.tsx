@@ -3,11 +3,11 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useMemo } from 'react'
-import { FaFacebookSquare } from 'react-icons/fa'
-import { FaSquareXTwitter } from 'react-icons/fa6'
 
 import { Title } from '@/components/ui/title'
 import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/utils/icon'
+
 import { WorksDetailInfo } from './works-detail-info'
 
 import { WorkDetail } from '@/types/microcms'
@@ -23,15 +23,14 @@ type Props = {
   next: { slug: string } | null
 }
 
-export const WorksDetailBody = ({ post, prev, next }: Props) => {
-  const shareTwitterUrl = (slug: string) =>
-    `https://x.com/share?url=https://htmlgo.site/works/${slug}`
-  const shareFacebookUrl = (slug: string) =>
-    `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
+const shareTwitterUrl = (slug: string) =>
+  `https://x.com/share?url=https://htmlgo.site/works/${slug}`
+const shareFacebookUrl = (slug: string) =>
+  `https://www.facebook.com/share.php?u=https://htmlgo.site/works/${slug}`
 
+export const WorksDetailBody = ({ post, prev, next }: Props) => {
   const sliderList = useMemo(() => {
-    if (!post?.slider) return []
-    return post?.slider?.filter((item) => item?.img?.url)
+    return post?.slider ? post?.slider?.filter((item) => item?.img?.url) : []
   }, [post.slider])
 
   return (
@@ -164,7 +163,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
                 target='_blank'
                 rel='noreferrer'
               >
-                <FaFacebookSquare className='h-full w-full' color='#4267b2' />
+                <Icon.facebook className='h-full w-full' />
               </a>
             </li>
             <li className='text-[0px]'>
@@ -174,7 +173,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
                 target='_blank'
                 rel='noreferrer'
               >
-                <FaSquareXTwitter className='h-full w-full' />
+                <Icon.twitter className='h-full w-full' />
               </a>
             </li>
           </ul>

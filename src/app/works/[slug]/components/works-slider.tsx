@@ -80,7 +80,7 @@ const WorksSliderComponent = ({ sliders }: Props) => {
         modules={[Pagination, Navigation, Virtual]}
         className='border-border w-full border'
         virtual
-        onSlideChange={() => sliderChangeHandle()}
+        onSlideChange={sliderChangeHandle}
         ref={swiperRef}
       >
         <div className='swiper-wrapper'>

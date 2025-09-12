@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 // components
 import { ButtonIcon } from './button-icon'
-import { type ColorVariants, type IconName } from '@/components/utils/icon'
+import { type IconName } from '@/components/utils/icon'
 import { ButtonLoadingSpinner } from './button-loading-spinner'
 
 export const buttonVariants = tv({
@@ -66,9 +66,9 @@ export const buttonVariants = tv({
 type CommonVariantProps = VariantProps<typeof buttonVariants> & {
   icon?: IconName
   iconSize?: number
-  iconColor?: ColorVariants
+  iconColor?: string
   hoverIcon?: IconName
-  hoverIconColor?: ColorVariants
+  hoverIconColor?: string
 }
 
 // button要素用プロパティ

@@ -20,7 +20,7 @@ export default async function Page() {
         <Title title='Services' text='事業内容' />
         <ServiceList />
         <div className='text-center'>
-          <Button component='link' href='/about/'>
+          <Button component='link' href='/about'>
             to About
           </Button>
         </div>

@@ -4,10 +4,12 @@
  */
 
 import React from 'react'
-import { WorksList } from './works-list'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { Pager } from '@/components/ui/pager'
+
+import { WorksList } from './works-list'
+
 import { fetchWorksIndex } from '../libs/fetch-works-index'
 
 type Props = {
