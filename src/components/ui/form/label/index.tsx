@@ -37,15 +37,11 @@ type Props = ComponentProps<'label'> & {
   dataTestId?: string
 } & CommonVariantProps
 
-export function Label({ children, required, size, dataTestId, className, ...props }: Props) {
+export function Label({ children, required, size, dataTestId, ...props }: Props) {
   const labelClassName = labelVariants({ size, required })
 
   return (
-    <label
-      {...props}
-      data-testid={dataTestId}
-      className={className ? `${labelClassName} ${className}` : labelClassName}
-    >
+    <label {...props} data-testid={dataTestId} className={labelClassName}>
       {children}
     </label>
   )
