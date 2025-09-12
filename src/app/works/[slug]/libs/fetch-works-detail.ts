@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 
-import type { WorkDetail } from '@/features/works'
+import type { WorkDetail } from '@/features/works/types'
 import { microcmsClient } from '@/libs/microcms-client'
 
 export const fetchWorksDetail = async ({ slug }: { slug: string }) => {

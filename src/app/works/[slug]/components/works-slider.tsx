@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 
 import { Image } from '@/components/utils/image'
 
-import type { WorksSlider } from '@/features/works'
+import type { WorksSlider } from '@/features/works/types'
 import { NO_IMAGE } from '../../constants/works'
 
 type NewSlider = WorksSlider & { loading: boolean }

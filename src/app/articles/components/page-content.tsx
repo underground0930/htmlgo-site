@@ -3,7 +3,8 @@ import React from 'react'
 import { Title } from '@/components/ui/title'
 import { Button } from '@/components/ui/button'
 import { Pager } from '@/components/ui/pager'
-import { ArticlesList, type FeedObj } from '@/features/articles'
+import { ArticlesList } from '@/features/articles/components/articles-list'
+import type { FeedObj } from '@/features/articles/types'
 
 type Props = {
   articles: FeedObj[]

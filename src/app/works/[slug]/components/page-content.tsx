@@ -10,7 +10,7 @@ import { Icon } from '@/components/utils/icon'
 
 import { WorksDetailInfo } from './works-detail-info'
 
-import type { WorkDetail } from '@/features/works'
+import type { WorkDetail } from '@/features/works/types'
 import { conversionDate } from '@/utils/conversion-date'
 
 const WorksSlider = dynamic(() => import('./works-slider'), {

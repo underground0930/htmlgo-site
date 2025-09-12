@@ -3,8 +3,10 @@ import { Title } from '@/components/ui/title'
 
 import { ServiceList } from '../components/service-list'
 
-import { ArticlesList, type FeedObj } from '@/features/articles'
-import { WorksList, type WorkIndex } from '@/features/works'
+import { ArticlesList } from '@/features/articles/components/articles-list'
+import type { FeedObj } from '@/features/articles/types'
+import { WorksList } from '@/features/works/components/works-list'
+import type { WorkIndex } from '@/features/works/types'
 
 export const PageContent = ({ works, articles }: { works: WorkIndex[]; articles: FeedObj[] }) => {
   return (

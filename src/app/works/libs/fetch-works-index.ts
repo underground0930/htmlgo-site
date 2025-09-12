@@ -3,4 +3,4 @@
  * featuresモジュールに委譲します
  */
 
-export { fetchWorksIndex } from '@/features/works'
+export { fetchWorksIndex } from '@/features/works/api/fetch-works'

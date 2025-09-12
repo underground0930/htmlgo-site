@@ -8,7 +8,8 @@ import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { Pager } from '@/components/ui/pager'
 
-import { WorksList, type WorkIndex } from '@/features/works'
+import { WorksList } from '@/features/works/components/works-list'
+import type { WorkIndex } from '@/features/works/types'
 
 type Props = {
   works: WorkIndex[]

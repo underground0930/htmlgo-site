@@ -3,4 +3,4 @@
  * featuresモジュールに委譲します
  */
 
-export { fetchArticles } from '@/features/articles'
+export { fetchArticles } from '@/features/articles/api/fetch-articles'
