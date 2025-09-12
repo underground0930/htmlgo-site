@@ -18,9 +18,7 @@ async function generateFeedJson() {
     }, [])
   })
 
-  feeds.sort((a, b) => {
-    return a.published < b.published ? 1 : -1
-  })
+  feeds.sort((a, b) => (a.published < b.published ? 1 : -1))
   feeds = feeds.map((feed) => {
     feed.published = feed.published.split('T')[0]
     return feed

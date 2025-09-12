@@ -14,13 +14,13 @@ const iconList: IconName[] = ['react', 'typescript', 'nextjs', 'wordpress']
 export const ServiceList = () => {
   return (
     <div>
-      <div className='mr-auto mb-4 ml-auto flex max-w-[680px] flex-wrap justify-center'>
+      <div className='m-auto mb-4 flex flex-wrap justify-center'>
         {iconList.map((iconName) => {
           const IconComponent = Icon[iconName]
           return <IconComponent className='m-3 h-auto w-12.5' key={iconName} />
         })}
       </div>
-      <div className='max-w-[400px mx-auto mb-5 w-full text-center'>
+      <div className='mb-5 text-center'>
         <dl className='p-4'>
           <dt className='mb-4 text-center font-bold'>
             モダンな環境でのweb開発

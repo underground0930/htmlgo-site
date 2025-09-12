@@ -1,12 +1,12 @@
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = 'お探しのページは見つかりませんでした'
 
 export const metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'article',
@@ -21,7 +21,7 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <main className='mx-5 max-w-[800px] md:mx-auto'>
+    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <section className='border-border mb-10 border-b pb-5 md:mb-20 md:pb-10'>
         <Title title='Not Found' text='お探しのページは見つかりませんでした' />
         <div className='mb-8 py-5 text-center'>

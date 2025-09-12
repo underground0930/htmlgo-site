@@ -16,33 +16,23 @@ type Props = {
 export const WorksList = ({ works = [] }: Props) => {
   return (
     <>
-      <ul className='mb-5 md:mb-10 md:grid md:grid-cols-3 md:gap-6'>
-        {works.map((work, i) => {
-          const thumb = work?.slider?.[0]?.img?.url
-          const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE
+      <ul className='mb-5 md:mb-10 md:grid md:grid-cols-4 md:gap-3'>
+        {works.map((work) => {
+          const thumbnail = work?.slider?.[0]?.img?.url ?? NO_IMAGE
           return (
             <li key={work.id} className='border-border mb-5 border md:mb-0'>
-              <Link className='block' href={`/works/${work.slug}`} prefetch={false}>
+              <Link className='block h-full' href={`/works/${work.slug}`} prefetch={false}>
                 <dl>
-                  <dt className='border-border relative mb-2.5 aspect-video border-b'>
-                    <Image
-                      className='object-cover'
-                      src={thumbnail}
-                      priority={i < 6}
-                      sizes='(max-width: 768px) 100vw, 33vw'
-                    />
+                  <dt className='border-border relative aspect-video border-b'>
+                    <Image cover src={thumbnail} />
                   </dt>
-                  <dd className='px-4 pb-4'>
+                  <dd className='p-3'>
                     {work.participationAt ? (
-                      <time className='mb-2 block text-xs'>
-                        参加期間:{work.participationAt}
-                      </time>
+                      <time className='mb-2 block text-xs'>参加期間:{work.participationAt}</time>
                     ) : (
                       <>
                         {work.date && (
-                          <time className='block text-xs'>
-                            公開日:{conversionDate(work.date)}
-                          </time>
+                          <time className='block text-xs'>公開日:{conversionDate(work.date)}</time>
                         )}
                       </>
                     )}

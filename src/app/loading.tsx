@@ -5,7 +5,7 @@ import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
 export default function Loading() {
   return (
-    <main className='mx-5 max-w-[800px] md:mx-auto'>
+    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <div className='mt-[200px] flex items-center justify-center'>
         <LoadingSpinner />
       </div>

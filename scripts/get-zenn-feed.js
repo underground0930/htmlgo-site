@@ -8,9 +8,7 @@ const getZennFeed = async function () {
   return await axios
     .get('https://zenn.dev/resistance_gowy/feed')
     //    .get('https://zenn.dev/resistance_gowy/feed?include_scraps=1&all=1') // スクラップも含める場合
-    .then((result) => {
-      return parser.parseStringPromise(result.data)
-    })
+    .then((result) => parser.parseStringPromise(result.data))
     .then((json) => {
       const posts = json.rss.channel[0].item
       return posts.map((post) => {

@@ -3,35 +3,30 @@ import { Metadata } from 'next'
 import { Image } from '@/components/utils/image'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
-import { AboutSnsBox } from './components/about-sns-box'
+import { SnsList } from './components/sns-list'
 
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = 'このサイトについて'
 
 export default function Page() {
   return (
-    <main className='mx-5 max-w-[800px] md:mx-auto'>
+    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='About' text='このサイトや主について' />
       <div className='mb-10 pb-8'>
-        <div className=''>
-          <Image
-            className='mx-auto mb-10 rounded-full'
-            src='/img/about/profile.jpg'
-            width={210}
-            height={210}
-          />
+        <div className='mb-10 flex justify-center'>
+          <Image circle src='/img/about/profile.jpg' width={210} height={210} />
         </div>
         <div className='mb-11'>
-          <AboutSnsBox />
+          <SnsList />
         </div>
         <div>
           <section>
-            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+            <h3 className='mt-8 mb-6 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
               プロフィール
             </h3>
-            <div className='text-sm'>
-              <p className='leading-[1.8]'>
+            <div className='leading-default text-sm'>
+              <p>
                 <a
                   href='https://x.com/resistance_gowy'
                   rel='noopener noreferrer'
@@ -42,38 +37,28 @@ export default function Page() {
                 </a>
                 (フロントエンドエンジニア)
               </p>
-              <p className='leading-[1.8]'>
-                東京都→埼玉県でフリーランスとして活動しています。
-              </p>
-              <p className='leading-[1.8]'>
-                最近は<strong>React</strong>、<strong>TypeScript</strong>、
-                <strong>Next.js</strong>
+              <p>東京都→埼玉県でフリーランスとして活動しています。</p>
+              <p>
+                最近は<strong>React</strong>、<strong>TypeScript</strong>、<strong>Next.js</strong>
                 のお仕事をやっています。
               </p>
-              <p className='leading-[1.8]'>
+              <p>
                 ギークというよりかは、周りと協調してプロジェクトを円滑に進めることが得意なタイプ。
               </p>
-              <p className='leading-[1.8]'>
-                お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。
-              </p>
-              <p className='leading-[1.8]'>
-                業務効率化のツールを作るのが最近の趣味です。
-              </p>
+              <p>お仕事をしていて、「とてもやりやすい」と言って頂くことが多いのが強みです。</p>
+              <p>業務効率化のツールを作るのが最近の趣味です。</p>
             </div>
           </section>
           <section>
-            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+            <h3 className='mt-8 mb-6 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
               経験した技術・ツール・サービス
             </h3>
-            <div className='text-sm'>
-              <p className='leading-[1.8]'>
-                React / TypeScript / Next.js / Tailwind CSS / WordPress / TanStack Query /
-                microCMS
-              </p>
+            <div className='leading-default text-sm'>
+              React / TypeScript / Next.js / Tailwind CSS / WordPress / TanStack Query / microCMS
             </div>
           </section>
           <section>
-            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+            <h3 className='mt-8 mb-6 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
               経歴
             </h3>
             <div className='text-sm'>
@@ -108,7 +93,7 @@ export default function Page() {
 }
 
 export const metadata: Metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'article',

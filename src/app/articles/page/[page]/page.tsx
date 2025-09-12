@@ -5,7 +5,7 @@
 
 import { Metadata } from 'next'
 import { ArticlesPageComponent } from '../../components/articles-page'
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
@@ -17,7 +17,7 @@ export async function generateMetadata({
   const resolvedParams = await params
   const page = Number(resolvedParams.page)
   return {
-    ...setMetaData({
+    ...nextMetaData({
       meta: {
         openGraph: {
           type: 'article',
@@ -31,11 +31,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function ArticlesPage({
-  params,
-}: {
-  params: Promise<{ page: string }>
-}) {
+export default async function ArticlesPage({ params }: { params: Promise<{ page: string }> }) {
   const resolvedParams = await params
   return <ArticlesPageComponent params={resolvedParams} />
 }

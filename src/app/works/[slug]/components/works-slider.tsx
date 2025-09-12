@@ -80,7 +80,7 @@ const WorksSliderComponent = ({ sliders }: Props) => {
         modules={[Pagination, Navigation, Virtual]}
         className='border-border w-full border'
         virtual
-        onSlideChange={() => sliderChangeHandle()}
+        onSlideChange={sliderChangeHandle}
         ref={swiperRef}
       >
         <div className='swiper-wrapper'>
@@ -97,9 +97,9 @@ const WorksSliderComponent = ({ sliders }: Props) => {
                   </div>
                 )}
                 <Image
-                  className='object-cover'
+                  cover
                   src={item.img.url}
-                  onLoadAction={() => {
+                  onLoad={() => {
                     setSliderList((prev) => {
                       return prev.map((s, j) => {
                         if (i === j) {

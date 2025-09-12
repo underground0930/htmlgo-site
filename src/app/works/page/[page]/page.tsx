@@ -5,7 +5,7 @@
 
 import { Metadata } from 'next'
 import { WorksPageComponent } from '../../components/works-page'
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = '最新の実績や、自主制作'
 
@@ -22,7 +22,7 @@ export async function generateMetadata({
   const resolvedParams = await params
   const page = Number(resolvedParams.page)
   return {
-    ...setMetaData({
+    ...nextMetaData({
       meta: {
         openGraph: {
           type: 'article',

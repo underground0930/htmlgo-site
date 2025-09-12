@@ -2,13 +2,15 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
+import { LoadingSpinner } from '@/components/ui/loading-spinner'
+
 import { fetchWorksPaths } from './libs/fetch-works-paths'
 import { fetchWorksDetail } from './libs/fetch-works-detail'
 
 import { WorksDetailBody } from './components/works-detail-body'
 
 import { removeHtml } from '@/utils/remove-html'
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 type Props = {
   params: Promise<{
@@ -29,7 +31,7 @@ export default async function Page(props: Props) {
     <Suspense
       fallback={
         <div className='relative flex h-10 w-full items-center justify-center'>
-          <div>Loading...</div>
+          <LoadingSpinner />
         </div>
       }
     >
@@ -49,8 +51,7 @@ export async function generateMetadata(props: {
   let meta = {}
   if (result.post) {
     const { title, body: description, slider } = result.post
-    const ogp =
-      slider?.length && slider[0]?.img?.url ? slider[0].img.url : '/img/ogp-new.png'
+    const ogp = slider?.length && slider[0]?.img?.url ? slider[0].img.url : '/img/ogp-new.png'
     const maxLength = 120
     const parsedDescription = removeHtml(description ?? '')
     const slicedDescription =
@@ -59,7 +60,7 @@ export async function generateMetadata(props: {
         : parsedDescription
 
     meta = {
-      ...setMetaData({
+      ...nextMetaData({
         meta: {
           openGraph: {
             type: 'article',

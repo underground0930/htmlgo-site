@@ -4,9 +4,7 @@ const dayjs = require('dayjs')
 const getNoteFeed = async function () {
   return axios
     .get('https://note.com/api/v2/creators/resistance_gowy/contents?kind=note')
-    .then((result) => {
-      return result.data.data.contents
-    })
+    .then((result) => result.data.data.contents)
     .then((result) => {
       return result.map((post) => {
         const { name, publishAt, key, eyecatch, hashtags } = post

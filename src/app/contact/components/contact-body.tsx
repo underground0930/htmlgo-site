@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRecaptchaV2 } from 'react-hook-recaptcha-v2'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -8,12 +8,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
+import { InputWithRHF } from '@/components/ui/form/input'
+import { TextareaWithRHF } from '@/components/ui/form/textarea'
+import { Label } from '@/components/ui/form/label'
+import { ErrorText } from '@/components/ui/form/error-text'
 
-import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
-import { errorText, inputElements } from '../constants/contact'
-
-import { InputText } from './input-text'
+import { errorText } from '../constants/contact'
 
 type FormDataType = FormBodyData & FieldValues
 
@@ -22,7 +23,6 @@ type ErrorType = { [key: string]: string }
 const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
 
 export const ContactBody = () => {
-  const { debug } = useDebugMode({ debug: false })
   const [token, setToken] = useState<string | null>(null)
   const parentRef = useRef<HTMLDivElement>(null)
   const [error, setError] = useState<string>('')
@@ -38,17 +38,8 @@ export const ContactBody = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormDataType>({
-    resolver: debug ? undefined : zodResolver(FormBodyDataSchema),
+    resolver: zodResolver(FormBodyDataSchema),
   })
-  useEffect(() => {
-    const { current } = parentRef
-    if (!current) return
-    if (loading) {
-      current.setAttribute('inert', '')
-    } else {
-      current.removeAttribute('inert')
-    }
-  }, [loading])
 
   const frontInvalidErrors = useMemo(() => {
     const newErrors: ErrorType = {}
@@ -75,7 +66,6 @@ export const ContactBody = () => {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         ...data,
-        ...(debug ? { debug: true } : {}),
         token,
       }),
     })
@@ -115,33 +105,78 @@ export const ContactBody = () => {
           <LoadingSpinner />
         </div>
       )}
-      <main className='mx-5 max-w-[800px] md:mx-auto' ref={parentRef}>
+      <main className='mx-5 max-w-(--content-width) md:mx-auto' ref={parentRef}>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
         {error && <div className='pb-8 font-bold text-[#f00]'>{error}</div>}
         <div className='mb-10'>
           <form
+            noValidate // ブラウザのバリデーションを無効化（ZodとReact Hook Formで制御）
+            inert={loading}
             onSubmit={(e) => {
               e.preventDefault()
               void handleSubmit(onSubmit)()
             }}
           >
-            <ul className='mb-10'>
-              {inputElements.map((elem, index) => {
-                const { name, textarea, row, label } = elem
-                return (
-                  <li key={index} className='mb-6'>
-                    <InputText
-                      name={name}
-                      textarea={textarea}
-                      label={label}
-                      {...(row ? { row } : {})}
-                      register={register}
-                      getError={getError}
-                    />
-                  </li>
-                )
-              })}
-            </ul>
+            <div className='mb-10 space-y-6'>
+              {/* お名前 */}
+              <div>
+                <Label htmlFor='username' required>
+                  お名前
+                </Label>
+                <InputWithRHF
+                  id='username'
+                  name='username'
+                  register={register}
+                  error={!!getError('username')}
+                  placeholder='お名前を入力してください'
+                />
+                <ErrorText error={getError('username')} />
+              </div>
+              {/* 会社名 */}
+              <div>
+                <Label htmlFor='company'>会社名</Label>
+                <InputWithRHF
+                  id='company'
+                  name='company'
+                  register={register}
+                  error={!!getError('company')}
+                  placeholder='会社名を入力してください（任意）'
+                />
+                <ErrorText error={getError('company')} />
+              </div>
+
+              {/* メールアドレス */}
+              <div>
+                <Label htmlFor='email' required>
+                  メールアドレス
+                </Label>
+                <InputWithRHF
+                  id='email'
+                  name='email'
+                  type='email'
+                  register={register}
+                  error={!!getError('email')}
+                  placeholder='example@example.com'
+                />
+                <ErrorText error={getError('email')} />
+              </div>
+
+              {/* お問い合わせ内容 */}
+              <div>
+                <Label htmlFor='detail' required>
+                  お問い合わせ内容
+                </Label>
+                <TextareaWithRHF
+                  id='detail'
+                  name='detail'
+                  register={register}
+                  error={!!getError('detail')}
+                  rows={10}
+                  placeholder='お問い合わせ内容を詳しくお聞かせください'
+                />
+                <ErrorText error={getError('detail')} />
+              </div>
+            </div>
             <div className='flex items-center justify-center pb-10'>
               <div ref={recaptchaRef} />
             </div>

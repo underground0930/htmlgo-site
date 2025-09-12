@@ -9,22 +9,14 @@ type Props = {
 
 export const ArticlesList = ({ articles }: Props) => {
   return (
-    <div className='mb-5 md:mb-10 md:grid md:grid-cols-4 md:gap-4'>
-      {articles.map((article, i) => {
+    <div className='mb-5 md:mb-10 md:grid md:grid-cols-4 md:gap-3'>
+      {articles.map((article) => {
         return (
-          <article
-            key={article.link}
-            className='mb-5 w-full shadow-[0px_0px_7px_0px_rgba(0,0,0,0.3)] md:mb-0'
-          >
+          <article key={article.link} className='border-border mb-4 w-full border md:mb-0'>
             <a href={article.link} target='_blank' rel='noopener noreferrer'>
               <dl>
-                <dt className='border-border bg-main relative h-[140px] border-b'>
-                  <Image
-                    className='object-cover'
-                    src={article.img}
-                    priority={i < 8 ? true : false}
-                    sizes='(max-width: 768px) 100vw, 33vw'
-                  />
+                <dt className='border-border bg-main relative border-b'>
+                  <Image cover src={article.img} />
                 </dt>
                 <dd className='p-3'>
                   <time className='mb-1 block text-xs'>{article.published}</time>

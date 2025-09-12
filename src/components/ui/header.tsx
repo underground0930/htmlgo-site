@@ -40,7 +40,7 @@ export const Header = (props: Props) => {
 
   return (
     <header {...props} className='border-border relative z-1 mx-5 mb-8 border-b'>
-      <div className='mx-auto max-w-[800px] items-center justify-between md:flex'>
+      <div className='mx-auto max-w-(--content-width) items-center justify-between md:flex'>
         <h1 className='pt-6 pb-4 text-center text-2xl leading-none font-bold md:w-[210px] md:py-5 md:text-left'>
           <Link href='/' className='no-underline'>
             HTMLGO

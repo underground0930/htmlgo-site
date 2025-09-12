@@ -12,7 +12,7 @@ type Props = {
 
 export const ArticlesBody = ({ articles = [], page, pages }: Props) => {
   return (
-    <main className='mx-5 max-w-[800px] md:mx-auto'>
+    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='Articles' text='技術系やそれ以外の記事' />
       <div className='mb-10'>
         <Pager pages={pages} page={page} basePath='/articles' />

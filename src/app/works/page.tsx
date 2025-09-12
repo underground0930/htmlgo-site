@@ -5,7 +5,7 @@
 
 import { Metadata } from 'next'
 import { WorksPageComponent } from './components/works-page'
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = '最新の実績や、自主制作'
 
@@ -14,7 +14,7 @@ export default function Page() {
 }
 
 export const metadata: Metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'article',

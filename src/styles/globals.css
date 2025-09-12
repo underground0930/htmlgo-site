@@ -19,6 +19,12 @@
   --color-font: #000;
   --color-loader: #333333;
   --color-border: #dddddd;
+  --color-disabled-bg: #a8a8a8;
+  --color-disabled-font: #f8f8f8;
+  --color-error: #da3333;
+
+  /* font */
+  --leading-default: 1.8;
 
   /* animation */
   @keyframes load8 {
@@ -42,8 +48,10 @@
   CSS変数の定義
 -------------------------------------------------------------- */
 
-/* :root {
-} */
+:root {
+  /* width */
+  --content-width: 960px;
+}
 
 /* --------------------------------------------------------------
   全体の設定

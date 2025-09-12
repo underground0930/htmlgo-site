@@ -3,12 +3,12 @@ import { Metadata } from 'next'
 import { Title } from '@/components/ui/title'
 import { Button } from '@/components/ui/button'
 
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = 'お問い合わせ頂きありがとうございました'
 
 export const metadata: Metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'article',

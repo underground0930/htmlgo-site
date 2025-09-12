@@ -1,12 +1,12 @@
 'use client'
 import { useEffect } from 'react'
 
-import { setMetaData } from '@/utils/set-metadata'
+import { nextMetaData } from '@/libs/next-metadata'
 
 const description = 'ページでエラーが発生しました'
 
 export const metadata = {
-  ...setMetaData({
+  ...nextMetaData({
     meta: {
       openGraph: {
         type: 'article',

@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-export function setMetaData({
+export function nextMetaData({
   title,
   description,
   url,

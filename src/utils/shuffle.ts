@@ -1,4 +1,8 @@
-// Fisher-Yatesアルゴリズム
+/**
+ * 配列をシャッフルする
+ * @param array シャッフルしたい配列
+ * @returns シャッフルした配列
+ */
 
 export const shuffle = <T>(array: T[]) => {
   let currentIndex = array.length,

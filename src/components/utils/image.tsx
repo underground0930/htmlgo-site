@@ -1,44 +1,30 @@
 'use client'
-import DefaultImage from 'next/image'
+import { tv, type VariantProps } from 'tailwind-variants'
 
-import { twMerge } from 'tailwind-merge'
+const imageVariants = tv({
+  base: 'relative!',
+  variants: {
+    circle: {
+      true: 'rounded-full',
+    },
+    cover: {
+      true: 'w-full h-full object-cover',
+    },
+  },
+  defaultVariants: {
+    circle: false,
+    cover: false,
+  },
+})
+
+type CommonVariantProps = VariantProps<typeof imageVariants>
 
 type Props = {
-  src: string
-  className?: string
   alt?: string
-  priority?: boolean
-  fill?: boolean
-  width?: number
-  height?: number
-  sizes?: string
-  onLoadAction?: () => void
-}
+} & CommonVariantProps &
+  Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'className' | 'alt'>
 
-export const Image = ({
-  src,
-  className = '',
-  alt = '',
-  priority = false,
-  fill = true,
-  width,
-  height,
-  sizes = '',
-  onLoadAction,
-  ...props
-}: Props) => {
-  return (
-    <DefaultImage
-      {...props}
-      className={twMerge('relative!', className)}
-      src={src}
-      alt={alt}
-      priority={priority}
-      fill={width && height ? false : fill}
-      width={width}
-      height={height}
-      sizes={sizes}
-      onLoad={() => onLoadAction?.()}
-    />
-  )
+export const Image = ({ circle = false, cover = false, alt = '', ...props }: Props) => {
+  const className = imageVariants({ circle, cover })
+  return <img {...props} className={className} alt={alt} />
 }
