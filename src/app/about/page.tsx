@@ -22,7 +22,7 @@ export default function Page() {
         </div>
         <div>
           <section>
-            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+            <h3 className='mt-8 mb-6 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
               プロフィール
             </h3>
             <div className='leading-default text-sm'>
@@ -50,7 +50,7 @@ export default function Page() {
             </div>
           </section>
           <section>
-            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+            <h3 className='mt-8 mb-6 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
               経験した技術・ツール・サービス
             </h3>
             <div className='leading-default text-sm'>
@@ -58,7 +58,7 @@ export default function Page() {
             </div>
           </section>
           <section>
-            <h3 className='mt-10 mb-8 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
+            <h3 className='mt-8 mb-6 border-b border-l-5 border-b-black/30 border-l-black pb-1 pl-2 text-lg font-bold'>
               経歴
             </h3>
             <div className='text-sm'>

@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
+import { LoadingSpinner } from '@/components/ui/loading-spinner'
+
 import { fetchWorksPaths } from './libs/fetch-works-paths'
 import { fetchWorksDetail } from './libs/fetch-works-detail'
 
@@ -29,7 +31,7 @@ export default async function Page(props: Props) {
     <Suspense
       fallback={
         <div className='relative flex h-10 w-full items-center justify-center'>
-          <div>Loading...</div>
+          <LoadingSpinner />
         </div>
       }
     >

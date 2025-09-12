@@ -40,7 +40,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
         <Title title={post.title} text='WORKS NAME' />
         <article>
           <div className='relative mb-10'>
-            <div className='relative'>{post?.slider && <WorksSlider sliders={sliderList} />}</div>
+            {post?.slider && <WorksSlider sliders={sliderList} />}
           </div>
           {post.body && (
             <div
