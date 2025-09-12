@@ -36,7 +36,7 @@ export const WorksDetailBody = ({ post, prev, next }: Props) => {
 
   return (
     <>
-      <main className='mx-5 max-w-[800px] md:mx-auto'>
+      <main className='mx-5 max-w-(--content-width) md:mx-auto'>
         <Title title={post.title} text='WORKS NAME' />
         <article>
           <div className='relative mb-10'>

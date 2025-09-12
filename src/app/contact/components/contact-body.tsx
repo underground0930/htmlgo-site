@@ -13,7 +13,6 @@ import { TextareaWithRHF } from '@/components/ui/form/textarea'
 import { Label } from '@/components/ui/form/label'
 import { ErrorText } from '@/components/ui/form/error-text'
 
-import { useDebugMode } from '@/hooks/use-debug-mode'
 import { FormBodyData, FormBodyDataSchema, ResultType } from '../types/contact'
 import { errorText } from '../constants/contact'
 
@@ -24,7 +23,6 @@ type ErrorType = { [key: string]: string }
 const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
 
 export const ContactBody = () => {
-  const { debug } = useDebugMode({ debug: false })
   const [token, setToken] = useState<string | null>(null)
   const parentRef = useRef<HTMLDivElement>(null)
   const [error, setError] = useState<string>('')
@@ -40,7 +38,7 @@ export const ContactBody = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormDataType>({
-    resolver: debug ? undefined : zodResolver(FormBodyDataSchema),
+    resolver: zodResolver(FormBodyDataSchema),
   })
 
   const frontInvalidErrors = useMemo(() => {
@@ -68,7 +66,6 @@ export const ContactBody = () => {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
         ...data,
-        ...(debug ? { debug: true } : {}),
         token,
       }),
     })
@@ -108,7 +105,7 @@ export const ContactBody = () => {
           <LoadingSpinner />
         </div>
       )}
-      <main className='mx-5 max-w-[800px] md:mx-auto' ref={parentRef}>
+      <main className='mx-5 max-w-(--content-width) md:mx-auto' ref={parentRef}>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
         {error && <div className='pb-8 font-bold text-[#f00]'>{error}</div>}
         <div className='mb-10'>

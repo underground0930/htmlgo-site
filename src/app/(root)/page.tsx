@@ -15,7 +15,7 @@ export default async function Page() {
   console.log('TOP')
   const { works, articles } = await fetchTopList()
   return (
-    <main className='mx-5 max-w-[800px] md:mx-auto'>
+    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       {/* services */}
       <section className='border-border mb-8 border-b pb-5 md:mb-10 md:pb-8'>
         <Title title='Services' text='事業内容' />

@@ -16,7 +16,7 @@ type Props = {
 export const WorksList = ({ works = [] }: Props) => {
   return (
     <>
-      <ul className='mb-5 md:mb-10 md:grid md:grid-cols-3 md:gap-6'>
+      <ul className='mb-5 md:mb-10 md:grid md:grid-cols-4 md:gap-3'>
         {works.map((work, i) => {
           const thumb = work?.slider?.[0]?.img?.url
           const thumbnail = thumb ? thumb + '?w=800' : NO_IMAGE

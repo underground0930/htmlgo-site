@@ -11,7 +11,7 @@ const description = 'このサイトについて'
 
 export default function Page() {
   return (
-    <main className='mx-5 max-w-[800px] md:mx-auto'>
+    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='About' text='このサイトや主について' />
       <div className='mb-10 pb-8'>
         <div className='mb-10 flex justify-center'>
