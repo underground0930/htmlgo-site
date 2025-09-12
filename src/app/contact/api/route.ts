@@ -34,11 +34,15 @@ export async function POST(request: Request) {
 
   if (recaptchaResult !== 'recapcha_valid') {
     // 検証失敗 or エラーが発生
+    const errorText =
+      recaptchaResult === 'recapcha_invalid'
+        ? 'bot判定されたため、送信に失敗しました。'
+        : `bot判定検証中にエラーが発生したため、送信に失敗しました。`
     return NextResponse.json({
       success: false,
       error: {
-        type: recaptchaResult,
-        data: null,
+        type: 'recapcha',
+        data: errorText,
       },
     })
   }
@@ -50,8 +54,8 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: false,
       error: {
-        type: 'mail_failed',
-        data: null,
+        type: 'mail',
+        data: `メールの送信に失敗しました。お手数ですが、再度お試しいただくか、しばらく時間を置いてからお試しください。`,
       },
     })
   }

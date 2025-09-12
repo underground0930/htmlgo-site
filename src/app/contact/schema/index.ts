@@ -1,4 +1,4 @@
-import { z, ZodIssue } from 'zod'
+import { z } from 'zod'
 
 export type FormBodyData = {
   username: string
@@ -49,27 +49,20 @@ export type ResultType =
       success: false
       error: {
         type: 'invalid'
-        data: ZodIssue[]
+        data: z.core.$ZodIssue[]
       }
     }
   | {
       success: false
       error: {
-        type: 'mail_failed'
-        data: null
+        type: 'mail'
+        data: string
       }
     }
   | {
       success: false
       error: {
-        type: 'recapcha_error'
-        data: null
-      }
-    }
-  | {
-      success: false
-      error: {
-        type: 'recapcha_failed'
-        data: null
+        type: 'recapcha'
+        data: string
       }
     }
