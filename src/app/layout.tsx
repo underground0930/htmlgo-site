@@ -38,13 +38,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       <head>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css' />
       </head>
-      <body>
+      <body className='flex min-h-screen flex-col'>
         <Header />
-        <div className='min-h-[500px]'>
-          <div className=''>
-            <div>{children}</div>
-          </div>
-        </div>
+        <main className='flex-1'>{children}</main>
         <Footer />
       </body>
     </html>
