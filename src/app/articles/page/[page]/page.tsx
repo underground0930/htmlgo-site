@@ -4,7 +4,7 @@
  */
 
 import { Metadata } from 'next'
-import { PageChild } from '../../components/page-child'
+import { PageContent } from '../../components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchArticles } from '../../libs/fetch-articles'
 
@@ -17,7 +17,7 @@ type Props = {
 export default async function Page(props: Props) {
   const params = await props.params
   const result = await fetchArticles({ params: { page: params.page } })
-  return <PageChild {...result} />
+  return <PageContent {...result} />
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {

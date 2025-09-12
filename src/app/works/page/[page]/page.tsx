@@ -4,7 +4,7 @@
  */
 
 import { Metadata } from 'next'
-import { PageChild } from '../../components/page-child'
+import { PageContent } from '../../components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchWorksIndex } from '../../libs/fetch-works-index'
 
@@ -13,7 +13,7 @@ const description = '最新の実績や、自主制作'
 export default async function Page({ params }: { params: Promise<{ page: string }> }) {
   const resolvedParams = await params
   const result = await fetchWorksIndex({ params: { page: resolvedParams.page } })
-  return <PageChild {...result} />
+  return <PageContent {...result} />
 }
 
 export async function generateMetadata({

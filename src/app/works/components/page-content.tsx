@@ -18,7 +18,7 @@ type Props = {
   pages: number
 }
 
-export const PageChild = ({ works, page, pages }: Props) => {
+export const PageContent = ({ works, page, pages }: Props) => {
   return (
     <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />

@@ -13,7 +13,7 @@ type Props = {
   pages: number
 }
 
-export const PageChild = ({ articles, page, pages }: Props) => {
+export const PageContent = ({ articles, page, pages }: Props) => {
   return (
     <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       <Title title='Articles' text='技術系やそれ以外の記事' />

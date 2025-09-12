@@ -8,7 +8,7 @@ import { WorksList } from '../../works/components/works-list'
 import { WorkIndex } from '@/types/microcms'
 import { FeedObj } from '@/types/feed'
 
-export const PageChild = ({ works, articles }: { works: WorkIndex[]; articles: FeedObj[] }) => {
+export const PageContent = ({ works, articles }: { works: WorkIndex[]; articles: FeedObj[] }) => {
   return (
     <main className='mx-5 max-w-(--content-width) md:mx-auto'>
       {/* services */}

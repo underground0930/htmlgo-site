@@ -1,7 +1,7 @@
 import { Title } from '@/components/ui/title'
 import { Button } from '@/components/ui/button'
 
-export const PageChild = () => {
+export const PageContent = () => {
   return (
     <main className='mx-5'>
       <Title title='THANKS' text='お問合せありがとうございました' />

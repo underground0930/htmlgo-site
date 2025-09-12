@@ -3,13 +3,13 @@ import { Metadata } from 'next'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchTopList } from './libs/fetch-top-list'
 
-import { PageChild } from './components/page-child'
+import { PageContent } from './components/page-content'
 
 const description = 'WEB技術を書き連ねるサイト'
 
 export default async function Page() {
   const { works, articles } = await fetchTopList()
-  return <PageChild works={works} articles={articles} />
+  return <PageContent works={works} articles={articles} />
 }
 
 export const metadata: Metadata = {

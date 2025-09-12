@@ -7,7 +7,7 @@ import { LoadingSpinner } from '@/components/ui/loading-spinner'
 import { fetchWorksPaths } from './libs/fetch-works-paths'
 import { fetchWorksDetail } from './libs/fetch-works-detail'
 
-import { PageChild } from './components/page-child'
+import { PageContent } from './components/page-content'
 
 import { removeHtml } from '@/utils/remove-html'
 import { nextMetaData } from '@/libs/next-metadata'
@@ -35,7 +35,7 @@ export default async function Page(props: Props) {
         </div>
       }
     >
-      {post && <PageChild post={post} prev={prev} next={next} />}
+      {post && <PageContent post={post} prev={prev} next={next} />}
     </Suspense>
   )
 }

@@ -4,7 +4,7 @@
  */
 
 import { Metadata } from 'next'
-import { PageChild } from './components/page-child'
+import { PageContent } from './components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchArticles } from './libs/fetch-articles'
 
@@ -12,7 +12,7 @@ const description = '色々なブログの記事のフィードをまとめた�
 
 export default async function Page() {
   const result = await fetchArticles({ params: { page: '1' } })
-  return <PageChild {...result} />
+  return <PageContent {...result} />
 }
 
 export const metadata: Metadata = {
