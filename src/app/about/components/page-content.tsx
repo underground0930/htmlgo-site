@@ -5,7 +5,7 @@ import { SnsList } from '../components/sns-list'
 
 export const PageContent = () => {
   return (
-    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
+    <div className='max-w-(--content-width) md:mx-auto'>
       <Title title='About' text='このサイトや主について' />
       <div className='mb-10 pb-8'>
         <div className='mb-10 flex justify-center'>
@@ -82,6 +82,6 @@ export const PageContent = () => {
           HOME
         </Button>
       </div>
-    </main>
+    </div>
   )
 }

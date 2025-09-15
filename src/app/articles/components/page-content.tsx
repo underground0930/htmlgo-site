@@ -14,7 +14,7 @@ type Props = {
 
 export const PageContent = ({ articles, page, pages }: Props) => {
   return (
-    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
+    <div className='max-w-(--content-width) md:mx-auto'>
       <Title title='Articles' text='技術系やそれ以外の記事' />
       <div className='mb-10'>
         <Pager pages={pages} page={page} basePath='/articles' />
@@ -26,6 +26,6 @@ export const PageContent = ({ articles, page, pages }: Props) => {
           HOME
         </Button>
       </div>
-    </main>
+    </div>
   )
 }

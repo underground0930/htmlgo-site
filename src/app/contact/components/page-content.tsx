@@ -30,7 +30,7 @@ export const PageContent = () => {
           <LoadingSpinner />
         </div>
       )}
-      <main className='mx-5 max-w-(--content-width) md:mx-auto' ref={parentRef}>
+      <div className='max-w-(--content-width) md:mx-auto' ref={parentRef}>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
         {commonError && <div className='text-error pb-8 font-bold'>{commonError}</div>}
         <div className='mb-10'>
@@ -113,7 +113,7 @@ export const PageContent = () => {
             HOME
           </Button>
         </div>
-      </main>
+      </div>
     </>
   )
 }

@@ -31,7 +31,7 @@ export const PageContent = ({ post, prev, next }: Props) => {
 
   return (
     <>
-      <main className='mx-5 max-w-(--content-width) md:mx-auto'>
+      <div className='max-w-(--content-width) md:mx-auto'>
         <Title title={post.title} text='WORKS NAME' />
         <article>
           <div className='relative mb-10'>
@@ -195,7 +195,7 @@ export const PageContent = ({ post, prev, next }: Props) => {
             )}
           </div>
         </article>
-      </main>
+      </div>
     </>
   )
 }
