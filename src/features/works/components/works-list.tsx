@@ -7,7 +7,7 @@
 
 import Link from 'next/link'
 
-import { CategoryIcon } from '@/components/ui/category-icon'
+import { Badge } from '@/components/ui/badge'
 import { Image } from '@/components/utils/image'
 import { conversionDate } from '@/utils/conversion-date'
 import type { WorkIndex } from '../types'
@@ -50,10 +50,10 @@ export const WorksList = ({ works = [] }: Props) => {
                     </h3>
                     <p>
                       {work.category.map((c) => (
-                        <CategoryIcon key={c.category_slug} text={c.category_label} />
+                        <Badge key={c.category_slug} text={c.category_label} />
                       ))}
                       {work.technology.map((t) => (
-                        <CategoryIcon key={t.technology_slug} text={t.technology_label} />
+                        <Badge key={t.technology_slug} text={t.technology_label} />
                       ))}
                     </p>
                   </dd>

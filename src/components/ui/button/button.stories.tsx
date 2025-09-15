@@ -10,7 +10,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'フォーム送信やクリックイベント用のボタンコンポーネント。React 19対応版。',
+        component: 'フォーム送信やクリックイベント用のボタンコンポーネント。',
       },
     },
   },

@@ -3,10 +3,10 @@ import { Button } from '@/components/ui/button'
 
 export const PageContent = () => {
   return (
-    <div className='mx-5'>
+    <div>
       <Title title='THANKS' text='お問合せありがとうございました' />
       <div className='mx-auto mb-10 max-w-[600px]'>
-        <div className='text-center text-base md:text-xl'>
+        <div className='leading-default text-center text-base text-sm'>
           お問い合わせありがとうございました。
           <br />
           内容を確認後、折り返しご連絡いたしますので、
