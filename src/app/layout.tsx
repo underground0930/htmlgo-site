@@ -2,8 +2,8 @@ import '../styles/globals.css'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
-import { Header } from '@/components/ui/header'
-import { Footer } from '@/components/ui/footer'
+import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
 import { NuqsProvider } from '@/providers/nuqs-provider'
 
 const title = 'HTMLGO'
