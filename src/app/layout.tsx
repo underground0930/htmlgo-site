@@ -2,8 +2,9 @@ import '../styles/globals.css'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
-import { Header } from '@/components/ui/header'
-import { Footer } from '@/components/ui/footer'
+import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
+import { NuqsProvider } from '@/providers/nuqs-provider'
 
 const title = 'HTMLGO'
 
@@ -39,9 +40,13 @@ export default function Layout({ children }: { children: ReactNode }) {
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css' />
       </head>
       <body className='flex min-h-screen flex-col'>
-        <Header />
-        <main className='flex-1'>{children}</main>
-        <Footer />
+        <NuqsProvider>
+          <Header />
+          <main className='flex-1'>
+            <div className='px-4'>{children}</div>
+          </main>
+          <Footer />
+        </NuqsProvider>
       </body>
     </html>
   )

@@ -19,7 +19,7 @@ type Props = {
 
 export const PageContent = ({ works, page, pages }: Props) => {
   return (
-    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
+    <div className='max-w-(--content-width) md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
       <div className='mb-10'>
         <Pager pages={pages} page={page} basePath='/works' />
@@ -35,6 +35,6 @@ export const PageContent = ({ works, page, pages }: Props) => {
           </Button>
         </div>
       </footer>
-    </main>
+    </div>
   )
 }

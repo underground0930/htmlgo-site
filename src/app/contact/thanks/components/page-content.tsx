@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 
 export const PageContent = () => {
   return (
-    <main className='mx-5'>
+    <div className='mx-5'>
       <Title title='THANKS' text='お問合せありがとうございました' />
       <div className='mx-auto mb-10 max-w-[600px]'>
         <div className='text-center text-base md:text-xl'>
@@ -19,6 +19,6 @@ export const PageContent = () => {
           HOME
         </Button>
       </div>
-    </main>
+    </div>
   )
 }

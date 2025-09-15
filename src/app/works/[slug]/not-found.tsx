@@ -21,7 +21,7 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
+    <div className='max-w-(--content-width) md:mx-auto'>
       <section className='border-border mb-10 border-b pb-5 md:mb-20 md:pb-10'>
         <Title title='Not Found' text='お探しのページは見つかりませんでした' />
         <div className='mb-8 py-5 text-center'>
@@ -35,6 +35,6 @@ export default function NotFound() {
           </Button>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

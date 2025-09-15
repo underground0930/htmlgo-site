@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/nextjs-vite'
 import { fn } from 'storybook/test'
 
-import { Button } from './'
+import { Button } from './button'
 
 const meta = {
   title: 'UI/Button',

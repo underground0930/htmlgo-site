@@ -10,7 +10,7 @@ import type { WorkIndex } from '@/features/works/types'
 
 export const PageContent = ({ works, articles }: { works: WorkIndex[]; articles: FeedObj[] }) => {
   return (
-    <main className='mx-5 max-w-(--content-width) md:mx-auto'>
+    <div className='max-w-(--content-width) md:mx-auto'>
       {/* services */}
       <section className='border-border mb-8 border-b pb-5 md:mb-10 md:pb-8'>
         <Title title='Services' text='事業内容' />
@@ -41,6 +41,6 @@ export const PageContent = ({ works, articles }: { works: WorkIndex[]; articles:
           </Button>
         </div>
       </section>
-    </main>
+    </div>
   )
 }
