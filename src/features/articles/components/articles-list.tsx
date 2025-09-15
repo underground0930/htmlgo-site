@@ -3,7 +3,7 @@
  * 外部フィード（Qiita、Zenn）から取得した記事を表示します
  */
 
-import { CategoryIcon } from '@/components/ui/category-icon'
+import { Badge } from '@/components/ui/badge'
 import { Image } from '@/components/utils/image'
 import type { FeedObj } from '../types'
 
@@ -28,9 +28,9 @@ export const ArticlesList = ({ articles }: Props) => {
                     {article.title}
                   </h3>
                   <p className='block empty:hidden'>
-                    <CategoryIcon text={article.category} />
+                    <Badge text={article.category} />
                     {article.tags.map((tag) => (
-                      <CategoryIcon text={tag} key={tag} />
+                      <Badge text={tag} key={tag} />
                     ))}
                   </p>
                 </dd>
