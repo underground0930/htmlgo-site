@@ -22,7 +22,7 @@ export const PageContent = ({ works, page, pages }: Props) => {
   return (
     <div className='max-w-(--content-width) md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
-      <div className='mt-5 mb-5 flex w-[400px] gap-4'>
+      {/* <div className='mt-5 mb-5 flex w-[400px] gap-4'>
         <div className='w-1/2'>
           <Select
             options={[
@@ -59,7 +59,7 @@ export const PageContent = ({ works, page, pages }: Props) => {
             ]}
           />
         </div>
-      </div>
+      </div> */}
 
       <div className='mb-10'>
         <Pager pages={pages} page={page} basePath='/works' />
