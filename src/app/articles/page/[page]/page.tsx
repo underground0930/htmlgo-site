@@ -4,10 +4,13 @@
  */
 
 import { Metadata } from 'next'
-import { PageContent } from '../../components/page-content'
+import { notFound } from 'next/navigation'
+
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchArticlesList } from '@/features/articles/api/fetch-articles'
 import { parsePageNumber } from '@/utils/parse-number'
+
+import { PageContent } from '../../components/page-content'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
@@ -18,6 +21,10 @@ type Props = {
 export default async function Page(props: Props) {
   const { page } = await props.params
   const result = await fetchArticlesList({ page: parsePageNumber(page) })
+  if (result.articles.length === 0 && result.page > 0) {
+    notFound()
+  }
+
   return <PageContent {...result} />
 }
 
