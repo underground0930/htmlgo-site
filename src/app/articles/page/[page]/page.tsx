@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation'
 
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchArticlesList } from '@/features/articles/api/fetch-articles'
-import { parsePageNumber } from '@/utils/parse-number'
+import { parsePageNumber } from '@/utils/parse-page-number'
 
 import { PageContent } from '../../components/page-content'
 
