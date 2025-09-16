@@ -15,6 +15,6 @@ export default meta
 
 export const BadgeNormal = {
   args: {
-    text: 'これはBadgeです',
+    text: 'カテゴリー',
   },
 }
