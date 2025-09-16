@@ -11,7 +11,7 @@ import { fetchWorksList } from '@/features/works/api/fetch-works-list'
 const description = '最新の実績や、自主制作'
 
 export default async function Page() {
-  const result = await fetchWorksList({ page: 1, limit: 12 })
+  const result = await fetchWorksList({})
   return <PageContent {...result} />
 }
 

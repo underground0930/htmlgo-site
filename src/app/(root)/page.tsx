@@ -9,8 +9,8 @@ import { PageContent } from './components/page-content'
 const description = 'WEB技術を書き連ねるサイト'
 
 export default async function Page() {
-  const articlesResult = await fetchArticlesList({ page: 1 })
   const worksResult = await fetchWorksList({ page: 1, limit: 4 })
+  const articlesResult = await fetchArticlesList({ page: 1, limit: 4 })
   return <PageContent {...worksResult} {...articlesResult} />
 }
 

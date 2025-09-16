@@ -16,14 +16,14 @@ type Props = {
 }
 
 export default async function Page(props: Props) {
-  const params = await props.params
-  const result = await fetchArticlesList({ page: parsePageNumber(params.page) })
+  const { page } = await props.params
+  const result = await fetchArticlesList({ page: parsePageNumber(page) })
   return <PageContent {...result} />
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const params = await props.params
-  const pageNumber = parsePageNumber(params.page)
+  const { page } = await props.params
+  const pageNumber = parsePageNumber(page)
   return {
     ...nextMetaData({
       meta: {

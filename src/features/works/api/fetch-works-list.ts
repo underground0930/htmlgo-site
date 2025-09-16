@@ -9,10 +9,10 @@ import type { WorkIndex } from '../types'
  */
 export async function fetchWorksList({
   page = 1,
-  limit,
+  limit = 12,
 }: {
-  page: number
-  limit: number
+  page?: number
+  limit?: number
 }): Promise<{
   works: WorkIndex[]
   page: number
