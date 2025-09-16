@@ -1,0 +1,39 @@
+import { NextResponse, NextRequest } from 'next/server'
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  console.log(pathname)
+
+  // 将来的な認証ルート例（コメントアウト）
+  /*
+  // 認証が必要なページ
+  const protectedPaths = ['/admin', '/dashboard']
+  const isProtectedPath = protectedPaths.some(path => pathname.startsWith(path))
+  
+  if (isProtectedPath) {
+    const token = request.cookies.get('auth-token')?.value
+    
+    if (!token) {
+      const loginUrl = new URL('/login', request.url)
+      loginUrl.searchParams.set('redirect', pathname)
+      return NextResponse.redirect(loginUrl)
+    }
+  }
+  */
+
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+  ],
+}
