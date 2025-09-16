@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/nextjs-vite'
 import { ErrorText } from './error-text'
 
 const meta = {
-  title: 'UI/Badge',
+  title: 'UI/Form/ErrorText',
   component: ErrorText,
   parameters: {
     layout: 'centered',
