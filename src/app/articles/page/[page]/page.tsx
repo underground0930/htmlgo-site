@@ -7,6 +7,7 @@ import { Metadata } from 'next'
 import { PageContent } from '../../components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchArticlesList } from '@/features/articles/api/fetch-articles'
+import { parsePageNumber } from '@/utils/parse-number'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
@@ -16,12 +17,13 @@ type Props = {
 
 export default async function Page(props: Props) {
   const params = await props.params
-  const result = await fetchArticlesList({ page: Number(params.page) })
+  const result = await fetchArticlesList({ page: parsePageNumber(params.page) })
   return <PageContent {...result} />
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
+  const pageNumber = parsePageNumber(params.page)
   return {
     ...nextMetaData({
       meta: {
@@ -29,9 +31,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
           type: 'article',
         },
       },
-      title: `ARTICLES - Page ${params.page}`,
+      title: `ARTICLES - Page ${pageNumber}`,
       description,
-      url: `/articles/page/${params.page}`,
+      url: `/articles/page/${pageNumber}`,
       images: '/img/ogp-new.png',
     }),
   }
