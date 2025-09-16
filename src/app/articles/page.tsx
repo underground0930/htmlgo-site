@@ -11,7 +11,7 @@ import { fetchArticlesList } from '@/features/articles/api/fetch-articles'
 const description = '色々なブログの記事のフィードをまとめたものです'
 
 export default async function Page() {
-  const result = await fetchArticlesList({ page: 1 })
+  const result = await fetchArticlesList({})
   return <PageContent {...result} />
 }
 

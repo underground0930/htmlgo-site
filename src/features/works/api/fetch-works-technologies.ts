@@ -10,7 +10,7 @@ export async function fetchWorksTechnologies() {
   return microcmsClient.get<MicroCMSListResponse<WorksCategory>>({
     endpoint: 'works_technology',
     queries: {
-      limit: 20,
+      limit: 30,
     },
   })
 }

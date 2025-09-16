@@ -66,8 +66,12 @@ export const Icon = {
   home: ({ size = 18, color, ...props }: IconProps) => (
     <RxHome {...props} size={size} color={setColor(color, 'white')} />
   ),
-  microcms: () => <IconMicrocms />,
-  recaptcha: () => <IconRecapcha />,
+  microcms: ({ size = 24, color, ...props }: IconProps) => (
+    <IconMicrocms {...props} size={size} color={setColor(color, 'white')} />
+  ),
+  recaptcha: ({ size = 42, color, ...props }: IconProps) => (
+    <IconRecapcha {...props} size={size} color={setColor(color)} />
+  ),
 }
 
 /**
