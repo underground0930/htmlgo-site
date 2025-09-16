@@ -50,10 +50,10 @@ export const WorksList = ({ works = [] }: Props) => {
                     </h3>
                     <p>
                       {work.category.map((c) => (
-                        <Badge key={c.category_slug} text={c.category_label} />
+                        <Badge key={c.slug} text={c.label} />
                       ))}
                       {work.technology.map((t) => (
-                        <Badge key={t.technology_slug} text={t.technology_label} />
+                        <Badge key={t.slug} text={t.label} />
                       ))}
                     </p>
                   </dd>

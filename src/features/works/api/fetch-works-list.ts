@@ -4,9 +4,7 @@
  */
 
 import { MicroCMSListResponse } from 'microcms-js-sdk'
-
 import { microcmsClient } from '@/libs/microcms-client'
-
 import type { WorkIndex } from '../types'
 
 /**
