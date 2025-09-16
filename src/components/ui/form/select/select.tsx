@@ -1,8 +1,10 @@
+'use client'
+
 import ReactSelect, { Props as ReactSelectProps } from 'react-select'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const selectVariants = tv({
-  base: 'cursor-pointer',
+  base: 'cursor-pointer w-full',
 })
 
 type CommonVariantProps = VariantProps<typeof selectVariants>
