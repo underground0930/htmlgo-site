@@ -1,27 +1,26 @@
 import type { Meta } from '@storybook/nextjs-vite'
 
-import { Label } from './label'
+import { ErrorText } from './error-text'
 
 const meta = {
-  title: 'UI/Form/Label',
-  component: Label,
+  title: 'UI/Badge',
+  component: ErrorText,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Label>
+} satisfies Meta<typeof ErrorText>
 
 export default meta
 
 export const Normal = {
   args: {
-    children: '名前',
+    text: 'これはErrorTextです',
   },
 }
 
-export const Required = {
+export const NoError = {
   args: {
-    children: '名前',
-    required: true,
+    error: '',
   },
 }

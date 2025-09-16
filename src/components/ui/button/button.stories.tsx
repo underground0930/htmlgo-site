@@ -1,43 +1,13 @@
 import type { Meta } from '@storybook/nextjs-vite'
-import { fn } from 'storybook/test'
 
 import { Button } from './button'
 
 const meta = {
   title: 'UI/Button',
   component: Button,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: 'フォーム送信やクリックイベント用のボタンコンポーネント。',
-      },
-    },
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'primary'],
-      description: 'ボタンの色バリアント',
-    },
-    size: {
-      control: 'select',
-      options: ['md', 'lg'],
-      description: 'ボタンのサイズ（アイコンサイズも連動）',
-    },
-    loading: {
-      control: 'boolean',
-      description: 'ローディング状態（自動でスピナー表示）',
-    },
-    disabled: {
-      control: 'boolean',
-      description: '無効状態',
-    },
-  },
-  args: {
-    onClick: fn(),
-    children: 'ボタン',
   },
 } satisfies Meta<typeof Button>
 

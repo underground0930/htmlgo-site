@@ -5,6 +5,10 @@ import { Select } from './select'
 const meta = {
   title: 'UI/Form/Select',
   component: Select,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Select>
 
 export default meta
