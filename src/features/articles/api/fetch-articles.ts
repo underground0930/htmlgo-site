@@ -12,9 +12,7 @@ import type { FeedObj } from '../types'
  * @param params.page ページ番号
  * @returns Articles一覧とページ情報
  */
-export async function fetchArticles({ params }: { params: { page?: string } }) {
-  const page = params?.page ? Number(params.page) : 1
-
+export async function fetchArticlesList({ page = 1 }: { page: number }) {
   // 全記事を取得
   const allArticles = ((await import('../../../../public/feed.json')) as { default: FeedObj[] })
     .default
@@ -33,16 +31,4 @@ export async function fetchArticles({ params }: { params: { page?: string } }) {
     pages: totalPages,
     totalCount: allArticles.length,
   }
-}
-
-/**
- * トップページ用の最新記事を取得
- * @param limit 取得件数（デフォルト: 4）
- * @returns 最新記事一覧
- */
-export async function fetchLatestArticles(limit = 4): Promise<FeedObj[]> {
-  const allArticles = ((await import('../../../../public/feed.json')) as { default: FeedObj[] })
-    .default
-
-  return allArticles.slice(0, limit)
 }

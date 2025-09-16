@@ -61,7 +61,6 @@ export type WorkIndex = Pick<
   | 'technology'
   | 'slider'
 >
-
 /**
  * 作品スライダー画像データ
  */
