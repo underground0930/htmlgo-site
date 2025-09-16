@@ -12,6 +12,8 @@ import { ImageSlider } from './image-slider'
 
 import type { WorkDetail } from '@/features/works/types'
 import { conversionDate } from '@/utils/conversion-date'
+import { cn } from 'tailwind-variants'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   post: WorkDetail
@@ -130,18 +132,17 @@ export const PageContent = ({ post, prev, next }: Props) => {
                         <li key={v.value} className='mb-5 last-of-type:mb-0'>
                           <p className='mb-0.5 text-sm font-bold'>{v.label}</p>
                           <p className='text-sm'>
-                            {v.link ? (
-                              <a
-                                className='mb-4 block break-all underline last-of-type:mb-0'
-                                href={v.link}
-                                target='_blank'
-                                rel='noreferrer'
-                              >
-                                {v.value}
-                              </a>
-                            ) : (
-                              <a className='mb-4 block break-all last-of-type:mb-0'>{v.value}</a>
-                            )}
+                            <a
+                              className={twMerge(
+                                'mb-4 block break-all last-of-type:mb-0',
+                                v.link ? 'underline' : '',
+                              )}
+                              href={v.link}
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              {v.value}
+                            </a>
                           </p>
                         </li>
                       ))}

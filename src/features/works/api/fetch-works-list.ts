@@ -1,8 +1,3 @@
-/**
- * 作品データ取得API
- * MicroCMSから作品データを取得し、ページネーション処理を行います
- */
-
 import { MicroCMSListResponse } from 'microcms-js-sdk'
 import { microcmsClient } from '@/libs/microcms-client'
 import type { WorkIndex } from '../types'
