@@ -1,50 +1,20 @@
 import type { Meta } from '@storybook/nextjs-vite'
-import { fn } from 'storybook/test'
 
 import { Button } from './button'
 
 const meta = {
   title: 'UI/Button',
   component: Button,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: 'フォーム送信やクリックイベント用のボタンコンポーネント。',
-      },
-    },
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'primary'],
-      description: 'ボタンの色バリアント',
-    },
-    size: {
-      control: 'select',
-      options: ['md', 'lg'],
-      description: 'ボタンのサイズ（アイコンサイズも連動）',
-    },
-    loading: {
-      control: 'boolean',
-      description: 'ローディング状態（自動でスピナー表示）',
-    },
-    disabled: {
-      control: 'boolean',
-      description: '無効状態',
-    },
-  },
-  args: {
-    onClick: fn(),
-    children: 'ボタン',
   },
 } satisfies Meta<typeof Button>
 
 export default meta
 
 // ボタン
-export const _Button = {
+export const Normal = {
   args: {
     children: 'ボタン',
     onClick: () => window.alert('ボタンがクリックされました'),
@@ -52,7 +22,7 @@ export const _Button = {
 }
 
 // ボタン(無効)
-export const _ButtonBig = {
+export const BigSize = {
   args: {
     children: 'ボタン',
     onClick: () => window.alert('ボタンがクリックされました'),
@@ -61,7 +31,7 @@ export const _ButtonBig = {
 }
 
 // ボタン(ローディング)
-export const _ButtonLoading = {
+export const Loading = {
   args: {
     children: 'ボタン',
     onClick: () => window.alert('ボタンがクリックされました'),
@@ -70,7 +40,7 @@ export const _ButtonLoading = {
 }
 
 // ボタン(アイコン)
-export const _ButtonWithIcon = {
+export const WithIcon = {
   args: {
     children: 'ボタン',
     onClick: () => window.alert('ボタンがクリックされました'),
@@ -79,7 +49,7 @@ export const _ButtonWithIcon = {
 }
 
 // ボタン(アイコンをhoverで切り替え)
-export const _ButtonWithIcon2 = {
+export const WithIcon2 = {
   args: {
     children: 'ボタン',
     onClick: () => window.alert('ボタンがクリックされました'),
@@ -90,7 +60,7 @@ export const _ButtonWithIcon2 = {
 }
 
 // ボタン(アイコンをhoverで別の色)
-export const _ButtonWithIcon3 = {
+export const WithIcon3 = {
   args: {
     children: 'ボタン',
     onClick: () => window.alert('ボタンがクリックされました'),
@@ -101,7 +71,7 @@ export const _ButtonWithIcon3 = {
 }
 
 // ボタン(別の色)
-export const _ButtonPrimary = {
+export const Primary = {
   args: {
     variant: 'primary',
     children: 'ボタン',
@@ -110,7 +80,7 @@ export const _ButtonPrimary = {
 }
 
 // ボタン(別の色,無効)
-export const _ButtonPrimaryDisabled = {
+export const PrimaryDisabled = {
   args: {
     variant: 'primary',
     children: 'ボタン',

@@ -10,8 +10,14 @@ import { MicroCMSListContent } from 'microcms-js-sdk'
  */
 export type WorksCategory = {
   id: string
-  category_label: string
-  category_slug: string
+  label: string
+  slug: string
+} & MicroCMSListContent
+
+export type WorksTechnology = {
+  id: string
+  label: string
+  slug: string
 } & MicroCMSListContent
 
 /**
@@ -28,14 +34,8 @@ export type WorkDetail = {
   body?: string
   production_period: string
   credit: { label: string; value: string; link?: string }[]
-  category: {
-    category_label: string
-    category_slug: string
-  }[]
-  technology: {
-    technology_label: string
-    technology_slug: string
-  }[]
+  category: WorksCategory[]
+  technology: WorksTechnology[]
   slider: {
     fieldId: string
     img: {
@@ -61,7 +61,6 @@ export type WorkIndex = Pick<
   | 'technology'
   | 'slider'
 >
-
 /**
  * 作品スライダー画像データ
  */

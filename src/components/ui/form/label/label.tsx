@@ -29,8 +29,6 @@ const labelVariants = tv({
 type CommonVariantProps = VariantProps<typeof labelVariants>
 
 type Props = ComponentPropsWithRef<'label'> & {
-  /** ラベルテキスト */
-  children: React.ReactNode
   /** 必須項目かどうか */
   required?: boolean
   /** テスト用のdata-testid */

@@ -77,9 +77,9 @@ export const PageContent = ({ post, prev, next }: Props) => {
                     {post.category.map((v) => (
                       <span
                         className="relative inline-block pr-4 after:absolute after:top-0 after:right-[5px] after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
-                        key={v.category_label}
+                        key={v.label}
                       >
-                        {v.category_label}
+                        {v.label}
                       </span>
                     ))}
                   </InfoSection>
@@ -89,9 +89,9 @@ export const PageContent = ({ post, prev, next }: Props) => {
                     {post.technology.map((v) => (
                       <span
                         className="relative inline-block pr-4 after:absolute after:top-0 after:right-1.25 after:block after:font-bold after:content-['/'] last-of-type:after:hidden"
-                        key={v.technology_label}
+                        key={v.label}
                       >
-                        {v.technology_label}
+                        {v.label}
                       </span>
                     ))}
                   </InfoSection>

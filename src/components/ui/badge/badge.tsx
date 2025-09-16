@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-type Props = React.ComponentPropsWithoutRef<'span'> & {
+type Props = Omit<React.ComponentPropsWithoutRef<'span'>, 'className'> & {
   text: string
 }
 
