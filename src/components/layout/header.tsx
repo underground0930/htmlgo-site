@@ -1,11 +1,8 @@
 'use client'
 
-import { ComponentPropsWithoutRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
-
-type Props = Omit<ComponentPropsWithoutRef<'header'>, 'className'>
 
 const navList = [
   {
@@ -35,11 +32,11 @@ const navList = [
   },
 ]
 
-export const Header = (props: Props) => {
+export const Header = () => {
   const pathname = usePathname()
 
   return (
-    <header {...props} className='border-border relative z-1 mx-5 mb-8 border-b'>
+    <header className='border-border relative z-1 mx-5 mb-8 border-b'>
       <div className='mx-auto max-w-(--content-width) items-center justify-between md:flex'>
         <h1 className='pt-6 pb-4 text-center text-2xl leading-none font-bold md:w-[210px] md:py-5 md:text-left'>
           <Link href='/' className='no-underline'>

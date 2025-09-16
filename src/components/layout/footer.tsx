@@ -3,8 +3,6 @@
 import React from 'react'
 import { Icon, type IconName } from '@/components/utils/icon'
 
-type Props = Omit<React.ComponentPropsWithoutRef<'footer'>, 'className'>
-
 const links: {
   href: string
   key: IconName
@@ -35,9 +33,9 @@ const links: {
   },
 ]
 
-export const Footer = (props: Props) => {
+export const Footer = () => {
   return (
-    <footer {...props} className='bg-main p-5 text-white'>
+    <footer className='bg-main p-5 text-white'>
       <dl className='mb-5 text-center text-sm'>
         <dt className='mb-4'>This website powered by</dt>
         <dd>

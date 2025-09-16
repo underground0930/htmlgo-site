@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation'
 import { PageContent } from '../../components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchWorksList } from '@/features/works/api/fetch-works-list'
-import { parsePageNumber } from '@/utils/parse-number'
+import { parsePageNumber } from '@/utils/parse-page-number'
 
 const description = '最新の実績や、自主制作'
 
