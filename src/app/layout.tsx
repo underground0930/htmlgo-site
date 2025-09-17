@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang='ja'>
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as string} />
       <head>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css' />
       </head>
