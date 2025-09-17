@@ -1,68 +1,137 @@
+/**
+ * お問い合わせAPI
+ * フォームデータのバリデーション、reCAPTCHA検証、メール送信を行う
+ */
+
 import { NextResponse } from 'next/server'
 
 import { verifyRecaptcha } from '../libs/verify-recaptcha'
 import { sendMail } from '../libs/send-mail'
-import { FormBodyData, FormBodyDataSchema, TokenData } from '../schema'
+import { ContactRequestSchema, ContactApiResponse, ValidationError, errorMessages } from '../schema'
 
-type RequestBodyData = Partial<FormBodyData & TokenData>
+export async function POST(request: Request): Promise<NextResponse<ContactApiResponse>> {
+  try {
+    // Content-Typeチェック
+    const contentType = request.headers.get('content-type')
+    if (!contentType?.includes('application/json')) {
+      return NextResponse.json(
+        {
+          success: false,
+          data: null,
+          error: {
+            type: 'server',
+            message: errorMessages.invalidRequest,
+          },
+        },
+        { status: 400 },
+      )
+    }
 
-export async function POST(request: Request) {
-  const requestBodyText = await request.text()
-  const requestBody = JSON.parse(requestBodyText) as RequestBodyData
-  const { username, email, company, detail, token } = requestBody
+    // リクエストボディの取得とパース
+    let requestBody: unknown
+    try {
+      const requestBodyText = await request.text()
+      requestBody = JSON.parse(requestBodyText)
+    } catch {
+      return NextResponse.json(
+        {
+          success: false,
+          data: null,
+          error: {
+            type: 'server',
+            message: errorMessages.invalidRequest,
+          },
+        },
+        { status: 400 },
+      )
+    }
 
-  // フォームの入力値のバリデート
-  const validateResult = FormBodyDataSchema.safeParse({
-    username,
-    email,
-    company,
-    detail,
-  })
+    // 全体的なバリデーション（フォーム + トークン）
+    const validateResult = ContactRequestSchema.safeParse(requestBody)
 
-  if (!validateResult.success) {
+    if (!validateResult.success) {
+      const validationErrors: ValidationError[] = validateResult.error.issues.map((issue) => ({
+        path: issue.path.filter(
+          (p): p is string | number => typeof p === 'string' || typeof p === 'number',
+        ),
+        message: issue.message,
+        code: issue.code,
+      }))
+
+      return NextResponse.json(
+        {
+          success: false,
+          data: null,
+          error: {
+            type: 'validation',
+            message: 'フォームの入力値に問題があります。',
+            details: validationErrors,
+          },
+        },
+        { status: 400 },
+      )
+    }
+
+    const { token, ...formData } = validateResult.data
+
+    // reCAPTCHA検証
+    const recaptchaResult = await verifyRecaptcha(token)
+
+    if (recaptchaResult !== 'recapcha_valid') {
+      const errorMessage =
+        recaptchaResult === 'recapcha_invalid'
+          ? 'bot判定されたため、送信に失敗しました。'
+          : 'bot判定検証中にエラーが発生したため、送信に失敗しました。'
+
+      return NextResponse.json(
+        {
+          success: false,
+          data: null,
+          error: {
+            type: 'recaptcha',
+            message: errorMessage,
+          },
+        },
+        { status: 400 },
+      )
+    }
+
+    // メール送信処理
+    const sendMailResult = await sendMail(formData)
+
+    if (!sendMailResult) {
+      return NextResponse.json(
+        {
+          success: false,
+          data: null,
+          error: {
+            type: 'mail',
+            message:
+              'メールの送信に失敗しました。お手数ですが、再度お試しいただくか、しばらく時間を置いてからお試しください。',
+          },
+        },
+        { status: 500 },
+      )
+    }
+
+    // メール送信成功
     return NextResponse.json({
-      success: false,
-      error: {
-        type: 'invalid',
-        data: validateResult.error.issues,
-      },
+      success: true,
+      data: { message: 'お問い合わせを受け付けました。' },
+      error: null,
     })
-  }
-
-  // reCAPTCHA検証
-  const recaptchaResult = await verifyRecaptcha(token)
-
-  if (recaptchaResult !== 'recapcha_valid') {
-    // 検証失敗 or エラーが発生
-    const errorText =
-      recaptchaResult === 'recapcha_invalid'
-        ? 'bot判定されたため、送信に失敗しました。'
-        : `bot判定検証中にエラーが発生したため、送信に失敗しました。`
-    return NextResponse.json({
-      success: false,
-      error: {
-        type: 'recapcha',
-        data: errorText,
+  } catch (error) {
+    console.error('Contact API error:', error)
+    return NextResponse.json(
+      {
+        success: false,
+        data: null,
+        error: {
+          type: 'server',
+          message: '予期せぬエラーが発生しました。しばらく時間を置いてからお試しください。',
+        },
       },
-    })
+      { status: 500 },
+    )
   }
-
-  // メール送信処理
-  const sendMailResult = await sendMail(validateResult.data)
-
-  if (!sendMailResult) {
-    return NextResponse.json({
-      success: false,
-      error: {
-        type: 'mail',
-        data: `メールの送信に失敗しました。お手数ですが、再度お試しいただくか、しばらく時間を置いてからお試しください。`,
-      },
-    })
-  }
-
-  // メール送信成功
-  return NextResponse.json({
-    success: true,
-    error: null,
-  })
 }
