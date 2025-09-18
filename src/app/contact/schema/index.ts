@@ -9,7 +9,7 @@ import { zodErrorMessages } from '@/libs/error-messages'
 // エラーメッセージの統一管理
 
 // フォームデータのスキーマ定義
-export const FormBodyDataSchema = z.object({
+export const FormSchema = z.object({
   username: z
     .string(zodErrorMessages.string())
     .trim()
@@ -32,21 +32,18 @@ export const FormBodyDataSchema = z.object({
     .max(...zodErrorMessages.max(1000)),
 })
 
-// reCAPTCHAトークンのスキーマ
-export const TokenDataSchema = z.object({
-  token: z.string().min(...zodErrorMessages.required()),
-})
+// reCAPTCHAのスキーマ定義
+export const FormRecaptchaSchema = z.string().min(...zodErrorMessages.required())
 
-// API リクエスト全体のスキーマ（フォーム + トークン）
-export const ContactRequestSchema = z.object({
-  ...FormBodyDataSchema.shape,
-  ...TokenDataSchema.shape,
+// フォームの送信データのスキーマ定義
+export const FormBodyDataSchema = FormSchema.extend({
+  token: FormRecaptchaSchema,
 })
 
 // 型定義の導出（スキーマから自動生成）
+export type FormSchema = z.infer<typeof FormSchema>
+export type FormRecaptcha = z.infer<typeof FormRecaptchaSchema>
 export type FormBodyData = z.infer<typeof FormBodyDataSchema>
-export type TokenData = z.infer<typeof TokenDataSchema>
-export type ContactRequestData = z.infer<typeof ContactRequestSchema>
 
 // バリデーションエラー型（Zod 4の公式型を使用）
 export type ValidationError = z.core.$ZodIssue[]
@@ -64,15 +61,16 @@ export type ApiResponse<T = unknown> =
       error: {
         type: 'validation'
         message: string
-        details?: ValidationError
+        details: ValidationError
       }
     }
   | {
       success: false
       data: null
       error: {
-        type: 'recaptcha' | 'mail' | 'server'
+        type: 'recaptcha' | 'mail' | 'bad_request' | 'unexpected'
         message: string
+        details: null
       }
     }
 

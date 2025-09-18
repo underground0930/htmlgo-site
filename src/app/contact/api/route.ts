@@ -7,24 +7,41 @@ import { NextResponse } from 'next/server'
 
 import { verifyRecaptcha } from '../libs/verify-recaptcha'
 import { sendMail } from '../libs/send-mail'
-import { ContactRequestSchema, ContactApiResponse } from '../schema'
+import { FormBodyDataSchema, ContactApiResponse, ValidationError } from '../schema'
+
+// エラーの cause 型定義
+type ErrorCause =
+  | {
+      status: number
+      type: 'recaptcha' | 'mail' | 'bad_request'
+      details: null
+    }
+  | {
+      status: number
+      type: 'validation'
+      details: ValidationError
+    }
+
+class ApiError extends Error {
+  public readonly cause: ErrorCause
+
+  constructor(message: string, cause: ErrorCause) {
+    super(message)
+    this.cause = cause
+    this.name = 'ApiError'
+  }
+}
 
 export async function POST(request: Request): Promise<NextResponse<ContactApiResponse>> {
   try {
     // Content-Typeチェック
     const contentType = request.headers.get('content-type')
     if (!contentType?.includes('application/json')) {
-      return NextResponse.json(
-        {
-          success: false,
-          data: null,
-          error: {
-            type: 'server',
-            message: 'リクエスト形式が不正です',
-          },
-        },
-        { status: 400 },
-      )
+      throw new ApiError('リクエスト形式が不正です', {
+        status: 400,
+        type: 'bad_request',
+        details: null,
+      })
     }
 
     // リクエストボディの取得とパース
@@ -33,76 +50,47 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
       const requestBodyText = await request.text()
       requestBody = JSON.parse(requestBodyText)
     } catch {
-      return NextResponse.json(
-        {
-          success: false,
-          data: null,
-          error: {
-            type: 'server',
-            message: 'リクエスト形式が不正です',
-          },
-        },
-        { status: 400 },
-      )
+      throw new ApiError('リクエスト形式が不正です', {
+        status: 400,
+        type: 'bad_request',
+        details: null,
+      })
     }
 
     // 全体的なバリデーション（フォーム + トークン）
-    const validateResult = ContactRequestSchema.safeParse(requestBody)
+    const validateResult = FormBodyDataSchema.safeParse(requestBody)
 
     if (!validateResult.success) {
-      return NextResponse.json(
-        {
-          success: false,
-          data: null,
-          error: {
-            type: 'validation',
-            message: 'フォームの入力値に問題があります。',
-            details: validateResult.error.issues,
-          },
-        },
-        { status: 400 },
-      )
+      throw new ApiError('フォームの入力値に問題があります。', {
+        status: 400,
+        type: 'validation',
+        details: validateResult.error.issues,
+      })
     }
 
     const { token, ...formData } = validateResult.data
 
     // reCAPTCHA検証
     const recaptchaResult = await verifyRecaptcha(token)
-
     if (recaptchaResult !== 'recapcha_valid') {
-      const errorMessage =
+      const message =
         recaptchaResult === 'recapcha_invalid'
           ? 'bot判定されたため、送信に失敗しました。'
           : 'bot判定検証中にエラーが発生したため、送信に失敗しました。'
-
-      return NextResponse.json(
-        {
-          success: false,
-          data: null,
-          error: {
-            type: 'recaptcha',
-            message: errorMessage,
-          },
-        },
-        { status: 400 },
-      )
+      throw new ApiError(message, {
+        status: 400,
+        type: 'recaptcha',
+        details: null,
+      })
     }
 
     // メール送信処理
     const sendMailResult = await sendMail(formData)
 
     if (!sendMailResult) {
-      return NextResponse.json(
-        {
-          success: false,
-          data: null,
-          error: {
-            type: 'mail',
-            message:
-              'メールの送信に失敗しました。お手数ですが、再度お試しいただくか、しばらく時間を置いてからお試しください。',
-          },
-        },
-        { status: 500 },
+      throw new ApiError(
+        'メールの送信に失敗しました。お手数ですが、再度お試しいただくか、しばらく時間を置いてからお試しください。',
+        { status: 500, type: 'mail', details: null },
       )
     }
 
@@ -113,14 +101,40 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
       error: null,
     })
   } catch (error) {
-    console.error('Contact API error:', error)
+    if (error instanceof ApiError) {
+      const { status, type, details } = error.cause
+      const responseBody: ContactApiResponse =
+        type === 'validation'
+          ? {
+              success: false,
+              data: null,
+              error: {
+                type,
+                message: error.message,
+                details: details,
+              },
+            }
+          : {
+              success: false,
+              data: null,
+              error: {
+                type,
+                message: error.message,
+                details: null,
+              },
+            }
+      return NextResponse.json(responseBody, { status })
+    }
+
+    // 予期せぬエラーの場合
     return NextResponse.json(
       {
         success: false,
         data: null,
         error: {
-          type: 'server',
+          type: 'unexpected',
           message: '予期せぬエラーが発生しました。しばらく時間を置いてからお試しください。',
+          details: null,
         },
       },
       { status: 500 },

@@ -24,10 +24,13 @@ export const useContactForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormDataType>({
-    resolver: zodResolver(FormBodyDataSchema),
+    resolver: async (values, context, options) => {
+      const resolver = zodResolver(FormBodyDataSchema)
+      const result = await resolver(values, context, options)
+      console.log(result.values, result.errors)
+      return result
+    },
   })
-
-  console.log(errors)
 
   const frontInvalidErrors = useMemo(() => {
     const newErrors: ErrorType = {}
@@ -55,11 +58,6 @@ export const useContactForm = () => {
 
   const submitForm = useCallback(
     async (data: FormDataType, token: string | null) => {
-      if (!token) {
-        setCommonError('reCAPTCHAの認証が必要です。')
-        return
-      }
-
       setLoading(true)
       setCommonError('')
       setServerInvalidErrors({})
@@ -84,30 +82,17 @@ export const useContactForm = () => {
 
         // エラー処理の統一化
         const { error } = result
-
-        switch (error.type) {
-          case 'validation':
-            // バリデーションエラーの処理
-            if (error.details) {
-              processValidationErrors(error.details)
-            } else {
-              setCommonError(error.message)
-            }
-            break
-
-          case 'recaptcha':
-          case 'mail':
-          case 'server':
-            // その他のエラーはcommonErrorとして表示
-            setCommonError(error.message)
-            break
-
-          default:
-            setCommonError('予期せぬエラーが発生しました。')
+        if (error.type === 'validation') {
+          processValidationErrors(error.details)
+        } else {
+          setCommonError(error.message)
         }
       } catch (error) {
-        console.error('Submit form error:', error)
-        setCommonError('通信エラーが発生しました。しばらく時間を置いてからお試しください。')
+        if (error instanceof Error) {
+          setCommonError(error.message)
+        } else {
+          setCommonError('予期せぬエラーが発生しました。しばらく時間を置いてからお試しください。')
+        }
       } finally {
         setLoading(false)
       }

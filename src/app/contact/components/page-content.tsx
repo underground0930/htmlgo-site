@@ -10,18 +10,12 @@ import { ErrorText } from '@/components/ui/form/error-text'
 
 import { useContactForm } from '../hooks/use-contact-form'
 import { useRecaptcha } from '../hooks/use-recaptcha'
-import { useScrollToTop } from '../hooks/use-scroll-to-top'
 import type { FormBodyData } from '../schema'
 
 export const PageContent = () => {
   const { register, handleSubmit, loading, commonError, getError, submitForm } = useContactForm()
   const { token, recaptchaRef } = useRecaptcha()
-  const { parentRef, scrollToTop } = useScrollToTop()
-
-  const onSubmit = (data: FormBodyData) => {
-    scrollToTop()
-    void submitForm(data, token)
-  }
+  const onSubmit = (data: FormBodyData) => void submitForm(data, token)
 
   return (
     <>
@@ -30,7 +24,7 @@ export const PageContent = () => {
           <LoadingSpinner />
         </div>
       )}
-      <div className='max-w-(--content-width) md:mx-auto' ref={parentRef}>
+      <div className='max-w-(--content-width) md:mx-auto'>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
         {commonError && <div className='text-error pb-8 font-bold'>{commonError}</div>}
         <div className='mb-10'>
@@ -67,7 +61,6 @@ export const PageContent = () => {
                 />
                 <ErrorText error={getError('company')} />
               </div>
-
               {/* メールアドレス */}
               <div>
                 <Label htmlFor='email' required>
@@ -82,7 +75,6 @@ export const PageContent = () => {
                 />
                 <ErrorText error={getError('email')} />
               </div>
-
               {/* お問い合わせ内容 */}
               <div>
                 <Label htmlFor='detail' required>
@@ -98,8 +90,15 @@ export const PageContent = () => {
                 <ErrorText error={getError('detail')} />
               </div>
             </div>
-            <div className='flex items-center justify-center pb-10'>
-              <div ref={recaptchaRef} />
+            <div className='mb-10'>
+              <div className='flex items-center justify-center'>
+                <div ref={recaptchaRef} />
+              </div>
+              {getError('token') && (
+                <div className='text-center'>
+                  <ErrorText error={getError('token')} />
+                </div>
+              )}
             </div>
             <div className='flex items-center justify-center'>
               <Button variant='primary' size='lg' disabled={false} type='submit'>
