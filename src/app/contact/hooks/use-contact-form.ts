@@ -19,6 +19,9 @@ export const useContactForm = () => {
   const [commonError, setCommonError] = useState<string>('')
   const [serverInvalidErrors, setServerInvalidErrors] = useState<ErrorType>({})
 
+  // フロントエンドバリデーションの制御フラグ
+  const DISABLE_FRONTEND_VALIDATION = false // true にするとバリデーション無効
+
   const {
     register,
     handleSubmit,
@@ -26,12 +29,14 @@ export const useContactForm = () => {
     setValue,
     formState: { errors },
   } = useForm<FormDataType>({
-    resolver: async (values, context, options) => {
-      const resolver = zodResolver(FormBodyDataSchema)
-      const result = await resolver(values, context, options)
-      console.log(result.values, result.errors)
-      return result
-    },
+    resolver: DISABLE_FRONTEND_VALIDATION
+      ? undefined
+      : async (values, context, options) => {
+          const resolver = zodResolver(FormBodyDataSchema)
+          const result = await resolver(values, context, options)
+          console.log(result.values, result.errors)
+          return result
+        },
   })
 
   const frontInvalidErrors = useMemo(() => {
