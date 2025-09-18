@@ -1,68 +1,80 @@
 import { z } from 'zod'
+import { zodErrorMessages } from '@/libs/error-messages'
 
-export type FormBodyData = {
-  username: string
-  company?: string
-  email: string
-  detail: string
-}
+/**
+ * フォームバリデーション用スキーマ定義
+ * フロントエンド・バックエンド共通で使用
+ */
 
-export type TokenData = {
-  token: string
-}
+// エラーメッセージの統一管理
 
-const errorMessages = {
-  min: '必須項目です',
-  max: (max: number): [number, string] => [max, `最大${max}文字までにしてください`],
-  email: 'メールアドレスの値が不正です',
-}
-
-export const FormBodyDataSchema = z.object({
+// フォームデータのスキーマ定義
+export const FormSchema = z.object({
   username: z
-    .string()
+    .string(zodErrorMessages.string())
     .trim()
-    .min(1, errorMessages.min)
-    .max(...errorMessages.max(100)),
+    .min(...zodErrorMessages.required())
+    .max(...zodErrorMessages.max(50)),
   company: z
-    .string()
+    .string(zodErrorMessages.string())
     .trim()
-    .max(...errorMessages.max(100))
+    .max(...zodErrorMessages.max(50))
     .optional(),
   email: z
-    .email(errorMessages.email)
+    .email(zodErrorMessages.email())
     .trim()
-    .min(1, errorMessages.min)
-    .max(...errorMessages.max(100)),
+    .min(...zodErrorMessages.required())
+    .max(...zodErrorMessages.max(50)),
   detail: z
-    .string()
+    .string(zodErrorMessages.string())
     .trim()
-    .min(1, errorMessages.min)
-    .max(...errorMessages.max(3000)),
-}) satisfies z.ZodType<FormBodyData>
+    .min(...zodErrorMessages.required())
+    .max(...zodErrorMessages.max(1000)),
+})
 
-export type ResultType =
+// reCAPTCHAのスキーマ定義
+export const FormRecaptchaSchema = z
+  .string(zodErrorMessages.token())
+  .min(...zodErrorMessages.required())
+
+// フォームの送信データのスキーマ定義
+export const FormBodyDataSchema = FormSchema.extend({
+  token: FormRecaptchaSchema,
+})
+
+// 型定義の導出（スキーマから自動生成）
+export type FormSchema = z.infer<typeof FormSchema>
+export type FormRecaptcha = z.infer<typeof FormRecaptchaSchema>
+export type FormBodyData = z.infer<typeof FormBodyDataSchema>
+
+// バリデーションエラー型（Zod 4の公式型を使用）
+export type ValidationError = z.core.$ZodIssue[]
+
+// API レスポンス型の統一
+export type ApiResponse<T = unknown> =
   | {
       success: true
+      data: T
       error: null
     }
   | {
       success: false
+      data: null
       error: {
-        type: 'invalid'
-        data: z.core.$ZodIssue[]
+        type: 'validation'
+        message: string
+        details: ValidationError
       }
     }
   | {
       success: false
+      data: null
       error: {
-        type: 'mail'
-        data: string
+        type: 'recaptcha' | 'mail' | 'bad_request' | 'unexpected'
+        message: string
+        details: null
       }
     }
-  | {
-      success: false
-      error: {
-        type: 'recapcha'
-        data: string
-      }
-    }
+
+// Contact API専用のレスポンス型
+export type ContactApiResponse = ApiResponse<{ message: string }>

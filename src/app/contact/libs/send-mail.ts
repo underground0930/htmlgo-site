@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer'
 
-import { FormBodyData } from '../schema'
+import { FormSchema } from '../schema'
 
-const setText = (args: FormBodyData): string => {
+const setMailText = (args: FormSchema): string => {
   const text = `
 -------------------------------
 お問い合わせ内容
@@ -33,7 +33,7 @@ export const sendMail = async ({
   const from = `"HTMLGO SITE" <${gmail ?? ''}>`
   const to = gmail
   const subject = '[HTMLGO]:ホームページよりお問い合わせがありました'
-  const text = setText({ username, company, email, detail })
+  const text = setMailText({ username, company, email, detail })
 
   const transporter = await (async () => {
     let account
