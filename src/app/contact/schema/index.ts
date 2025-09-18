@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { errorMessages } from '@/libs/error-messages'
 
 /**
  * フォームバリデーション用スキーマ定義
@@ -6,25 +7,34 @@ import { z } from 'zod'
  */
 
 // エラーメッセージの統一管理
-const errorMessages = {
-  min: '必須項目です',
-  max: (max: number): [number, string] => [max, `最大${max}文字までにしてください`],
-  email: 'メールアドレスの値が不正です',
-  invalidRequest: 'リクエスト形式が不正です',
-  required: '必須パラメータが不足しています',
-} as const
 
 // フォームデータのスキーマ定義
 export const FormBodyDataSchema = z.object({
-  username: z.string().trim().min(1).max(50),
-  company: z.string().trim().max(50).optional(),
-  email: z.email(errorMessages.email).trim().min(1).max(50),
-  detail: z.string().trim().min(1).max(1000),
+  username: z
+    .string(errorMessages.string())
+    .trim()
+    .min(...errorMessages.required())
+    .max(...errorMessages.max(50)),
+  company: z
+    .string(errorMessages.string())
+    .trim()
+    .max(...errorMessages.max(50))
+    .optional(),
+  email: z
+    .email(errorMessages.email())
+    .trim()
+    .min(...errorMessages.required())
+    .max(...errorMessages.max(50)),
+  detail: z
+    .string(errorMessages.string())
+    .trim()
+    .min(...errorMessages.required())
+    .max(...errorMessages.max(1000)),
 })
 
 // reCAPTCHAトークンのスキーマ
 export const TokenDataSchema = z.object({
-  token: z.string().min(1, errorMessages.required),
+  token: z.string().min(...errorMessages.required()),
 })
 
 // API リクエスト全体のスキーマ（フォーム + トークン）

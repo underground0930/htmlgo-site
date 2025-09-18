@@ -20,7 +20,7 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
           data: null,
           error: {
             type: 'server',
-            message: errorMessages.invalidRequest,
+            message: errorMessages.invalidRequest(),
           },
         },
         { status: 400 },
@@ -39,7 +39,7 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
           data: null,
           error: {
             type: 'server',
-            message: errorMessages.invalidRequest,
+            message: errorMessages.invalidRequest(),
           },
         },
         { status: 400 },
