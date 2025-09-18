@@ -42,7 +42,7 @@ export const useContactForm = () => {
     [frontInvalidErrors, serverInvalidErrors],
   )
 
-  const processValidationErrors = useCallback((validationErrors: ValidationError[]) => {
+  const processValidationErrors = useCallback((validationErrors: ValidationError) => {
     const errorMap: ErrorType = {}
     for (const error of validationErrors) {
       const fieldName = error.path[0]

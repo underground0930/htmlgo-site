@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server'
 
 import { verifyRecaptcha } from '../libs/verify-recaptcha'
 import { sendMail } from '../libs/send-mail'
-import { ContactRequestSchema, ContactApiResponse, ValidationError, errorMessages } from '../schema'
+import { ContactRequestSchema, ContactApiResponse } from '../schema'
 
 export async function POST(request: Request): Promise<NextResponse<ContactApiResponse>> {
   try {
@@ -20,7 +20,7 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
           data: null,
           error: {
             type: 'server',
-            message: errorMessages.invalidRequest(),
+            message: 'リクエスト形式が不正です',
           },
         },
         { status: 400 },
@@ -39,7 +39,7 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
           data: null,
           error: {
             type: 'server',
-            message: errorMessages.invalidRequest(),
+            message: 'リクエスト形式が不正です',
           },
         },
         { status: 400 },
@@ -50,14 +50,6 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
     const validateResult = ContactRequestSchema.safeParse(requestBody)
 
     if (!validateResult.success) {
-      const validationErrors: ValidationError[] = validateResult.error.issues.map((issue) => ({
-        path: issue.path.filter(
-          (p): p is string | number => typeof p === 'string' || typeof p === 'number',
-        ),
-        message: issue.message,
-        code: issue.code,
-      }))
-
       return NextResponse.json(
         {
           success: false,
@@ -65,7 +57,7 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
           error: {
             type: 'validation',
             message: 'フォームの入力値に問題があります。',
-            details: validationErrors,
+            details: validateResult.error.issues,
           },
         },
         { status: 400 },

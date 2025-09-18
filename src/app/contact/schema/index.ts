@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { errorMessages } from '@/libs/error-messages'
+import { zodErrorMessages } from '@/libs/error-messages'
 
 /**
  * フォームバリデーション用スキーマ定義
@@ -11,30 +11,30 @@ import { errorMessages } from '@/libs/error-messages'
 // フォームデータのスキーマ定義
 export const FormBodyDataSchema = z.object({
   username: z
-    .string(errorMessages.string())
+    .string(zodErrorMessages.string())
     .trim()
-    .min(...errorMessages.required())
-    .max(...errorMessages.max(50)),
+    .min(...zodErrorMessages.required())
+    .max(...zodErrorMessages.max(50)),
   company: z
-    .string(errorMessages.string())
+    .string(zodErrorMessages.string())
     .trim()
-    .max(...errorMessages.max(50))
+    .max(...zodErrorMessages.max(50))
     .optional(),
   email: z
-    .email(errorMessages.email())
+    .email(zodErrorMessages.email())
     .trim()
-    .min(...errorMessages.required())
-    .max(...errorMessages.max(50)),
+    .min(...zodErrorMessages.required())
+    .max(...zodErrorMessages.max(50)),
   detail: z
-    .string(errorMessages.string())
+    .string(zodErrorMessages.string())
     .trim()
-    .min(...errorMessages.required())
-    .max(...errorMessages.max(1000)),
+    .min(...zodErrorMessages.required())
+    .max(...zodErrorMessages.max(1000)),
 })
 
 // reCAPTCHAトークンのスキーマ
 export const TokenDataSchema = z.object({
-  token: z.string().min(...errorMessages.required()),
+  token: z.string().min(...zodErrorMessages.required()),
 })
 
 // API リクエスト全体のスキーマ（フォーム + トークン）
@@ -48,12 +48,8 @@ export type FormBodyData = z.infer<typeof FormBodyDataSchema>
 export type TokenData = z.infer<typeof TokenDataSchema>
 export type ContactRequestData = z.infer<typeof ContactRequestSchema>
 
-// バリデーションエラー型（公開APIを使用）
-export type ValidationError = {
-  path: (string | number)[]
-  message: string
-  code: string
-}
+// バリデーションエラー型（Zod 4の公式型を使用）
+export type ValidationError = z.core.$ZodIssue[]
 
 // API レスポンス型の統一
 export type ApiResponse<T = unknown> =
@@ -66,14 +62,19 @@ export type ApiResponse<T = unknown> =
       success: false
       data: null
       error: {
-        type: 'validation' | 'recaptcha' | 'mail' | 'server'
+        type: 'validation'
         message: string
-        details?: ValidationError[]
+        details?: ValidationError
+      }
+    }
+  | {
+      success: false
+      data: null
+      error: {
+        type: 'recaptcha' | 'mail' | 'server'
+        message: string
       }
     }
 
 // Contact API専用のレスポンス型
 export type ContactApiResponse = ApiResponse<{ message: string }>
-
-// エラーメッセージのエクスポート（他の場所でも使用可能）
-export { errorMessages }
