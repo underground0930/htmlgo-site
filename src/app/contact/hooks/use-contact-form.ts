@@ -90,11 +90,8 @@ export const useContactForm = () => {
           setCommonError(error.message)
         }
       } catch (error) {
-        if (error instanceof Error) {
-          setCommonError(error.message)
-        } else {
-          setCommonError('予期せぬエラーが発生しました。しばらく時間を置いてからお試しください。')
-        }
+        console.error('Submit form error:', error)
+        setCommonError('通信エラーが発生しました。しばらく時間を置いてからお試しください。')
       } finally {
         setLoading(false)
       }

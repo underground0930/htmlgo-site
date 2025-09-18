@@ -16,8 +16,10 @@ export const PageContent = () => {
   const { register, handleSubmit, loading, commonError, getError, submitForm, setValue } =
     useContactForm()
   const { token, recaptchaRef } = useRecaptcha()
-  const onSubmit = (data: FormBodyData) => void submitForm(data, token)
   setValue('token', token ?? '')
+
+  const onSubmit = (data: FormBodyData) => void submitForm(data, token)
+
   return (
     <>
       {loading && (
@@ -25,6 +27,7 @@ export const PageContent = () => {
           <LoadingSpinner />
         </div>
       )}
+
       <div className='max-w-(--content-width) md:mx-auto'>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
         {commonError && <div className='text-error pb-8 font-bold'>{commonError}</div>}
