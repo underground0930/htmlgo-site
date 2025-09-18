@@ -13,10 +13,11 @@ import { useRecaptcha } from '../hooks/use-recaptcha'
 import type { FormBodyData } from '../schema'
 
 export const PageContent = () => {
-  const { register, handleSubmit, loading, commonError, getError, submitForm } = useContactForm()
+  const { register, handleSubmit, loading, commonError, getError, submitForm, setValue } =
+    useContactForm()
   const { token, recaptchaRef } = useRecaptcha()
   const onSubmit = (data: FormBodyData) => void submitForm(data, token)
-
+  setValue('token', token ?? '')
   return (
     <>
       {loading && (

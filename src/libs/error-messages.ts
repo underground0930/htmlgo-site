@@ -1,6 +1,7 @@
 // エラーメッセージの管理
 
 export const zodErrorMessages = {
+  token: () => 'reCAPTCHAの認証が必要です',
   required: (): [number, string] => [1, '必須項目です'],
   min: (min: number): [number, string] => [min, `${min}文字以上入力してください`],
   max: (max: number): [number, string] => [max, `最大${max}文字まで入力してください`],

@@ -22,6 +22,8 @@ export const useContactForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm<FormDataType>({
     resolver: async (values, context, options) => {
@@ -101,6 +103,8 @@ export const useContactForm = () => {
   )
 
   return {
+    setValue,
+    watch,
     register,
     handleSubmit,
     loading,

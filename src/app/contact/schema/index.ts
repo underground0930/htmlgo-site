@@ -33,7 +33,9 @@ export const FormSchema = z.object({
 })
 
 // reCAPTCHAのスキーマ定義
-export const FormRecaptchaSchema = z.string().min(...zodErrorMessages.required())
+export const FormRecaptchaSchema = z
+  .string(zodErrorMessages.token())
+  .min(...zodErrorMessages.required())
 
 // フォームの送信データのスキーマ定義
 export const FormBodyDataSchema = FormSchema.extend({
