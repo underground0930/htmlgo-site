@@ -27,6 +27,8 @@ export const useContactForm = () => {
     resolver: zodResolver(FormBodyDataSchema),
   })
 
+  console.log(errors)
+
   const frontInvalidErrors = useMemo(() => {
     const newErrors: ErrorType = {}
     for (const key in errors) {
