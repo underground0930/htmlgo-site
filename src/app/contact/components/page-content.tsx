@@ -105,7 +105,7 @@ export const PageContent = () => {
               )}
             </div>
             <div className='flex items-center justify-center'>
-              <Button variant='primary' size='lg' disabled={false} type='submit'>
+              <Button variant='primary' size='lg' disabled={!token} type='submit'>
                 送信
               </Button>
             </div>
