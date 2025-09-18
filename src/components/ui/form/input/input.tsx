@@ -62,6 +62,7 @@ export const Input = ({
   return (
     <input
       {...props}
+      name={name}
       id={`htmlFor-${id ?? name}`}
       data-testid={testId}
       type={type}

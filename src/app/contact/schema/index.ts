@@ -16,7 +16,7 @@ const errorMessages = {
 
 // フォームデータのスキーマ定義
 export const FormBodyDataSchema = z.object({
-  username: z.string().trim().max(10),
+  username: z.string().trim().min(1).max(50),
   company: z.string().trim().max(50).optional(),
   email: z.email(errorMessages.email).trim().min(1).max(50),
   detail: z.string().trim().min(1).max(1000),

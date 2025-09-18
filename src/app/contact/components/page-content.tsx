@@ -102,7 +102,7 @@ export const PageContent = () => {
               <div ref={recaptchaRef} />
             </div>
             <div className='flex items-center justify-center'>
-              <Button variant='primary' size='lg' disabled={!token} type='submit'>
+              <Button variant='primary' size='lg' disabled={false} type='submit'>
                 送信
               </Button>
             </div>
