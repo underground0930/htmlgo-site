@@ -23,7 +23,7 @@ export const PageContent = () => {
   return (
     <>
       {loading && (
-        <div className='fixed inset-0 z-10 m-auto flex items-center justify-center bg-white'>
+        <div className='fixed inset-0 z-10 m-auto flex h-full w-full items-center justify-center bg-white'>
           <LoadingSpinner />
         </div>
       )}
