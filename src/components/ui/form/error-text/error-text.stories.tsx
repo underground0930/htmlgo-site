@@ -14,7 +14,7 @@ export default meta
 
 export const Normal = {
   args: {
-    text: 'これはErrorTextです',
+    error: 'これはErrorTextです',
   },
 }
 
