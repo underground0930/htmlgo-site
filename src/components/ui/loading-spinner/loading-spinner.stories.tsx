@@ -5,7 +5,6 @@ import { LoadingSpinner } from './loading-spinner'
 const meta = {
   title: 'UI/LoadingSpinner',
   component: LoadingSpinner,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },

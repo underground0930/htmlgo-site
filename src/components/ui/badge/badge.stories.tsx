@@ -5,7 +5,6 @@ import { Badge } from './badge'
 const meta = {
   title: 'UI/Badge',
   component: Badge,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
