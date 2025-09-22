@@ -12,9 +12,11 @@ import { parsePageNumber } from '@/utils/parse-page-number'
 
 const description = '最新の実績や、自主制作'
 
-export default async function Page({ params }: { params: Promise<{ page: string }> }) {
-  const { page } = await params
-  const result = await fetchWorksList({ page: parsePageNumber(page), limit: 12 })
+type Props = PageProps<'/works/page/[page]'>
+
+export default async function Page(props: Props) {
+  const params = await props.params
+  const result = await fetchWorksList({ page: parsePageNumber(params.page), limit: 12 })
 
   if (result.works.length === 0 && result.page > 0) {
     notFound()
@@ -23,13 +25,9 @@ export default async function Page({ params }: { params: Promise<{ page: string 
   return <PageContent {...result} />
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ page: string }>
-}): Promise<Metadata> {
-  const resolvedParams = await params
-  const page = Number(resolvedParams.page)
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params
+  const page = parsePageNumber(params.page)
   return {
     ...nextMetaData({
       meta: {

@@ -8,14 +8,13 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
 } satisfies Meta<typeof ErrorText>
 
 export default meta
 
 export const Normal = {
   args: {
-    text: 'これはErrorTextです',
+    error: 'これはErrorTextです',
   },
 }
 

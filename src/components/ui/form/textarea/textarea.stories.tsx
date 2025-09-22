@@ -5,7 +5,9 @@ import { Textarea } from './textarea'
 const meta = {
   title: 'UI/Form/Textarea',
   component: Textarea,
-  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof Textarea>
 
 export default meta

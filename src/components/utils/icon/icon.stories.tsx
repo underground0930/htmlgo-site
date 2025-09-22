@@ -19,22 +19,6 @@ const meta = {
       },
     },
   },
-  tags: ['autodocs'],
-  argTypes: {
-    size: {
-      control: 'number',
-      description: 'アイコンのサイズ（px）',
-      defaultValue: 24,
-    },
-    color: {
-      control: 'color',
-      description: 'アイコンの色',
-    },
-    className: {
-      control: 'text',
-      description: 'CSSクラス名',
-    },
-  },
 } satisfies Meta<IconProps>
 
 export default meta
