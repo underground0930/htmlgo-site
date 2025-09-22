@@ -12,13 +12,7 @@ import { PageContent } from './components/page-content'
 import { removeHtml } from '@/utils/remove-html'
 import { nextMetaData } from '@/libs/next-metadata'
 
-type Props = {
-  params: Promise<{
-    slug: string
-  }>
-}
-
-export default async function Page(props: Props) {
+export default async function Page(props: PageProps<'/works/[slug]'>) {
   const params = await props.params
   const result = await fetchWorksDetail({ slug: params.slug })
   const { post, prev, next } = result
@@ -40,11 +34,7 @@ export default async function Page(props: Props) {
   )
 }
 
-export async function generateMetadata(props: {
-  params: Promise<{
-    slug: string
-  }>
-}): Promise<Metadata> {
+export async function generateMetadata(props: PageProps<'/works/[slug]'>): Promise<Metadata> {
   const params = await props.params
   const result = await fetchWorksDetail({ slug: params.slug })
 

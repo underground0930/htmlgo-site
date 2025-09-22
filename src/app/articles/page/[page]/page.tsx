@@ -14,13 +14,11 @@ import { PageContent } from '../../components/page-content'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 
-type Props = {
-  params: Promise<{ page: string }>
-}
+type Props = PageProps<'/articles/page/[page]'>
 
 export default async function Page(props: Props) {
-  const { page } = await props.params
-  const result = await fetchArticlesList({ page: parsePageNumber(page) })
+  const params = await props.params
+  const result = await fetchArticlesList({ page: parsePageNumber(params.page) })
   if (result.articles.length === 0 && result.page > 0) {
     notFound()
   }
@@ -29,8 +27,8 @@ export default async function Page(props: Props) {
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { page } = await props.params
-  const pageNumber = parsePageNumber(page)
+  const params = await props.params
+  const pageNumber = parsePageNumber(params.page)
   return {
     ...nextMetaData({
       meta: {
