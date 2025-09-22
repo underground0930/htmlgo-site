@@ -26,7 +26,7 @@ type CommonVariantProps = VariantProps<typeof errorTextVariants>
 
 type Props = ComponentPropsWithRef<'div'> & {
   /** エラーメッセージ（空の場合は何も表示されない） */
-  error?: string
+  error?: string | boolean
   /** テスト用のdata-testid */
   testId?: string
 } & CommonVariantProps
