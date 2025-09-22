@@ -13,8 +13,15 @@ import { useRecaptcha } from '../hooks/use-recaptcha'
 import type { FormBodyData } from '../schema'
 
 export const PageContent = () => {
-  const { register, handleSubmit, loading, commonError, getError, submitForm, setValue } =
-    useContactForm()
+  const {
+    register,
+    handleSubmit,
+    loading,
+    submitForm,
+    setValue,
+    formatedInvalidError,
+    serverOtherError,
+  } = useContactForm()
   const { token, recaptchaRef } = useRecaptcha()
   setValue('token', token ?? '')
 
@@ -23,14 +30,14 @@ export const PageContent = () => {
   return (
     <>
       {loading && (
-        <div className='fixed inset-0 z-10 m-auto flex items-center justify-center bg-white'>
+        <div className='fixed inset-0 z-10 m-auto flex h-full w-full items-center justify-center bg-white'>
           <LoadingSpinner />
         </div>
       )}
 
       <div className='max-w-(--content-width) md:mx-auto'>
         <Title title='Contact' text='お仕事のお問い合わせはこちらから' />
-        {commonError && <div className='text-error pb-8 font-bold'>{commonError}</div>}
+        {serverOtherError && <div className='text-error pb-8 font-bold'>{serverOtherError}</div>}
         <div className='mb-10'>
           <form
             noValidate // ブラウザのバリデーションを無効化（ZodとReact Hook Formで制御）
@@ -49,10 +56,10 @@ export const PageContent = () => {
                 <InputWithRHF
                   name='username'
                   register={register}
-                  error={!!getError('username')}
+                  error={!!formatedInvalidError('username')}
                   placeholder='お名前を入力してください'
                 />
-                <ErrorText error={getError('username')} />
+                <ErrorText error={formatedInvalidError('username')} />
               </div>
               {/* 会社名 */}
               <div>
@@ -60,10 +67,10 @@ export const PageContent = () => {
                 <InputWithRHF
                   name='company'
                   register={register}
-                  error={!!getError('company')}
+                  error={!!formatedInvalidError('company')}
                   placeholder='会社名を入力してください（任意）'
                 />
-                <ErrorText error={getError('company')} />
+                <ErrorText error={formatedInvalidError('company')} />
               </div>
               {/* メールアドレス */}
               <div>
@@ -74,10 +81,10 @@ export const PageContent = () => {
                   name='email'
                   type='email'
                   register={register}
-                  error={!!getError('email')}
+                  error={!!formatedInvalidError('email')}
                   placeholder='example@example.com'
                 />
-                <ErrorText error={getError('email')} />
+                <ErrorText error={formatedInvalidError('email')} />
               </div>
               {/* お問い合わせ内容 */}
               <div>
@@ -87,25 +94,25 @@ export const PageContent = () => {
                 <TextareaWithRHF
                   name='detail'
                   register={register}
-                  error={!!getError('detail')}
+                  error={!!formatedInvalidError('detail')}
                   rows={10}
                   placeholder='お問い合わせ内容を詳しくお聞かせください'
                 />
-                <ErrorText error={getError('detail')} />
+                <ErrorText error={formatedInvalidError('detail')} />
               </div>
             </div>
             <div className='mb-10'>
               <div className='flex items-center justify-center'>
                 <div ref={recaptchaRef} />
               </div>
-              {getError('token') && (
+              {formatedInvalidError('token') && (
                 <div className='text-center'>
-                  <ErrorText error={getError('token')} />
+                  <ErrorText error={formatedInvalidError('token')} />
                 </div>
               )}
             </div>
             <div className='flex items-center justify-center'>
-              <Button variant='primary' size='lg' disabled={!token} type='submit'>
+              <Button variant='primary' size='lg' disabled={loading} type='submit'>
                 送信
               </Button>
             </div>

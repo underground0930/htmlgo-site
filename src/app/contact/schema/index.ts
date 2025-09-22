@@ -48,7 +48,7 @@ export type FormRecaptcha = z.infer<typeof FormRecaptchaSchema>
 export type FormBodyData = z.infer<typeof FormBodyDataSchema>
 
 // バリデーションエラー型（Zod 4の公式型を使用）
-export type ValidationError = z.core.$ZodIssue[]
+export type ValidationError = z.core.$ZodIssue
 
 // API レスポンス型の統一
 export type ApiResponse<T = unknown> =
@@ -63,7 +63,7 @@ export type ApiResponse<T = unknown> =
       error: {
         type: 'validation'
         message: string
-        details: ValidationError
+        details: ValidationError[]
       }
     }
   | {

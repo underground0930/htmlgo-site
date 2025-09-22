@@ -19,7 +19,7 @@ type ErrorCause =
   | {
       status: number
       type: 'validation'
-      details: ValidationError
+      details: ValidationError[]
     }
 
 class ApiError extends Error {
@@ -60,11 +60,12 @@ export async function POST(request: Request): Promise<NextResponse<ContactApiRes
     // 全体的なバリデーション（フォーム + トークン）
     const validateResult = FormBodyDataSchema.safeParse(requestBody)
 
-    if (!validateResult.success) {
+    if (validateResult.error) {
+      const details = validateResult.error.issues
       throw new ApiError('フォームの入力値に問題があります。', {
         status: 400,
         type: 'validation',
-        details: validateResult.error.issues,
+        details,
       })
     }
 

@@ -12,7 +12,6 @@ import { ImageSlider } from './image-slider'
 
 import type { WorkDetail } from '@/features/works/types'
 import { conversionDate } from '@/utils/conversion-date'
-import { cn } from 'tailwind-variants'
 import { twMerge } from 'tailwind-merge'
 
 type Props = {
@@ -176,7 +175,7 @@ export const PageContent = ({ post, prev, next }: Props) => {
           </ul>
           <div className='relative mt-10 mb-10 text-center'>
             <Button component='link' href='/works'>
-              WORKS
+              WORKS TOP
             </Button>
             {next && (
               <Link
