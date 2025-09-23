@@ -4,7 +4,7 @@
  */
 
 import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchArticlesList } from '@/features/articles/api/fetch-articles'
@@ -20,7 +20,7 @@ export default async function Page(props: Props) {
   const params = await props.params
   const result = await fetchArticlesList({ page: parsePageNumber(params.page) })
   if (result.articles.length === 0 && result.page > 0) {
-    notFound()
+    redirect('/articles')
   }
 
   return <PageContent {...result} />
