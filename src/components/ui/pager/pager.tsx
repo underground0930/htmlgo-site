@@ -7,9 +7,10 @@ type Props = Omit<ComponentPropsWithoutRef<'ul'>, 'className'> & {
   page: number
   basePath: string
   range?: number
+  queryParams?: string
 }
 
-export const Pager = ({ pages, page, basePath, range = 1, ...props }: Props) => {
+export const Pager = ({ pages, page, basePath, range = 1, queryParams, ...props }: Props) => {
   // ページ番号の配列を生成する関数
   const generatePageNumbers = (): (number | 'ellipsis')[] => {
     const pageNumbers: (number | 'ellipsis')[] = []
@@ -54,7 +55,7 @@ export const Pager = ({ pages, page, basePath, range = 1, ...props }: Props) => 
   return (
     <ul {...props} className='border-border flex items-center justify-center gap-2 border-y py-5'>
       {page > 1 && (
-        <PagerChild page={page - 1} basePath={basePath}>
+        <PagerChild page={page - 1} basePath={basePath} queryParams={queryParams}>
           &lt;
         </PagerChild>
       )}
@@ -67,13 +68,19 @@ export const Pager = ({ pages, page, basePath, range = 1, ...props }: Props) => 
           )
         }
         return (
-          <PagerChild page={pageNum} basePath={basePath} key={pageNum} isActive={pageNum === page}>
+          <PagerChild
+            page={pageNum}
+            basePath={basePath}
+            key={pageNum}
+            isActive={pageNum === page}
+            queryParams={queryParams}
+          >
             {pageNum}
           </PagerChild>
         )
       })}
       {page < pages && (
-        <PagerChild page={page + 1} basePath={basePath}>
+        <PagerChild page={page + 1} basePath={basePath} queryParams={queryParams}>
           &gt;
         </PagerChild>
       )}

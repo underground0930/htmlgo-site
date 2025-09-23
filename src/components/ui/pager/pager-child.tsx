@@ -6,6 +6,7 @@ type Props = ComponentPropsWithoutRef<'li'> & {
   page: number
   basePath: string
   isActive?: boolean
+  queryParams?: string
 }
 
 const pagerChildVariants = tv({
@@ -17,12 +18,25 @@ const pagerChildVariants = tv({
   },
 })
 
-export const PagerChild = ({ page, basePath, isActive, children, ...props }: Props) => {
+export const PagerChild = ({
+  page,
+  basePath,
+  isActive,
+  queryParams,
+  children,
+  ...props
+}: Props) => {
   const className = pagerChildVariants({ isActive })
+
+  // クエリパラメータをURLSearchParamsに変換
+  const createUrl = () => {
+    const baseUrl = page === 1 ? basePath : `${basePath}/page/${page}`
+    return baseUrl + queryParams
+  }
 
   return (
     <li {...props}>
-      <Link className={className} href={page === 1 ? basePath : `${basePath}/page/${page}`}>
+      <Link className={className} href={createUrl()}>
         {children}
       </Link>
     </li>

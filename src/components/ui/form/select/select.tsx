@@ -1,6 +1,7 @@
 'use client'
 
-import ReactSelect, { Props as ReactSelectProps } from 'react-select'
+import React from 'react'
+import ReactSelect, { GroupBase, Props as ReactSelectProps } from 'react-select'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const selectVariants = tv({
@@ -9,9 +10,10 @@ const selectVariants = tv({
 
 type CommonVariantProps = VariantProps<typeof selectVariants>
 
-type Props = ReactSelectProps & CommonVariantProps
+type Props<T, IsMulti extends boolean = false> = ReactSelectProps<T, IsMulti, GroupBase<T>> &
+  CommonVariantProps
 
-export const Select = (props: Props) => {
+export const Select = <T, IsMulti extends boolean = false>(props: Props<T, IsMulti>) => {
   const className = selectVariants()
-  return <ReactSelect {...props} className={className} />
+  return <ReactSelect<T, IsMulti, GroupBase<T>> {...props} className={className} />
 }
