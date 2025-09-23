@@ -10,9 +10,13 @@ import type { WorkIndex } from '../types'
 export async function fetchWorksList({
   page = 1,
   limit = 12,
+  category = '',
+  technology = '',
 }: {
   page?: number
   limit?: number
+  category?: string
+  technology?: string
 }): Promise<{
   works: WorkIndex[]
   page: number
@@ -20,6 +24,13 @@ export async function fetchWorksList({
 }> {
   const currentPage = page ? Number(page) : 1
   const offset = (currentPage - 1) * limit
+  const filters = []
+  if (category) {
+    filters.push(`works_category[equals]${category}`)
+  }
+  if (technology) {
+    filters.push(`works_technology[equals]${technology}`)
+  }
 
   const result = await microcmsClient.get<MicroCMSListResponse<WorkIndex>>({
     endpoint: 'works',
@@ -27,6 +38,7 @@ export async function fetchWorksList({
       offset,
       limit,
       fields: 'id,title,slug,date,publishedAt2,participationAt,category,technology,slider',
+      ...(filters.length > 0 ? { filters: filters.join('[and]') } : {}),
     },
   })
 

@@ -7,11 +7,15 @@ import { Metadata } from 'next'
 import { PageContent } from './components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchWorksList } from '@/features/works/api/fetch-works-list'
+import { loadSearchParams } from './libs/search-params'
 
 const description = '最新の実績や、自主制作'
 
-export default async function Page() {
-  const result = await fetchWorksList({})
+type Props = PageProps<'/works'>
+
+export default async function Page(props: Props) {
+  const { technology, category } = await loadSearchParams(props.searchParams)
+  const result = await fetchWorksList({ technology, category })
   return <PageContent {...result} />
 }
 

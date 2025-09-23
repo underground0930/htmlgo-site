@@ -9,6 +9,7 @@ import { PageContent } from '../../components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchWorksList } from '@/features/works/api/fetch-works-list'
 import { parsePageNumber } from '@/utils/parse-page-number'
+import { loadSearchParams } from '../../libs/search-params'
 
 const description = '最新の実績や、自主制作'
 
@@ -16,7 +17,13 @@ type Props = PageProps<'/works/page/[page]'>
 
 export default async function Page(props: Props) {
   const params = await props.params
-  const result = await fetchWorksList({ page: parsePageNumber(params.page), limit: 12 })
+  const { technology, category } = await loadSearchParams(props.searchParams)
+  const result = await fetchWorksList({
+    page: parsePageNumber(params.page),
+    limit: 12,
+    technology,
+    category,
+  })
 
   if (result.works.length === 0 && result.page > 0) {
     notFound()
