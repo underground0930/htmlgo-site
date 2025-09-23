@@ -13,7 +13,7 @@ import { Select } from '@/components/ui/form/select'
 
 import { WorksList } from '@/features/works/components/works-list'
 import type { WorkIndex, WorksCategory } from '@/features/works/types'
-import { useQueryState } from 'nuqs'
+import { useParameter } from '../hooks/use-parameter'
 
 type Props = {
   works: WorkIndex[]
@@ -24,8 +24,7 @@ type Props = {
 }
 
 export const PageContent = ({ works, page, pages, technologies, categories }: Props) => {
-  const [category, setCategory] = useQueryState('category', { shallow: false })
-  const [technology, setTechnology] = useQueryState('technology', { shallow: false })
+  const { category, technology, setCategory, setTechnology, queryParams } = useParameter()
 
   const categoryOptions = useMemo(
     () =>
@@ -77,11 +76,11 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
         </div>
       </div>
       <div className='mb-10'>
-        <Pager pages={pages} page={page} basePath='/works' />
+        <Pager pages={pages} page={page} basePath='/works' queryParams={queryParams} />
       </div>
       <WorksList works={works} />
       <div className='mb-10'>
-        <Pager pages={pages} page={page} basePath='/works' />
+        <Pager pages={pages} page={page} basePath='/works' queryParams={queryParams} />
       </div>
       <footer className='mt-10 pb-10'>
         <div className='text-center'>
