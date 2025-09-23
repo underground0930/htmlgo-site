@@ -61,4 +61,5 @@ body {
   overflow-y: scroll;
   font-feature-settings: 'palt';
   letter-spacing: 1px;
+  overflow-wrap: anywhere;
 }

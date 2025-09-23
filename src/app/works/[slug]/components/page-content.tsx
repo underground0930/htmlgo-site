@@ -104,7 +104,7 @@ export const PageContent = ({ post, prev, next }: Props) => {
                   <InfoSection title='URL'>
                     {post?.url && (
                       <a
-                        className='mb-4 block break-all underline last-of-type:mb-0'
+                        className='mb-4 block underline last-of-type:mb-0'
                         href={post.url}
                         target='_blank'
                         rel='noreferrer'
@@ -114,7 +114,7 @@ export const PageContent = ({ post, prev, next }: Props) => {
                     )}
                     {post?.url2 && (
                       <a
-                        className='mb-4 block break-all underline last-of-type:mb-0'
+                        className='mb-4 block underline last-of-type:mb-0'
                         href={post.url2}
                         target='_blank'
                         rel='noreferrer'
@@ -133,7 +133,7 @@ export const PageContent = ({ post, prev, next }: Props) => {
                           <p className='text-sm'>
                             <a
                               className={twMerge(
-                                'mb-4 block break-all last-of-type:mb-0',
+                                'mb-4 block last-of-type:mb-0',
                                 v.link ? 'underline' : '',
                               )}
                               href={v.link}

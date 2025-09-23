@@ -24,9 +24,7 @@ export const ArticlesList = ({ articles }: Props) => {
                 </dt>
                 <dd className='p-3'>
                   <time className='mb-1 block text-xs'>{article.published}</time>
-                  <h3 className='relative mb-1 text-xs leading-5 font-bold break-all'>
-                    {article.title}
-                  </h3>
+                  <h3 className='relative mb-1 text-xs leading-5 font-bold'>{article.title}</h3>
                   <p className='block empty:hidden'>
                     <Badge text={article.category} />
                     {article.tags.map((tag) => (

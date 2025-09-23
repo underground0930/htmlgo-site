@@ -45,9 +45,7 @@ export const WorksList = ({ works = [] }: Props) => {
                         改修日:{conversionDate(work.publishedAt2)}
                       </time>
                     )}
-                    <h3 className='mt-2.5 mb-2.5 text-base leading-5 font-bold break-all'>
-                      {work.title}
-                    </h3>
+                    <h3 className='mt-2.5 mb-2.5 text-base leading-5 font-bold'>{work.title}</h3>
                     <p>
                       {work.category.map((c) => (
                         <Badge key={c.slug} text={c.label} />
