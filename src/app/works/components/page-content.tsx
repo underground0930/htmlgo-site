@@ -24,7 +24,7 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
   return (
     <div className='max-w-(--content-width) md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
-      <div className='mt-5 mb-5 gap-4 sm:flex sm:w-[400px]'>
+      <div className='mt-5 mb-5 gap-4 sm:flex sm:w-[500px]'>
         <div className='w-1/2'>
           <Select
             id='categories'
