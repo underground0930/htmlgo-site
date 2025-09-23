@@ -28,6 +28,7 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
         <div className='w-1/2'>
           <Select
             id='categories'
+            instanceId='categories'
             options={[
               ...categories.map((category) => ({
                 label: category.label,
@@ -39,6 +40,7 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
         <div className='w-1/2'>
           <Select
             id='technologies'
+            instanceId='technologies'
             options={[
               ...technologies.map((technology) => ({
                 label: technology.label,

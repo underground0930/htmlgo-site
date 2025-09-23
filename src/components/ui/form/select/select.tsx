@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import ReactSelect, { Props as ReactSelectProps } from 'react-select'
 import { tv, type VariantProps } from 'tailwind-variants'
 
@@ -13,5 +14,9 @@ type Props = ReactSelectProps & CommonVariantProps
 
 export const Select = (props: Props) => {
   const className = selectVariants()
-  return <ReactSelect {...props} className={className} />
+  return (
+    <div suppressHydrationWarning>
+      <ReactSelect {...props} className={className} />
+    </div>
+  )
 }
