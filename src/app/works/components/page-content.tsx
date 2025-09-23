@@ -80,13 +80,21 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
           />
         </div>
       </div>
-      <div className='mb-10'>
-        <Pager pages={pages} page={page} basePath='/works' queryParams={queryParams} />
-      </div>
-      <WorksList works={works} />
-      <div className='mb-10'>
-        <Pager pages={pages} page={page} basePath='/works' queryParams={queryParams} />
-      </div>
+      {page > 1 && (
+        <div className='mb-10'>
+          <Pager pages={pages} page={page} basePath='/works' queryParams={queryParams} />
+        </div>
+      )}
+      {works.length > 0 ? (
+        <WorksList works={works} />
+      ) : (
+        <div className='py-20 text-center text-sm'>条件に該当する実績は見つかりませんでした</div>
+      )}
+      {page > 1 && (
+        <div className='mb-10'>
+          <Pager pages={pages} page={page} basePath='/works' queryParams={queryParams} />
+        </div>
+      )}
       <footer className='mt-10 pb-10'>
         <div className='text-center'>
           <Button component='link' href='/' icon='home'>
