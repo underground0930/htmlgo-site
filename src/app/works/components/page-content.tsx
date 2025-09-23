@@ -23,6 +23,11 @@ type Props = {
   categories: WorksCategory[]
 }
 
+type SelectOption = {
+  label: string
+  value: string
+}
+
 export const PageContent = ({ works, page, pages, technologies, categories }: Props) => {
   const { category, technology, setCategory, setTechnology, queryParams } = useParameter()
 
@@ -51,7 +56,7 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
       <Title title='Works' text='最新の実績や、自主制作' />
       <div className='mt-5 mb-5 gap-4 sm:flex sm:w-[500px]'>
         <div className='w-1/2'>
-          <Select<{ label: string; value: string }, false>
+          <Select<SelectOption, false>
             id='categories'
             instanceId='categories'
             value={selectedCategory}
@@ -63,7 +68,7 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
           />
         </div>
         <div className='w-1/2'>
-          <Select<{ label: string; value: string }, false>
+          <Select<SelectOption, false>
             id='technologies'
             instanceId='technologies'
             value={selectedTechnology}
