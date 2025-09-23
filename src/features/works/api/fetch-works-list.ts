@@ -26,10 +26,10 @@ export async function fetchWorksList({
   const offset = (currentPage - 1) * limit
   const filters = []
   if (category) {
-    filters.push(`works_category[equals]${category}`)
+    filters.push(`category[contains]${category}`)
   }
   if (technology) {
-    filters.push(`works_technology[equals]${technology}`)
+    filters.push(`technology[contains]${technology}`)
   }
 
   const result = await microcmsClient.get<MicroCMSListResponse<WorkIndex>>({

@@ -1,9 +1,11 @@
+'use client'
+
 /**
  * Works共通ページコンポーネント
  * ページネーション有無に関わらず、Worksページの共通レイアウトを提供
  */
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 import { Pager } from '@/components/ui/pager'
@@ -11,6 +13,7 @@ import { Select } from '@/components/ui/form/select'
 
 import { WorksList } from '@/features/works/components/works-list'
 import type { WorkIndex, WorksCategory } from '@/features/works/types'
+import { useQueryState } from 'nuqs'
 
 type Props = {
   works: WorkIndex[]
@@ -21,32 +24,55 @@ type Props = {
 }
 
 export const PageContent = ({ works, page, pages, technologies, categories }: Props) => {
+  const [category, setCategory] = useQueryState('category', { shallow: false })
+  const [technology, setTechnology] = useQueryState('technology', { shallow: false })
+
+  const categoryOptions = useMemo(
+    () =>
+      categories.map((c) => ({
+        label: c.label,
+        value: c.id,
+      })),
+    [categories],
+  )
+  const selectedCategory = categoryOptions.find((c) => c.value === category)
+
+  const technologyOptions = useMemo(
+    () =>
+      technologies.map((t) => ({
+        label: t.label,
+        value: t.id,
+      })),
+    [technologies],
+  )
+  const selectedTechnology = technologyOptions.find((t) => t.value === technology)
+
   return (
     <div className='max-w-(--content-width) md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
       <div className='mt-5 mb-5 gap-4 sm:flex sm:w-[500px]'>
         <div className='w-1/2'>
-          <Select
+          <Select<{ label: string; value: string }, false>
             id='categories'
             instanceId='categories'
-            options={[
-              ...categories.map((category) => ({
-                label: category.label,
-                value: category.slug,
-              })),
-            ]}
+            value={selectedCategory}
+            isClearable
+            onChange={(option) => {
+              void setCategory(option?.value ?? null)
+            }}
+            options={categoryOptions}
           />
         </div>
         <div className='w-1/2'>
-          <Select
+          <Select<{ label: string; value: string }, false>
             id='technologies'
             instanceId='technologies'
-            options={[
-              ...technologies.map((technology) => ({
-                label: technology.label,
-                value: technology.slug,
-              })),
-            ]}
+            value={selectedTechnology}
+            isClearable
+            onChange={(option) => {
+              void setTechnology(option?.value ?? null)
+            }}
+            options={technologyOptions}
           />
         </div>
       </div>
