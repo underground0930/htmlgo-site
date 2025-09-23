@@ -10,8 +10,8 @@ import type { WorkIndex } from '../types'
 export async function fetchWorksList({
   page = 1,
   limit = 12,
-  category = '',
-  technology = '',
+  category,
+  technology,
 }: {
   page?: number
   limit?: number

@@ -1,9 +1,9 @@
-import { parseAsString, createLoader } from 'nuqs'
+import { parseAsString, createLoader } from 'nuqs/server'
 
 // reference:
 // https://nuqs.dev/docs/server-side
 
-export const categoriesSearchParams = {
+const categoriesSearchParams = {
   technology: parseAsString.withDefault(''),
   category: parseAsString.withDefault(''),
 }

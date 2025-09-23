@@ -10,58 +10,44 @@ import { Pager } from '@/components/ui/pager'
 import { Select } from '@/components/ui/form/select'
 
 import { WorksList } from '@/features/works/components/works-list'
-import type { WorkIndex } from '@/features/works/types'
+import type { WorkIndex, WorksCategory } from '@/features/works/types'
 
 type Props = {
   works: WorkIndex[]
   page: number
   pages: number
+  technologies: WorksCategory[]
+  categories: WorksCategory[]
 }
 
-export const PageContent = ({ works, page, pages }: Props) => {
+export const PageContent = ({ works, page, pages, technologies, categories }: Props) => {
   return (
     <div className='max-w-(--content-width) md:mx-auto'>
       <Title title='Works' text='最新の実績や、自主制作' />
-      {/* <div className='mt-5 mb-5 gap-4 sm:flex sm:w-[400px]'>
+      <div className='mt-5 mb-5 gap-4 sm:flex sm:w-[400px]'>
         <div className='w-1/2'>
           <Select
-            id='aaa'
+            id='categories'
             options={[
-              {
-                label: 'すべて',
-                value: 'all',
-              },
-              {
-                label: '実績',
-                value: 'works',
-              },
-              {
-                label: '自主制作',
-                value: 'self',
-              },
+              ...categories.map((category) => ({
+                label: category.label,
+                value: category.slug,
+              })),
             ]}
           />
         </div>
         <div className='w-1/2'>
           <Select
-            id='bbb'
+            id='technologies'
             options={[
-              {
-                label: 'すべて',
-                value: 'all',
-              },
-              {
-                label: '実績',
-                value: 'works',
-              },
-              {
-                label: '自主制作',
-                value: 'self',
-              },
+              ...technologies.map((technology) => ({
+                label: technology.label,
+                value: technology.slug,
+              })),
             ]}
           />
         </div>
-      </div> */}
+      </div>
       <div className='mb-10'>
         <Pager pages={pages} page={page} basePath='/works' />
       </div>
