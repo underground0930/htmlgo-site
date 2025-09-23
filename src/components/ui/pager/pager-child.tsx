@@ -31,11 +31,7 @@ export const PagerChild = ({
   // クエリパラメータをURLSearchParamsに変換
   const createUrl = () => {
     const baseUrl = page === 1 ? basePath : `${basePath}/page/${page}`
-
-    if (queryParams) {
-      return baseUrl + queryParams
-    }
-    return baseUrl
+    return baseUrl + queryParams
   }
 
   return (
