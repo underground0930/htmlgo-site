@@ -80,7 +80,7 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
           />
         </div>
       </div>
-      {page > 1 && (
+      {pages > 0 && (
         <div className='mb-10'>
           <Pager pages={pages} page={page} basePath='/works' queryParams={queryParams} />
         </div>
@@ -90,7 +90,7 @@ export const PageContent = ({ works, page, pages, technologies, categories }: Pr
       ) : (
         <div className='py-20 text-center text-sm'>条件に該当する実績は見つかりませんでした</div>
       )}
-      {page > 1 && (
+      {pages > 0 && (
         <div className='mb-10'>
           <Pager pages={pages} page={page} basePath='/works' queryParams={queryParams} />
         </div>
