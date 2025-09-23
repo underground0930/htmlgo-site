@@ -43,7 +43,7 @@ export const Header = () => {
             HTMLGO
           </Link>
         </h1>
-        <nav className='scrolling-touch overflow-x-scroll md:overflow-x-auto'>
+        <nav className='scrolling-touch overflow-x-scroll wrap-break-word md:overflow-x-auto'>
           <ul className='flex pb-2.5 md:pb-0'>
             {navList.map((item, index) => {
               return (
