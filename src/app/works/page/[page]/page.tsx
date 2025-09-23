@@ -4,7 +4,7 @@
  */
 
 import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { nextMetaData } from '@/libs/next-metadata'
 import { parsePageNumber } from '@/utils/parse-page-number'
@@ -32,7 +32,7 @@ export default async function Page(props: Props) {
   const { contents: categories } = await fetchWorksCategories()
 
   if (result.works.length === 0 && result.page > 0) {
-    notFound()
+    redirect('/works')
   }
 
   return <PageContent {...result} technologies={technologies} categories={categories} />
