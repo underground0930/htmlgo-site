@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
 
-import { ServiceList } from '../components/service-list'
+import { ServiceList } from '../_components/service-list'
 
 import { ArticlesList } from '@/features/articles/components/articles-list'
 import type { FeedObj } from '@/features/articles/types'

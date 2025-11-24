@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-import { FormSchema } from '../schema'
+import { FormSchema } from '../_schema'
 
 const setMailText = (args: FormSchema): string => {
   const text = `

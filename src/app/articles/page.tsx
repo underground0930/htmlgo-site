@@ -4,7 +4,7 @@
  */
 
 import { Metadata } from 'next'
-import { PageContent } from './components/page-content'
+import { PageContent } from './_components/page-content'
 import { nextMetaData } from '@/libs/next-metadata'
 import { fetchArticlesList } from '@/features/articles/api/fetch-articles'
 

@@ -10,7 +10,7 @@ import { nextMetaData } from '@/libs/next-metadata'
 import { fetchArticlesList } from '@/features/articles/api/fetch-articles'
 import { parsePageNumber } from '@/utils/parse-page-number'
 
-import { PageContent } from '../../components/page-content'
+import { PageContent } from '../../_components/page-content'
 
 const description = '色々なブログの記事のフィードをまとめたものです'
 

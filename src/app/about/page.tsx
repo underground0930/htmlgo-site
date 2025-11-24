@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { nextMetaData } from '@/libs/next-metadata'
-import { PageContent } from './components/page-content'
+import { PageContent } from './_components/page-content'
 
 const description = 'このサイトについて'
 

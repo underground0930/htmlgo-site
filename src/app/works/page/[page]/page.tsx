@@ -10,8 +10,8 @@ import { nextMetaData } from '@/libs/next-metadata'
 import { parsePageNumber } from '@/utils/parse-page-number'
 import { fetchWorksList } from '@/features/works/api/fetch-works-list'
 
-import { loadSearchParams } from '../../libs/search-params'
-import { PageContent } from '../../components/page-content'
+import { loadSearchParams } from '../../_libs/search-params'
+import { PageContent } from '../../_components/page-content'
 import { fetchWorksTechnologies } from '@/features/works/api/fetch-works-technologies'
 import { fetchWorksCategories } from '@/features/works/api/fetch-works-categories'
 

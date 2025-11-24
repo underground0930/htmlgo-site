@@ -4,7 +4,7 @@ import { nextMetaData } from '@/libs/next-metadata'
 
 import { fetchWorksList } from '@/features/works/api/fetch-works-list'
 import { fetchArticlesList } from '@/features/articles/api/fetch-articles'
-import { PageContent } from './components/page-content'
+import { PageContent } from './_components/page-content'
 
 const description = 'WEB技術を書き連ねるサイト'
 

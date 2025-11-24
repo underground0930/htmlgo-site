@@ -8,9 +8,9 @@ import { TextareaWithRHF } from '@/components/ui/form/textarea'
 import { Label } from '@/components/ui/form/label'
 import { ErrorText } from '@/components/ui/form/error-text'
 
-import { useContactForm } from '../hooks/use-contact-form'
-import { useRecaptcha } from '../hooks/use-recaptcha'
-import type { FormBodyData } from '../schema'
+import { useContactForm } from '../_hooks/use-contact-form'
+import { useRecaptcha } from '../_hooks/use-recaptcha'
+import type { FormBodyData } from '../_schema'
 
 export const PageContent = () => {
   const {
