@@ -8,8 +8,8 @@ import { useCallback, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import type { FormBodyData, ContactApiResponse, ValidationError } from '../schema'
-import { FormBodyDataSchema } from '../schema'
+import type { FormBodyData, ContactApiResponse, ValidationError } from '../_schema'
+import { FormBodyDataSchema } from '../_schema'
 
 type FormDataType = FormBodyData & FieldValues
 

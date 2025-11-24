@@ -13,7 +13,7 @@ import { Select } from '@/components/ui/form/select'
 
 import { WorksList } from '@/features/works/components/works-list'
 import type { WorkIndex, WorksCategory } from '@/features/works/types'
-import { useParameter } from '../hooks/use-parameter'
+import { useParameter } from '../_hooks/use-parameter'
 
 type Props = {
   works: WorkIndex[]

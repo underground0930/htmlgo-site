@@ -5,9 +5,9 @@
 
 import { NextResponse } from 'next/server'
 
-import { verifyRecaptcha } from '../libs/verify-recaptcha'
-import { sendMail } from '../libs/send-mail'
-import { FormBodyDataSchema, ContactApiResponse, ValidationError } from '../schema'
+import { verifyRecaptcha } from '../_libs/verify-recaptcha'
+import { sendMail } from '../_libs/send-mail'
+import { FormBodyDataSchema, ContactApiResponse, ValidationError } from '../_schema'
 
 // エラーの cause 型定義
 type ErrorCause =

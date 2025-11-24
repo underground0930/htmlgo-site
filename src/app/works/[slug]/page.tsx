@@ -4,10 +4,10 @@ import { Suspense } from 'react'
 
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
-import { fetchWorksPaths } from './libs/fetch-works-paths'
-import { fetchWorksDetail } from './libs/fetch-works-detail'
+import { fetchWorksPaths } from './_libs/fetch-works-paths'
+import { fetchWorksDetail } from './_libs/fetch-works-detail'
 
-import { PageContent } from './components/page-content'
+import { PageContent } from './_components/page-content'
 
 import { removeHtml } from '@/utils/remove-html'
 import { nextMetaData } from '@/libs/next-metadata'

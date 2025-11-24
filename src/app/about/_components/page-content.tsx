@@ -1,7 +1,7 @@
 import { Image } from '@/components/utils/image'
 import { Button } from '@/components/ui/button'
 import { Title } from '@/components/ui/title'
-import { SnsList } from '../components/sns-list'
+import { SnsList } from '../_components/sns-list'
 
 export const PageContent = () => {
   return (
